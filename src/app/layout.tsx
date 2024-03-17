@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
 import { nunitoSans, raleway } from '@/fonts';
-import HeaderMain from '@/components/ui/layout/HeaderMain';
-import FooterMain from '@/components/ui/layout/FooterMain';
+import HeaderMain from '@/components/layout/HeaderMain';
+import FooterMain from '@/components/layout/FooterMain';
 
 export const metadata: Metadata = {
   title: 'Theo Ribeiro | Cinematographer',
@@ -17,7 +17,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${raleway.variable} ${nunitoSans.variable}`}
+      className={`${raleway.variable} ${nunitoSans.variable} dark`}
       data-theme="theo"
     >
       <body
