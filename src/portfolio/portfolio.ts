@@ -1,3 +1,20 @@
+export type PortfolioItem = {
+  id: number;
+  uniqueId: string;
+  slug: string;
+  title: string;
+  videoSource: string;
+  videoUrl: string;
+  projectType: string;
+  role: string;
+  description: string;
+  director: string;
+  producer: string;
+  productionCompany: string;
+  imageUrl: string;
+  originalImageUrl: string;
+};
+
 export const portfolio = [
   {
     id: 0,
@@ -13,7 +30,7 @@ export const portfolio = [
     director: 'Ben S. Hyland',
     producer: 'Adam Smith',
     productionCompany: 'Hidden Art Films',
-    imageUrl: './src/assets/img/talk-radio.jpg',
+    imageUrl: '/img/talk-radio.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-18-at-10.53.17.jpg',
   },
@@ -31,7 +48,7 @@ export const portfolio = [
     director: 'Laura Belinky',
     producer: 'Theo Ribeiro and Laura Belinky',
     productionCompany: 'Wild River Films',
-    imageUrl: './src/assets/img/land-of-the-wind.jpg',
+    imageUrl: '/img/land-of-the-wind.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/05/tdv-stills-16x9_1.7.1-edit-1-scaled.jpg',
   },
@@ -49,7 +66,7 @@ export const portfolio = [
     director: 'Charles Joslain',
     producer: 'Rubin Moyo',
     productionCompany: 'Groundwork Pictures',
-    imageUrl: './src/assets/img/i-am.jpg',
+    imageUrl: '/img/i-am.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.33.13.jpg',
   },
@@ -67,7 +84,7 @@ export const portfolio = [
     director: 'Ben S. Hyland',
     producer: 'Adam Gregory Smith and Rebecca Grant',
     productionCompany: 'Hidden Art Films',
-    imageUrl: './src/assets/img/safe-space.jpg',
+    imageUrl: '/img/safe-space.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.40.42.jpg',
   },
@@ -85,7 +102,7 @@ export const portfolio = [
     director: 'Andrew Carver',
     producer: 'Andrew Carver',
     productionCompany: 'Raindown',
-    imageUrl: './src/assets/img/kto.jpg',
+    imageUrl: '/img/kto.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.45.04.jpg',
   },
@@ -103,7 +120,7 @@ export const portfolio = [
     director: 'Simon Harris',
     producer: 'Simon Harris',
     productionCompany: 'On Tour Films',
-    imageUrl: './src/assets/img/the-package.jpg',
+    imageUrl: '/img/the-package.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.57.17.jpg',
   },
@@ -121,7 +138,7 @@ export const portfolio = [
     director: 'George Murphy',
     producer: 'Joshua Poulsen',
     productionCompany: '',
-    imageUrl: './src/assets/img/we-play-war.jpg',
+    imageUrl: '/img/we-play-war.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/05/551607826_1280-e1543862703589.jpg',
   },
@@ -139,7 +156,7 @@ export const portfolio = [
     director: 'Laura Belinky',
     producer: 'Laura Belinky and Theo Ribeiro',
     productionCompany: 'Wild River Films',
-    imageUrl: './src/assets/img/el-tiempo.jpg',
+    imageUrl: '/img/el-tiempo.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.50.36.jpg',
   },

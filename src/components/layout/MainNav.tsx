@@ -2,7 +2,7 @@ import paths from '@/paths';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import type { UrlObject } from 'url';
-import { SheetClose } from './ui/sheet';
+import { SheetClose } from '../ui/sheet';
 
 interface MainNavItemProps {
   children: ReactNode;
@@ -25,7 +25,7 @@ function MainNavItem({ children, href }: MainNavItemProps) {
 
 export default function MainNav() {
   return (
-    <nav className="py-4">
+    <nav className="">
       <ul className="flex flex-col divide-y border-t border-b">
         <MainNavItem href={paths.homePage()}>Home</MainNavItem>
         <MainNavItem href="#">Demo Reel</MainNavItem>

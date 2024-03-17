@@ -4,6 +4,7 @@ import './globals.css';
 import { nunitoSans, raleway } from '@/fonts';
 import HeaderMain from '@/components/layout/HeaderMain';
 import FooterMain from '@/components/layout/FooterMain';
+import Providers from '@/Providers';
 
 export const metadata: Metadata = {
   title: 'Theo Ribeiro | Cinematographer',
@@ -23,9 +24,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`grid min-h-screen min-w-72 grid-cols-1 grid-rows-[auto_1fr_auto] px-3 font-sans antialiased sm:px-5`}
       >
-        <HeaderMain />
-        <main>{children}</main>
-        <FooterMain />
+        <Providers>
+          <HeaderMain />
+          <main>{children}</main>
+          <FooterMain />
+        </Providers>
       </body>
     </html>
   );
