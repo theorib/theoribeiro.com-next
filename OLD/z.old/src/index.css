@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .app-links {
+    @apply text-link-blue-500 hover:text-horizon-blue-300;
+  }
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src:
+    local('Raleway'),
+    url('./assets/fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src:
+    local('Raleway'),
+    url('./assets/fonts/Raleway-Italic-VariableFont_wght.ttf')
+      format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src:
+    local('Nunito Sans'),
+    url('./assets/fonts/NunitoSans-VariableFont_YTLC.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  src:
+    local('Nunito Sans'),
+    url('./assets/fonts/NunitoSans-Italic-VariableFont_YTLC.ttf')
+      format('truetype');
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+.expander {
+  @apply grid;
+  @apply transition-all;
+  @apply duration-1000;
+}
+
+.expander-child {
+  @apply overflow-hidden;
+  @apply min-h-0;
+}
+
+.expander-enter {
+  grid-template-rows: 0fr;
+}
+.expander-enter-active {
+  grid-template-rows: 1fr;
+}
+.expander-exit {
+  grid-template-rows: 1fr;
+}
+.expander-exit-active {
+  grid-template-rows: 0fr;
+}
