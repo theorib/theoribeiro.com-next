@@ -28,7 +28,9 @@ export default function MainNav() {
     <nav className="">
       <ul className="flex flex-col divide-y border-t border-b">
         <MainNavItem href={paths.homePage()}>Home</MainNavItem>
-        <MainNavItem href="#">Demo Reel</MainNavItem>
+        <MainNavItem href="#">
+          Demo Reel canis circensis citus manus joy
+        </MainNavItem>
         <MainNavItem href="#">Still Photography</MainNavItem>
         <MainNavItem href={paths.aboutPage()}>About</MainNavItem>
       </ul>

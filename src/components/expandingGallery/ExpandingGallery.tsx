@@ -1,5 +1,6 @@
 import React from 'react';
 import expandingGallery from '.';
+import ExpandingGalleryScrollTo from './ExpandingGalleryScrollTo';
 
 // Define a generic interface for the component props
 
@@ -45,18 +46,22 @@ const ExpandingGallery = <T,>({
   );
 
   return (
-    <div>
-      <ul className="-m-3 grid gap-0 sm:grid-cols-2 sm:gap-0">
-        {isExpanded && (
-          <li
-            className={`col-span-full ${expandingGallery.rowStartClass[rowMobile as keyof typeof expandingGallery.rowStartClass]} sm:${expandingGallery.rowStartClass[rowTablet as keyof typeof expandingGallery.rowStartClass]} md:${expandingGallery.rowStartClass[rowDesktop as keyof typeof expandingGallery.rowStartClass]}`}
-          >
-            {expanderRender()}
-          </li>
-        )}
-        {thumbnailsData.map(item => thumbnailsRender({ item, expanderIndex }))}
-      </ul>
-    </div>
+    <ExpandingGalleryScrollTo>
+      <div>
+        <ul className="-m-3 grid gap-0 sm:grid-cols-2 sm:gap-0">
+          {isExpanded && (
+            <li
+              className={`col-span-full ${expandingGallery.rowStartClass[rowMobile as keyof typeof expandingGallery.rowStartClass]} sm:${expandingGallery.rowStartClass[rowTablet as keyof typeof expandingGallery.rowStartClass]} md:${expandingGallery.rowStartClass[rowDesktop as keyof typeof expandingGallery.rowStartClass]}`}
+            >
+              {expanderRender()}
+            </li>
+          )}
+          {thumbnailsData.map(item =>
+            thumbnailsRender({ item, expanderIndex }),
+          )}
+        </ul>
+      </div>
+    </ExpandingGalleryScrollTo>
   );
 };
 

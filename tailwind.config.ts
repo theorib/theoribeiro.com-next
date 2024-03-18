@@ -112,7 +112,8 @@ const config: Config = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
+        // background: 'hsl(var(--background))',
+        background: colors.neutral[900],
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
@@ -168,52 +169,54 @@ const config: Config = {
       // Shadcn
     },
   },
-  daisyui: {
-    darkTheme: 'theo', // name of one of the included themes for dark mode
-    base: true, // applies background color and foreground color for root element by default
-    styled: true, // include daisyUI colors and design decisions for all components
-    utils: true, // adds responsive and modifier utility classes
-    prefix: '', // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
-    logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
-    themeRoot: ':root', // The element that receives theme color CSS variables
-    themes: [
-      {
-        theo: {
-          colors: {
-            primary: appBlue,
-            secondary: regentGray,
-          },
-          primary: appBlue[700],
-          'primary-content': colors['neutral'][100], // Will be a readable tone of primary if not specified
+  // daisyui: {
+  //   darkTheme: 'theo', // name of one of the included themes for dark mode
+  //   base: true, // applies background color and foreground color for root element by default
+  //   styled: true, // include daisyUI colors and design decisions for all components
+  //   utils: true, // adds responsive and modifier utility classes
+  //   prefix: '', // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
+  //   logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
+  //   themeRoot: ':root', // The element that receives theme color CSS variables
+  //   themes: [
+  //     {
+  //       theo: {
+  //         colors: {
+  //           primary: appBlue,
+  //           secondary: regentGray,
+  //         },
+  //         primary: appBlue[700],
+  //         'primary-content': colors['neutral'][100], // Will be a readable tone of primary if not specified
 
-          secondary: colors['neutral'][500],
-          'secondary-content': colors['neutral'][100], //Will be a readable tone of secondary if not specified
+  //         secondary: colors['neutral'][500],
+  //         'secondary-content': colors['neutral'][100], //Will be a readable tone of secondary if not specified
 
-          accent: appBlue[300],
-          // 'accent-content': colors['neutral'][100], //Will be a readable tone of accent if not specified
+  //         accent: appBlue[300],
+  //         // 'accent-content': colors['neutral'][100], //Will be a readable tone of accent if not specified
 
-          neutral: colors['neutral'][600],
-          'neutral-content': '#fff', //Will be a readable tone of neutral if not specified
+  //         neutral: colors['neutral'][600],
+  //         'neutral-content': '#fff', //Will be a readable tone of neutral if not specified
 
-          'base-100': colors['neutral'][900],
-          'base-200': colors['neutral'][700], //Will be a darker tone of base-100 if not specified
-          'base-300': colors['neutral'][600], //Will be a darker tone of base-200 if not specified
-          'base-content': colors['neutral'][100], //Will be a readable tone of base-100 if not specified
+  //         'base-100': colors['neutral'][900],
+  //         'base-200': colors['neutral'][700], //Will be a darker tone of base-100 if not specified
+  //         'base-300': colors['neutral'][600], //Will be a darker tone of base-200 if not specified
+  //         'base-content': colors['neutral'][100], //Will be a readable tone of base-100 if not specified
 
-          info: horizonBlue[600], //Will be a default blue color if not specified
-          'info-content': colors['neutral'][100], //Will be a readable tone of info if not specified
-          success: '#6bb187',
-          // 'success-content': '#00fdc1',
-          warning: '#dbae59',
-          // 'warning-content': '#00fdc1',
-          error: '#ac3e31',
-          // 'error-content': colors['neutral'][100],
-        },
-      },
-      'dark',
-      'light',
-    ],
-  },
-  plugins: [daisyui, tailwindTypography, tailwindCssAnimate],
+  //         info: horizonBlue[600], //Will be a default blue color if not specified
+  //         'info-content': colors['neutral'][100], //Will be a readable tone of info if not specified
+  //         success: '#6bb187',
+  //         // 'success-content': '#00fdc1',
+  //         warning: '#dbae59',
+  //         // 'warning-content': '#00fdc1',
+  //         error: '#ac3e31',
+  //         // 'error-content': colors['neutral'][100],
+  //       },
+  //     },
+  //     'dark',
+  //     'light',
+  //   ],
+  // },
+  // plugins: [daisyui, tailwindTypography, tailwindCssAnimate],
+  plugins: [tailwindTypography, tailwindCssAnimate],
 };
+
 export default config;

@@ -115,9 +115,13 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground px-5;
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
   }
 }
+/* body[data-scroll-locked].overlay-fix {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+} */
