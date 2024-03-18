@@ -1,12 +1,12 @@
 const paths = {
-  homePage() {
-    return `/`;
+  homePage(id?: string) {
+    return `/${id ? `#${id}` : ''}`;
   },
   aboutPage() {
     return `/about-theo-ribeiro`;
   },
-  showReelItemPage(slug: string) {
-    return `/cinematography-show-reel/${slug}`;
+  showReelItemPage(slug: string, id?: string) {
+    return `/cinematography-show-reel/${slug}${id ? `/#${id}` : ''}`;
   },
 };
 export default paths;

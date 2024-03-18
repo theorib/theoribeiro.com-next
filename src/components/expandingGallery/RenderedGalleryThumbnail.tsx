@@ -5,15 +5,30 @@ import type { PortfolioThumbnail } from '@/portfolio';
 import Link from 'next/link';
 import paths from '@/paths';
 
-interface GalleryThumbnailProps {
+interface RenderedGalleryThumbnailProps {
   item: PortfolioThumbnail;
+  expanderIndex: number | undefined;
 }
 
-export default function GalleryThumbnail({ item }: GalleryThumbnailProps) {
+export default function RenderedGalleryThumbnail({
+  item,
+  expanderIndex,
+}: RenderedGalleryThumbnailProps) {
+  const isExpanded = expanderIndex === item.id;
+
   return (
-    <li key={item.id}>
+    <li id={`expanging-gallery-${item.slug}`}>
       <AspectRatio ratio={2.4 / 1} asChild={true}>
-        <Link href={paths.showReelItemPage(item.slug)}>
+        <Link
+          href={
+            isExpanded
+              ? paths.homePage(`expanging-gallery-${item.slug}`)
+              : paths.showReelItemPage(
+                  item.slug,
+                  `expanging-gallery-expander-${item.slug}`,
+                )
+          }
+        >
           <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex justify-center items-center bg-neutral-950/50 opacity-0 hover:opacity-90 transition-all duration-200">
             <p className="text-4xl font-extralight">{item.title}</p>
           </div>

@@ -1,4 +1,4 @@
-import RenderedExpangingGallery from '@/components/expanding-gallery/RenderedExpangingGallery';
+import RenderedExpangingGallery from '@/components/expandingGallery/RenderedExpangingGallery';
 import portfolio from '@/portfolio';
 import { notFound } from 'next/navigation';
 

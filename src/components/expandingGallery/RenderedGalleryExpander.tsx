@@ -2,14 +2,15 @@ import { PortfolioItem } from '@/portfolio';
 import { AspectRatio } from '../ui/aspect-ratio';
 import Image from 'next/image';
 
-interface GalleryExpanderProps {
+interface RenderedGalleryExpanderProps {
   expanderData: PortfolioItem;
 }
 
-export default function GalleryExpander({
+export default function RenderedGalleryExpander({
   expanderData,
-}: GalleryExpanderProps) {
+}: RenderedGalleryExpanderProps) {
   const {
+    id,
     title,
     projectType,
     role,
@@ -18,11 +19,16 @@ export default function GalleryExpander({
     producer,
     productionCompany,
     imageUrl,
+    slug,
   } = expanderData;
 
   return (
-    <li className="col-span-full flex flex-auto flex-col gap-6  px-16 py-6 sm:flex-row sm:gap-16 sm:py-10">
-      <div className="min-h-0 basis-5/12">
+    <div
+      key={`${id}-expanded`}
+      className="col-span-full flex flex-auto flex-col gap-6  px-16 py-6 sm:flex-row sm:gap-16 sm:py-10"
+      id={`expanging-gallery-expander-${slug}`}
+    >
+      <div className="min-h-0 basis-6/12">
         <AspectRatio ratio={16 / 9}>
           <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex justify-center items-center bg-neutral-950/50 transition-all duration-200">
             <p className="text-4xl font-extralight">{title}</p>
@@ -56,6 +62,6 @@ export default function GalleryExpander({
           </p>
         </div>
       </div>
-    </li>
+    </div>
   );
 }

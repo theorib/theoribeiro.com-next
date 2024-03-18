@@ -55,6 +55,14 @@ const config: Config = {
   darkMode: 'class',
   // Shadcn
 
+  safelist: [
+    // The following pattern makes tailwind remember all row-start-<size> classes for the portfolio element to use dynamically
+    {
+      pattern: /row-start-.+/,
+      variants: ['sm', 'md', 'lg', 'xl'],
+    },
+  ],
+
   theme: {
     extend: {
       maxWidth: {
@@ -84,8 +92,21 @@ const config: Config = {
       },
       colors: {
         'app-blue': appBlue,
-        'horizon-blue': horizonBlue,
         'regent-ray': regentGray,
+        'horizon-blue': horizonBlue,
+        // 'horizon-blue': {
+        //   50: 'hsl(var(--horizon-blue-50) / <alpha-value>)',
+        //   100: 'hsl(var(--horizon-blue-100) / <alpha-value>)',
+        //   200: 'hsl(var(--horizon-blue-200) / <alpha-value>)',
+        //   300: 'hsl(var(--horizon-blue-300) / <alpha-value>)',
+        //   400: 'hsl(var(--horizon-blue-400) / <alpha-value>)',
+        //   500: 'hsl(var(--horizon-blue-500) / <alpha-value>)',
+        //   600: 'hsl(var(--horizon-blue-600) / <alpha-value>)',
+        //   700: 'hsl(var(--horizon-blue-700) / <alpha-value>)',
+        //   800: 'hsl(var(--horizon-blue-800) / <alpha-value>)',
+        //   900: 'hsl(var(--horizon-blue-900) / <alpha-value>)',
+        //   950: 'hsl(var(--horizon-blue-950) / <alpha-value>)',
+        // },
 
         // Shadcn
         border: 'hsl(var(--border))',

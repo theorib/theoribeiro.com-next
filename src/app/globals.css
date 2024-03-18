@@ -4,6 +4,43 @@
 
 @layer base {
   :root {
+    --appBlue-50: 210 53.85% 94.9%;
+    --appBlue-100: 205.71 51.22% 91.96%;
+    --appBlue-200: 204 48.78% 83.92%;
+    --appBlue-300: 204 49.3% 72.16%;
+    --appBlue-400: 202.2 46.73% 58.04%;
+    --appBlue-500: 202.86 44.68% 46.08%;
+    --appBlue-600: 204 56.07% 41.96%;
+    --appBlue-700: 204.83 53.37% 31.96%;
+    --appBlue-800: 205.59 49.28% 27.06%;
+    --appBlue-900: 206.67 44.26% 23.92%;
+    --appBlue-950: 208.33 43.9% 16.08%;
+
+    --horizon-blue-50: 193 26% 93%;
+    --horizon-blue-100: 201 21% 87%;
+    --horizon-blue-200: 201 21% 79%;
+    --horizon-blue-300: 202 22% 66%;
+    --horizon-blue-400: 202 21% 50%;
+    --horizon-blue-500: 203 24% 43%;
+    --horizon-blue-600: 206 23% 36%;
+    --horizon-blue-700: 208 20% 31%;
+    --horizon-blue-800: 210 17% 27%;
+    --horizon-blue-900: 210 16% 24%;
+    --horizon-blue-950: 210 18% 15%;
+
+    --regentGray-50: 180 16.67% 97.65%;
+    --regentGray-100: 180 13.04% 95.49%;
+    --regentGray-200: 190 14.29% 91.76%;
+    --regentGray-300: 195 15.79% 85.1%;
+    --regentGray-400: 190.59 14.05% 76.27%;
+    --regentGray-500: 195 13.95% 66.27%;
+    --regentGray-600: 200 12.93% 54.51%;
+    --regentGray-700: 200 10.67% 50.39%;
+    --regentGray-800: 200.87 10.7% 42.16%;
+    --regentGray-900: 200 10.11% 34.9%;
+    --regentGray-950: 203.08 11.11% 22.94%;
+
+    /* shadcn variables */
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
 
@@ -34,9 +71,11 @@
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+    /* end shadcn variables */
   }
 
   .dark {
+    /* shadcn variables */
     --background: 224 71% 4%;
     --foreground: 213 31% 91%;
 
@@ -67,6 +106,7 @@
     --ring: 216 34% 17%;
 
     --radius: 0.5rem;
+    /* end shadcn variables */
   }
 }
 

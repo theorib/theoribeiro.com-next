@@ -19,7 +19,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html
       lang="en"
       className={`${raleway.variable} ${nunitoSans.variable} dark`}
-      data-theme="theo"
+      // data-theme="theo"
     >
       <body
         className={`grid min-h-screen min-w-72 grid-cols-1 grid-rows-[auto_1fr_auto] px-3 font-sans antialiased sm:px-5`}

@@ -1,7 +1,7 @@
-import ExpandingGallery from '@/components/expanding-gallery/ExpandingGallery';
-import GalleryThumbnail from '@/components/expanding-gallery/GalleryThumbnail';
-import RenderedExpangingGallery from '@/components/expanding-gallery/RenderedExpangingGallery';
-import Portfolio from '@/components/expanding-gallery/RenderedExpangingGallery';
+import ExpandingGallery from '@/components/expandingGallery/ExpandingGallery';
+import GalleryThumbnail from '@/components/expandingGallery/RenderedGalleryThumbnail';
+import RenderedExpangingGallery from '@/components/expandingGallery/RenderedExpangingGallery';
+import Portfolio from '@/components/expandingGallery/RenderedExpangingGallery';
 import portfolio from '@/portfolio';
 
 export default async function HomePage() {
