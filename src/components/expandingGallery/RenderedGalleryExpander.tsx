@@ -26,7 +26,7 @@ export default function RenderedGalleryExpander({
     <div
       key={`${id}-expanded`}
       className="col-span-full flex flex-auto flex-col gap-6  px-16 py-6 sm:flex-row sm:gap-16 sm:py-10"
-      id={`expanging-gallery-expander-${slug}`}
+      id={`expanding-gallery-expander-${slug}`}
     >
       <div className="min-h-0 basis-6/12">
         <AspectRatio ratio={16 / 9}>

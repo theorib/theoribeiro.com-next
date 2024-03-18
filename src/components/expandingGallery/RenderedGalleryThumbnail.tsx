@@ -17,14 +17,14 @@ export default function RenderedGalleryThumbnail({
   const isExpanded = expanderIndex === item.id;
 
   const href = isExpanded
-    ? paths.homePage(`expanging-gallery-${item.slug}`)
+    ? paths.homePage(`expanding-gallery-${item.slug}`)
     : paths.showReelItemPage(
         item.slug,
-        `expanging-gallery-expander-${item.slug}`,
+        `expanding-gallery-expander-${item.slug}`,
       );
 
   return (
-    <li id={`expanging-gallery-${item.slug}`}>
+    <li id={`expanding-gallery-${item.slug}`}>
       <AspectRatio ratio={2.4 / 1} asChild={true}>
         <Link href={href}>
           <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex justify-center items-center bg-neutral-950/50 opacity-0 hover:opacity-90 transition-all duration-200">

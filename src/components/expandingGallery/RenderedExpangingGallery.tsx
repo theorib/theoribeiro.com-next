@@ -3,7 +3,7 @@ import RenderedGalleryThumbnail from '@/components/expandingGallery/RenderedGall
 import portfolio, { PortfolioItem, PortfolioThumbnail } from '@/portfolio';
 import RenderedGalleryExpander from './RenderedGalleryExpander';
 
-interface RenderedExpangingGalleryProps {
+interface RenderedExpandingGalleryProps {
   slug?: string;
 }
 interface thumbnailsRenderProps {
@@ -11,9 +11,9 @@ interface thumbnailsRenderProps {
   expanderIndex: number | undefined;
 }
 
-export default async function RenderedExpangingGallery({
+export default async function RenderedExpandingGallery({
   slug,
-}: RenderedExpangingGalleryProps) {
+}: RenderedExpandingGalleryProps) {
   const thumbnails = await portfolio.getPortfolioThumbnails();
 
   let expanderData: PortfolioItem;

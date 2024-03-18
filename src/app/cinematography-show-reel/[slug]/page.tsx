@@ -1,4 +1,4 @@
-import RenderedExpangingGallery from '@/components/expandingGallery/RenderedExpangingGallery';
+import RenderedExpandingGallery from '@/components/expandingGallery/RenderedExpangingGallery';
 import portfolio from '@/portfolio';
 import { notFound } from 'next/navigation';
 
@@ -16,5 +16,10 @@ export default async function ShowReelItemPage({
 
   if (!slugExists) notFound();
 
-  return <RenderedExpangingGallery slug={slug} />;
+  return <RenderedExpandingGallery slug={slug} />;
 }
+
+export const generateStaticParams = async () => {
+  const slugs = await portfolio.getPortfolioSlugs();
+  return slugs.map(slug => ({ slug }));
+};
