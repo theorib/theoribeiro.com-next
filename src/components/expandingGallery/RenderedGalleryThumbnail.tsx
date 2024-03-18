@@ -1,32 +1,39 @@
-import React from 'react';
+'use client';
+
+import React, { memo } from 'react';
 import Image from 'next/image';
 import { AspectRatio } from '../ui/aspect-ratio';
 import type { PortfolioThumbnail } from '@/portfolio';
 import Link from 'next/link';
 import paths from '@/paths';
+import useExpandingGalleryStore from './useExpandingGalleryStore';
 
 interface RenderedGalleryThumbnailProps {
   item: PortfolioThumbnail;
   expanderIndex: number | undefined;
 }
 
-export default function RenderedGalleryThumbnail({
+const RenderedGalleryThumbnail = memo(function RenderedGalleryThumbnail({
   item,
   expanderIndex,
 }: RenderedGalleryThumbnailProps) {
   const isExpanded = expanderIndex === item.id;
-
+  const { setPreviousScrollPosition } = useExpandingGalleryStore();
   const href = isExpanded
-    ? paths.homePage(`expanding-gallery-${item.slug}`)
+    ? paths.homePage()
     : paths.showReelItemPage(
         item.slug,
         `expanding-gallery-expander-${item.slug}`,
       );
 
+  const handleClick = () => {
+    setPreviousScrollPosition({ x: window.scrollX, y: window.scrollY });
+  };
+
   return (
     <li id={`expanding-gallery-${item.slug}`}>
       <AspectRatio ratio={2.4 / 1} asChild={true}>
-        <Link href={href}>
+        <Link href={href} onClick={e => handleClick()}>
           <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex justify-center items-center bg-neutral-950/50 opacity-0 hover:opacity-90 transition-all duration-200">
             <p className="text-4xl font-extralight">{item.title}</p>
           </div>
@@ -40,4 +47,5 @@ export default function RenderedGalleryThumbnail({
       </AspectRatio>
     </li>
   );
-}
+});
+export default RenderedGalleryThumbnail;

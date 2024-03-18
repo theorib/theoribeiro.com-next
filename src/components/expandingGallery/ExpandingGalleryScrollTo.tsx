@@ -1,8 +1,8 @@
 'use client';
 
-import { useParams, usePathname, useSearchParams } from 'next/navigation';
 import { ReactNode, useEffect, useMemo, useRef } from 'react';
-import { useHash, useHashScrolling } from 'react-hash-control';
+import { useHash } from 'react-hash-control';
+import useExpandingGalleryStore from './useExpandingGalleryStore';
 
 interface ExpandingGalleryScrollToProps {
   children: ReactNode;
@@ -11,32 +11,59 @@ interface ExpandingGalleryScrollToProps {
 export default function ExpandingGalleryScrollTo({
   children,
 }: ExpandingGalleryScrollToProps) {
-  const hash = useHash();
-  const previousElement = useRef<HTMLElement | null>(null);
-  console.log(previousElement.current);
-  const prevHash = useRef<string | null>(null);
+  const hash = useHash() || undefined;
+  const { useStore } = useExpandingGalleryStore();
+  const store = useStore();
+
   useEffect(() => {
+    const previousScrollPosition = store.previousScrollPosition;
+    window.scrollTo(previousScrollPosition.x, previousScrollPosition.y);
+
     if (!hash) return;
-    console.log('old hash', prevHash.current);
     const element = document.getElementById(hash);
     if (!element) return;
 
-    if (previousElement.current) {
-      previousElement.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'center',
-      });
-    }
-    // window.scrollTo(0, 0);
     element.scrollIntoView({
       behavior: 'smooth',
       block: 'center',
       inline: 'center',
     });
-    previousElement.current = element;
-    prevHash.current = hash;
-    console.log('new hash', prevHash.current);
+
+    // const previousScrollPosition = store.previousScrollPosition;
+    // if (previousScrollPosition) {
+    //   window.scrollTo({
+    //     left: previousScrollPosition.x,
+    //     top: previousScrollPosition.y,
+    //     behavior: 'smooth',
+    //   });
+    // }
+
+    // const boundingRect = element.getBoundingClientRect();
+    // // an object with x and y properties that represent the middle of the element
+    // const currentScrollPosition = {
+    //   x: boundingRect.left + boundingRect.width / 2,
+    //   y: boundingRect.top + boundingRect.height / 2,
+    // };
+
+    // window.scrollTo({
+    //   left: currentScrollPosition.x,
+    //   top: currentScrollPosition.y,
+    //   behavior: 'smooth',
+    // });
+
+    // window.scrollTo({ behavior: 'smooth', top: 0, left: 0 });
+
+    // const previousHash = store.previousItemHash;
+    // if (previousHash) {
+    //   console.log('scrolling to previous hash');
+
+    //   const prevElement = document.getElementById(previousHash);
+    //   prevElement?.scrollIntoView({
+    //     behavior: 'smooth',
+    //     block: 'center',
+    //     inline: 'center',
+    //   });
+    // }
   }, [hash]);
 
   return <>{children}</>;
