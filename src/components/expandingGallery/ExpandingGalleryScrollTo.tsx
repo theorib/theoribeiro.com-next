@@ -1,26 +1,30 @@
 'use client';
 import { ReactNode, useEffect } from 'react';
-import { useHash } from './hooks/useHash';
+
 import useExpandingGalleryStore from './useExpandingGalleryStore';
+import { useParams } from 'next/navigation';
 
 interface ExpandingGalleryScrollToProps {
   children: ReactNode;
+  urlParam: string;
 }
 
 export default function ExpandingGalleryScrollTo({
+  urlParam,
   children,
 }: ExpandingGalleryScrollToProps) {
-  const hash = useHash() || undefined;
   const { store } = useExpandingGalleryStore();
+  const params = useParams();
+  const slug = params[urlParam];
 
   useEffect(() => {
     // Scroll window to the previous scroll position
     const previousScrollPosition = store.previousScrollPosition;
     window.scrollTo(previousScrollPosition.x, previousScrollPosition.y);
 
-    if (!hash) return; // guard clause
+    if (!slug) return; // guard clause
 
-    const element = document.getElementById(hash);
+    const element = document.getElementById(`${slug}-expanded`);
     if (!element) return; // guard clause
 
     element.scrollIntoView({
@@ -28,7 +32,7 @@ export default function ExpandingGalleryScrollTo({
       block: 'center',
       inline: 'center',
     });
-  }, [hash, store.previousScrollPosition]);
+  }, [slug, store.previousScrollPosition]);
 
   return <>{children}</>;
 }

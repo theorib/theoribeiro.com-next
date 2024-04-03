@@ -21,14 +21,14 @@ const RenderedGalleryThumbnail = memo(function RenderedGalleryThumbnail({
   const { setPreviousScrollPosition } = useExpandingGalleryStore();
   const href = isExpanded
     ? paths.homePage()
-    : paths.showReelItemPage(item.slug, `${item.slug}-expanded`);
+    : paths.showReelItemPage(item.slug);
 
   const handleClick = () => {
     setPreviousScrollPosition({ x: window.scrollX, y: window.scrollY });
   };
 
   return (
-    <li id={`expanding-gallery-${item.slug}`}>
+    <li id={`${item.slug}`}>
       <AspectRatio ratio={2.4 / 1} asChild={true}>
         <Link href={href} onClick={() => handleClick()}>
           <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex justify-center items-center bg-neutral-950/50 opacity-0 hover:opacity-90 transition-all duration-200">

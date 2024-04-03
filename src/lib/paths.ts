@@ -5,8 +5,8 @@ const paths = {
   aboutPage() {
     return `/about-theo-ribeiro`;
   },
-  showReelItemPage(slug: string, id?: string) {
-    return `/cinematography-show-reel/${slug}${id ? `/#${id}` : ''}`;
+  showReelItemPage(slug: string) {
+    return `/cinematography-show-reel/${slug}`;
   },
 };
 export default paths;

@@ -51,7 +51,7 @@ const ExpandingGallery = <T,>({
   );
 
   return (
-    <ExpandingGalleryScrollTo>
+    <ExpandingGalleryScrollTo urlParam="slug">
       <ul
         className={cn('-m-3 grid gap-0 sm:grid-cols-2 sm:gap-0', classNameUl)}
       >
