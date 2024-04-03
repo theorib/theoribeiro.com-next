@@ -3,7 +3,7 @@
 import { memo } from 'react';
 import Image from 'next/image';
 import { AspectRatio } from '../ui/aspect-ratio';
-import { type PortfolioThumbnail } from '@/portfolioActions';
+import { type PortfolioThumbnail } from '@/actions/portfolioActions';
 import Link from 'next/link';
 import paths from '@/lib/paths';
 import useExpandingGalleryStore from './useExpandingGalleryStore';
@@ -21,10 +21,7 @@ const RenderedGalleryThumbnail = memo(function RenderedGalleryThumbnail({
   const { setPreviousScrollPosition } = useExpandingGalleryStore();
   const href = isExpanded
     ? paths.homePage()
-    : paths.showReelItemPage(
-        item.slug,
-        `expanding-gallery-expander-${item.slug}`,
-      );
+    : paths.showReelItemPage(item.slug, `${item.slug}-expanded`);
 
   const handleClick = () => {
     setPreviousScrollPosition({ x: window.scrollX, y: window.scrollY });

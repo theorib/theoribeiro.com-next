@@ -8,7 +8,7 @@ function AboutPage() {
         alt="Portrait of Theo Ribeiro"
         className="sm:py-4"
       />
-      <div className="sm:py-21 prose max-w-none py-8 sm:prose-xl prose-p:leading-tight sm:prose-p:leading-normal">
+      <div className="sm:py-21 prose max-w-none py-8 sm:prose-xl prose-p:leading-tight sm:prose-p:leading-normal text-foreground">
         <p>
           Theo Ribeiro (Theo Toledo Ribeiro Pereira) is an award winning
           Director of Photography based in London, UK.

@@ -1,7 +1,6 @@
 'use client';
-
 import { ReactNode, useEffect } from 'react';
-import { useHash } from 'react-hash-control';
+import { useHash } from './hooks/useHash';
 import useExpandingGalleryStore from './useExpandingGalleryStore';
 
 interface ExpandingGalleryScrollToProps {
@@ -15,12 +14,14 @@ export default function ExpandingGalleryScrollTo({
   const { store } = useExpandingGalleryStore();
 
   useEffect(() => {
+    // Scroll window to the previous scroll position
     const previousScrollPosition = store.previousScrollPosition;
     window.scrollTo(previousScrollPosition.x, previousScrollPosition.y);
 
-    if (!hash) return;
+    if (!hash) return; // guard clause
+
     const element = document.getElementById(hash);
-    if (!element) return;
+    if (!element) return; // guard clause
 
     element.scrollIntoView({
       behavior: 'smooth',

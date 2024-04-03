@@ -8,7 +8,7 @@ import RenderedGalleryExpander from './RenderedGalleryExpander';
 import portfolioActions, {
   type PortfolioItem,
   type PortfolioThumbnail,
-} from '@/portfolioActions';
+} from '@/actions/portfolioActions';
 
 interface RenderedExpandingGalleryProps {
   slug?: string;

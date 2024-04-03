@@ -1,6 +1,7 @@
 import React from 'react';
 import expandingGallery from '.';
 import ExpandingGalleryScrollTo from './ExpandingGalleryScrollTo';
+import { cn } from '@/lib/utils';
 
 // Define a generic interface for the component props
 
@@ -10,6 +11,8 @@ export interface thumbnailsRenderProps<T> {
 }
 
 interface ExpandingGalleryProps<T> {
+  classNameUl?: string;
+  classNameLi?: string;
   numColsMobile?: number;
   numColsTablet?: number;
   numColsDesktop?: number;
@@ -24,6 +27,8 @@ interface ExpandingGalleryProps<T> {
 
 // Define a generic component
 const ExpandingGallery = <T,>({
+  classNameUl,
+  classNameLi,
   numColsMobile = 1,
   numColsTablet = 2,
   numColsDesktop = 2,
@@ -47,20 +52,21 @@ const ExpandingGallery = <T,>({
 
   return (
     <ExpandingGalleryScrollTo>
-      <div>
-        <ul className="-m-3 grid gap-0 sm:grid-cols-2 sm:gap-0">
-          {isExpanded && (
-            <li
-              className={`col-span-full ${expandingGallery.rowStartClass[rowMobile as keyof typeof expandingGallery.rowStartClass]} sm:${expandingGallery.rowStartClass[rowTablet as keyof typeof expandingGallery.rowStartClass]} md:${expandingGallery.rowStartClass[rowDesktop as keyof typeof expandingGallery.rowStartClass]}`}
-            >
-              {expanderRender()}
-            </li>
-          )}
-          {thumbnailsData.map(item =>
-            thumbnailsRender({ item, expanderIndex }),
-          )}
-        </ul>
-      </div>
+      <ul
+        className={cn('-m-3 grid gap-0 sm:grid-cols-2 sm:gap-0', classNameUl)}
+      >
+        {isExpanded && (
+          <li
+            className={cn(
+              `col-span-full ${expandingGallery.rowStartClass[rowMobile as keyof typeof expandingGallery.rowStartClass]} sm:${expandingGallery.rowStartClass[rowTablet as keyof typeof expandingGallery.rowStartClass]} md:${expandingGallery.rowStartClass[rowDesktop as keyof typeof expandingGallery.rowStartClass]}`,
+              classNameLi,
+            )}
+          >
+            {expanderRender()}
+          </li>
+        )}
+        {thumbnailsData.map(item => thumbnailsRender({ item, expanderIndex }))}
+      </ul>
     </ExpandingGalleryScrollTo>
   );
 };

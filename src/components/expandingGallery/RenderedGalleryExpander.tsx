@@ -1,4 +1,4 @@
-import { type PortfolioItem } from '@/portfolioActions';
+import { type PortfolioItem } from '@/actions/portfolioActions';
 import { AspectRatio } from '../ui/aspect-ratio';
 import Image from 'next/image';
 
@@ -26,7 +26,7 @@ export default function RenderedGalleryExpander({
     <div
       key={`${id}-expanded`}
       className="col-span-full flex flex-auto flex-col gap-6  px-16 py-6 sm:flex-row sm:gap-16 sm:py-10"
-      id={`expanding-gallery-expander-${slug}`}
+      id={`${slug}-expanded`}
     >
       <div className="min-h-0 basis-6/12">
         <AspectRatio ratio={16 / 9}>
