@@ -1,6 +1,9 @@
 {
   "portfolio": [
     {
+      "id": 0,
+      "uniqueId": "a8e61a0a-f268-4b30-9ebc-640c614ad074",
+      "slug": "talk-radio",
       "title": "Talk Radio",
       "videoSource": "vimeo",
       "videoUrl": "https://vimeo.com/418058845",
@@ -10,10 +13,13 @@
       "director": "Ben S. Hyland",
       "producer": "Adam Smith",
       "productionCompany": "Hidden Art Films",
-      "imageUrl": "./assets/talk-radio.jpg",
+      "imageUrl": "/img/talk-radio.jpg",
       "originalImageUrl": "https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-18-at-10.53.17.jpg"
     },
     {
+      "id": 1,
+      "uniqueId": "718815ce-5b41-4d17-963c-bd598b503bf9",
+      "slug": "land-of-the-wind",
       "title": "Land of The Wind",
       "videoSource": "vimeo",
       "videoUrl": "https://vimeo.com/190578468",
@@ -23,10 +29,13 @@
       "director": "Laura Belinky",
       "producer": "Theo Ribeiro and Laura Belinky",
       "productionCompany": "Wild River Films",
-      "imageUrl": "./assets/land-of-the-wind.jpg",
+      "imageUrl": "/img/land-of-the-wind.jpg",
       "originalImageUrl": "https://theoribeiro.com/wp-content/uploads/2021/05/tdv-stills-16x9_1.7.1-edit-1-scaled.jpg"
     },
     {
+      "id": 2,
+      "uniqueId": "e6da8ddb-1eca-4b23-974e-44f8e2dca3a4",
+      "slug": "i-am",
       "title": "I Am",
       "videoSource": "vimeo",
       "videoUrl": "https://vimeo.com/81389004",
@@ -36,10 +45,13 @@
       "director": "Charles Joslain",
       "producer": "Rubin Moyo",
       "productionCompany": "Groundwork Pictures",
-      "imageUrl": "./assets/i-am.jpg",
+      "imageUrl": "/img/i-am.jpg",
       "originalImageUrl": "https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.33.13.jpg"
     },
     {
+      "id": 3,
+      "uniqueId": "621a6449-0990-462e-a350-ebcaf978a0be",
+      "slug": "safe-space",
       "title": "Safe Space",
       "videoSource": "vimeo",
       "videoUrl": "https://vimeo.com/569886583",
@@ -49,10 +61,13 @@
       "director": "Ben S. Hyland",
       "producer": "Adam Gregory Smith and Rebecca Grant",
       "productionCompany": "Hidden Art Films",
-      "imageUrl": "./assets/safe-space.jpg",
+      "imageUrl": "/img/safe-space.jpg",
       "originalImageUrl": "https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.40.42.jpg"
     },
     {
+      "id": 4,
+      "uniqueId": "1105a3d0-f188-4a39-a6ca-43787e780ee0",
+      "slug": "kto",
       "title": "KTO",
       "videoSource": "vimeo",
       "videoUrl": "https://vimeo.com/569886372",
@@ -62,10 +77,13 @@
       "director": "Andrew Carver",
       "producer": "Andrew Carver",
       "productionCompany": "Raindown",
-      "imageUrl": "./assets/kto.jpg",
+      "imageUrl": "/img/kto.jpg",
       "originalImageUrl": "https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.45.04.jpg"
     },
     {
+      "id": 5,
+      "uniqueId": "c48a3f27-270e-47f3-a8a3-0269723fe5a7",
+      "slug": "the-package",
       "title": "The Package",
       "videoSource": "vimeo",
       "videoUrl": "https://vimeo.com/471745051",
@@ -75,10 +93,13 @@
       "director": "Simon Harris",
       "producer": "Simon Harris",
       "productionCompany": "On Tour Films",
-      "imageUrl": "./assets/the-package.jpg",
+      "imageUrl": "/img/the-package.jpg",
       "originalImageUrl": "https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.57.17.jpg"
     },
     {
+      "id": 6,
+      "uniqueId": "33d98625-87fd-4ad4-bc08-d2a9c15e6bf6",
+      "slug": "we-play-war",
       "title": "We Play War",
       "videoSource": "vimeo",
       "videoUrl": "https://vimeo.com/77927570",
@@ -88,10 +109,13 @@
       "director": "George Murphy",
       "producer": "Joshua Poulsen",
       "productionCompany": "",
-      "imageUrl": "./assets/we-play-war.jpg",
+      "imageUrl": "/img/we-play-war.jpg",
       "originalImageUrl": "https://theoribeiro.com/wp-content/uploads/2021/05/551607826_1280-e1543862703589.jpg"
     },
     {
+      "id": 7,
+      "uniqueId": "82f8314c-8d7e-41f9-b1f7-06d119e5b003",
+      "slug": "el-tiempo",
       "title": "El Tiempo",
       "videoSource": "vimeo",
       "videoUrl": "https://vimeo.com/376683409",
@@ -101,21 +125,8 @@
       "director": "Laura Belinky",
       "producer": "Laura Belinky and Theo Ribeiro",
       "productionCompany": "Wild River Films",
-      "imageUrl": "./assets/el-tiempo.jpg",
+      "imageUrl": "/img/el-tiempo.jpg",
       "originalImageUrl": "https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.50.36.jpg"
-    },
-    {
-      "title": "",
-      "videoSource": "vimeo",
-      "videoUrl": "",
-      "projectType": "",
-      "role": "",
-      "description": "",
-      "director": "",
-      "producer": "",
-      "productionCompany": "",
-      "imageUrl": "./assets/.jpg",
-      "originalImageUrl": ""
     }
   ]
 }

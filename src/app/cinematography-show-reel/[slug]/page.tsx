@@ -1,5 +1,5 @@
 import RenderedExpandingGallery from '@/components/expandingGallery/RenderedExpangingGallery';
-import portfolio from '@/portfolio';
+import portfolio from '@/portfolioActions';
 import { notFound } from 'next/navigation';
 
 interface ShowReelItemPageProps {

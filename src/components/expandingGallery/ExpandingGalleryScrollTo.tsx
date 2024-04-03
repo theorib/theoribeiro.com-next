@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect, useMemo, useRef } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useHash } from 'react-hash-control';
 import useExpandingGalleryStore from './useExpandingGalleryStore';
 
@@ -27,7 +27,7 @@ export default function ExpandingGalleryScrollTo({
       block: 'center',
       inline: 'center',
     });
-  }, [hash]);
+  }, [hash, store.previousScrollPosition]);
 
   return <>{children}</>;
 }

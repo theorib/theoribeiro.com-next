@@ -88,4 +88,9 @@ const rowStartClass = {
   20: 'row-start-[20]',
 };
 
-export default { rowStartClass, getRowPositions };
+const expandingGallery = {
+  rowStartClass,
+  getRowPositions,
+};
+
+export default expandingGallery;

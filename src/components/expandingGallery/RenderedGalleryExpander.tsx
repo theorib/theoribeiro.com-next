@@ -1,4 +1,4 @@
-import { PortfolioItem } from '@/portfolio';
+import { type PortfolioItem } from '@/portfolioActions';
 import { AspectRatio } from '../ui/aspect-ratio';
 import Image from 'next/image';
 

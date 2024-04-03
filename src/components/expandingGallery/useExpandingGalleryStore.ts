@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { create } from 'zustand';
 
 type Position = { x: number; y: number };
@@ -8,7 +7,7 @@ interface ExpandingGalleryState {
 }
 
 export default function useExpandingGalleryStore() {
-  const useStore = create<ExpandingGalleryState>()(set => ({
+  const useStore = create<ExpandingGalleryState>()(() => ({
     previousScrollPosition: { x: 0, y: 0 },
   }));
 

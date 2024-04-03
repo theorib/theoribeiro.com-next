@@ -1,4 +1,4 @@
-import paths from '@/paths';
+import paths from '@/lib/paths';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
