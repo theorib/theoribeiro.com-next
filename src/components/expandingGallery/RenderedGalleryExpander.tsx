@@ -1,14 +1,35 @@
-import { type PortfolioItem } from '@/actions/portfolioActions';
+'use client';
+
+import portfolioActions, {
+  type PortfolioItem,
+} from '@/actions/portfolioActions';
 import { AspectRatio } from '../ui/aspect-ratio';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 
-interface RenderedGalleryExpanderProps {
-  expanderData: PortfolioItem;
-}
+// interface RenderedGalleryExpanderProps {
+//   expanderData: PortfolioItem;
+// }
 
-export default function RenderedGalleryExpander({
-  expanderData,
-}: RenderedGalleryExpanderProps) {
+export default function RenderedGalleryExpander() {
+  const [expanderData, setExpanderData] = useState<PortfolioItem | null>(null);
+  const { currentExpandedSlug } = useExpandingGallery();
+
+  useEffect(() => {
+    async function getExpanderData() {
+      if (currentExpandedSlug === null) return;
+      const data =
+        await portfolioActions.getPortfolioItemBySlug(currentExpandedSlug);
+      if (data) {
+        setExpanderData(data);
+      }
+    }
+    getExpanderData();
+  }, [currentExpandedSlug]);
+
+  if (!expanderData) return null;
+
   const {
     id,
     title,

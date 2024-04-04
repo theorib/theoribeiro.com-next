@@ -1,38 +1,57 @@
 'use client';
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 
-import useExpandingGalleryStore from './useExpandingGalleryStore';
-import { useParams } from 'next/navigation';
-
-interface ExpandingGalleryScrollToProps {
-  children: ReactNode;
-  urlParam: string;
-}
-
-export default function ExpandingGalleryScrollTo({
-  urlParam,
-  children,
-}: ExpandingGalleryScrollToProps) {
-  const { store } = useExpandingGalleryStore();
-  const params = useParams();
-  const slug = params[urlParam];
+export default function ExpandingGalleryScrollTo() {
+  const {
+    currentExpandedSlug,
+    previousScrollPosition,
+    // setPreviousScrollPosition,
+  } = useExpandingGallery();
 
   useEffect(() => {
+    if (!currentExpandedSlug) return; // guard clause
     // Scroll window to the previous scroll position
-    const previousScrollPosition = store.previousScrollPosition;
-    window.scrollTo(previousScrollPosition.x, previousScrollPosition.y);
+    // window.scrollTo(
+    //   previousScrollPosition.scrollX,
+    //   previousScrollPosition.scrollY,
+    // );
 
-    if (!slug) return; // guard clause
-
-    const element = document.getElementById(`${slug}-expanded`);
+    const element = document.getElementById(`${currentExpandedSlug}-expanded`);
+    // console.log('scrolling to', element);
     if (!element) return; // guard clause
 
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-      inline: 'center',
+    const animate = window.requestAnimationFrame(() => {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
     });
-  }, [slug, store.previousScrollPosition]);
 
-  return <>{children}</>;
+    // scrollToElement(element);
+
+    // const timeOut = setTimeout(() => {
+    //   element.scrollIntoView({
+    //     behavior: 'smooth',
+    //     block: 'center',
+    //     inline: 'center',
+    //   });
+    // }, 0);
+
+    // element.scrollIntoView({
+    //   behavior: 'smooth',
+    //   block: 'center',
+    //   inline: 'center',
+    // });
+
+    // setPreviousScrollPosition({
+    //   scrollX: window.scrollX,
+    //   scrollY: window.scrollY,
+    // });
+    // return () => clearTimeout(timeOut);
+    return () => cancelAnimationFrame(animate);
+  }, [currentExpandedSlug, previousScrollPosition]);
+
+  return null;
 }

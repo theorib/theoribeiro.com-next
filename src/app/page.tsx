@@ -1,4 +1,4 @@
-import RenderedExpandingGallery from '@/components/expandingGallery/RenderedExpangingGallery';
+import RenderedExpandingGallery from '@/components/expandingGallery/RenderedExpandingGallery';
 
 export default async function HomePage() {
   return <RenderedExpandingGallery />;

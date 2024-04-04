@@ -1,10 +1,10 @@
 import ExpandingGallery from '@/components/expandingGallery/ExpandingGallery';
-import RenderedGalleryThumbnail from '@/components/expandingGallery/RenderedGalleryThumbnail';
+import RenderedGalleryThumbnail from '@/components/expandingGallery/old/RenderedGalleryThumbnail';
 // import portfolioActions, {
 //   type PortfolioItem,
 //   type PortfolioThumbnail,
 // } from '@/portfolioActions';
-import RenderedGalleryExpander from './RenderedGalleryExpander';
+import RenderedGalleryExpander from '../RenderedGalleryExpander';
 import portfolioActions, {
   type PortfolioItem,
   type PortfolioThumbnail,
