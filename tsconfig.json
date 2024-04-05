@@ -12,7 +12,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-
+    // The following line is experimental for vitest
+    // "types": ["vitest/globals"],
     "plugins": [
       {
         "name": "next"
