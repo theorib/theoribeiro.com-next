@@ -3,9 +3,10 @@ import renderServerComponent from '@/testUtils/renderServerComponents';
 import RootLayout from '@/app/layout';
 import HomePage from '@/app/page';
 import { Suspense } from 'react';
+import RenderedExpandingGallery from '@/components/expandingGallery/RenderedExpandingGallery';
 
-describe.skip('Testing native render function', () => {
-  test('Test MockPageSync', () => {
+describe('Testing native render function', () => {
+  test.skip('Test MockPageSync', () => {
     const { container, debug } = render(
       <Suspense>
         <RootLayout>
@@ -13,7 +14,17 @@ describe.skip('Testing native render function', () => {
         </RootLayout>
       </Suspense>,
     );
-
+    // debug();
+    // screen.debug();
+    logRoles(container);
+  });
+  test('Test MockPageAsync', async () => {
+    const { container, debug } = render(
+      <Suspense>
+        <RenderedExpandingGallery />
+      </Suspense>,
+    );
+    screen.logTestingPlaygroundURL();
     screen.debug();
     logRoles(container);
   });
