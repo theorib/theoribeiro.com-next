@@ -4,8 +4,9 @@ import RenderedExpandingGallery from '../RenderedExpandingGallery';
 import ReactDOM from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import AboutPage from '@/app/about-theo-ribeiro/page';
+import HomePage from '@/app/page';
 
-let container;
+let container: HTMLDivElement | null = null;
 
 beforeEach(() => {
   container = document.createElement('div');
@@ -25,7 +26,8 @@ test('Test MockPageAsync', async () => {
       </Suspense>,
     );
   });
-  screen.logTestingPlaygroundURL();
+
+  // screen.logTestingPlaygroundURL();
   screen.debug();
   // logRoles(container);
 });

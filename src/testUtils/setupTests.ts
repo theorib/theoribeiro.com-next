@@ -1,15 +1,16 @@
 import '@testing-library/jest-dom';
-import mockedNextFonts from './mockedNextFonts';
-import mockNextImage from './mockNextImage';
-import mockNextFont from './mockNextFont';
 import { vi } from 'vitest';
 
-console.log(mockNextFont(['Raleway', 'Nunito_Sans']));
+import mockNextImage from './mockNextImage';
+import mockNextFontGoogle from './mockNextFontGoogle';
+
+vi.mock(`next/image`, () => mockNextImage);
+vi.mock(`next/font/google`, () =>
+  mockNextFontGoogle(['Raleway', 'Nunito_Sans']),
+);
 
 beforeAll(() => {
-  vi.mock('next/image', () => mockNextImage);
-  // vi.mock(`next/font/google`, () => mockNextFont(['Raleway', 'Nunito_Sans']));
-  mockNextFont(['Raleway', 'Nunito_Sans']);
+  //  All your beforeAll code here
 });
 
 beforeEach(() => {

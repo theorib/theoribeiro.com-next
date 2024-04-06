@@ -11,7 +11,7 @@ import {
 
 type ScrollPosition = { scrollX: number; scrollY: number };
 
-type ExpandingGalleryContextValue = {
+export type ExpandingGalleryContextValue = {
   previousScrollPosition: ScrollPosition;
   setPreviousScrollPosition: Dispatch<SetStateAction<ScrollPosition>>;
   currentExpandedIndex: CurrentExpandedIndex;
@@ -23,7 +23,7 @@ type ExpandingGalleryContextValue = {
 type CurrentExpandedIndex = number | null;
 type CurrentExpandedSlug = string | null;
 
-const ExpandingGalleryContext =
+export const ExpandingGalleryContext =
   createContext<ExpandingGalleryContextValue | null>(null);
 
 type ExpandingGalleryProviderProps = {

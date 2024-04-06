@@ -1,31 +1,35 @@
-import { logRoles, screen, render } from '@testing-library/react';
-import renderServerComponent from '@/testUtils/renderServerComponents';
+import { screen, waitFor } from '@testing-library/react';
+import { render as expandingGalleryRender } from '@/testUtils/customRenderExpandingGallery';
+
 import RootLayout from '@/app/layout';
 import HomePage from '@/app/page';
 import { Suspense } from 'react';
 import RenderedExpandingGallery from '@/components/expandingGallery/RenderedExpandingGallery';
 
-describe('Testing native render function', () => {
-  test.skip('Test MockPageSync', () => {
-    const { container, debug } = render(
+describe.skip('Testing native render function', () => {
+  test('Test MockPageSync', async () => {
+    expandingGalleryRender(
       <Suspense>
         <RootLayout>
           <HomePage />
         </RootLayout>
       </Suspense>,
     );
-    // debug();
+    await waitFor(() => {
+      //
+    });
     // screen.debug();
-    logRoles(container);
   });
   test('Test MockPageAsync', async () => {
-    const { container, debug } = render(
+    expandingGalleryRender(
       <Suspense>
         <RenderedExpandingGallery />
       </Suspense>,
     );
-    screen.logTestingPlaygroundURL();
+    await waitFor(() => {
+      //
+    });
     screen.debug();
-    logRoles(container);
+    // screen.logTestingPlaygroundURL();
   });
 });
