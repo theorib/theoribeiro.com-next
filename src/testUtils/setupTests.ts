@@ -1,9 +1,14 @@
 import '@testing-library/jest-dom';
 import mockedNextFonts from './mockedNextFonts';
+import mockNextImage from './mockNextImage';
+import mockNextFont from './mockNextFont';
+import { vi } from 'vitest';
+
+console.log(mockNextFont(['Raleway', 'Nunito_Sans']));
 
 beforeAll(() => {
-  mockedNextFonts();
-  // All your beforeAll code here
+  vi.mock('next/image', () => mockNextImage);
+  vi.mock(`next/font/google`, () => mockNextFont(['Raleway', 'Nunito_Sans']));
 });
 
 beforeEach(() => {
