@@ -8,7 +8,8 @@ console.log(mockNextFont(['Raleway', 'Nunito_Sans']));
 
 beforeAll(() => {
   vi.mock('next/image', () => mockNextImage);
-  vi.mock(`next/font/google`, () => mockNextFont(['Raleway', 'Nunito_Sans']));
+  // vi.mock(`next/font/google`, () => mockNextFont(['Raleway', 'Nunito_Sans']));
+  mockNextFont(['Raleway', 'Nunito_Sans']);
 });
 
 beforeEach(() => {

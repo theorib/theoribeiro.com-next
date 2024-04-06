@@ -38,17 +38,19 @@ function createFontModule(fontName: string): FontModule {
 }
 
 /**
- * Mocks the `next/font` component for use in test environments.
+ * Creates a mock `next/font/google` module for testing purposes.
  *
- * This function creates a mock implementation of the `next/font` component that can be used in test environments. It takes a font name or an array of font names, and returns an object that provides mocked styles, class names, and CSS variables for the specified fonts.
+ * This function returns a function that takes a font name or an array of font names, and returns a mocked `FontModule` object. The mocked `FontModule` object has key-value pairs where the key is the font name and the value is a function that returns an object with the following properties:
+ * - `style`: an object containing the mocked font styles, including the `fontFamily` and `fontStyle`.
+ * - `className`: a string representing the mocked class name for the font.
+ * - `variable`: a string representing the mocked CSS variable for the font.
  *
- * Usage:
+ * The returned function also mocks the `next/font/google` module using the `vi.doMock` function from the `vitest` library.
  *
- * vi.mock(`next/font/google`, () => mockNextFont('Inter'));
+ * Usage: mockNextFont('Raleway') or mockNextFont(['Raleway', 'Nunito_Sans']
  *
- *
- * @param fontName - A string or an array of strings representing the font names to be mocked.
- * @returns An object that provides mocked styles, class names, and CSS variables for the specified fonts.
+ * @param fontName - The name of the font to be mocked, or an array of font names.
+ * @returns A function that returns a mocked `FontModule` object.
  */
 const mockNextFont = vi.hoisted(() => {
   return function (fontName: string | string[]) {
@@ -58,7 +60,7 @@ const mockNextFont = vi.hoisted(() => {
       return { ...fontModules, ...createFontModule(fontName) };
     }, {} as FontModule);
 
-    return fontModules;
+    vi.doMock(`next/font/google`, () => fontModules);
   };
 });
 
