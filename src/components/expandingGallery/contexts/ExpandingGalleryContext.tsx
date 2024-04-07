@@ -8,43 +8,64 @@ import {
   useContext,
   useState,
 } from 'react';
+import useUrlSlug from '../hooks/useHash';
 
 type ScrollPosition = { scrollX: number; scrollY: number };
 
 export type ExpandingGalleryContextValue = {
   previousScrollPosition: ScrollPosition;
   setPreviousScrollPosition: Dispatch<SetStateAction<ScrollPosition>>;
-  currentExpandedIndex: CurrentExpandedIndex;
-  setCurrentExpandedIndex: Dispatch<SetStateAction<CurrentExpandedIndex>>;
   currentExpandedSlug: CurrentExpandedSlug;
   setCurrentExpandedSlug: Dispatch<SetStateAction<CurrentExpandedSlug>>;
 };
 
-type CurrentExpandedIndex = number | null;
 type CurrentExpandedSlug = string | null;
 
 export const ExpandingGalleryContext =
   createContext<ExpandingGalleryContextValue | null>(null);
 
+const initialScrollPosition: ScrollPosition = { scrollX: 0, scrollY: 0 };
+
+export type GalleryState = 'url' | 'local';
+
 type ExpandingGalleryProviderProps = {
   children: ReactNode;
+  galleryState: GalleryState;
 };
 
-const initialScrollPosition = { scrollX: 0, scrollY: 0 };
-
-function ExpandingGalleryProvider({ children }: ExpandingGalleryProviderProps) {
+function ExpandingGalleryProvider({
+  children,
+  galleryState,
+}: ExpandingGalleryProviderProps) {
   const [previousScrollPosition, setPreviousScrollPosition] =
     useState<ScrollPosition>(initialScrollPosition);
-  const [currentExpandedIndex, setCurrentExpandedIndex] =
-    useState<CurrentExpandedIndex>(null);
-  const [currentExpandedSlug, setCurrentExpandedSlug] =
-    useState<CurrentExpandedSlug>(null);
+
+  const [hash, setHash] = useUrlSlug();
+  const [localSlug, setLocalSlug] = useState<CurrentExpandedSlug>(null);
+
+  let currentExpandedSlug, setCurrentExpandedSlug;
+
+  switch (galleryState) {
+    case 'url':
+      currentExpandedSlug = hash;
+      setCurrentExpandedSlug = setHash;
+      break;
+    case 'local':
+      currentExpandedSlug = localSlug;
+      setCurrentExpandedSlug = setLocalSlug;
+      break;
+    default: {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const _exhaustiveCheck: never = galleryState;
+      throw new Error(
+        `Invalid galleryState value: ${galleryState}. Must be 'url' or 'local'`,
+      );
+    }
+  }
 
   const value = {
     previousScrollPosition,
     setPreviousScrollPosition,
-    currentExpandedIndex,
-    setCurrentExpandedIndex,
     currentExpandedSlug,
     setCurrentExpandedSlug,
   };

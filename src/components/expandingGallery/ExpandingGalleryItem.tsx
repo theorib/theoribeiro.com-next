@@ -9,9 +9,8 @@ import {
 import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 
 export type ExpandingGalleryItemProps<T extends ElementType> = {
-  uniqueIndex: number;
-  onClick?: () => void;
   slug: string;
+  onClick?: () => void;
   className?: string;
   as?: T;
   children: ReactNode;
@@ -19,7 +18,6 @@ export type ExpandingGalleryItemProps<T extends ElementType> = {
 
 // A generic component that can become any HTML element or another ReactComponent
 export default function ExpandingGalleryItem<U extends ElementType>({
-  uniqueIndex,
   slug,
   onClick,
   as,
@@ -28,19 +26,13 @@ export default function ExpandingGalleryItem<U extends ElementType>({
   ...props
 }: ExpandingGalleryItemProps<U>) {
   const Component = as || 'li';
-  const {
-    currentExpandedIndex,
-    setCurrentExpandedIndex,
-    setCurrentExpandedSlug,
-  } = useExpandingGallery();
+  const { currentExpandedSlug, setCurrentExpandedSlug } = useExpandingGallery();
 
   function handleClick() {
-    if (currentExpandedIndex === uniqueIndex) {
-      setCurrentExpandedIndex(null);
+    if (currentExpandedSlug === slug) {
       setCurrentExpandedSlug(null);
       return;
     }
-    setCurrentExpandedIndex(uniqueIndex);
     setCurrentExpandedSlug(slug);
   }
 
@@ -48,8 +40,8 @@ export default function ExpandingGalleryItem<U extends ElementType>({
     <Component
       id={slug}
       className={cn('cursor-pointer', className)}
-      {...props}
       onClick={onClick ? onClick : handleClick}
+      {...props}
     >
       {children}
     </Component>

@@ -3,35 +3,19 @@ import ExpandingGallery from './ExpandingGallery';
 import RenderedGalleryExpander from './RenderedGalleryExpander';
 import RenderedExpandingGalleryThumbnail from './RenderedExpandingGalleryThumbnail';
 
-// interface RenderedExpandingGalleryProps {
-//   slug?: string;
-// }
-
 export default async function RenderedExpandingGallery() {
   const thumbnails = await portfolioActions.getPortfolioThumbnails();
-  const numItems = thumbnails.length;
-
-  // let expanderContent: PortfolioItem | null = null;
-  // if (slug) {
-  //   expanderContent = await portfolioActions.getPortfolioItemBySlug(slug);
-  // }
-  // console.log(expanderContent);
+  const slugsArray = thumbnails.map(item => item.slug);
 
   return (
     <ExpandingGallery>
       <ExpandingGallery.ScrollTo />
-      <ExpandingGallery.UseHash />
       <ExpandingGallery.Container>
-        <ExpandingGallery.Expander numItems={numItems}>
+        <ExpandingGallery.Expander slugsArray={slugsArray}>
           <RenderedGalleryExpander />
         </ExpandingGallery.Expander>
-
         {thumbnails.map(item => (
-          <ExpandingGallery.Item
-            uniqueIndex={item.id}
-            key={`${item.slug}-key`}
-            slug={item.slug}
-          >
+          <ExpandingGallery.Item key={`${item.slug}-key`} slug={item.slug}>
             <RenderedExpandingGalleryThumbnail item={item} />
           </ExpandingGallery.Item>
         ))}
