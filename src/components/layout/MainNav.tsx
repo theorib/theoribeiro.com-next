@@ -25,7 +25,7 @@ function MainNavItem({ children, href }: MainNavItemProps) {
 
 export default function MainNav() {
   return (
-    <nav className="">
+    <nav aria-label="Main Menu">
       <ul className="flex flex-col divide-y border-t border-b">
         <MainNavItem href={paths.homePage()}>Home</MainNavItem>
         <MainNavItem href="#">

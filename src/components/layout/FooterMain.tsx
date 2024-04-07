@@ -13,7 +13,10 @@ function FooterMain() {
           Mobile (UK): <a href="tel:+44 7415 303-847">+44 7415 303847</a>
         </span>
       </div>
-      <p className="text-md text-horizon-blue-200">
+      <p
+        aria-label="Copyright Notice"
+        className="text-md text-horizon-blue-200"
+      >
         ©{new Date().getFullYear()} Theo Ribeiro, all rights reserved.{' '}
       </p>
     </footer>

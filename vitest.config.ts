@@ -8,6 +8,9 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/testUtils/setupTests.ts'],
+    coverage: {
+      reporter: ['html'],
+    },
     // alias: {
     //   '@/': new URL('./src/', import.meta.url).pathname,
     // },

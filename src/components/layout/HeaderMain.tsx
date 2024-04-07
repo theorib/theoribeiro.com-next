@@ -31,7 +31,10 @@ function HeaderMain() {
             <span className="sr-only">Open Menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent className="dark:bg-neutral-600 p-0 w-full flex flex-col items-stretch gap-0">
+        <SheetContent
+          className="dark:bg-neutral-600 p-0 w-full flex flex-col items-stretch gap-0"
+          aria-label="Main menu dialogue box"
+        >
           <SheetClose className="p-2 my-4 mx-7 self-end rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-neutral-100 dark:ring-offset-neutral-950 dark:focus:ring-neutral-300 dark:data-[state=open]:bg-neutral-800">
             <PiXThin className="w-7 h-7 sm:w-10 sm:h-10" />
             <span className="sr-only">Close Menu</span>
