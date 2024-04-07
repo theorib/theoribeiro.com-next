@@ -10,7 +10,7 @@ import {
 } from 'react';
 import useUrlSlug from '../hooks/useHash';
 
-type ScrollPosition = { scrollX: number; scrollY: number };
+export type ScrollPosition = { scrollX: number; scrollY: number };
 
 export type ExpandingGalleryContextValue = {
   previousScrollPosition: ScrollPosition;

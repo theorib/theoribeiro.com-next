@@ -16,7 +16,7 @@ export default async function ShowReelItemPage({
 
   if (!slugExists) notFound();
 
-  return <RenderedExpandingGallery slug={slug} />;
+  return <RenderedExpandingGallery />;
 }
 
 export const generateStaticParams = async () => {

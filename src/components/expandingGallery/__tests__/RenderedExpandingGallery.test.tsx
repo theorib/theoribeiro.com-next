@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { screen, waitFor, render } from '@testing-library/react';
 
 import { Suspense } from 'react';

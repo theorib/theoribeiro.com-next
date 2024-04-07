@@ -10,7 +10,7 @@ import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 
 export type ExpandingGalleryItemProps<T extends ElementType> = {
   uniqueSlug: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<Element, MouseEvent>) => void;
   className?: string;
   as?: T;
   children: ReactNode;
@@ -25,15 +25,19 @@ export default function ExpandingGalleryItem<U extends ElementType>({
   className,
   ...props
 }: ExpandingGalleryItemProps<U>) {
-  const Component = as || 'li';
+  const GenericComponent = as || 'li';
   const { currentUniqueSlug, setCurrentUniqueSlug, setPreviousScrollPosition } =
     useExpandingGallery();
 
-  function handleClick() {
+  function handleClick(e: React.MouseEvent<Element, MouseEvent>) {
+    e.preventDefault();
+    e.stopPropagation();
+
     setPreviousScrollPosition({
       scrollX: window.scrollX,
       scrollY: window.scrollY,
     });
+
     if (currentUniqueSlug === uniqueSlug) {
       setCurrentUniqueSlug(null);
       return;
@@ -42,13 +46,13 @@ export default function ExpandingGalleryItem<U extends ElementType>({
   }
 
   return (
-    <Component
+    <GenericComponent
       id={uniqueSlug}
       className={cn('cursor-pointer', className)}
       onClick={onClick ? onClick : handleClick}
       {...props}
     >
       {children}
-    </Component>
+    </GenericComponent>
   );
 }

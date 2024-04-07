@@ -9,6 +9,8 @@ type RenderedExpandingGalleryThumbnail = {
 export default function RenderedExpandingGalleryThumbnail({
   item,
 }: RenderedExpandingGalleryThumbnail) {
+  const priority = item.id <= 3 ? true : false;
+
   return (
     <AspectRatio ratio={2.4 / 1} asChild={true}>
       {/* <Link href={item.imageUrl}> */}
@@ -21,6 +23,7 @@ export default function RenderedExpandingGalleryThumbnail({
           alt={item.title}
           fill
           className="object-cover"
+          priority={priority}
         />
       </div>
       {/* </Link> */}

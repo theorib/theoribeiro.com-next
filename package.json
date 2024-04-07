@@ -26,6 +26,7 @@
     "react-hash-control": "^1.0.3",
     "react-icons": "^5.0.1",
     "react-player": "^2.15.1",
+    "sharp": "^0.33.3",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.0"

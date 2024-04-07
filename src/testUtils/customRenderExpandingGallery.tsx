@@ -15,10 +15,8 @@ export const defaultExpandingGalleryContextValue: ExpandingGalleryContextValue =
   {
     previousScrollPosition: { scrollX: 0, scrollY: 0 },
     setPreviousScrollPosition: () => vi.fn(),
-    currentExpandedIndex: null,
-    setCurrentExpandedIndex: () => vi.fn(),
-    currentExpandedSlug: null,
-    setCurrentExpandedSlug: () => vi.fn(),
+    currentUniqueSlug: null,
+    setCurrentUniqueSlug: () => vi.fn(),
   };
 
 function customRenderExpandingGallery(

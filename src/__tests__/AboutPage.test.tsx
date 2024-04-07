@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import AboutPage from '@/app/about-theo-ribeiro/page';
 import { render, screen, waitFor } from '@testing-library/react';
 
@@ -10,7 +11,7 @@ test('About Page', async () => {
   expect(img).toBeInTheDocument();
 
   const heading = screen.getByRole('heading', {
-    name: /about theo ribeiro \- director of photography/i,
+    name: /about theo ribeiro - director of photography/i,
   });
   expect(heading).toBeInTheDocument();
 
