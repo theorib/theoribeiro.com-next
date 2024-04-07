@@ -5,23 +5,22 @@ import ExpandingGalleryExpander from './ExpandingGalleryExpander';
 import ExpandingGalleryItem from './ExpandingGalleryItem';
 import {
   ExpandingGalleryProvider,
-  type GalleryState,
+  type StoreState,
 } from './contexts/ExpandingGalleryContext';
 import ExpandingGalleryScrollTo from './ExpandingGalleryScrollTo';
-import ExpandingGalleryUseHash from './ExpandingGalleryUseHash';
 
 interface ExpandingGalleryProps {
   children: ReactNode;
-  galleryState?: GalleryState;
+  storeState?: StoreState;
 }
 
 // Define a generic component
 function ExpandingGallery({
   children,
-  galleryState = 'url',
+  storeState = 'urlHash',
 }: ExpandingGalleryProps) {
   return (
-    <ExpandingGalleryProvider galleryState={galleryState}>
+    <ExpandingGalleryProvider storeState={storeState}>
       {children}
     </ExpandingGalleryProvider>
   );
@@ -31,6 +30,5 @@ ExpandingGallery.Container = ExpandingGalleryContainer;
 ExpandingGallery.Expander = ExpandingGalleryExpander;
 ExpandingGallery.Item = ExpandingGalleryItem;
 ExpandingGallery.ScrollTo = ExpandingGalleryScrollTo;
-ExpandingGallery.UseHash = ExpandingGalleryUseHash;
 
 export default ExpandingGallery;

@@ -4,20 +4,20 @@ import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 
 export default function ExpandingGalleryScrollTo() {
   const {
-    currentExpandedSlug,
+    currentUniqueSlug,
     previousScrollPosition,
     // setPreviousScrollPosition,
   } = useExpandingGallery();
 
   useEffect(() => {
-    if (!currentExpandedSlug) return; // guard clause
+    if (!currentUniqueSlug) return; // guard clause
     // Scroll window to the previous scroll position
     // window.scrollTo(
     //   previousScrollPosition.scrollX,
     //   previousScrollPosition.scrollY,
     // );
 
-    const element = document.getElementById(`${currentExpandedSlug}-expanded`);
+    const element = document.getElementById(`${currentUniqueSlug}-expanded`);
     // console.log('scrolling to', element);
     if (!element) return; // guard clause
 
@@ -51,7 +51,7 @@ export default function ExpandingGalleryScrollTo() {
     // });
     // return () => clearTimeout(timeOut);
     return () => cancelAnimationFrame(animate);
-  }, [currentExpandedSlug, previousScrollPosition]);
+  }, [currentUniqueSlug, previousScrollPosition]);
 
   return null;
 }

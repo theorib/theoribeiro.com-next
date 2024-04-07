@@ -9,7 +9,7 @@ import expandingGalleryUtils from './utils/expandingGalleryUtils';
 import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 
 export type ExpandingGalleryExpanderProps<T extends ElementType> = {
-  slugsArray: string[];
+  uniqueSlugsArray: string[];
   numColsMobile?: number;
   numColsTablet?: number;
   numColsDesktop?: number;
@@ -20,7 +20,7 @@ export type ExpandingGalleryExpanderProps<T extends ElementType> = {
 
 // A generic component that can become any HTML element or another ReactComponent
 export default function ExpandingGalleryExpander<U extends ElementType>({
-  slugsArray,
+  uniqueSlugsArray,
   numColsMobile = 1,
   numColsTablet = 2,
   numColsDesktop = 2,
@@ -29,12 +29,12 @@ export default function ExpandingGalleryExpander<U extends ElementType>({
   children,
   ...props
 }: ExpandingGalleryExpanderProps<U>) {
-  const { currentExpandedSlug } = useExpandingGallery();
-  if (currentExpandedSlug === null) return null;
+  const { currentUniqueSlug } = useExpandingGallery();
+  if (currentUniqueSlug === null) return null;
 
   const Component = as || 'li';
-  const currentExpandedIndex = slugsArray.indexOf(currentExpandedSlug);
-  const numItems = slugsArray.length;
+  const currentExpandedIndex = uniqueSlugsArray.indexOf(currentUniqueSlug);
+  const numItems = uniqueSlugsArray.length;
 
   const { rowMobile, rowTablet, rowDesktop } =
     expandingGalleryUtils.getRowPositions({
@@ -49,7 +49,7 @@ export default function ExpandingGalleryExpander<U extends ElementType>({
 
   return (
     <Component
-      id={`${currentExpandedSlug}-expanded`}
+      id={`${currentUniqueSlug}-expanded`}
       className={cn(expanderGridClassNames, className)}
       {...props}
     >

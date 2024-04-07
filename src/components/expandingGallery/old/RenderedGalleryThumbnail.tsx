@@ -23,10 +23,6 @@ const RenderedGalleryThumbnail = memo(function RenderedGalleryThumbnail({
     ? paths.homePage()
     : paths.showReelItemPage(item.slug);
 
-  const handleClick = () => {
-    setPreviousScrollPosition({ x: window.scrollX, y: window.scrollY });
-  };
-
   return (
     <li id={`${item.slug}`}>
       <AspectRatio ratio={2.4 / 1} asChild={true}>

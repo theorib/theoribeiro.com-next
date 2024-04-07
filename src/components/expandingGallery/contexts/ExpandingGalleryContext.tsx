@@ -15,50 +15,50 @@ type ScrollPosition = { scrollX: number; scrollY: number };
 export type ExpandingGalleryContextValue = {
   previousScrollPosition: ScrollPosition;
   setPreviousScrollPosition: Dispatch<SetStateAction<ScrollPosition>>;
-  currentExpandedSlug: CurrentExpandedSlug;
-  setCurrentExpandedSlug: Dispatch<SetStateAction<CurrentExpandedSlug>>;
+  currentUniqueSlug: CurrentUniqueSlug;
+  setCurrentUniqueSlug: Dispatch<SetStateAction<CurrentUniqueSlug>>;
 };
 
-type CurrentExpandedSlug = string | null;
+type CurrentUniqueSlug = string | null;
 
 export const ExpandingGalleryContext =
   createContext<ExpandingGalleryContextValue | null>(null);
 
 const initialScrollPosition: ScrollPosition = { scrollX: 0, scrollY: 0 };
 
-export type GalleryState = 'url' | 'local';
+export type StoreState = 'urlHash' | 'local';
 
 type ExpandingGalleryProviderProps = {
   children: ReactNode;
-  galleryState: GalleryState;
+  storeState: StoreState;
 };
 
 function ExpandingGalleryProvider({
   children,
-  galleryState,
+  storeState,
 }: ExpandingGalleryProviderProps) {
   const [previousScrollPosition, setPreviousScrollPosition] =
     useState<ScrollPosition>(initialScrollPosition);
 
   const [hash, setHash] = useUrlSlug();
-  const [localSlug, setLocalSlug] = useState<CurrentExpandedSlug>(null);
+  const [localSlug, setLocalSlug] = useState<CurrentUniqueSlug>(null);
 
-  let currentExpandedSlug, setCurrentExpandedSlug;
+  let currentUniqueSlug, setCurrentUniqueSlug;
 
-  switch (galleryState) {
-    case 'url':
-      currentExpandedSlug = hash;
-      setCurrentExpandedSlug = setHash;
+  switch (storeState) {
+    case 'urlHash':
+      currentUniqueSlug = hash;
+      setCurrentUniqueSlug = setHash;
       break;
     case 'local':
-      currentExpandedSlug = localSlug;
-      setCurrentExpandedSlug = setLocalSlug;
+      currentUniqueSlug = localSlug;
+      setCurrentUniqueSlug = setLocalSlug;
       break;
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const _exhaustiveCheck: never = galleryState;
+      const _exhaustiveCheck: never = storeState;
       throw new Error(
-        `Invalid galleryState value: ${galleryState}. Must be 'url' or 'local'`,
+        `Invalid storeState value: ${storeState}. Must be 'urlHash' or 'local'`,
       );
     }
   }
@@ -66,8 +66,8 @@ function ExpandingGalleryProvider({
   const value = {
     previousScrollPosition,
     setPreviousScrollPosition,
-    currentExpandedSlug,
-    setCurrentExpandedSlug,
+    currentUniqueSlug,
+    setCurrentUniqueSlug,
   };
 
   return (

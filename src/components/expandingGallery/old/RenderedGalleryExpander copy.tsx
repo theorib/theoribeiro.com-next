@@ -3,10 +3,10 @@
 import portfolioActions, {
   type PortfolioItem,
 } from '@/actions/portfolioActions';
-import { AspectRatio } from '../ui/aspect-ratio';
+import { AspectRatio } from '../../ui/aspect-ratio';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
+import { useExpandingGallery } from '../contexts/ExpandingGalleryContext';
 
 // interface RenderedGalleryExpanderProps {
 //   expanderData: PortfolioItem;

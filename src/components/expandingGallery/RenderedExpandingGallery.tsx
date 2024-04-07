@@ -5,17 +5,20 @@ import RenderedExpandingGalleryThumbnail from './RenderedExpandingGalleryThumbna
 
 export default async function RenderedExpandingGallery() {
   const thumbnails = await portfolioActions.getPortfolioThumbnails();
-  const slugsArray = thumbnails.map(item => item.slug);
+  const uniqueSlugsArray = thumbnails.map(item => item.slug);
 
   return (
-    <ExpandingGallery>
+    <ExpandingGallery storeState="urlHash">
       <ExpandingGallery.ScrollTo />
       <ExpandingGallery.Container>
-        <ExpandingGallery.Expander slugsArray={slugsArray}>
+        <ExpandingGallery.Expander uniqueSlugsArray={uniqueSlugsArray}>
           <RenderedGalleryExpander />
         </ExpandingGallery.Expander>
         {thumbnails.map(item => (
-          <ExpandingGallery.Item key={`${item.slug}-key`} slug={item.slug}>
+          <ExpandingGallery.Item
+            key={`${item.slug}-key`}
+            uniqueSlug={item.slug}
+          >
             <RenderedExpandingGalleryThumbnail item={item} />
           </ExpandingGallery.Item>
         ))}
