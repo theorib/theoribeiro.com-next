@@ -39,11 +39,11 @@ const getPortfolioThumbnails = async (): Promise<PortfolioThumbnail[]> => {
   return portfolioThumbnails;
 };
 
-const getPortfolioItemBySlug = async (slug: string): Promise<PortfolioItem> => {
+const getPortfolioItemBySlug = async (
+  slug: string,
+): Promise<PortfolioItem | null> => {
   const portfolioItem = portfolio.find(item => item.slug === slug);
-  if (!portfolioItem) {
-    throw new Error('Portfolio item not found');
-  }
+  if (!portfolioItem) return null;
   return portfolioItem;
 };
 

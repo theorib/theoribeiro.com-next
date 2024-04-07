@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  type Dispatch,
-  type SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 
 type Hash = string | null;
 
@@ -15,7 +9,6 @@ type Hash = string | null;
  * @returns A string with the current hash or null if there is no hash.
  */
 function getUrlHash(): Hash {
-  if (typeof window === 'undefined') return null;
   return window.location.hash.slice(1) || null;
 }
 
@@ -25,7 +18,6 @@ function getUrlHash(): Hash {
  * @param hash A string representing the new hash or null to remove the hash.
  */
 function setUrlHash(hash: Hash): void {
-  if (typeof window === 'undefined') return;
   if (hash === null) {
     const url = window.location.toString();
     const cleanUrl = url.substring(0, url.indexOf('#'));
@@ -40,29 +32,10 @@ function setUrlHash(hash: Hash): void {
  * @returns A tuple with the current hash and a function to update it.
  */
 export default function useHash(): [Hash, Dispatch<SetStateAction<Hash>>] {
-  const [hash, setHash] = useState<Hash>(null);
-  const hasPageLoaded = useRef<boolean>(false);
+  const [hash, setHash] = useState<Hash>(() => getUrlHash());
 
-  /**
-   * This effect tracks url hash changes and
-   * updates the url hash whenever there is a change in the hash state
-   */
   useEffect(() => {
-    /**
-     * Set the hash state to the current URL hash when the page first loads
-     * This is necessary because the hash is not available during SSR
-     * We then set the hasPageLoaded ref to true to prevent further updates
-     */
-    if (!hasPageLoaded.current) {
-      setHash(getUrlHash());
-      hasPageLoaded.current = true;
-    }
-    /**
-     * Update the URL hash whenever the hash state changes
-     */
-    if (hasPageLoaded.current) {
-      setUrlHash(hash);
-    }
+    setUrlHash(hash);
   }, [hash]);
 
   return [hash, setHash];

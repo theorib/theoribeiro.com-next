@@ -1,6 +1,6 @@
 'use client';
 import { useEffect } from 'react';
-import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
+import { useExpandingGallery } from '../contexts/ExpandingGalleryContext';
 
 export default function ExpandingGalleryScrollTo() {
   const {
@@ -18,10 +18,10 @@ export default function ExpandingGalleryScrollTo() {
     // );
 
     const element = document.getElementById(`${currentUniqueSlug}-expanded`);
-
+    // console.log('scrolling to', element);
     if (!element) return; // guard clause
 
-    const animateScrollToElement = window.requestAnimationFrame(() => {
+    const animate = window.requestAnimationFrame(() => {
       element.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
@@ -29,7 +29,28 @@ export default function ExpandingGalleryScrollTo() {
       });
     });
 
-    return () => cancelAnimationFrame(animateScrollToElement);
+    // scrollToElement(element);
+
+    // const timeOut = setTimeout(() => {
+    //   element.scrollIntoView({
+    //     behavior: 'smooth',
+    //     block: 'center',
+    //     inline: 'center',
+    //   });
+    // }, 0);
+
+    // element.scrollIntoView({
+    //   behavior: 'smooth',
+    //   block: 'center',
+    //   inline: 'center',
+    // });
+
+    // setPreviousScrollPosition({
+    //   scrollX: window.scrollX,
+    //   scrollY: window.scrollY,
+    // });
+    // return () => clearTimeout(timeOut);
+    return () => cancelAnimationFrame(animate);
   }, [currentUniqueSlug, previousScrollPosition]);
 
   return null;

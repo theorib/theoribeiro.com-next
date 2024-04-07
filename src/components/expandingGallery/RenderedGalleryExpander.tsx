@@ -4,9 +4,10 @@ import portfolioActions, {
   type PortfolioItem,
 } from '@/actions/portfolioActions';
 import { AspectRatio } from '../ui/aspect-ratio';
-import Image from 'next/image';
+
 import { useEffect, useState } from 'react';
 import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
+import RenderedVideoPlayer from './RenderedVideoPlayer';
 
 // interface RenderedGalleryExpanderProps {
 //   expanderData: PortfolioItem;
@@ -41,6 +42,7 @@ export default function RenderedGalleryExpander() {
     productionCompany,
     imageUrl,
     slug,
+    videoUrl,
   } = expanderData;
 
   return (
@@ -50,11 +52,8 @@ export default function RenderedGalleryExpander() {
       id={`${slug}-expanded`}
     >
       <div className="min-h-0 basis-6/12">
-        <AspectRatio ratio={16 / 9}>
-          <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex justify-center items-center bg-neutral-950/50 transition-all duration-200">
-            <p className="text-4xl font-extralight">{title}</p>
-          </div>
-          <Image src={imageUrl} alt={title} fill className="object-cover" />
+        <AspectRatio ratio={16 / 9} className="flex">
+          <RenderedVideoPlayer imageUrl={imageUrl} videoUrl={videoUrl} />
         </AspectRatio>
       </div>
       <article className="flex w-auto flex-1 flex-col gap-6 font-light sm:gap-10 sm:text-xl">
