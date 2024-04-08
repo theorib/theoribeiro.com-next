@@ -6,20 +6,26 @@ import {
   type ReactNode,
   type SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from 'react';
 import useUrlSlug from '../hooks/useHash';
+import expandingGalleryUtils from '../utils/expandingGalleryUtils';
 
 export type ScrollPosition = { scrollX: number; scrollY: number };
 
 export type ExpandingGalleryContextValue = {
   previousScrollPosition: ScrollPosition;
   setPreviousScrollPosition: Dispatch<SetStateAction<ScrollPosition>>;
-  currentUniqueSlug: CurrentUniqueSlug;
-  setCurrentUniqueSlug: Dispatch<SetStateAction<CurrentUniqueSlug>>;
+  currentUniqueSlug: UniqueSlug | null;
+  setCurrentUniqueSlug: Dispatch<SetStateAction<UniqueSlug | null>>;
+  orderedUniqueSlugsArray: UniqueSlug[];
+  setOrderedUniqueSlugsArray: Dispatch<SetStateAction<UniqueSlug[]>>;
+  currentUniqueIndex: number | null;
+  numberOfUniqueSlugs: number;
 };
 
-type CurrentUniqueSlug = string | null;
+export type UniqueSlug = string;
 
 export const ExpandingGalleryContext =
   createContext<ExpandingGalleryContextValue | null>(null);
@@ -31,19 +37,31 @@ export type StoreState = 'urlHash' | 'local';
 type ExpandingGalleryProviderProps = {
   children: ReactNode;
   storeState: StoreState;
+  orderedUniqueSlugsArrayProp: UniqueSlug[];
 };
 
 function ExpandingGalleryProvider({
   children,
   storeState,
+  orderedUniqueSlugsArrayProp,
 }: ExpandingGalleryProviderProps) {
   const [previousScrollPosition, setPreviousScrollPosition] =
     useState<ScrollPosition>(initialScrollPosition);
 
   const [hash, setHash] = useUrlSlug();
-  const [localSlug, setLocalSlug] = useState<CurrentUniqueSlug>(null);
+  const [localUnique, setLocalUniqueSlug] = useState<UniqueSlug | null>(null);
 
-  let currentUniqueSlug, setCurrentUniqueSlug;
+  // Todo - do we need this to be stateful?
+  const [orderedUniqueSlugsArray, setOrderedUniqueSlugsArray] = useState<
+    UniqueSlug[]
+  >([]);
+  useEffect(() => {
+    setOrderedUniqueSlugsArray(orderedUniqueSlugsArrayProp);
+  }, [orderedUniqueSlugsArrayProp]);
+
+  // ! This is a bit of a mess. We should probably refactor this to be more readable
+  let currentUniqueSlug: UniqueSlug | null;
+  let setCurrentUniqueSlug: Dispatch<SetStateAction<UniqueSlug | null>>;
 
   switch (storeState) {
     case 'urlHash':
@@ -51,8 +69,8 @@ function ExpandingGalleryProvider({
       setCurrentUniqueSlug = setHash;
       break;
     case 'local':
-      currentUniqueSlug = localSlug;
-      setCurrentUniqueSlug = setLocalSlug;
+      currentUniqueSlug = localUnique;
+      setCurrentUniqueSlug = setLocalUniqueSlug;
       break;
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -63,11 +81,22 @@ function ExpandingGalleryProvider({
     }
   }
 
+  // Derive state of currentUniqueIndex from the currentUniqueSlug from the context
+  const currentUniqueIndex = expandingGalleryUtils.findIndexFromSlug(
+    orderedUniqueSlugsArray,
+    currentUniqueSlug,
+  );
+  const numberOfUniqueSlugs = orderedUniqueSlugsArray.length;
+
   const value = {
     previousScrollPosition,
     setPreviousScrollPosition,
     currentUniqueSlug,
     setCurrentUniqueSlug,
+    orderedUniqueSlugsArray,
+    setOrderedUniqueSlugsArray,
+    currentUniqueIndex,
+    numberOfUniqueSlugs,
   };
 
   return (

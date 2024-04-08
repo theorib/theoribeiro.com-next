@@ -9,7 +9,6 @@ import expandingGalleryUtils from './utils/expandingGalleryUtils';
 import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 
 export type ExpandingGalleryExpanderProps<T extends ElementType> = {
-  uniqueSlugsArray: string[];
   numColsMobile?: number;
   numColsTablet?: number;
   numColsDesktop?: number;
@@ -20,7 +19,6 @@ export type ExpandingGalleryExpanderProps<T extends ElementType> = {
 
 // A generic component that can become any HTML element or another ReactComponent
 export default function ExpandingGalleryExpander<U extends ElementType>({
-  uniqueSlugsArray,
   numColsMobile = 1,
   numColsTablet = 2,
   numColsDesktop = 2,
@@ -29,17 +27,16 @@ export default function ExpandingGalleryExpander<U extends ElementType>({
   children,
   ...props
 }: ExpandingGalleryExpanderProps<U>) {
-  const { currentUniqueSlug } = useExpandingGallery();
+  const { currentUniqueSlug, currentUniqueIndex, numberOfUniqueSlugs } =
+    useExpandingGallery();
   if (currentUniqueSlug === null) return null;
 
   const Component = as || 'li';
-  const currentExpandedIndex = uniqueSlugsArray.indexOf(currentUniqueSlug);
-  const numItems = uniqueSlugsArray.length;
 
   const { rowMobile, rowTablet, rowDesktop } =
     expandingGalleryUtils.getRowPositions({
-      expanderIndex: currentExpandedIndex,
-      numItems,
+      currentUniqueIndex,
+      numberOfUniqueSlugs,
       numColsMobile,
       numColsTablet,
       numColsDesktop,

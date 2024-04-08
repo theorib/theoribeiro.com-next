@@ -12,15 +12,20 @@ import ExpandingGalleryScrollTo from './ExpandingGalleryScrollTo';
 interface ExpandingGalleryProps {
   children: ReactNode;
   storeState?: StoreState;
+  orderedUniqueSlugsArray: string[];
 }
 
 // Define a generic component
 function ExpandingGallery({
   children,
   storeState = 'urlHash',
+  orderedUniqueSlugsArray,
 }: ExpandingGalleryProps) {
   return (
-    <ExpandingGalleryProvider storeState={storeState}>
+    <ExpandingGalleryProvider
+      storeState={storeState}
+      orderedUniqueSlugsArrayProp={orderedUniqueSlugsArray}
+    >
       {children}
     </ExpandingGalleryProvider>
   );
