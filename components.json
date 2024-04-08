@@ -2,7 +2,7 @@
   "style": "new-york",
   "tailwind": {
     "config": "tailwind.config.ts",
-    "css": "@/styles/globals.css",
+    "css": "@/app/globals.css",
     "baseColor": "neutral",
     "cssVariables": false
   },

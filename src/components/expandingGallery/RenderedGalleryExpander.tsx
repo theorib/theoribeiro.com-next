@@ -4,10 +4,13 @@ import portfolioActions, {
   type PortfolioItem,
 } from '@/actions/portfolioActions';
 import { AspectRatio } from '../ui/aspect-ratio';
-
+import { cn } from './utils/expandingGalleryUtils';
 import { useEffect, useState } from 'react';
 import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 import RenderedVideoPlayer from './RenderedVideoPlayer';
+import { Separator } from '@radix-ui/react-separator';
+import ExpandingGallery from './ExpandingGallery';
+import { PiCaretLeftThin, PiCaretRightThin, PiXThin } from 'react-icons/pi';
 
 // interface RenderedGalleryExpanderProps {
 //   expanderData: PortfolioItem;
@@ -45,45 +48,63 @@ export default function RenderedGalleryExpander() {
     videoUrl,
   } = expanderData;
 
-  return (
-    <section
-      key={`${id}-expanded`}
-      className="col-span-full flex flex-auto flex-col gap-6  px-16 py-6 sm:flex-row sm:gap-16 sm:py-10"
-      id={`${slug}-expanded`}
-    >
-      <div className="min-h-0 basis-6/12">
-        <AspectRatio ratio={16 / 9} className="flex">
-          <RenderedVideoPlayer imageUrl={imageUrl} videoUrl={videoUrl} />
-        </AspectRatio>
-      </div>
-      <article className="flex w-auto flex-1 flex-col gap-6 font-light sm:gap-10 sm:text-xl">
-        <div>
-          <h1 className="font-raleway text-3xl sm:text-4xl">{title}</h1>
-          <p className="italic text-neutral-300">
-            <span aria-label="Project type">{projectType}</span>
-            <span role="separator"> | </span>
-            <span aria-label="Role on this project">{role}</span>
-          </p>
-        </div>
+  const iconClassName = 'w-14 h-14 sm:h-20 sm:w-20 p-1 sm:p-2 sm:-mx-5';
 
-        <p aria-label="Video description" className="text-neutral-400">
-          {description}
-        </p>
-        <dl>
+  return (
+    <div
+      key={`${id}-expanded`}
+      id={`${slug}-expanded`}
+      className="flex flex-col relative"
+    >
+      <nav className="sm:absolute top-0 left-0 right-0 bottom-0 flex justify-between items-center p-4 pb-10 sm:p-3 md:py-2 md:px-0 order-last ">
+        <ExpandingGallery.Prev variant="prev" className="overflow-clip">
+          <PiCaretLeftThin className={iconClassName} />
+        </ExpandingGallery.Prev>
+        <ExpandingGallery.Next className="overflow-clip order-last">
+          <PiCaretRightThin className={iconClassName} />
+        </ExpandingGallery.Next>
+        <ExpandingGallery.Close className="sm:absolute sm:right-3 md:right-2 sm:top-6 sm:w-10 sm:h-10 sm:mx-0">
+          <PiXThin className={cn([iconClassName, 'sm:w-14 sm:h-14'])} />
+        </ExpandingGallery.Close>
+      </nav>
+      <article className="col-span-full flex flex-auto flex-col sm:px-[4.5rem] md:px-16 sm:py-6 md:flex-row md:gap-6 lg:gap-16 md:py-10 items-center transition-all">
+        <div className="basis-7/12 lg:basis-6/12 w-full transition-all">
+          <AspectRatio ratio={16 / 9} className="flex">
+            <RenderedVideoPlayer imageUrl={imageUrl} videoUrl={videoUrl} />
+          </AspectRatio>
+        </div>
+        <section className="flex w-auto flex-1 flex-col gap-6 font-light sm:gap-10 sm:text-xl md:p-0 px-4 pt-8 pb-6">
           <div>
-            <dt className="text-neutral-400 inline">Director: </dt>
-            <dd className="font-semibold inline">{director}</dd>
+            <h1 className="font-raleway text-3xl sm:text-4xl">{title}</h1>
+            <div className="italic text-neutral-300 flex items-center gap-2">
+              <p aria-label="Project type">{projectType}</p>
+              <Separator
+                orientation="vertical"
+                className="h-5 w-[1px] bg-white inline-block ml-1"
+              />
+              <p aria-label="Role on this project">{role}</p>
+            </div>
           </div>
-          <div>
-            <dt className="text-neutral-400 inline">Producer: </dt>
-            <dd className="font-semibold inline">{producer}</dd>
-          </div>
-          <div>
-            <dt className="text-neutral-400 inline">Production Company: </dt>
-            <dd className="font-semibold inline">{productionCompany}</dd>
-          </div>
-        </dl>
+
+          <p aria-label="Video description" className="text-neutral-400">
+            {description}
+          </p>
+          <dl>
+            <div>
+              <dt className="text-neutral-400 inline">Director: </dt>
+              <dd className="font-semibold inline">{director}</dd>
+            </div>
+            <div>
+              <dt className="text-neutral-400 inline">Producer: </dt>
+              <dd className="font-semibold inline">{producer}</dd>
+            </div>
+            <div>
+              <dt className="text-neutral-400 inline">Production Company: </dt>
+              <dd className="font-semibold inline">{productionCompany}</dd>
+            </div>
+          </dl>
+        </section>
       </article>
-    </section>
+    </div>
   );
 }

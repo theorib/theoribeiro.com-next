@@ -8,6 +8,10 @@ import {
   type StoreState,
 } from './contexts/ExpandingGalleryContext';
 import ExpandingGalleryScrollTo from './ExpandingGalleryScrollTo';
+import { ExpandingGalleryNext } from './ExpandingGalleryNext';
+import { ExpandingGalleryButton } from './ExpandingGalleryButton';
+import { ExpandingGalleryClose } from './ExpandingGalleryClose';
+import { ExpandingGalleryPrev } from './ExpandingGalleryPrev';
 
 interface ExpandingGalleryProps {
   children: ReactNode;
@@ -35,5 +39,9 @@ ExpandingGallery.Container = ExpandingGalleryContainer;
 ExpandingGallery.Expander = ExpandingGalleryExpander;
 ExpandingGallery.Item = ExpandingGalleryItem;
 ExpandingGallery.ScrollTo = ExpandingGalleryScrollTo;
+ExpandingGallery.Next = ExpandingGalleryNext;
+ExpandingGallery.Prev = ExpandingGalleryPrev;
+ExpandingGallery.Close = ExpandingGalleryClose;
+ExpandingGallery.Button = ExpandingGalleryButton;
 
 export default ExpandingGallery;

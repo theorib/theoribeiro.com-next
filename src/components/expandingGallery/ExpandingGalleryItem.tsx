@@ -40,6 +40,7 @@ export default function ExpandingGalleryItem<U extends ElementType>({
   const GenericComponent = as || 'li';
   const { currentUniqueSlug, setCurrentUniqueSlug, setPreviousScrollPosition } =
     useExpandingGallery();
+  const isActive = currentUniqueSlug === uniqueSlug;
 
   function handleClick(e: React.MouseEvent<Element, MouseEvent>) {
     // hook to allow for custom behavior at the beginning of the handleClick function
@@ -59,7 +60,7 @@ export default function ExpandingGalleryItem<U extends ElementType>({
     });
 
     // if the current unique slug is the same as the one clicked, set it to null
-    if (currentUniqueSlug === uniqueSlug) {
+    if (isActive) {
       setCurrentUniqueSlug(null);
       return;
     }
@@ -69,10 +70,12 @@ export default function ExpandingGalleryItem<U extends ElementType>({
     afterHandleClick(e);
   }
 
+  const itemClassName = `cursor-pointer transition-opacity ${isActive ? 'opacity-35' : ''}`;
+
   return (
     <GenericComponent
       id={uniqueSlug}
-      className={cn('cursor-pointer', className)}
+      className={cn(itemClassName, className)}
       onClick={onClick ? onClick : handleClick}
       {...props}
     >

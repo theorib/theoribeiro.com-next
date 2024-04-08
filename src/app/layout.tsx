@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import '@/styles/globals.css';
+import '@/app/globals.css';
 import { nunitoSans, raleway } from '@/lib/fonts';
 import HeaderMain from '@/components/layout/HeaderMain';
 import FooterMain from '@/components/layout/FooterMain';
