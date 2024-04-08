@@ -15,7 +15,14 @@ const ExpandingGalleryClose = React.forwardRef<
   HTMLButtonElement,
   ExpandingGalleryButtonProps
 >(({ ...props }, ref) => {
-  return <ExpandingGalleryButton buttonType="close" ref={ref} {...props} />;
+  return (
+    <ExpandingGalleryButton
+      buttonType="close"
+      variant="close"
+      ref={ref}
+      {...props}
+    />
+  );
 });
 ExpandingGalleryClose.displayName = 'Button';
 export { ExpandingGalleryClose };
