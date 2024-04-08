@@ -21,7 +21,7 @@ export default function ExpandingGalleryContainer<U extends ElementType>({
   const Component = as || 'ul';
   return (
     <Component
-      className={cn('-m-3 grid gap-0 sm:grid-cols-2 sm:gap-0', className)}
+      className={cn('grid gap-0 sm:grid-cols-2 sm:gap-0', className)}
       {...props}
     >
       {children}

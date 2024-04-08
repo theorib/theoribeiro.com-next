@@ -12,7 +12,7 @@ import { PiListThin, PiXThin } from 'react-icons/pi';
 
 function HeaderMain() {
   return (
-    <header className="mx-auto flex w-full max-w-layout items-start justify-between py-4 sm:pb-5 sm:pt-6">
+    <header className="mx-auto flex w-full max-w-layout items-start justify-between py-4 sm:pb-5 sm:pt-6 px-5">
       <div className="">
         <p className="mb-1 text-4xl font-light leading-[0.765] transition-all  sm:mb-3 sm:text-5xl sm:leading-[0.765] font-raleway">
           <Link href={paths.homePage()}>Theo Ribeiro</Link>

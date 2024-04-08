@@ -1,6 +1,6 @@
 function FooterMain() {
   return (
-    <footer className="mx-auto w-full max-w-layout pb-4 font-light">
+    <footer className="px-5 mx-auto w-full max-w-layout pb-4 font-light">
       <p className="my-12 sm:text-lg">
         Theo Ribeiro is an award winning cinematographer based in London, UK.
       </p>
