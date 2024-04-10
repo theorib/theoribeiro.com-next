@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from './utils/expandingGalleryUtils';
-import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
+import useButtonTypeLookup from './hooks/useButtonTypeLookup';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-30 dark:focus-visible:ring-neutral-300',
@@ -55,46 +55,7 @@ const ExpandingGalleryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     const Comp = asChild ? Slot : 'button';
-
-    const {
-      numberOfUniqueSlugs,
-      currentUniqueIndex,
-      orderedUniqueSlugsArray,
-      setCurrentUniqueSlug,
-    } = useExpandingGallery();
-
-    if (currentUniqueIndex === null) return null;
-
-    const buttonTypeLookUp = {
-      next: {
-        isEnabled:
-          currentUniqueIndex !== numberOfUniqueSlugs - 1 &&
-          currentUniqueIndex < numberOfUniqueSlugs &&
-          currentUniqueIndex >= 0,
-        onHandleClick: () => {
-          if (!isEnabled) return;
-          setCurrentUniqueSlug(orderedUniqueSlugsArray[currentUniqueIndex + 1]);
-        },
-      },
-      prev: {
-        isEnabled:
-          currentUniqueIndex !== 0 &&
-          currentUniqueIndex < numberOfUniqueSlugs &&
-          currentUniqueIndex >= 0,
-        onHandleClick: () => {
-          if (!isEnabled) return;
-          setCurrentUniqueSlug(orderedUniqueSlugsArray[currentUniqueIndex - 1]);
-        },
-      },
-      close: {
-        isEnabled: true,
-        onHandleClick: () => {
-          if (!isEnabled) return;
-          setCurrentUniqueSlug(null);
-        },
-      },
-    };
-
+    const buttonTypeLookUp = useButtonTypeLookup();
     const isEnabled = buttonTypeLookUp[buttonType]['isEnabled'];
 
     function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {

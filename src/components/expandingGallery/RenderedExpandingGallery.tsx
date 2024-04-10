@@ -13,6 +13,7 @@ export default async function RenderedExpandingGallery() {
       orderedUniqueSlugsArray={orderedUniqueSlugsArray}
     >
       <ExpandingGallery.ScrollTo />
+      <ExpandingGallery.KeyboardShortcuts />
       <ExpandingGallery.Container>
         <ExpandingGallery.Expander>
           <RenderedGalleryExpander />

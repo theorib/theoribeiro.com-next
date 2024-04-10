@@ -12,6 +12,7 @@ import { ExpandingGalleryNext } from './ExpandingGalleryNext';
 import { ExpandingGalleryButton } from './ExpandingGalleryButton';
 import { ExpandingGalleryClose } from './ExpandingGalleryClose';
 import { ExpandingGalleryPrev } from './ExpandingGalleryPrev';
+import ExpandingGalleryUseKeyboardShortcuts from './ExpandingGalleryUseKeyboardShortcuts';
 
 interface ExpandingGalleryProps {
   children: ReactNode;
@@ -43,5 +44,6 @@ ExpandingGallery.Next = ExpandingGalleryNext;
 ExpandingGallery.Prev = ExpandingGalleryPrev;
 ExpandingGallery.Close = ExpandingGalleryClose;
 ExpandingGallery.Button = ExpandingGalleryButton;
+ExpandingGallery.KeyboardShortcuts = ExpandingGalleryUseKeyboardShortcuts;
 
 export default ExpandingGallery;

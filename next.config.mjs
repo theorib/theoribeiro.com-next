@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    windowHistorySupport: true,
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;
