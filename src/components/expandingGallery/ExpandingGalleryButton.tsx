@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from './utils/utils';
 import useButtonTypeLookup from './hooks/useButtonTypeLookup';
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-30 dark:focus-visible:ring-neutral-300',
   {
     variants: {
@@ -78,4 +78,4 @@ const ExpandingGalleryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 ExpandingGalleryButton.displayName = 'Button';
 
-export { ExpandingGalleryButton, buttonVariants };
+export default ExpandingGalleryButton;

@@ -1,7 +1,6 @@
 'use client';
 import * as React from 'react';
-import {
-  ExpandingGalleryButton,
+import ExpandingGalleryButton, {
   buttonVariants,
 } from './ExpandingGalleryButton';
 import { type VariantProps } from 'class-variance-authority';
@@ -18,4 +17,4 @@ const ExpandingGalleryNext = React.forwardRef<
   return <ExpandingGalleryButton buttonType="next" ref={ref} {...props} />;
 });
 ExpandingGalleryNext.displayName = 'Button';
-export { ExpandingGalleryNext };
+export default ExpandingGalleryNext;

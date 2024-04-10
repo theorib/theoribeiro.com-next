@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from 'react';
 import useUrlSlug from '../hooks/useHash';
 import useInitExpandingGallery from '../hooks/useInitExpandingGallery';
 import utils from '../utils/utils';
-import {
+import type {
   ExpandingGalleryContextValue,
   ExpandingGalleryProviderProps,
   ScrollPosition,

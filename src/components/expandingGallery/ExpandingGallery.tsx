@@ -1,16 +1,15 @@
-import { type ReactNode } from 'react';
-
+import { ExpandingGalleryProvider } from './contexts/ExpandingGalleryContext';
+import ExpandingGalleryNext from './ExpandingGalleryNext';
+import ExpandingGalleryButton from './ExpandingGalleryButton';
+import ExpandingGalleryClose from './ExpandingGalleryClose';
+import ExpandingGalleryPrev from './ExpandingGalleryPrev';
 import ExpandingGalleryContainer from './ExpandingGalleryContainer';
 import ExpandingGalleryExpander from './ExpandingGalleryExpander';
 import ExpandingGalleryItem from './ExpandingGalleryItem';
-import { ExpandingGalleryProvider } from './contexts/ExpandingGalleryContext';
 import ExpandingGalleryScrollTo from './ExpandingGalleryScrollTo';
-import { ExpandingGalleryNext } from './ExpandingGalleryNext';
-import { ExpandingGalleryButton } from './ExpandingGalleryButton';
-import { ExpandingGalleryClose } from './ExpandingGalleryClose';
-import { ExpandingGalleryPrev } from './ExpandingGalleryPrev';
 import ExpandingGalleryUseKeyboardShortcuts from './ExpandingGalleryUseKeyboardShortcuts';
 import { StoreState } from './expandingGallery.types';
+import type { ReactNode } from 'react';
 
 interface ExpandingGalleryProps {
   children: ReactNode;
