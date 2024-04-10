@@ -1,54 +1,27 @@
 'use client';
 
-import {
-  createContext,
-  type Dispatch,
-  type ReactNode,
-  type SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, useContext, useState } from 'react';
 import useUrlSlug from '../hooks/useHash';
+import useInitExpandingGallery from '../hooks/useInitExpandingGallery';
 import utils from '../utils/utils';
-
-export type UniqueSlug = string;
-export type StoreState = 'urlHash' | 'local';
-export type ScrollPosition = { scrollX: number; scrollY: number };
-
-export type SetOrderedUniqueSlugsArray = (input: UniqueSlug[]) => void;
-export type SetCurrentUniqueSlug = (input: UniqueSlug | null) => void;
-
-export type StoreStateMapping = {
-  currentUniqueSlug: UniqueSlug | null;
-  setCurrentUniqueSlug: SetCurrentUniqueSlug;
-};
-
-export type ExpandingGalleryContextValue = {
-  previousScrollPosition: ScrollPosition;
-  setPreviousScrollPosition: Dispatch<SetStateAction<ScrollPosition>>;
-  currentUniqueSlug: UniqueSlug | null;
-  setCurrentUniqueSlug: SetCurrentUniqueSlug;
-  orderedUniqueSlugsArray: UniqueSlug[];
-  setOrderedUniqueSlugsArray: SetOrderedUniqueSlugsArray;
-  currentUniqueIndex: number | null;
-  numberOfUniqueSlugs: number;
-};
-
-export type ExpandingGalleryProviderProps = {
-  children: ReactNode;
-  storeState: StoreState;
-  orderedUniqueSlugsArrayProp: UniqueSlug[];
-};
+import {
+  ExpandingGalleryContextValue,
+  ExpandingGalleryProviderProps,
+  ScrollPosition,
+  StoreState,
+  StoreStateMapping,
+  UniqueSlug,
+} from '../expandingGallery.types';
 
 export const ExpandingGalleryContext =
   createContext<ExpandingGalleryContextValue | null>(null);
 
 function ExpandingGalleryProvider({
   children,
-  storeState,
+  storeState = 'local',
   orderedUniqueSlugsArrayProp,
 }: ExpandingGalleryProviderProps) {
+  // Init the context States
   const [previousScrollPosition, setPreviousScrollPosition] =
     useState<ScrollPosition>({ scrollX: 0, scrollY: 0 });
   const [hash, setHash] = useUrlSlug();
@@ -57,9 +30,8 @@ function ExpandingGalleryProvider({
   );
   const [uniqueSlugArr, setUniqueSlugArr] = useState<UniqueSlug[]>([]);
 
-  useEffect(() => {
-    setOrderedUniqueSlugsArray(orderedUniqueSlugsArrayProp);
-  }, [orderedUniqueSlugsArrayProp]);
+  // Initialize the expanding gallery component
+  useInitExpandingGallery(orderedUniqueSlugsArrayProp, setUniqueSlugArr);
 
   /**
    * Lookup object that maps store states to their corresponding store state mappings.

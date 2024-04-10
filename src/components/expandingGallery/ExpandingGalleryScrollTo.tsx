@@ -1,9 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import {
-  ScrollPosition,
-  useExpandingGallery,
-} from './contexts/ExpandingGalleryContext';
+import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
+import { ScrollPosition } from './expandingGallery.types';
 
 /**
  * Retrieves the current scroll position of the window.
