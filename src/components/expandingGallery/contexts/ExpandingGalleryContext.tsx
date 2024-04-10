@@ -10,35 +10,39 @@ import {
   useState,
 } from 'react';
 import useUrlSlug from '../hooks/useHash';
-import expandingGalleryUtils from '../utils/expandingGalleryUtils';
+import utils from '../utils/utils';
 
+export type UniqueSlug = string;
+export type StoreState = 'urlHash' | 'local';
 export type ScrollPosition = { scrollX: number; scrollY: number };
+
+export type SetOrderedUniqueSlugsArray = (input: UniqueSlug[]) => void;
+export type SetCurrentUniqueSlug = (input: UniqueSlug | null) => void;
+
+export type StoreStateMapping = {
+  currentUniqueSlug: UniqueSlug | null;
+  setCurrentUniqueSlug: SetCurrentUniqueSlug;
+};
 
 export type ExpandingGalleryContextValue = {
   previousScrollPosition: ScrollPosition;
   setPreviousScrollPosition: Dispatch<SetStateAction<ScrollPosition>>;
   currentUniqueSlug: UniqueSlug | null;
-  setCurrentUniqueSlug: Dispatch<SetStateAction<UniqueSlug | null>>;
+  setCurrentUniqueSlug: SetCurrentUniqueSlug;
   orderedUniqueSlugsArray: UniqueSlug[];
-  setOrderedUniqueSlugsArray: Dispatch<SetStateAction<UniqueSlug[]>>;
+  setOrderedUniqueSlugsArray: SetOrderedUniqueSlugsArray;
   currentUniqueIndex: number | null;
   numberOfUniqueSlugs: number;
 };
 
-export type UniqueSlug = string;
-
-export const ExpandingGalleryContext =
-  createContext<ExpandingGalleryContextValue | null>(null);
-
-const initialScrollPosition: ScrollPosition = { scrollX: 0, scrollY: 0 };
-
-export type StoreState = 'urlHash' | 'local';
-
-type ExpandingGalleryProviderProps = {
+export type ExpandingGalleryProviderProps = {
   children: ReactNode;
   storeState: StoreState;
   orderedUniqueSlugsArrayProp: UniqueSlug[];
 };
+
+export const ExpandingGalleryContext =
+  createContext<ExpandingGalleryContextValue | null>(null);
 
 function ExpandingGalleryProvider({
   children,
@@ -46,55 +50,55 @@ function ExpandingGalleryProvider({
   orderedUniqueSlugsArrayProp,
 }: ExpandingGalleryProviderProps) {
   const [previousScrollPosition, setPreviousScrollPosition] =
-    useState<ScrollPosition>(initialScrollPosition);
-
+    useState<ScrollPosition>({ scrollX: 0, scrollY: 0 });
   const [hash, setHash] = useUrlSlug();
-  const [localUnique, setLocalUniqueSlug] = useState<UniqueSlug | null>(null);
+  const [localUniqueSlug, setLocalUniqueSlug] = useState<UniqueSlug | null>(
+    null,
+  );
+  const [uniqueSlugArr, setUniqueSlugArr] = useState<UniqueSlug[]>([]);
 
-  // Todo - do we need this to be stateful?
-  const [orderedUniqueSlugsArray, setOrderedUniqueSlugsArray] = useState<
-    UniqueSlug[]
-  >([]);
   useEffect(() => {
     setOrderedUniqueSlugsArray(orderedUniqueSlugsArrayProp);
   }, [orderedUniqueSlugsArrayProp]);
 
-  // ! This is a bit of a mess. We should probably refactor this to be more readable
-  let currentUniqueSlug: UniqueSlug | null;
-  let setCurrentUniqueSlug: Dispatch<SetStateAction<UniqueSlug | null>>;
+  /**
+   * Lookup object that maps store states to their corresponding store state mappings.
+   */
+  const storeStateLookup: Record<StoreState, StoreStateMapping> = {
+    urlHash: {
+      currentUniqueSlug: hash,
+      setCurrentUniqueSlug: (input: UniqueSlug | null) =>
+        utils.setCurrentUniqueSlugState(input, setHash),
+    },
+    local: {
+      currentUniqueSlug: localUniqueSlug,
+      setCurrentUniqueSlug: (input: UniqueSlug | null) =>
+        utils.setCurrentUniqueSlugState(input, setLocalUniqueSlug),
+    },
+  };
 
-  switch (storeState) {
-    case 'urlHash':
-      currentUniqueSlug = hash;
-      setCurrentUniqueSlug = setHash;
-      break;
-    case 'local':
-      currentUniqueSlug = localUnique;
-      setCurrentUniqueSlug = setLocalUniqueSlug;
-      break;
-    default: {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const _exhaustiveCheck: never = storeState;
-      throw new Error(
-        `Invalid storeState value: ${storeState}. Must be 'urlHash' or 'local'`,
-      );
-    }
+  const currentUniqueSlug = storeStateLookup[storeState].currentUniqueSlug;
+  const setCurrentUniqueSlug =
+    storeStateLookup[storeState].setCurrentUniqueSlug;
+  const orderedUniqueSlugsArray = uniqueSlugArr;
+  function setOrderedUniqueSlugsArray(input: UniqueSlug[]): void {
+    utils.setOrderedUniqueSlugsArrayState(input, setUniqueSlugArr);
   }
 
   // Derive state of currentUniqueIndex from the currentUniqueSlug from the context
-  const currentUniqueIndex = expandingGalleryUtils.findIndexFromSlug(
-    orderedUniqueSlugsArray,
+  const currentUniqueIndex = utils.findIndexFromSlug(
+    uniqueSlugArr,
     currentUniqueSlug,
   );
-  const numberOfUniqueSlugs = orderedUniqueSlugsArray.length;
+  const numberOfUniqueSlugs = uniqueSlugArr.length;
 
   const value = {
-    previousScrollPosition,
-    setPreviousScrollPosition,
     currentUniqueSlug,
     setCurrentUniqueSlug,
     orderedUniqueSlugsArray,
     setOrderedUniqueSlugsArray,
+    previousScrollPosition,
+    setPreviousScrollPosition,
     currentUniqueIndex,
     numberOfUniqueSlugs,
   };
@@ -106,6 +110,11 @@ function ExpandingGalleryProvider({
   );
 }
 
+/**
+ * Custom hook that provides access to the ExpandingGalleryContext.
+ * Throws an error if used outside of the ExpandingGalleryProvider or if the context is not properly initialized.
+ * @returns The ExpandingGalleryContext value
+ */
 function useExpandingGallery() {
   const context = useContext(ExpandingGalleryContext);
   if (context === undefined)

@@ -4,7 +4,7 @@ import portfolioActions, {
   type PortfolioItem,
 } from '@/actions/portfolioActions';
 import { AspectRatio } from '../ui/aspect-ratio';
-import { cn } from './utils/expandingGalleryUtils';
+import { cn } from './utils/utils';
 import { useEffect, useState } from 'react';
 import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 import RenderedVideoPlayer from './RenderedVideoPlayer';

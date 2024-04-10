@@ -5,7 +5,7 @@ import {
   type ElementType,
   type ComponentPropsWithoutRef,
 } from 'react';
-import expandingGalleryUtils from './utils/expandingGalleryUtils';
+import expandingGalleryUtils from './utils/utils';
 import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
 
 export type ExpandingGalleryExpanderProps<T extends ElementType> = {
