@@ -19,12 +19,17 @@ export default async function RenderedExpandingGallery() {
           <RenderedGalleryExpander />
         </ExpandingGallery.Expander>
         {thumbnails.map(item => (
+          // <li key={`${item.slug}-key`}>
           <ExpandingGallery.Item
             key={`${item.slug}-key`}
             uniqueSlug={item.slug}
+            // asChild
           >
+            {/* <button className="w-full block"> */}
             <RenderedExpandingGalleryThumbnail item={item} />
+            {/* </button> */}
           </ExpandingGallery.Item>
+          // </li>
         ))}
       </ExpandingGallery.Container>
     </ExpandingGallery>

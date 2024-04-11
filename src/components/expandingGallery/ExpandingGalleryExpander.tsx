@@ -1,56 +1,63 @@
 'use client';
+import { forwardRef } from 'react';
+import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
-import {
-  type ReactNode,
-  type ElementType,
-  type ComponentPropsWithoutRef,
-} from 'react';
 import expandingGalleryUtils from './utils/utils';
 import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
+import type { LiHTMLAttributes } from 'react';
 
-export type ExpandingGalleryExpanderProps<T extends ElementType> = {
+export interface ExpandingGalleryExpanderProps
+  extends LiHTMLAttributes<HTMLLIElement> {
   numColsMobile?: number;
   numColsTablet?: number;
   numColsDesktop?: number;
-  as?: T;
   className?: string;
-  children: ReactNode;
-} & ComponentPropsWithoutRef<T>;
+  asChild?: boolean;
+}
 
 // A generic component that can become any HTML element or another ReactComponent
-export default function ExpandingGalleryExpander<U extends ElementType>({
-  numColsMobile = 1,
-  numColsTablet = 2,
-  numColsDesktop = 2,
-  as,
-  className,
-  children,
-  ...props
-}: ExpandingGalleryExpanderProps<U>) {
-  const { currentUniqueSlug, currentUniqueIndex, numberOfUniqueSlugs } =
-    useExpandingGallery();
-  if (currentUniqueSlug === null) return null;
+const ExpandingGalleryExpander = forwardRef<
+  HTMLLIElement,
+  ExpandingGalleryExpanderProps
+>(
+  (
+    {
+      numColsMobile = 1,
+      numColsTablet = 2,
+      numColsDesktop = 2,
+      className,
+      asChild,
+      ...props
+    },
+    ref,
+  ) => {
+    const Comp = asChild ? Slot : 'li';
+    const { currentUniqueSlug, currentUniqueIndex, numberOfUniqueSlugs } =
+      useExpandingGallery();
 
-  const Component = as || 'li';
+    if (currentUniqueSlug === null) return null;
 
-  const { rowMobile, rowTablet, rowDesktop } =
-    expandingGalleryUtils.getRowPositions({
-      currentUniqueIndex,
-      numberOfUniqueSlugs,
-      numColsMobile,
-      numColsTablet,
-      numColsDesktop,
-    });
+    const { rowMobile, rowTablet, rowDesktop } =
+      expandingGalleryUtils.getRowPositions({
+        currentUniqueIndex,
+        numberOfUniqueSlugs,
+        numColsMobile,
+        numColsTablet,
+        numColsDesktop,
+      });
 
-  const expanderGridClassNames = `col-span-full ${expandingGalleryUtils.rowStartClass[rowMobile as keyof typeof expandingGalleryUtils.rowStartClass]} sm:${expandingGalleryUtils.rowStartClass[rowTablet as keyof typeof expandingGalleryUtils.rowStartClass]} md:${expandingGalleryUtils.rowStartClass[rowDesktop as keyof typeof expandingGalleryUtils.rowStartClass]}`;
+    const expanderGridClassNames = `expanding-gallery-expander expanding-gallery-expander--expanded col-span-full ${expandingGalleryUtils.rowStartClass[rowMobile as keyof typeof expandingGalleryUtils.rowStartClass]} sm:${expandingGalleryUtils.rowStartClass[rowTablet as keyof typeof expandingGalleryUtils.rowStartClass]} md:${expandingGalleryUtils.rowStartClass[rowDesktop as keyof typeof expandingGalleryUtils.rowStartClass]}`;
 
-  return (
-    <Component
-      id={`${currentUniqueSlug}-expanded`}
-      className={cn(expanderGridClassNames, className)}
-      {...props}
-    >
-      {children}
-    </Component>
-  );
-}
+    return (
+      <Comp
+        id={`${currentUniqueSlug}-expanded`}
+        className={cn(expanderGridClassNames, className)}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+ExpandingGalleryExpander.displayName = 'ExpandingGalleryExpander';
+
+export default ExpandingGalleryExpander;

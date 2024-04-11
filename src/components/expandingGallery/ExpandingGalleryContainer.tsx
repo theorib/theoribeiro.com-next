@@ -1,30 +1,30 @@
+import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
-import {
-  type ReactNode,
-  type ElementType,
-  type ComponentPropsWithoutRef,
-} from 'react';
+import { forwardRef } from 'react';
+import type { HTMLAttributes } from 'react';
 
-export type ExpandingGalleryContainerProps<T extends ElementType> = {
-  as?: T;
-  children: ReactNode;
+export interface ExpandingGalleryContainerProps
+  extends HTMLAttributes<HTMLUListElement> {
+  asChild?: boolean;
   className?: string;
-} & ComponentPropsWithoutRef<T>;
+}
 
 // A generic component that can become any HTML element or another ReactComponent
-export default function ExpandingGalleryContainer<U extends ElementType>({
-  as,
-  children,
-  className,
-  ...props
-}: ExpandingGalleryContainerProps<U>) {
-  const Component = as || 'ul';
+const ExpandingGalleryContainer = forwardRef<
+  HTMLUListElement,
+  ExpandingGalleryContainerProps
+>(({ className, asChild, ...props }, ref) => {
+  const Comp = asChild ? Slot : 'ul';
   return (
-    <Component
-      className={cn('grid gap-0 sm:grid-cols-2 sm:gap-0', className)}
+    <Comp
+      className={cn(
+        'grid gap-0 sm:grid-cols-2 sm:gap-0 expanding-gallery-container expanding-gallery-container--expanded',
+        className,
+      )}
+      ref={ref}
       {...props}
-    >
-      {children}
-    </Component>
+    />
   );
-}
+});
+ExpandingGalleryContainer.displayName = 'ExpandingGalleryContainer';
+export default ExpandingGalleryContainer;
