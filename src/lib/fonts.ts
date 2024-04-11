@@ -7,4 +7,5 @@ export const raleway = Raleway({
 export const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
   variable: '--font-nunito-sans',
+  adjustFontFallback: false,
 });
