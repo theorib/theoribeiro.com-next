@@ -24,6 +24,8 @@ export default function useButtonTypeLookup() {
           setCurrentUniqueSlug(orderedUniqueSlugsArray[currentUniqueIndex + 1]);
         }
       },
+      ariaLabel: 'Go to Next Gallery Item',
+      buttonText: 'Next',
     },
     prev: {
       isEnabled:
@@ -36,12 +38,16 @@ export default function useButtonTypeLookup() {
           setCurrentUniqueSlug(orderedUniqueSlugsArray[currentUniqueIndex - 1]);
         }
       },
+      ariaLabel: 'Go to Previous Gallery Item',
+      buttonText: 'Previous',
     },
     close: {
       isEnabled: isCurrentIndex,
       onHandleClick: () => {
         if (buttonTypeLookUp.close.isEnabled) setCurrentUniqueSlug(null);
       },
+      ariaLabel: 'Close Gallery Expander',
+      buttonText: 'Close',
     },
   };
 

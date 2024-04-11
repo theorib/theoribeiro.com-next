@@ -69,6 +69,7 @@ const ButtonComp = React.forwardRef<HTMLButtonElement, ButtonCompProps>(
       <Comp
         onClick={handleClick}
         disabled={!isEnabled}
+        aria-label={buttonTypeLookUp[buttonType]['ariaLabel']}
         className={cn(buttonCompVariants({ variant, size, className }))}
         ref={ref}
         {...props}

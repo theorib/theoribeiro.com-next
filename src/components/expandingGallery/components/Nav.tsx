@@ -9,6 +9,8 @@ interface NavProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
+export const navAriaLabel = 'Expanding Grid Gallery Navigation';
+
 const Nav = forwardRef<HTMLDivElement, NavProps>(
   ({ children, asChild, className }: NavProps, ref) => {
     const Comp = asChild ? Slot : 'nav';
@@ -16,7 +18,7 @@ const Nav = forwardRef<HTMLDivElement, NavProps>(
       <Comp
         className={cn('expanding-grid-gallery-nav', className)}
         ref={ref}
-        aria-label="Expanding Grid Gallery Navigation"
+        aria-label={navAriaLabel}
       >
         {children}
       </Comp>

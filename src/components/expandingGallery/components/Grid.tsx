@@ -8,6 +8,8 @@ export interface GridProps extends HTMLAttributes<HTMLUListElement> {
   className?: string;
 }
 
+export const gridAriaLabel = 'Expanding Grid Gallery Items';
+
 // A generic component that can become any HTML element or another ReactComponent
 const Grid = forwardRef<HTMLUListElement, GridProps>(
   ({ className, asChild, ...props }, ref) => {
@@ -15,6 +17,7 @@ const Grid = forwardRef<HTMLUListElement, GridProps>(
     return (
       <Comp
         role="list"
+        aria-label={gridAriaLabel}
         className={cn(
           'grid gap-0 sm:grid-cols-2 sm:gap-0 expanding-gallery-container expanding-gallery-container--expanded',
           className,
