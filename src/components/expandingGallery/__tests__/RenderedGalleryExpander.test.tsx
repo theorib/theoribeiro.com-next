@@ -1,44 +1,49 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { render, screen } from '@/testUtils/customRenderExpandingGallery';
-import { Suspense } from 'react';
-import ExpandingGallery from '../ExpandingGallery';
-import RenderedGalleryExpander from '../RenderedGalleryExpander';
-import { ExpandingGalleryContextValue } from '../contexts/ExpandingGalleryContext';
-import { vi } from 'vitest';
-import portfolioActions from '@/actions/portfolioActions';
+import {
+  getTestExpandedItemFromSlug,
+  render,
+  screen,
+} from '@/testUtils/customRenderExpandingGallery';
+import { Suspense, useContext } from 'react';
+import ExpandingGridGallery from '../ExpandingGridGallery';
+import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
+import Image from 'next/image';
 
-const expandingGalleryContextValue: ExpandingGalleryContextValue = {
-  previousScrollPosition: { scrollX: 0, scrollY: 0 },
-  setPreviousScrollPosition: () => vi.fn(),
-  currentUniqueSlug: 'land-of-the-wind',
-  setCurrentUniqueSlug: () => vi.fn(),
-};
+export default function TestGalleryExpander() {
+  const { currentUniqueSlug } = useExpandingGridGallery();
+  if (!currentUniqueSlug) return null;
 
-const expandingGalleryContent = async () => {
-  const thumbnails = await portfolioActions.getPortfolioThumbnails();
-  const uniqueSlugsArray = thumbnails.map(item => item.slug);
-  return { thumbnails, uniqueSlugsArray };
-};
+  const item = getTestExpandedItemFromSlug(currentUniqueSlug);
+  if (!item) return null;
+
+  return (
+    <div id={`${currentUniqueSlug}-expanded`}>
+      <h1>{item.tile}</h1>
+      <Image src={item.image} alt={`${item.tile} Alt`} />
+    </div>
+  );
+}
 
 test('make sure thumbnail is rendered', async () => {
-  const { thumbnails, uniqueSlugsArray } = await expandingGalleryContent();
+  // const { thumbnails, uniqueSlugsArray } = await expandingGalleryContent();
   render(
     <Suspense>
-      {/* <ExpandingGallery.ScrollTo /> */}
-      {/* <ExpandingGallery.UseHash /> */}
-      <ExpandingGallery.Container>
-        <ExpandingGallery.Expander uniqueSlugsArray={uniqueSlugsArray}>
-          <RenderedGalleryExpander />
-        </ExpandingGallery.Expander>
-      </ExpandingGallery.Container>
+      <ExpandingGridGallery.Grid>
+        <ExpandingGridGallery.GridExpander>
+          <TestGalleryExpander />
+        </ExpandingGridGallery.GridExpander>
+      </ExpandingGridGallery.Grid>
     </Suspense>,
-    { expandingGalleryContextValue },
   );
+  const image = await screen.findByRole('img', {
+    name: /land of the wind alt/i,
+  });
+  expect(image).toBeInTheDocument();
 
-  const heading = await screen.findByRole('heading', {
+  const heading = screen.getByRole('heading', {
     name: /land of the wind/i,
   });
   expect(heading).toBeInTheDocument();
 
-  // screen.logTestingPlaygroundURL();
+  screen.logTestingPlaygroundURL();
 });

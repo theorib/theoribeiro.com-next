@@ -5,22 +5,22 @@ import useUrlSlug from '../hooks/useHash';
 import useInitExpandingGallery from '../hooks/useInitExpandingGallery';
 import utils from '../utils/utils';
 import type {
-  ExpandingGalleryContextValue,
-  ExpandingGalleryProviderProps,
+  ExpandingGridGalleryContextValue,
+  ExpandingGridGalleryProviderProps,
   ScrollPosition,
   StoreState,
   StoreStateMapping,
   UniqueSlug,
-} from '../expandingGallery.types';
+} from '../ExpandingGridGallery.types';
 
-export const ExpandingGalleryContext =
-  createContext<ExpandingGalleryContextValue | null>(null);
+export const ExpandingGridGalleryContext =
+  createContext<ExpandingGridGalleryContextValue | null>(null);
 
-function ExpandingGalleryProvider({
+function ExpandingGridGalleryProvider({
   children,
   storeState = 'local',
   orderedUniqueSlugsArrayProp,
-}: ExpandingGalleryProviderProps) {
+}: ExpandingGridGalleryProviderProps) {
   // Init the context States
   const [previousScrollPosition, setPreviousScrollPosition] =
     useState<ScrollPosition>({ scrollX: 0, scrollY: 0 });
@@ -76,30 +76,30 @@ function ExpandingGalleryProvider({
   };
 
   return (
-    <ExpandingGalleryContext.Provider value={value}>
+    <ExpandingGridGalleryContext.Provider value={value}>
       {children}
-    </ExpandingGalleryContext.Provider>
+    </ExpandingGridGalleryContext.Provider>
   );
 }
 
 /**
- * Custom hook that provides access to the ExpandingGalleryContext.
- * Throws an error if used outside of the ExpandingGalleryProvider or if the context is not properly initialized.
- * @returns The ExpandingGalleryContext value
+ * Custom hook that provides access to the ExpandingGridGalleryContext.
+ * Throws an error if used outside of the ExpandingGridGalleryProvider or if the context is not properly initialized.
+ * @returns The ExpandingGridGalleryContext value
  */
-function useExpandingGallery() {
-  const context = useContext(ExpandingGalleryContext);
+function useExpandingGridGallery() {
+  const context = useContext(ExpandingGridGalleryContext);
   if (context === undefined)
     throw new Error(
-      `useExpandingGallery was used outside of ExpandingGalleryProvider`,
+      `useExpandingGridGallery was used outside of ExpandingGridGalleryProvider`,
     );
 
   if (context === null)
     throw new Error(
-      `ExpandingGalleryContext was not properly initialized. It's value is null`,
+      `ExpandingGridGalleryContext was not properly initialized. It's value is null`,
     );
 
   return context;
 }
 
-export { useExpandingGallery, ExpandingGalleryProvider };
+export { useExpandingGridGallery, ExpandingGridGalleryProvider };

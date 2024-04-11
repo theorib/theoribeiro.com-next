@@ -1,5 +1,5 @@
 import portfolioActions from '@/actions/portfolioActions';
-import ExpandingGallery from './ExpandingGallery';
+import ExpandingGridGallery from '../ExpandingGridGallery';
 import RenderedGalleryExpander from './RenderedGalleryExpander';
 import RenderedExpandingGalleryThumbnail from './RenderedExpandingGalleryThumbnail';
 
@@ -8,19 +8,19 @@ export default async function RenderedExpandingGallery() {
   const orderedUniqueSlugsArray = thumbnails.map(item => item.slug);
 
   return (
-    <ExpandingGallery
+    <ExpandingGridGallery
       storeState="urlHash"
       orderedUniqueSlugsArray={orderedUniqueSlugsArray}
     >
-      <ExpandingGallery.ScrollTo />
-      <ExpandingGallery.KeyboardShortcuts />
-      <ExpandingGallery.Container>
-        <ExpandingGallery.Expander>
+      <ExpandingGridGallery.WithScrollTo />
+      <ExpandingGridGallery.WithKeyboardShortcuts />
+      <ExpandingGridGallery.Grid>
+        <ExpandingGridGallery.GridExpander>
           <RenderedGalleryExpander />
-        </ExpandingGallery.Expander>
+        </ExpandingGridGallery.GridExpander>
         {thumbnails.map(item => (
           // <li key={`${item.slug}-key`}>
-          <ExpandingGallery.Item
+          <ExpandingGridGallery.GridItem
             key={`${item.slug}-key`}
             uniqueSlug={item.slug}
             // asChild
@@ -28,10 +28,10 @@ export default async function RenderedExpandingGallery() {
             {/* <button className="w-full block"> */}
             <RenderedExpandingGalleryThumbnail item={item} />
             {/* </button> */}
-          </ExpandingGallery.Item>
+          </ExpandingGridGallery.GridItem>
           // </li>
         ))}
-      </ExpandingGallery.Container>
-    </ExpandingGallery>
+      </ExpandingGridGallery.Grid>
+    </ExpandingGridGallery>
   );
 }

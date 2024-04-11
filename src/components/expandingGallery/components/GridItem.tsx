@@ -2,30 +2,25 @@
 import { forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
-import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
+import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 import type { ReactNode, MouseEvent, LiHTMLAttributes } from 'react';
 
-interface ExpandingGalleryItemProps extends LiHTMLAttributes<HTMLLIElement> {
+interface GridItemProps extends LiHTMLAttributes<HTMLLIElement> {
   uniqueSlug: string;
   afterHandleClick?: (e?: MouseEvent<HTMLLIElement>) => void;
   beforeHandleClick?: (e?: MouseEvent<HTMLLIElement>) => void;
-  onHandleClick?: (e?: MouseEvent<HTMLLIElement>) => void;
   className?: string;
   asChild?: boolean;
   children: ReactNode;
 }
 
 // A generic component that can become any HTML element or another ReactComponent
-const ExpandingGalleryItem = forwardRef<
-  HTMLLIElement,
-  ExpandingGalleryItemProps
->(
+const GridItem = forwardRef<HTMLLIElement, GridItemProps>(
   (
     {
       uniqueSlug,
       afterHandleClick,
       beforeHandleClick,
-      onHandleClick,
       asChild,
       className,
       ...props
@@ -38,21 +33,17 @@ const ExpandingGalleryItem = forwardRef<
       currentUniqueSlug,
       setCurrentUniqueSlug,
       setPreviousScrollPosition,
-    } = useExpandingGallery();
+    } = useExpandingGridGallery();
     const isActive = currentUniqueSlug === uniqueSlug;
 
     const itemClassName = `expanding-gallery-item cursor-pointer transition-opacity ${isActive ? 'opacity-35 expanding-gallery-item--active' : ''}`;
 
     function handleClick(e: MouseEvent<HTMLLIElement>) {
-      // hook to allow for custom behavior at the beginning of the handleClick function
-      beforeHandleClick ? beforeHandleClick(e) : '';
-
-      // prevent the default behavior of the click event
       // e.preventDefault();
       // e.stopPropagation();
 
-      // hook to allow for custom behavior at the end of the handleClick function
-      onHandleClick ? onHandleClick(e) : '';
+      // hook to allow for custom behavior at the beginning of the handleClick function
+      beforeHandleClick ? beforeHandleClick(e) : '';
 
       // store the current scroll position
       setPreviousScrollPosition({
@@ -82,6 +73,6 @@ const ExpandingGalleryItem = forwardRef<
     );
   },
 );
-ExpandingGalleryItem.displayName = 'ExpandingGalleryItem';
+GridItem.displayName = 'GridItem';
 
-export default ExpandingGalleryItem;
+export default GridItem;

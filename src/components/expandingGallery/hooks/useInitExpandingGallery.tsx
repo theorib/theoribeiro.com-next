@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
-import type { SetUniqueSlugArr, UniqueSlug } from '../expandingGallery.types';
+import type {
+  SetUniqueSlugArr,
+  UniqueSlug,
+} from '../ExpandingGridGallery.types';
 import utils from '../utils/utils';
 
 /**

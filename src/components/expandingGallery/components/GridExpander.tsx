@@ -2,12 +2,11 @@
 import { forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
-import expandingGalleryUtils from './utils/utils';
-import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
+import expandingGalleryUtils from '../utils/utils';
+import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 import type { LiHTMLAttributes } from 'react';
 
-export interface ExpandingGalleryExpanderProps
-  extends LiHTMLAttributes<HTMLLIElement> {
+export interface GridExpanderProps extends LiHTMLAttributes<HTMLLIElement> {
   numColsMobile?: number;
   numColsTablet?: number;
   numColsDesktop?: number;
@@ -16,10 +15,7 @@ export interface ExpandingGalleryExpanderProps
 }
 
 // A generic component that can become any HTML element or another ReactComponent
-const ExpandingGalleryExpander = forwardRef<
-  HTMLLIElement,
-  ExpandingGalleryExpanderProps
->(
+const GridExpander = forwardRef<HTMLLIElement, GridExpanderProps>(
   (
     {
       numColsMobile = 1,
@@ -33,7 +29,7 @@ const ExpandingGalleryExpander = forwardRef<
   ) => {
     const Comp = asChild ? Slot : 'li';
     const { currentUniqueSlug, currentUniqueIndex, numberOfUniqueSlugs } =
-      useExpandingGallery();
+      useExpandingGridGallery();
 
     if (currentUniqueSlug === null) return null;
 
@@ -58,6 +54,6 @@ const ExpandingGalleryExpander = forwardRef<
     );
   },
 );
-ExpandingGalleryExpander.displayName = 'ExpandingGalleryExpander';
+GridExpander.displayName = 'GridExpander';
 
-export default ExpandingGalleryExpander;
+export default GridExpander;

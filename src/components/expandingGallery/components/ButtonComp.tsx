@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from './utils/utils';
-import useButtonTypeLookup from './hooks/useButtonTypeLookup';
+import { cn } from '../utils/utils';
+import useButtonTypeLookup from '../hooks/useButtonTypeLookup';
 
-export const buttonVariants = cva(
+export const buttonCompVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-30 dark:focus-visible:ring-neutral-300',
   {
     variants: {
@@ -27,9 +27,9 @@ export const buttonVariants = cva(
   },
 );
 
-export interface ButtonProps
+export interface ButtonCompProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+    VariantProps<typeof buttonCompVariants> {
   asChild?: boolean;
   beforeHandleClick?: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -40,7 +40,7 @@ export interface ButtonProps
   buttonType: 'next' | 'prev' | 'close';
 }
 
-const ExpandingGalleryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const ButtonComp = React.forwardRef<HTMLButtonElement, ButtonCompProps>(
   (
     {
       buttonType,
@@ -69,13 +69,13 @@ const ExpandingGalleryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         onClick={handleClick}
         disabled={!isEnabled}
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonCompVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />
     );
   },
 );
-ExpandingGalleryButton.displayName = 'Button';
+ButtonComp.displayName = 'ButtonComp';
 
-export default ExpandingGalleryButton;
+export default ButtonComp;

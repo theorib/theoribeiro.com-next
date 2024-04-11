@@ -1,4 +1,4 @@
-import { useExpandingGallery } from '../contexts/ExpandingGalleryContext';
+import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 
 export type ButtonTypeLookup = ReturnType<typeof useButtonTypeLookup>;
 
@@ -8,7 +8,7 @@ export default function useButtonTypeLookup() {
     currentUniqueIndex,
     orderedUniqueSlugsArray,
     setCurrentUniqueSlug,
-  } = useExpandingGallery();
+  } = useExpandingGridGallery();
 
   const isCurrentIndex = currentUniqueIndex !== null;
 

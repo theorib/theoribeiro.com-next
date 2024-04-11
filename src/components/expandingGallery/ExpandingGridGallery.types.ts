@@ -12,7 +12,7 @@ export type StoreStateMapping = {
   setCurrentUniqueSlug: SetCurrentUniqueSlug;
 };
 
-export type ExpandingGalleryContextValue = {
+export type ExpandingGridGalleryContextValue = {
   previousScrollPosition: ScrollPosition;
   setPreviousScrollPosition: Dispatch<SetStateAction<ScrollPosition>>;
   currentUniqueSlug: UniqueSlug | null;
@@ -23,7 +23,7 @@ export type ExpandingGalleryContextValue = {
   numberOfUniqueSlugs: number;
 };
 
-export type ExpandingGalleryProviderProps = {
+export type ExpandingGridGalleryProviderProps = {
   children: ReactNode;
   storeState: StoreState;
   orderedUniqueSlugsArrayProp: UniqueSlug[];

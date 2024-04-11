@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
-import { ScrollPosition } from './expandingGallery.types';
+import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
+import { ScrollPosition } from '../ExpandingGridGallery.types';
 
 /**
  * Retrieves the current scroll position of the window.
@@ -61,8 +61,9 @@ function scrollElementIntoView(
  * It retrieves the previous scroll position from the ExpandingGalleryContext, scrolls the window to that position, and then scrolls the expanded gallery element into view.
  * The component is designed to be used within the ExpandingGalleryContextProvider
  */
-export default function ExpandingGalleryScrollTo() {
-  const { currentUniqueSlug, previousScrollPosition } = useExpandingGallery();
+export default function WithScrollTo() {
+  const { currentUniqueSlug, previousScrollPosition } =
+    useExpandingGridGallery();
   const scrollPositionRef = useRef<ScrollPosition>({ scrollX: 0, scrollY: 0 });
 
   useEffect(() => {

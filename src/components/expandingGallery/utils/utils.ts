@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
 import { type SetStateAction, type Dispatch } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { UniqueSlug } from '../expandingGallery.types';
+import { UniqueSlug } from '../ExpandingGridGallery.types';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

@@ -1,12 +1,12 @@
 'use client';
 import { useHotkeys } from 'react-hotkeys-hook';
-import useButtonTypeLookup from './hooks/useButtonTypeLookup';
-import { useExpandingGallery } from './contexts/ExpandingGalleryContext';
+import useButtonTypeLookup from '../hooks/useButtonTypeLookup';
+import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 
-export default function ExpandingGalleryUseKeyboardShortcuts() {
+export default function WithKeyboardShortcuts() {
   const buttonTypeLookUp = useButtonTypeLookup();
 
-  const { currentUniqueSlug } = useExpandingGallery();
+  const { currentUniqueSlug } = useExpandingGridGallery();
 
   useHotkeys(
     'left',
