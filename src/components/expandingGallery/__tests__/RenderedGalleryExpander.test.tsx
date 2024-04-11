@@ -3,14 +3,17 @@ import {
   getTestExpandedItemFromSlug,
   render,
   screen,
-} from '@/testUtils/customRenderExpandingGallery';
-import { Suspense, useContext } from 'react';
+  waitFor,
+} from '@/testUtils/expandingGridGalleryUtils/customRenderExpandingGridGallery';
+import { Suspense, useContext, useEffect } from 'react';
 import ExpandingGridGallery from '../ExpandingGridGallery';
 import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 import Image from 'next/image';
+import TestSetExpandingGridGalleryState from '@/testUtils/expandingGridGalleryUtils/components/TestSetExpandingGridGalleryState';
 
-export default function TestGalleryExpander() {
+function TestGalleryExpander() {
   const { currentUniqueSlug } = useExpandingGridGallery();
+
   if (!currentUniqueSlug) return null;
 
   const item = getTestExpandedItemFromSlug(currentUniqueSlug);
@@ -25,16 +28,21 @@ export default function TestGalleryExpander() {
 }
 
 test('make sure thumbnail is rendered', async () => {
-  // const { thumbnails, uniqueSlugsArray } = await expandingGalleryContent();
   render(
     <Suspense>
+      <TestSetExpandingGridGalleryState currentUniqueSlug="land-of-the-wind" />
       <ExpandingGridGallery.Grid>
         <ExpandingGridGallery.GridExpander>
+          {/* <ExpandingGridGallery /> */}
           <TestGalleryExpander />
         </ExpandingGridGallery.GridExpander>
       </ExpandingGridGallery.Grid>
     </Suspense>,
   );
+  await waitFor(() => {
+    //
+  });
+
   const image = await screen.findByRole('img', {
     name: /land of the wind alt/i,
   });
@@ -44,6 +52,6 @@ test('make sure thumbnail is rendered', async () => {
     name: /land of the wind/i,
   });
   expect(heading).toBeInTheDocument();
-
+  screen.debug();
   screen.logTestingPlaygroundURL();
 });

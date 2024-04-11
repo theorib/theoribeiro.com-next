@@ -36,7 +36,9 @@ const GridItem = forwardRef<HTMLLIElement, GridItemProps>(
     } = useExpandingGridGallery();
     const isActive = currentUniqueSlug === uniqueSlug;
 
-    const itemClassName = `expanding-gallery-item cursor-pointer transition-opacity ${isActive ? 'opacity-35 expanding-gallery-item--active' : ''}`;
+    const stylingClassNames = `transition-opacity ${isActive ? 'opacity-35' : ''}`;
+    const accessibilityClassNames = `cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 focus:opacity-35`;
+    const userCustomizationClassNames = `expanding-grid-gallery-item ${isActive ? 'expanding-grid-gallery-item--active' : ''}`;
 
     function handleClick(e: MouseEvent<HTMLLIElement>) {
       // e.preventDefault();
@@ -64,8 +66,16 @@ const GridItem = forwardRef<HTMLLIElement, GridItemProps>(
 
     return (
       <Comp
+        role="button"
+        tabIndex={0}
+        aria-expanded={isActive}
         id={uniqueSlug}
-        className={cn(itemClassName, className)}
+        className={cn(
+          stylingClassNames,
+          accessibilityClassNames,
+          userCustomizationClassNames,
+          className,
+        )}
         onClick={handleClick}
         ref={ref}
         {...props}

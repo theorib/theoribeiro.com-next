@@ -14,6 +14,7 @@ const Grid = forwardRef<HTMLUListElement, GridProps>(
     const Comp = asChild ? Slot : 'ul';
     return (
       <Comp
+        role="list"
         className={cn(
           'grid gap-0 sm:grid-cols-2 sm:gap-0 expanding-gallery-container expanding-gallery-container--expanded',
           className,

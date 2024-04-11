@@ -42,7 +42,7 @@ const GridExpander = forwardRef<HTMLLIElement, GridExpanderProps>(
         numColsDesktop,
       });
 
-    const expanderGridClassNames = `expanding-gallery-expander expanding-gallery-expander--expanded col-span-full ${expandingGalleryUtils.rowStartClass[rowMobile as keyof typeof expandingGalleryUtils.rowStartClass]} sm:${expandingGalleryUtils.rowStartClass[rowTablet as keyof typeof expandingGalleryUtils.rowStartClass]} md:${expandingGalleryUtils.rowStartClass[rowDesktop as keyof typeof expandingGalleryUtils.rowStartClass]}`;
+    const expanderGridClassNames = `expanding-grid-gallery-expander expanding-grid-gallery-expander--expanded col-span-full ${expandingGalleryUtils.rowStartClass[rowMobile as keyof typeof expandingGalleryUtils.rowStartClass]} sm:${expandingGalleryUtils.rowStartClass[rowTablet as keyof typeof expandingGalleryUtils.rowStartClass]} md:${expandingGalleryUtils.rowStartClass[rowDesktop as keyof typeof expandingGalleryUtils.rowStartClass]}`;
 
     return (
       <Comp

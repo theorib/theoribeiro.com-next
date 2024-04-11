@@ -1,8 +1,9 @@
 import { type ReactNode } from 'react';
 import { render, type RenderOptions } from '@testing-library/react';
-import { vi } from 'vitest';
+// import { vi } from 'vitest';
 import { ExpandingGridGalleryContextValue } from '@/components/expandingGallery/ExpandingGridGallery.types';
-import { ExpandingGridGalleryContext } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
+// import { ExpandingGridGalleryContext } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
+import ExpandingGridGallery from '@/components/expandingGallery/ExpandingGridGallery';
 
 interface ExpandingGalleryRenderOptions extends RenderOptions {
   ExpandingGridGalleryContextValue?: ExpandingGridGalleryContextValue;
@@ -57,32 +58,24 @@ export const getTestExpandedItemFromSlug = (slug: string) => {
 
 const orderedUniqueSlugsArray = testExpandingGridContent.map(item => item.slug);
 
-const expandingGridGalleryContextValue: ExpandingGridGalleryContextValue = {
-  currentUniqueSlug: 'land-of-the-wind',
-  setCurrentUniqueSlug: () => vi.fn(),
-  orderedUniqueSlugsArray: orderedUniqueSlugsArray,
-  setOrderedUniqueSlugsArray: () => vi.fn(),
-  previousScrollPosition: { scrollX: 0, scrollY: 0 },
-  setPreviousScrollPosition: () => vi.fn(),
-  currentUniqueIndex: 0,
-  numberOfUniqueSlugs: 8,
-};
-
-function customRenderExpandingGallery(
+function customRenderExpandingGridGallery(
   ui: React.ReactElement,
   options?: Omit<ExpandingGalleryRenderOptions, 'wrapper'>,
 ) {
   const Wrapper = ({ children }: { children: ReactNode }) => {
+    console.log(' Rendering Wrapper');
+
     return (
-      <ExpandingGridGalleryContext.Provider
-        value={expandingGridGalleryContextValue}
+      <ExpandingGridGallery
+        orderedUniqueSlugsArray={orderedUniqueSlugsArray}
+        storeState="local"
       >
         {children}
-      </ExpandingGridGalleryContext.Provider>
+      </ExpandingGridGallery>
     );
   };
 
   return render(ui, { wrapper: Wrapper, ...options });
 }
 export * from '@testing-library/react';
-export { customRenderExpandingGallery as render };
+export { customRenderExpandingGridGallery as render };

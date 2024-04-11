@@ -11,6 +11,7 @@ import RenderedVideoPlayer from './RenderedVideoPlayer';
 import { Separator } from '@radix-ui/react-separator';
 import ExpandingGridGallery from '../ExpandingGridGallery';
 import { PiCaretLeftThin, PiCaretRightThin, PiXThin } from 'react-icons/pi';
+import Nav from '../components/Nav';
 
 // interface RenderedGalleryExpanderProps {
 //   expanderData: PortfolioItem;
@@ -56,19 +57,19 @@ export default function RenderedGalleryExpander() {
       id={`${slug}-expanded`}
       className="flex flex-col relative"
     >
-      <nav className="sm:absolute top-0 left-0 right-0 bottom-0 flex justify-between items-center p-4 pb-10 sm:p-3  md:py-2 sm:px-0 order-last ">
-        <ExpandingGridGallery.ButtonPrev className="overflow-clip sm:rounded-s-none">
+      <Nav className="sm:absolute top-0 left-0 right-0 bottom-0 flex justify-between items-center p-4 pb-10 sm:p-3  md:py-2 sm:px-0 order-last ">
+        <ExpandingGridGallery.NavButtonPrev className="overflow-clip sm:rounded-s-none">
           <PiCaretLeftThin className={iconClassName} />
-        </ExpandingGridGallery.ButtonPrev>
-        <ExpandingGridGallery.ButtonNext className="overflow-clip order-last sm:rounded-e-none">
+        </ExpandingGridGallery.NavButtonPrev>
+        <ExpandingGridGallery.NavButtonNext className="overflow-clip order-last sm:rounded-e-none">
           <PiCaretRightThin className={iconClassName} />
-        </ExpandingGridGallery.ButtonNext>
-        <ExpandingGridGallery.ButtonClose className="sm:absolute sm:right-3 md:right-2 sm:top-6 sm:w-12 sm:h-12 sm:mx-0">
+        </ExpandingGridGallery.NavButtonNext>
+        <ExpandingGridGallery.NavButtonClose className="sm:absolute sm:right-3 md:right-2 sm:top-6 sm:w-12 sm:h-12 sm:mx-0">
           <PiXThin
             className={cn([iconClassName, 'sm:w-18 sm:h-18 sm:mx-0 sm:p-0'])}
           />
-        </ExpandingGridGallery.ButtonClose>
-      </nav>
+        </ExpandingGridGallery.NavButtonClose>
+      </Nav>
       <article className="col-span-full flex flex-auto flex-col sm:px-[4.5rem] md:px-16 sm:py-6 md:flex-row md:gap-6 lg:gap-16 md:py-10 items-center transition-all">
         <div className="basis-7/12 lg:basis-6/12 w-full transition-all">
           <AspectRatio ratio={16 / 9} className="flex">
