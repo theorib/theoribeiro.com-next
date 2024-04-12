@@ -1,20 +1,19 @@
-import { Suspense } from 'react';
-
 import ExpandingGridGallery from '@/components/expandingGallery/ExpandingGridGallery';
 import Image from 'next/image';
-import {
-  getTestExpandedItemFromSlug,
-  testExpandingGridContent,
-  TestExpandingGridItem,
-} from '../customRenderExpandingGridGallery';
+
 import { useExpandingGridGallery } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
+import {
+  expandingGalleryTestContent,
+  ExpandingGalleryTestContentItem,
+  getExpandingGalleryTestContentFromSlug,
+} from './testData';
 
 function TestGalleryExpander() {
   const { currentUniqueSlug } = useExpandingGridGallery();
 
   if (!currentUniqueSlug) return null;
 
-  const item = getTestExpandedItemFromSlug(currentUniqueSlug);
+  const item = getExpandingGalleryTestContentFromSlug(currentUniqueSlug);
   if (!item) return null;
 
   return (
@@ -26,7 +25,11 @@ function TestGalleryExpander() {
   );
 }
 
-function TestGalleryThumbnail({ item }: { item: TestExpandingGridItem }) {
+function TestGalleryThumbnail({
+  item,
+}: {
+  item: ExpandingGalleryTestContentItem;
+}) {
   return (
     <>
       <p>{item.title}</p>
@@ -35,13 +38,14 @@ function TestGalleryThumbnail({ item }: { item: TestExpandingGridItem }) {
   );
 }
 
-export default function ExpandingGridGalleryTestTree() {
-  const content: TestExpandingGridItem[] = testExpandingGridContent;
+export default function TestGalleryTree() {
+  const content: ExpandingGalleryTestContentItem[] =
+    expandingGalleryTestContent;
 
   return (
-    <Suspense>
-      {/* <ExpandingGridGallery.WithScrollTo /> */}
-      {/* <ExpandingGridGallery.WithKeyboardShortcuts /> */}
+    <>
+      <ExpandingGridGallery.WithScrollTo />
+      <ExpandingGridGallery.WithKeyboardShortcuts />
       <ExpandingGridGallery.Grid>
         <ExpandingGridGallery.GridExpander>
           <ExpandingGridGallery.Nav>
@@ -64,6 +68,6 @@ export default function ExpandingGridGalleryTestTree() {
           </ExpandingGridGallery.GridItem>
         ))}
       </ExpandingGridGallery.Grid>
-    </Suspense>
+    </>
   );
 }

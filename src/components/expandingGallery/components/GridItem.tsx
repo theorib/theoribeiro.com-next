@@ -66,6 +66,7 @@ const GridItem = forwardRef<HTMLLIElement, GridItemProps>(
 
     return (
       <Comp
+        aria-label={`Open ${uniqueSlug}`}
         role="button"
         tabIndex={0}
         aria-expanded={isActive}

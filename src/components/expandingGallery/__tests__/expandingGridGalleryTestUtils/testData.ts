@@ -1,15 +1,4 @@
-import { type ReactNode } from 'react';
-import { render, type RenderOptions } from '@testing-library/react';
-// import { vi } from 'vitest';
-import { ExpandingGridGalleryContextValue } from '@/components/expandingGallery/ExpandingGridGallery.types';
-// import { ExpandingGridGalleryContext } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
-import ExpandingGridGallery from '@/components/expandingGallery/ExpandingGridGallery';
-
-interface ExpandingGalleryRenderOptions extends RenderOptions {
-  ExpandingGridGalleryContextValue?: ExpandingGridGalleryContextValue;
-}
-
-export type TestExpandingGridItem = {
+export type ExpandingGalleryTestContentItem = {
   title: string;
   slug: string;
   content: string;
@@ -18,7 +7,7 @@ export type TestExpandingGridItem = {
   image: string;
 };
 
-export const testExpandingGridContent: TestExpandingGridItem[] = [
+export const expandingGalleryTestContent: ExpandingGalleryTestContentItem[] = [
   {
     title: 'Land of the Wind',
     slug: 'land-of-the-wind',
@@ -68,14 +57,6 @@ export const testExpandingGridContent: TestExpandingGridItem[] = [
     image: 'https://placehold.co/720x405?text=Land+of+the+Sun+Image',
   },
   {
-    title: 'Land of the Moon',
-    slug: 'land-of-the-moon',
-    content: 'Land of the Moon Content',
-    expandedAlt: 'Land of the Moon Expanded Alt',
-    thumbAlt: 'Land of the Moon Thumb Alt',
-    image: 'https://placehold.co/720x405?text=Land+of+the+Moon+Image',
-  },
-  {
     title: 'Land of the Stars',
     slug: 'land-of-the-stars',
     content: 'Land of the Stars Content',
@@ -83,30 +64,16 @@ export const testExpandingGridContent: TestExpandingGridItem[] = [
     thumbAlt: 'Land of the Stars Thumb Alt',
     image: 'https://placehold.co/720x405?text=Land+of+the+Stars+Image',
   },
+  {
+    title: 'Land of the Moon',
+    slug: 'land-of-the-moon',
+    content: 'Land of the Moon Content',
+    expandedAlt: 'Land of the Moon Expanded Alt',
+    thumbAlt: 'Land of the Moon Thumb Alt',
+    image: 'https://placehold.co/720x405?text=Land+of+the+Moon+Image',
+  },
 ];
 
-export const getTestExpandedItemFromSlug = (slug: string) => {
-  return testExpandingGridContent.find(item => item.slug === slug);
+export const getExpandingGalleryTestContentFromSlug = (slug: string) => {
+  return expandingGalleryTestContent.find(item => item.slug === slug);
 };
-
-const orderedUniqueSlugsArray = testExpandingGridContent.map(item => item.slug);
-
-function customRenderExpandingGridGallery(
-  ui: React.ReactElement,
-  options?: Omit<ExpandingGalleryRenderOptions, 'wrapper'>,
-) {
-  const Wrapper = ({ children }: { children: ReactNode }) => {
-    return (
-      <ExpandingGridGallery
-        orderedUniqueSlugsArray={orderedUniqueSlugsArray}
-        storeState="local"
-      >
-        {children}
-      </ExpandingGridGallery>
-    );
-  };
-
-  return render(ui, { wrapper: Wrapper, ...options });
-}
-export * from '@testing-library/react';
-export { customRenderExpandingGridGallery as render };
