@@ -27,6 +27,7 @@ export const buttonCompVariants = cva(
   },
 );
 
+export type ButtonType = 'next' | 'prev' | 'close';
 export interface ButtonCompProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonCompVariants> {
@@ -37,7 +38,7 @@ export interface ButtonCompProps
   afterHandleClick?: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
-  buttonType: 'next' | 'prev' | 'close';
+  buttonType: ButtonType;
 }
 
 const ButtonComp = React.forwardRef<HTMLButtonElement, ButtonCompProps>(
