@@ -45,7 +45,7 @@ const GridItem = forwardRef<HTMLLIElement, GridItemProps>(
       // e.stopPropagation();
 
       // hook to allow for custom behavior at the beginning of the handleClick function
-      beforeHandleClick ? beforeHandleClick(e) : '';
+      if (beforeHandleClick) beforeHandleClick(e);
 
       // store the current scroll position
       setPreviousScrollPosition({
@@ -61,7 +61,7 @@ const GridItem = forwardRef<HTMLLIElement, GridItemProps>(
       setCurrentUniqueSlug(uniqueSlug);
 
       // hook to allow for custom behavior after the handleClick function
-      afterHandleClick ? afterHandleClick(e) : '';
+      if (afterHandleClick) afterHandleClick(e);
     }
 
     return (
