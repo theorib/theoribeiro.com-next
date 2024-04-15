@@ -22,6 +22,7 @@ const GridItem = forwardRef<HTMLLIElement, GridItemProps>(
       afterHandleClick,
       beforeHandleClick,
       asChild,
+      children,
       className,
       ...props
     },
@@ -80,7 +81,9 @@ const GridItem = forwardRef<HTMLLIElement, GridItemProps>(
         onClick={handleClick}
         ref={ref}
         {...props}
-      />
+      >
+        {children}
+      </Comp>
     );
   },
 );
