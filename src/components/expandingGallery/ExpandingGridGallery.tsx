@@ -1,5 +1,5 @@
 import { ExpandingGridGalleryProvider } from './contexts/ExpandingGridGalleryContext';
-import ButtonComp from './components/ButtonComp';
+
 import Grid from './components/Grid';
 import GridExpander from './components/GridExpander';
 import GridItem from './components/GridItem';

@@ -22,13 +22,19 @@ const buttonCompWithButtonType = ({
   buttonType,
   variant,
 }: WithButtonTypeProps) => {
-  return forwardRef<
+  const ButtonCompWithButtonType = forwardRef<
     HTMLButtonElement,
     Omit<ButtonCompProps, 'buttonType' | 'variant'>
   >((props, ref) => {
     const newProps = { ...props, buttonType, variant } as ButtonCompProps;
     return <ButtonComp ref={ref} {...newProps} />;
   });
+
+  ButtonCompWithButtonType.displayName = 'buttonCompWithButtonType';
+
+  return ButtonCompWithButtonType;
 };
+
+// buttonCompWithButtonType.displayName = 'buttonCompWithButtonType'; // Add display name
 
 export default buttonCompWithButtonType;

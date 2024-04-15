@@ -30,7 +30,10 @@ export default function RenderedGalleryExpander() {
         setExpanderData(data);
       }
     }
-    getExpanderData();
+    getExpanderData().catch(err => {
+      console.error(err);
+      throw new Error(err);
+    });
   }, [currentUniqueSlug]);
 
   if (!expanderData) return null;
