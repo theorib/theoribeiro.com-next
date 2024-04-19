@@ -5,27 +5,41 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../utils/utils';
 import useButtonTypeLookup from '../hooks/useButtonTypeLookup';
 
-export const buttonCompVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-30 dark:focus-visible:ring-neutral-300',
-  {
-    variants: {
-      variant: {
-        default:
-          'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-700 dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
-        close:
-          'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-700  sm:dark:bg-transparent dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
-      },
-      size: {
-        default: '',
-        icon: '',
-      },
+export const buttonCompVariants = cva('', {
+  variants: {
+    variant: {
+      prevNext:
+        'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-700 dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
+      close:
+        'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-700  sm:dark:bg-transparent dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
+      galleryItem: [
+        'w-full block transition-opacity',
+        'cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 focus:opacity-35',
+        'expanding-grid-gallery-item',
+      ],
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'icon',
+    galleryItemActive: {
+      true: ['opacity-35', 'expanding-grid-gallery-item--active'],
+      false: '',
+    },
+    size: {
+      default: '',
+      icon: '',
     },
   },
-);
+  compoundVariants: [
+    {
+      variant: ['close', 'prevNext'],
+      className:
+        'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-30 dark:focus-visible:ring-neutral-300',
+    },
+  ],
+
+  defaultVariants: {
+    variant: 'prevNext',
+    size: 'icon',
+  },
+});
 
 export type ButtonType = 'next' | 'prev' | 'close';
 export interface ButtonCompProps

@@ -15,6 +15,15 @@ interface GridItemProps {
   children: ReactNode;
 }
 
+type UpdatedProps = Omit<
+  GridItemProps,
+  | 'children'
+  | 'uniqueSlug'
+  | 'afterHandleClick'
+  | 'beforeHandleClick'
+  | 'asChild'
+>;
+
 // A generic component that can become any HTML element or another ReactComponent
 const GridItem = (
   {
@@ -32,11 +41,14 @@ const GridItem = (
 
   const { currentUniqueSlug, setCurrentUniqueSlug, setPreviousScrollPosition } =
     useExpandingGridGallery();
+
   const isActive = currentUniqueSlug === uniqueSlug;
 
-  const stylingClassNames = `w-full block transition-opacity ${isActive ? 'opacity-35' : ''}`;
-  const accessibilityClassNames = `cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 focus:opacity-35`;
-  const userCustomizationClassNames = `expanding-grid-gallery-item ${isActive ? 'expanding-grid-gallery-item--active' : ''}`;
+  const definedClassNames = [
+    `w-full block transition-opacity ${isActive ? 'opacity-35' : ''}`,
+    `cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 focus:opacity-35`,
+    `expanding-grid-gallery-item ${isActive ? 'expanding-grid-gallery-item--active' : ''}`,
+  ];
 
   function handleClick(e: React.MouseEvent) {
     e.preventDefault();
@@ -62,27 +74,13 @@ const GridItem = (
     if (afterHandleClick) afterHandleClick(e);
   }
 
-  type UpdatedProps = Omit<
-    GridItemProps,
-    | 'children'
-    | 'uniqueSlug'
-    | 'afterHandleClick'
-    | 'beforeHandleClick'
-    | 'asChild'
-  >;
-
   function getUpdatedProps(props: UpdatedProps) {
     return {
       ...props,
       'aria-label': `Open ${uniqueSlug}`,
       'aria-expanded': isActive,
       onClick: handleClick,
-      className: cn(
-        stylingClassNames,
-        accessibilityClassNames,
-        userCustomizationClassNames,
-        className,
-      ),
+      className: cn(...definedClassNames, className),
     };
   }
 
@@ -91,22 +89,7 @@ const GridItem = (
   const ButtonComponent = <button {...buttonProps}>{children}</button>;
 
   return (
-    <Comp
-      id={uniqueSlug}
-      ref={ref}
-      // aria-label={`Open ${uniqueSlug}`}
-      // role="button"
-      // tabIndex={0}
-      // aria-expanded={isActive}
-      // className={cn(
-      //   stylingClassNames,
-      //   accessibilityClassNames,
-      //   userCustomizationClassNames,
-      //   className,
-      // )}
-      // onClick={handleClick}
-      {...compProps}
-    >
+    <Comp id={uniqueSlug} ref={ref} {...compProps}>
       {asChild ? children : ButtonComponent}
     </Comp>
   );
