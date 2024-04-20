@@ -28,11 +28,11 @@ export default function MainNav() {
     <nav aria-label="Main Menu">
       <ul className="flex flex-col divide-y border-t border-b">
         <MainNavItem href={paths.homePage()}>Home</MainNavItem>
-        <MainNavItem href="#">
-          Demo Reel canis circensis citus manus joy
-        </MainNavItem>
+
         <MainNavItem href="#">Still Photography</MainNavItem>
         <MainNavItem href={paths.aboutPage()}>About</MainNavItem>
+        <MainNavItem href={'/test-gallery-hash'}>test-gallery-hash</MainNavItem>
+        <MainNavItem href={'/test-page'}>test-page</MainNavItem>
       </ul>
     </nav>
   );

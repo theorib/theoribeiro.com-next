@@ -30,7 +30,7 @@ export default async function RenderedExpandingGalleryServer({
     >
       <WithSetCurrentUniqueSlug uniqueSlug={slug} />
       <ExpandingGridGallery.WithScrollTo />
-      <ExpandingGridGallery.WithKeyboardShortcuts />
+      {/* <ExpandingGridGallery.WithKeyboardShortcuts /> */}
       <ExpandingGridGallery.Grid>
         <ExpandingGridGallery.GridExpander>
           <RenderedGalleryExpanderServer slug={slug} />
