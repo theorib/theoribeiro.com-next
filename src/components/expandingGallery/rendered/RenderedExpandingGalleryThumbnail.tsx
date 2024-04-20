@@ -6,7 +6,7 @@ type RenderedExpandingGalleryThumbnail = {
   item: PortfolioThumbnail;
 };
 
-export default function RenderedExpandingGalleryThumbnail({
+function RenderedExpandingGalleryThumbnail({
   item,
 }: RenderedExpandingGalleryThumbnail) {
   const priority = item.id <= 3 ? true : false;
@@ -30,3 +30,4 @@ export default function RenderedExpandingGalleryThumbnail({
     </AspectRatio>
   );
 }
+export default RenderedExpandingGalleryThumbnail;

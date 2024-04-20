@@ -1,3 +1,4 @@
+'use client';
 import ReactPlayer from 'react-player/lazy';
 import { PiPlayFill } from 'react-icons/pi';
 import { Suspense } from 'react';
@@ -9,7 +10,7 @@ type RenderedVideoPlayerProps = {
   controls?: boolean;
 };
 
-export default function RenderedVideoPlayer({
+function RenderedVideoPlayer({
   videoUrl,
   imageUrl,
   controls = true,
@@ -32,3 +33,4 @@ export default function RenderedVideoPlayer({
     </Suspense>
   );
 }
+export default RenderedVideoPlayer;

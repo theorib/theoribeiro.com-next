@@ -67,6 +67,8 @@ export default function WithScrollTo() {
   const scrollPositionRef = useRef<ScrollPosition>({ scrollX: 0, scrollY: 0 });
 
   useEffect(() => {
+    console.log('WithScrollTo');
+
     scrollPositionRef.current = previousScrollPosition;
     const animateFirstScroll = scrollToPosition(scrollPositionRef.current);
 

@@ -1,16 +1,14 @@
 import portfolioActions from '@/actions/portfolioActions';
-import ExpandingGridGallery from '../ExpandingGridGallery';
-import RenderedGalleryExpander from './RenderedGalleryExpander';
-import RenderedExpandingGalleryThumbnail from './RenderedExpandingGalleryThumbnail';
-import { galleryItemAfterHandleClick } from '../rendered-server/renderedGalleryActions';
+import ExpandingGridGallery from '@/components/expandingGallery/ExpandingGridGallery';
+import RenderedExpandingGalleryThumbnail from '@/components/expandingGallery/rendered/RenderedExpandingGalleryThumbnail';
+import RenderedGalleryExpander from '@/components/expandingGallery/rendered/RenderedGalleryExpander';
 
-export default async function RenderedExpandingGallery() {
+export default async function TestGalleryPage() {
   const thumbnails = await portfolioActions.getPortfolioThumbnails();
   const orderedUniqueSlugsArray = thumbnails.map(item => item.slug);
-
   return (
     <ExpandingGridGallery
-      storeState="local"
+      storeState="urlHash"
       orderedUniqueSlugsArray={orderedUniqueSlugsArray}
     >
       <ExpandingGridGallery.WithScrollTo />
@@ -24,7 +22,6 @@ export default async function RenderedExpandingGallery() {
             key={`${item.slug}-key`}
             uniqueSlug={item.slug}
             acceptServerActions={true}
-            afterHandleClick={galleryItemAfterHandleClick}
           >
             <RenderedExpandingGalleryThumbnail item={item} />
           </ExpandingGridGallery.GridItem>

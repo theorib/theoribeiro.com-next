@@ -1,10 +1,25 @@
 import portfolioActions from '@/actions/portfolioActions';
 import ExpandingGridGallery from '../ExpandingGridGallery';
-import RenderedGalleryExpander from './RenderedGalleryExpander';
-import RenderedExpandingGalleryThumbnail from './RenderedExpandingGalleryThumbnail';
-import { galleryItemAfterHandleClick } from '../rendered-server/renderedGalleryActions';
+import { galleryItemAfterHandleClick } from './renderedGalleryActions';
+import RenderedGalleryExpanderServer from './RenderedGalleryExpanderServer';
+import RenderedExpandingGalleryThumbnail from '../rendered/RenderedExpandingGalleryThumbnail';
+import WithSetCurrentUniqueSlug from './WithSetCurrentUniqueSlug';
+import { notFound } from 'next/navigation';
 
-export default async function RenderedExpandingGallery() {
+interface RenderedExpandingGalleryServerProps {
+  slug?: string | null;
+}
+
+export default async function RenderedExpandingGalleryServer({
+  slug = null,
+}: RenderedExpandingGalleryServerProps) {
+  if (slug !== null) {
+    const slugExists = (await portfolioActions.getPortfolioSlugs()).includes(
+      slug,
+    );
+    if (!slugExists) notFound();
+  }
+
   const thumbnails = await portfolioActions.getPortfolioThumbnails();
   const orderedUniqueSlugsArray = thumbnails.map(item => item.slug);
 
@@ -13,11 +28,12 @@ export default async function RenderedExpandingGallery() {
       storeState="local"
       orderedUniqueSlugsArray={orderedUniqueSlugsArray}
     >
+      <WithSetCurrentUniqueSlug uniqueSlug={slug} />
       <ExpandingGridGallery.WithScrollTo />
       <ExpandingGridGallery.WithKeyboardShortcuts />
       <ExpandingGridGallery.Grid>
         <ExpandingGridGallery.GridExpander>
-          <RenderedGalleryExpander />
+          <RenderedGalleryExpanderServer slug={slug} />
         </ExpandingGridGallery.GridExpander>
         {thumbnails.map(item => (
           <ExpandingGridGallery.GridItem

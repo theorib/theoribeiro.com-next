@@ -12,6 +12,8 @@ export type StoreStateMapping = {
   setCurrentUniqueSlug: SetCurrentUniqueSlug;
 };
 
+export type UniqueIndex = number | null;
+
 export type ExpandingGridGalleryContextValue = {
   previousScrollPosition: ScrollPosition;
   setPreviousScrollPosition: Dispatch<SetStateAction<ScrollPosition>>;
@@ -19,7 +21,7 @@ export type ExpandingGridGalleryContextValue = {
   setCurrentUniqueSlug: SetCurrentUniqueSlug;
   orderedUniqueSlugsArray: UniqueSlug[];
   setOrderedUniqueSlugsArray: SetOrderedUniqueSlugsArray;
-  currentUniqueIndex: number | null;
+  currentUniqueIndex: UniqueIndex;
   numberOfUniqueSlugs: number;
 };
 

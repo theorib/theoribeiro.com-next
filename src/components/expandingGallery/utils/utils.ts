@@ -191,6 +191,10 @@ export function setOrderedUniqueSlugsArrayState(
   setStateFn(slugifiedValue);
 }
 
+const voidFn = () => {
+  return;
+};
+
 const utils = {
   rowStartClass,
   getRowPositions,
@@ -200,6 +204,7 @@ const utils = {
   slugifyArray,
   setCurrentUniqueSlugState,
   setOrderedUniqueSlugsArrayState,
+  voidFn,
 };
 
 export default utils;

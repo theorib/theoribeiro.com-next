@@ -35,6 +35,4 @@ const buttonCompWithButtonType = ({
   return ButtonCompWithButtonType;
 };
 
-// buttonCompWithButtonType.displayName = 'buttonCompWithButtonType'; // Add display name
-
 export default buttonCompWithButtonType;

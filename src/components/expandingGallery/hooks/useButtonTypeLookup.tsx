@@ -1,6 +1,13 @@
 import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
+import { UniqueIndex, UniqueSlug } from '../ExpandingGridGallery.types';
 
 export type ButtonTypeLookup = ReturnType<typeof useButtonTypeLookup>;
+export interface OnHandleClickReturnValue {
+  uniqueIndex: UniqueIndex;
+  uniqueSlug: UniqueSlug | null;
+}
+
+const onHandleClickNullReturn = { uniqueIndex: null, uniqueSlug: null };
 
 export default function useButtonTypeLookup() {
   const {
@@ -19,10 +26,16 @@ export default function useButtonTypeLookup() {
         currentUniqueIndex !== numberOfUniqueSlugs - 1 &&
         currentUniqueIndex < numberOfUniqueSlugs &&
         currentUniqueIndex >= 0,
-      onHandleClick: () => {
+      onHandleClick: (): OnHandleClickReturnValue => {
         if (isCurrentIndex && buttonTypeLookUp.next.isEnabled) {
-          setCurrentUniqueSlug(orderedUniqueSlugsArray[currentUniqueIndex + 1]);
+          const nextUniqueIndex = currentUniqueIndex + 1;
+          setCurrentUniqueSlug(orderedUniqueSlugsArray[nextUniqueIndex]);
+          return {
+            uniqueIndex: nextUniqueIndex,
+            uniqueSlug: orderedUniqueSlugsArray[nextUniqueIndex],
+          };
         }
+        return onHandleClickNullReturn;
       },
       ariaLabel: 'Go to Next Gallery Item',
       buttonText: 'Next',
@@ -33,18 +46,27 @@ export default function useButtonTypeLookup() {
         currentUniqueIndex !== 0 &&
         currentUniqueIndex < numberOfUniqueSlugs &&
         currentUniqueIndex >= 0,
-      onHandleClick: () => {
+      onHandleClick: (): OnHandleClickReturnValue => {
         if (isCurrentIndex && buttonTypeLookUp.prev.isEnabled) {
-          setCurrentUniqueSlug(orderedUniqueSlugsArray[currentUniqueIndex - 1]);
+          const previousUniqueIndex = currentUniqueIndex - 1;
+          setCurrentUniqueSlug(orderedUniqueSlugsArray[previousUniqueIndex]);
+          return {
+            uniqueIndex: previousUniqueIndex,
+            uniqueSlug: orderedUniqueSlugsArray[previousUniqueIndex],
+          };
         }
+        return onHandleClickNullReturn;
       },
       ariaLabel: 'Go to Previous Gallery Item',
       buttonText: 'Previous',
     },
     close: {
       isEnabled: isCurrentIndex,
-      onHandleClick: () => {
-        if (buttonTypeLookUp.close.isEnabled) setCurrentUniqueSlug(null);
+      onHandleClick: (): OnHandleClickReturnValue => {
+        if (buttonTypeLookUp.close.isEnabled) {
+          setCurrentUniqueSlug(null);
+        }
+        return onHandleClickNullReturn;
       },
       ariaLabel: 'Close Gallery Expander',
       buttonText: 'Close',
