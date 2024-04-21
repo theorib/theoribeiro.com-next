@@ -2,22 +2,18 @@
 
 import { useEffect } from 'react';
 import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
-import { UniqueSlug } from '../ExpandingGridGallery.types';
+import { useParams } from 'next/navigation';
 
-interface WithSetCurrentUniqueSlugProps {
-  uniqueSlug: UniqueSlug | null;
-}
-
-export default function WithSetCurrentUniqueSlug({
-  uniqueSlug,
-}: WithSetCurrentUniqueSlugProps) {
+export default function WithSetCurrentUniqueSlug() {
+  const params = useParams<{ slug: string }>();
+  const { slug } = params;
   const { setCurrentUniqueSlug } = useExpandingGridGallery();
 
   useEffect(() => {
-    console.log('WithSetCurrentUniqueSlug');
+    if (!slug) return;
 
-    setCurrentUniqueSlug(uniqueSlug);
-  }, [setCurrentUniqueSlug, uniqueSlug]);
+    setCurrentUniqueSlug(slug);
+  }, [setCurrentUniqueSlug, slug]);
 
   return null;
 }

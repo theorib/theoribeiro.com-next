@@ -17,7 +17,7 @@ function RenderedVideoPlayer({
 }: RenderedVideoPlayerProps) {
   return (
     <Suspense fallback={<VideoPlayerSkeleton />}>
-      <div className="absolute inset-0 animate-fade-in">
+      <div className="absolute inset-0">
         <ReactPlayer
           width="100%"
           height="100%"

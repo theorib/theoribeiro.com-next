@@ -58,7 +58,7 @@ export default function RenderedGalleryExpander() {
     <div
       key={`${id}-expanded`}
       id={`${slug}-expanded`}
-      className="flex flex-col relative"
+      className="flex flex-col relative transition-all"
     >
       <Nav className="sm:absolute top-0 left-0 right-0 bottom-0 flex justify-between items-center p-4 pb-10 sm:p-3  md:py-2 sm:px-0 order-last ">
         <ExpandingGridGallery.NavButtonPrev className="overflow-clip sm:rounded-s-none">

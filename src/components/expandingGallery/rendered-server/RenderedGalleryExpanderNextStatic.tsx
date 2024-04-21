@@ -1,32 +1,46 @@
-import portfolioActions from '@/actions/portfolioActions';
+'use client';
+
+import portfolioActions, {
+  type PortfolioItem,
+} from '@/actions/portfolioActions';
 import { AspectRatio } from '../../ui/aspect-ratio';
 import { cn } from '../utils/utils';
-import RenderedVideoPlayer from '../rendered/RenderedVideoPlayer';
+import { useEffect, useState } from 'react';
+import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
+
+import { Separator } from '@radix-ui/react-separator';
 import ExpandingGridGallery from '../ExpandingGridGallery';
 import { PiCaretLeftThin, PiCaretRightThin, PiXThin } from 'react-icons/pi';
 import Nav from '../components/Nav';
 
-import { Separator } from '@/components/ui/separator';
-import {
-  btnCloseAfterHandleClick,
-  btnNextPrevAfterHandleClick,
-} from './renderedGalleryActions';
-import { UniqueSlug } from '../ExpandingGridGallery.types';
-import { memo } from 'react';
+import RenderedVideoPlayer from '../rendered/RenderedVideoPlayer';
+import useRenderedGalleryActions from './useRenderedGalleryActions';
 
-interface RenderedGalleryExpanderServerProps {
-  slug: UniqueSlug | null;
-}
+export default function RenderedGalleryExpanderNextStatic() {
+  const [expanderData, setExpanderData] = useState<PortfolioItem | null>(null);
+  const { currentUniqueSlug } = useExpandingGridGallery();
+  const { btnCloseAfterHandleClick, btnNextPrevAfterHandleClick } =
+    useRenderedGalleryActions();
 
-async function RenderedGalleryExpanderServer({
-  slug,
-}: RenderedGalleryExpanderServerProps) {
-  if (slug === null) return null;
+  useEffect(() => {
+    async function getExpanderData() {
+      if (currentUniqueSlug === null) return;
+      const data =
+        await portfolioActions.getPortfolioItemBySlug(currentUniqueSlug);
+      if (data) {
+        setExpanderData(data);
+      }
+    }
+    getExpanderData().catch(err => {
+      console.error(err);
+      throw new Error(err);
+    });
+  }, [currentUniqueSlug]);
 
-  const expanderData = await portfolioActions.getPortfolioItemBySlug(slug);
   if (!expanderData) return null;
 
   const {
+    id,
     title,
     projectType,
     role,
@@ -35,13 +49,18 @@ async function RenderedGalleryExpanderServer({
     producer,
     productionCompany,
     imageUrl,
+    slug,
     videoUrl,
   } = expanderData;
 
   const iconClassName = 'w-14 h-14 sm:h-20 sm:w-20 p-1 sm:p-2 sm:-mx-5';
 
   return (
-    <div id={`${slug}-expanded`} className="flex flex-col relative">
+    <div
+      key={`${id}-expanded`}
+      id={`${slug}-expanded`}
+      className="flex flex-col relative"
+    >
       <Nav className="sm:absolute top-0 left-0 right-0 bottom-0 flex justify-between items-center p-4 pb-10 sm:p-3  md:py-2 sm:px-0 order-last ">
         <ExpandingGridGallery.NavButtonPrev
           className="overflow-clip sm:rounded-s-none"
@@ -77,7 +96,7 @@ async function RenderedGalleryExpanderServer({
               <p aria-label="Project type">{projectType}</p>
               <Separator
                 orientation="vertical"
-                className="h-5 w-[1px] dark:bg-white inline-block ml-1"
+                className="h-5 w-[1px] bg-white inline-block ml-1"
               />
               <p aria-label="Role on this project">{role}</p>
             </div>
@@ -105,4 +124,3 @@ async function RenderedGalleryExpanderServer({
     </div>
   );
 }
-export default memo(RenderedGalleryExpanderServer);

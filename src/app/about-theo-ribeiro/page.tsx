@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next-export-optimize-images/image';
 import aboutImg from 'public/img/TR_2019_008_000504_LeicaQ_Web.jpg';
 function AboutPage() {
   return (

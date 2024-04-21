@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next-export-optimize-images/image';
 import { AspectRatio } from '../../ui/aspect-ratio';
 import { type PortfolioThumbnail } from '@/actions/portfolioActions';
 

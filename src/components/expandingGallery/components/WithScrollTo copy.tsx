@@ -61,25 +61,14 @@ function scrollElementIntoView(
  * It retrieves the previous scroll position from the ExpandingGalleryContext, scrolls the window to that position, and then scrolls the expanded gallery element into view.
  * The component is designed to be used within the ExpandingGalleryContextProvider
  */
-
-interface WithScrollToProps {
-  animateFirstScroll?: boolean;
-}
-
-export default function WithScrollTo({
-  animateFirstScroll: animateFirstScrollProp = false,
-}: WithScrollToProps) {
+export default function WithScrollTo() {
   const { currentUniqueSlug, previousScrollPosition } =
     useExpandingGridGallery();
   const scrollPositionRef = useRef<ScrollPosition>({ scrollX: 0, scrollY: 0 });
 
   useEffect(() => {
     scrollPositionRef.current = previousScrollPosition;
-
-    let animateFirstScroll: number;
-    if (animateFirstScrollProp) {
-      animateFirstScroll = scrollToPosition(scrollPositionRef.current);
-    }
+    const animateFirstScroll = scrollToPosition(scrollPositionRef.current);
 
     const element = document.getElementById(`${currentUniqueSlug}-expanded`);
     if (!element) return; // guard clause
@@ -88,11 +77,9 @@ export default function WithScrollTo({
 
     return () => {
       clearTimeout(timeOut);
-      if (animateFirstScrollProp) {
-        cancelAnimationFrame(animateFirstScroll);
-      }
+      cancelAnimationFrame(animateFirstScroll);
     };
-  }, [currentUniqueSlug, previousScrollPosition, animateFirstScrollProp]);
+  }, [currentUniqueSlug, previousScrollPosition]);
 
   return null;
 }

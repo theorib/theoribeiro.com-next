@@ -3,7 +3,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import useButtonTypeLookup from '../hooks/useButtonTypeLookup';
 import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 
-export default function WithKeyboardShortcuts() {
+function WithKeyboardShortcuts() {
   const buttonTypeLookUp = useButtonTypeLookup();
 
   const { currentUniqueSlug } = useExpandingGridGallery();
@@ -38,3 +38,4 @@ export default function WithKeyboardShortcuts() {
 
   return null;
 }
+export default WithKeyboardShortcuts;

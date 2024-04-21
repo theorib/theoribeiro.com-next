@@ -85,6 +85,7 @@ function ButtonComp(
 
   function handleClick(e: ReactMouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
+    e.stopPropagation();
 
     beforeHandleClick(acceptServerActions ? { e } : {});
 

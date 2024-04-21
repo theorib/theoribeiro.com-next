@@ -2,11 +2,22 @@ import portfolioActions from '@/actions/portfolioActions';
 import ExpandingGridGallery from '../ExpandingGridGallery';
 import RenderedGalleryExpander from './RenderedGalleryExpander';
 import RenderedExpandingGalleryThumbnail from './RenderedExpandingGalleryThumbnail';
-import { galleryItemAfterHandleClick } from '../rendered-server/renderedGalleryActions';
+import { notFound, redirect } from 'next/navigation';
+import paths from '@/lib/paths';
+import { ItemClickHandler } from '../components/GridItem';
 
 export default async function RenderedExpandingGallery() {
   const thumbnails = await portfolioActions.getPortfolioThumbnails();
   const orderedUniqueSlugsArray = thumbnails.map(item => item.slug);
+
+  function galleryItemAfterHandleClick({
+    uniqueSlug,
+    currentUniqueSlug,
+  }: ItemClickHandler) {
+    if (!uniqueSlug) notFound();
+    if (uniqueSlug === currentUniqueSlug) redirect('/');
+    redirect(paths.showReelItemPage(uniqueSlug));
+  }
 
   return (
     <ExpandingGridGallery

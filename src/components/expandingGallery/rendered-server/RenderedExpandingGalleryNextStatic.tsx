@@ -1,39 +1,50 @@
-import portfolioActions from '@/actions/portfolioActions';
+'use client';
+import type { PortfolioThumbnail } from '@/actions/portfolioActions';
 import ExpandingGridGallery from '../ExpandingGridGallery';
-import { galleryItemAfterHandleClick } from './renderedGalleryActions';
-import RenderedGalleryExpanderServer from './RenderedGalleryExpanderServer';
+
 import RenderedExpandingGalleryThumbnail from '../rendered/RenderedExpandingGalleryThumbnail';
+
+import { notFound, useParams } from 'next/navigation';
+
+import { UniqueSlug } from '../ExpandingGridGallery.types';
+import useRenderedGalleryActions from './useRenderedGalleryActions';
+import { PortfolioItem } from '@/data/portfolio';
+
+import RenderedGalleryExpanderNextStatic from './RenderedGalleryExpanderNextStatic';
 import WithSetCurrentUniqueSlug from './WithSetCurrentUniqueSlug';
-import { notFound } from 'next/navigation';
 
 interface RenderedExpandingGalleryServerProps {
-  slug?: string | null;
+  slug?: UniqueSlug | null;
+  orderedUniqueSlugsArray: UniqueSlug[];
+  thumbnails: PortfolioThumbnail[];
+  expanderData?: PortfolioItem | null;
 }
 
-export default async function RenderedExpandingGalleryServer({
-  slug = null,
+export default function RenderedExpandingGalleryNextStatic({
+  orderedUniqueSlugsArray,
+  thumbnails,
 }: RenderedExpandingGalleryServerProps) {
-  if (slug !== null) {
-    const slugExists = (await portfolioActions.getPortfolioSlugs()).includes(
-      slug,
-    );
+  const params = useParams<{ slug: UniqueSlug }>();
+  const { slug } = params;
+
+  if (slug) {
+    const slugExists = orderedUniqueSlugsArray.includes(slug);
     if (!slugExists) notFound();
   }
 
-  const thumbnails = await portfolioActions.getPortfolioThumbnails();
-  const orderedUniqueSlugsArray = thumbnails.map(item => item.slug);
+  const { galleryItemAfterHandleClick } = useRenderedGalleryActions();
 
   return (
     <ExpandingGridGallery
       storeState="local"
       orderedUniqueSlugsArray={orderedUniqueSlugsArray}
     >
-      <WithSetCurrentUniqueSlug uniqueSlug={slug} />
       <ExpandingGridGallery.WithScrollTo />
-      {/* <ExpandingGridGallery.WithKeyboardShortcuts /> */}
+      <WithSetCurrentUniqueSlug />
+      <ExpandingGridGallery.WithKeyboardShortcuts />
       <ExpandingGridGallery.Grid>
         <ExpandingGridGallery.GridExpander>
-          <RenderedGalleryExpanderServer slug={slug} />
+          <RenderedGalleryExpanderNextStatic />
         </ExpandingGridGallery.GridExpander>
         {thumbnails.map(item => (
           <ExpandingGridGallery.GridItem
