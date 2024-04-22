@@ -83,7 +83,7 @@ export default function RenderedGalleryExpanderNextStatic() {
           />
         </ExpandingGridGallery.NavButtonClose>
       </Nav>
-      <article className="col-span-full flex flex-auto flex-col sm:px-[4.5rem] md:px-16 sm:py-6 md:flex-row md:gap-6 lg:gap-16 md:py-10 items-center transition-all">
+      <article className="col-span-full flex flex-auto flex-col sm:px-[4.5rem] md:px-16 sm:py-6 md:flex-row md:gap-6 lg:gap-16 md:py-10 items-center transition-all animate-fade-in">
         <div className="basis-7/12 lg:basis-6/12 w-full transition-all">
           <AspectRatio ratio={16 / 9} className="flex">
             <RenderedVideoPlayer imageUrl={imageUrl} videoUrl={videoUrl} />

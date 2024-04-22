@@ -143,6 +143,7 @@ const config: Config = {
       keyframes: {
         'fade-in': {
           '0%': { opacity: '0' },
+          '10%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
         'accordion-down': {

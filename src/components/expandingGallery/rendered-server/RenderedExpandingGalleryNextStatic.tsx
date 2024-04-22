@@ -26,6 +26,8 @@ export default function RenderedExpandingGalleryNextStatic({
   const { slug } = useParams<{ slug: UniqueSlug }>();
   if (slug && !orderedUniqueSlugsArray.includes(slug)) notFound();
 
+  // const [ref] = useAutoAnimate({ duration: 200 });
+
   return (
     <ExpandingGridGallery
       storeState="local"
