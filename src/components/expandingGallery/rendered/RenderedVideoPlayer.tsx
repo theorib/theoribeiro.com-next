@@ -1,5 +1,5 @@
 'use client';
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player/vimeo';
 import { PiPlayFill } from 'react-icons/pi';
 // import { Suspense } from 'react';
 // import VideoPlayerSkeleton from './VideoPlayerSkeleton';

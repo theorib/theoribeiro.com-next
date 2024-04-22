@@ -18,7 +18,11 @@ export default function RenderedExpandingGalleryNextStatic({
 }: RenderedExpandingGalleryNextStaticProps) {
   const orderedUniqueSlugsArray = portfolioActions.getPortfolioSlugs();
   const thumbnails = portfolioActions.getPortfolioThumbnails();
-  const { galleryItemAfterHandleClick } = useRenderedGalleryActions();
+  const {
+    galleryItemAfterHandleClick,
+    btnCloseAfterHandleClick,
+    btnNextPrevAfterHandleClick,
+  } = useRenderedGalleryActions();
   const { slug } = useParams<{ slug: UniqueSlug }>();
   if (slug && !orderedUniqueSlugsArray.includes(slug)) notFound();
 
@@ -29,7 +33,11 @@ export default function RenderedExpandingGalleryNextStatic({
     >
       <ExpandingGridGallery.WithScrollTo />
       {withUrlParamSlug ? <WithUrlParamSlug /> : null}
-      <ExpandingGridGallery.WithKeyboardShortcuts />
+      <ExpandingGridGallery.WithKeyboardShortcuts
+        close={{ afterHandleClick: btnCloseAfterHandleClick }}
+        next={{ afterHandleClick: btnNextPrevAfterHandleClick }}
+        prev={{ afterHandleClick: btnNextPrevAfterHandleClick }}
+      />
       <ExpandingGridGallery.Grid>
         <ExpandingGridGallery.GridExpander>
           <RenderedGalleryExpanderNextStatic />

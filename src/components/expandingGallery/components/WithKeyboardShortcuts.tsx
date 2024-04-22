@@ -2,8 +2,29 @@
 import { useHotkeys } from 'react-hotkeys-hook';
 import useButtonTypeLookup from '../hooks/useButtonTypeLookup';
 import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
+import { UniqueSlug } from '../ExpandingGridGallery.types';
 
-function WithKeyboardShortcuts() {
+interface ClickHandlerProps {
+  uniqueSlug?: UniqueSlug | null;
+  uniqueIndex?: number | null;
+}
+interface WithKeyboardShortcutsProps {
+  next?: {
+    afterHandleClick?: ({ uniqueSlug, uniqueIndex }: ClickHandlerProps) => void;
+  };
+  prev?: {
+    afterHandleClick?: ({ uniqueSlug, uniqueIndex }: ClickHandlerProps) => void;
+  };
+  close?: {
+    afterHandleClick?: () => void;
+  };
+}
+
+function WithKeyboardShortcuts({
+  next,
+  prev,
+  close,
+}: WithKeyboardShortcutsProps) {
   const buttonTypeLookUp = useButtonTypeLookup();
 
   const { currentUniqueSlug } = useExpandingGridGallery();
@@ -12,7 +33,12 @@ function WithKeyboardShortcuts() {
     'left',
     () => {
       if (buttonTypeLookUp.prev.isEnabled) {
-        buttonTypeLookUp.prev.onHandleClick();
+        const { uniqueSlug, uniqueIndex } =
+          buttonTypeLookUp.prev.onHandleClick();
+        prev?.afterHandleClick?.({
+          uniqueSlug,
+          uniqueIndex,
+        });
       }
     },
     [buttonTypeLookUp.prev.isEnabled, currentUniqueSlug],
@@ -21,7 +47,12 @@ function WithKeyboardShortcuts() {
     'right',
     () => {
       if (buttonTypeLookUp.next.isEnabled) {
-        buttonTypeLookUp.next.onHandleClick();
+        const { uniqueSlug, uniqueIndex } =
+          buttonTypeLookUp.next.onHandleClick();
+        next?.afterHandleClick?.({
+          uniqueSlug,
+          uniqueIndex,
+        });
       }
     },
     [buttonTypeLookUp.next.isEnabled, currentUniqueSlug],
@@ -31,6 +62,7 @@ function WithKeyboardShortcuts() {
     () => {
       if (buttonTypeLookUp.close.isEnabled) {
         buttonTypeLookUp.close.onHandleClick();
+        close?.afterHandleClick?.();
       }
     },
     [buttonTypeLookUp.close.isEnabled, currentUniqueSlug],

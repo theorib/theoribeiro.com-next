@@ -33,6 +33,7 @@
     "yet-another-react-lightbox": "^3.17.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.2.2",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^15.0.0",

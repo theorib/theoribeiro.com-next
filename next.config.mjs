@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 import withExportImages from 'next-export-optimize-images';
+// import withBundleAnalyzer from '@next/bundle-analyzer';
 
-const nextConfig = withExportImages({
+const nextConfig = {
   output: 'export',
-});
+};
 
-export default nextConfig;
+export default withExportImages(nextConfig);
+// export default withBundleAnalyzer(withExportImages(nextConfig));

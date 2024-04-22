@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 import { ScrollPosition } from '../ExpandingGridGallery.types';
 
@@ -73,7 +73,7 @@ export default function WithScrollTo({
     useExpandingGridGallery();
   const scrollPositionRef = useRef<ScrollPosition>({ scrollX: 0, scrollY: 0 });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     scrollPositionRef.current = previousScrollPosition;
 
     let animateFirstScroll: number;
