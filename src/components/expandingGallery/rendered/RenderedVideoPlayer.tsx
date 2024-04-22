@@ -16,21 +16,19 @@ function RenderedVideoPlayer({
   controls = true,
 }: RenderedVideoPlayerProps) {
   return (
-    <Suspense fallback={<VideoPlayerSkeleton />}>
-      <div className="absolute inset-0">
-        <ReactPlayer
-          width="100%"
-          height="100%"
-          playing={true}
-          url={videoUrl}
-          controls={controls}
-          light={imageUrl || true}
-          playIcon={
-            <PiPlayFill className="h-11 w-10 text-neutral-100/60 sm:h-20 sm:w-20" />
-          }
-        />
-      </div>
-    </Suspense>
+    <div className="absolute inset-0 animate-fade-in">
+      <ReactPlayer
+        width="100%"
+        height="100%"
+        playing={true}
+        url={videoUrl}
+        controls={controls}
+        light={imageUrl || true}
+        playIcon={
+          <PiPlayFill className="h-11 w-10 text-neutral-100/60 sm:h-20 sm:w-20" />
+        }
+      />
+    </div>
   );
 }
 export default RenderedVideoPlayer;

@@ -13,6 +13,8 @@ import { PortfolioItem } from '@/data/portfolio';
 import RenderedGalleryExpanderNextStatic from './RenderedGalleryExpanderNextStatic';
 import WithSetCurrentUniqueSlug from './WithSetCurrentUniqueSlug';
 
+import { useAutoAnimate } from '@formkit/auto-animate/react';
+
 interface RenderedExpandingGalleryServerProps {
   slug?: UniqueSlug | null;
   orderedUniqueSlugsArray: UniqueSlug[];
@@ -26,6 +28,10 @@ export default function RenderedExpandingGalleryNextStatic({
 }: RenderedExpandingGalleryServerProps) {
   const params = useParams<{ slug: UniqueSlug }>();
   const { slug } = params;
+
+  const [elementRef] = useAutoAnimate({
+    duration: 160,
+  });
 
   if (slug) {
     const slugExists = orderedUniqueSlugsArray.includes(slug);
@@ -43,7 +49,7 @@ export default function RenderedExpandingGalleryNextStatic({
       <WithSetCurrentUniqueSlug />
       <ExpandingGridGallery.WithKeyboardShortcuts />
       <ExpandingGridGallery.Grid>
-        <ExpandingGridGallery.GridExpander>
+        <ExpandingGridGallery.GridExpander ref={elementRef}>
           <RenderedGalleryExpanderNextStatic />
         </ExpandingGridGallery.GridExpander>
         {thumbnails.map(item => (
