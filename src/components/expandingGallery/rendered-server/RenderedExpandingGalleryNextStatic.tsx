@@ -1,44 +1,26 @@
 'use client';
-import type { PortfolioThumbnail } from '@/actions/portfolioActions';
 import ExpandingGridGallery from '../ExpandingGridGallery';
-
 import RenderedExpandingGalleryThumbnail from '../rendered/RenderedExpandingGalleryThumbnail';
-
-import { notFound, useParams } from 'next/navigation';
-
-import { UniqueSlug } from '../ExpandingGridGallery.types';
 import useRenderedGalleryActions from './useRenderedGalleryActions';
-import { PortfolioItem } from '@/data/portfolio';
-
 import RenderedGalleryExpanderNextStatic from './RenderedGalleryExpanderNextStatic';
-import WithSetCurrentUniqueSlug from './WithSetCurrentUniqueSlug';
+import WithUrlParamSlug from './WithUrlParamSlug';
+// import { useAutoAnimate } from '@formkit/auto-animate/react';
+import portfolioActions from '@/actions/portfolioActions';
+import { notFound, useParams } from 'next/navigation';
+import { UniqueSlug } from '../ExpandingGridGallery.types';
 
-import { useAutoAnimate } from '@formkit/auto-animate/react';
-
-interface RenderedExpandingGalleryServerProps {
-  slug?: UniqueSlug | null;
-  orderedUniqueSlugsArray: UniqueSlug[];
-  thumbnails: PortfolioThumbnail[];
-  expanderData?: PortfolioItem | null;
+interface RenderedExpandingGalleryNextStaticProps {
+  withUrlParamSlug?: boolean;
 }
 
 export default function RenderedExpandingGalleryNextStatic({
-  orderedUniqueSlugsArray,
-  thumbnails,
-}: RenderedExpandingGalleryServerProps) {
-  const params = useParams<{ slug: UniqueSlug }>();
-  const { slug } = params;
-
-  const [elementRef] = useAutoAnimate({
-    duration: 160,
-  });
-
-  if (slug) {
-    const slugExists = orderedUniqueSlugsArray.includes(slug);
-    if (!slugExists) notFound();
-  }
-
+  withUrlParamSlug = false,
+}: RenderedExpandingGalleryNextStaticProps) {
+  const orderedUniqueSlugsArray = portfolioActions.getPortfolioSlugs();
+  const thumbnails = portfolioActions.getPortfolioThumbnails();
   const { galleryItemAfterHandleClick } = useRenderedGalleryActions();
+  const { slug } = useParams<{ slug: UniqueSlug }>();
+  if (slug && !orderedUniqueSlugsArray.includes(slug)) notFound();
 
   return (
     <ExpandingGridGallery
@@ -46,10 +28,10 @@ export default function RenderedExpandingGalleryNextStatic({
       orderedUniqueSlugsArray={orderedUniqueSlugsArray}
     >
       <ExpandingGridGallery.WithScrollTo />
-      <WithSetCurrentUniqueSlug />
+      {withUrlParamSlug ? <WithUrlParamSlug /> : null}
       <ExpandingGridGallery.WithKeyboardShortcuts />
       <ExpandingGridGallery.Grid>
-        <ExpandingGridGallery.GridExpander ref={elementRef}>
+        <ExpandingGridGallery.GridExpander>
           <RenderedGalleryExpanderNextStatic />
         </ExpandingGridGallery.GridExpander>
         {thumbnails.map(item => (

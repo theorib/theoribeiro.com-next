@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 interface RootLayoutProps {
   children: ReactNode;
+  expander: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -26,7 +27,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <Providers>
           <HeaderMain />
-          <main>{children}</main>
+          <main>
+            {children}
+            {/* {expander} */}
+            {/* <div className="flex bg-red-600 h-2 p-4 my-4"></div> */}
+          </main>
           <FooterMain />
         </Providers>
       </body>

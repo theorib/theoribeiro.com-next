@@ -1,8 +1,8 @@
 'use client';
 import ReactPlayer from 'react-player/lazy';
 import { PiPlayFill } from 'react-icons/pi';
-import { Suspense } from 'react';
-import VideoPlayerSkeleton from './VideoPlayerSkeleton';
+// import { Suspense } from 'react';
+// import VideoPlayerSkeleton from './VideoPlayerSkeleton';
 
 type RenderedVideoPlayerProps = {
   videoUrl: string;

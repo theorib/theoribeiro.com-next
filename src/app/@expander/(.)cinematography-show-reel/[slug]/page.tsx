@@ -1,11 +1,11 @@
 import portfolioActions from '@/actions/portfolioActions';
 import RenderedExpandingGalleryNextStatic from '@/components/expandingGallery/rendered-server/RenderedExpandingGalleryNextStatic';
 
-export default async function ShowReelItemPage() {
+export default async function ShowReelItemPageIntercepted() {
   return (
     <>
-      <h1>slug page</h1>
-      <RenderedExpandingGalleryNextStatic withUrlParamSlug={true} />
+      <h1>intercepted @expander</h1>
+      <RenderedExpandingGalleryNextStatic withUrlParamSlug={true} />;
     </>
   );
 }

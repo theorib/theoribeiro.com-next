@@ -22,12 +22,12 @@ export interface PortfolioItem extends PortfolioThumbnail {
   originalImageUrl: string;
 }
 
-const getPortfolioSlugs = async (): Promise<PortfolioSlug[]> => {
+const getPortfolioSlugs = (): PortfolioSlug[] => {
   const slugs = portfolio.map(item => item.slug);
   return slugs;
 };
 
-const getPortfolioThumbnails = async (): Promise<PortfolioThumbnail[]> => {
+const getPortfolioThumbnails = (): PortfolioThumbnail[] => {
   const portfolioThumbnails = portfolio.map(item => {
     return {
       id: item.id,
@@ -39,15 +39,13 @@ const getPortfolioThumbnails = async (): Promise<PortfolioThumbnail[]> => {
   return portfolioThumbnails;
 };
 
-const getPortfolioItemBySlug = async (
-  slug: string,
-): Promise<PortfolioItem | null> => {
+const getPortfolioItemBySlug = (slug: string): PortfolioItem | null => {
   const portfolioItem = portfolio.find(item => item.slug === slug);
   if (!portfolioItem) return null;
   return portfolioItem;
 };
 
-const getPortfolioItems = async (): Promise<PortfolioItem[]> => {
+const getPortfolioItems = (): PortfolioItem[] => {
   return portfolio;
 };
 
