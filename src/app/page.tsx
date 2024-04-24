@@ -1,4 +1,4 @@
-import RenderedExpandingGalleryNextStatic from '@/components/expandingGallery/rendered-server/RenderedExpandingGalleryNextStatic';
+import RenderedExpandingGalleryHome from '@/components/expandingGallery/rendered-home/RenderedExpandingGalleryHome';
 
 export default async function HomePage() {
   return (
@@ -7,7 +7,7 @@ export default async function HomePage() {
         Theo Ribeiro Cinematography Portfolio Home Page //{' '}
       </h1> */}
       <h1>home</h1>
-      <RenderedExpandingGalleryNextStatic />
+      <RenderedExpandingGalleryHome />
     </>
   );
 }

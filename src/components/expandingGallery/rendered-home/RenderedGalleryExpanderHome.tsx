@@ -14,9 +14,9 @@ import { PiCaretLeftThin, PiCaretRightThin, PiXThin } from 'react-icons/pi';
 import Nav from '../components/Nav';
 
 import RenderedVideoPlayer from '../rendered-hash/RenderedVideoPlayer';
-import useRenderedGalleryActions from './useRenderedGalleryActions';
+import useRenderedGalleryActions from './useRenderedGalleryActionsHome';
 
-export default function RenderedGalleryExpanderNextStatic() {
+export default function RenderedGalleryExpanderHome() {
   const [expanderData, setExpanderData] = useState<PortfolioItem | null>(null);
   const { currentUniqueSlug } = useExpandingGridGallery();
   const { btnCloseAfterHandleClick, btnNextPrevAfterHandleClick } =

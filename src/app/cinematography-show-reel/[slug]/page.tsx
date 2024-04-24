@@ -1,11 +1,11 @@
 import portfolioActions from '@/actions/portfolioActions';
-import RenderedExpandingGalleryNextStatic from '@/components/expandingGallery/rendered-server/RenderedExpandingGalleryNextStatic';
+import RenderedExpandingGalleryHome from '@/components/expandingGallery/rendered-home/RenderedExpandingGalleryHome';
 
 export default async function ShowReelItemPage() {
   return (
     <>
       <h1>slug page</h1>
-      <RenderedExpandingGalleryNextStatic withUrlParamSlug={true} />
+      <RenderedExpandingGalleryHome />
     </>
   );
 }

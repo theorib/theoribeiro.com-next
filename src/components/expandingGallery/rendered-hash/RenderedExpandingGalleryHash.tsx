@@ -1,11 +1,12 @@
 import portfolioActions from '@/actions/portfolioActions';
-import ExpandingGridGallery from '@/components/expandingGallery/ExpandingGridGallery';
-import RenderedExpandingGalleryThumbnail from '@/components/expandingGallery/rendered/RenderedExpandingGalleryThumbnail';
-import RenderedGalleryExpander from '@/components/expandingGallery/rendered/RenderedGalleryExpander';
+import ExpandingGridGallery from '../ExpandingGridGallery';
+import RenderedGalleryExpander from './RenderedGalleryExpander';
+import RenderedExpandingGalleryThumbnail from './RenderedExpandingGalleryThumbnail';
 
-export default async function TestGalleryPage() {
+export default async function RenderedExpandingGalleryHash() {
   const thumbnails = await portfolioActions.getPortfolioThumbnails();
   const orderedUniqueSlugsArray = thumbnails.map(item => item.slug);
+
   return (
     <ExpandingGridGallery
       storeState="urlHash"

@@ -6,9 +6,10 @@
     "dev": "next dev --turbo",
     "build": "next build && next-export-optimize-images",
     "start": "next start",
+    "start:static": "npx serve@latest out",
     "lint": "next lint",
     "test": "vitest",
-    "test-ui": "vitest --ui --coverage"
+    "test:ui": "vitest --ui --coverage"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",

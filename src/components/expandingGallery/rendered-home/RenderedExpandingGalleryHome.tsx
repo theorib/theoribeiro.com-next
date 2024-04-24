@@ -1,32 +1,27 @@
 'use client';
 import ExpandingGridGallery from '../ExpandingGridGallery';
 import RenderedExpandingGalleryThumbnail from '../rendered-hash/RenderedExpandingGalleryThumbnail';
-import useRenderedGalleryActions from './useRenderedGalleryActions';
-import RenderedGalleryExpanderNextStatic from './RenderedGalleryExpanderNextStatic';
+
 import WithUrlParamSlug from './WithUrlParamSlug';
-// import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import portfolioActions from '@/actions/portfolioActions';
 import { notFound, useParams } from 'next/navigation';
 import { UniqueSlug } from '../ExpandingGridGallery.types';
+import RenderedGalleryExpanderHome from './RenderedGalleryExpanderHome';
+import useRenderedGalleryActionsHome from './useRenderedGalleryActionsHome';
 
-interface RenderedExpandingGalleryNextStaticProps {
-  withUrlParamSlug?: boolean;
-}
-
-export default function RenderedExpandingGalleryNextStatic({
-  withUrlParamSlug = false,
-}: RenderedExpandingGalleryNextStaticProps) {
+export default function RenderedExpandingGalleryHome() {
   const orderedUniqueSlugsArray = portfolioActions.getPortfolioSlugs();
   const thumbnails = portfolioActions.getPortfolioThumbnails();
   const {
     galleryItemAfterHandleClick,
     btnCloseAfterHandleClick,
     btnNextPrevAfterHandleClick,
-  } = useRenderedGalleryActions();
+  } = useRenderedGalleryActionsHome();
   const { slug } = useParams<{ slug: UniqueSlug }>();
   if (slug && !orderedUniqueSlugsArray.includes(slug)) notFound();
 
-  // const [ref] = useAutoAnimate({ duration: 200 });
+  const [animateRef] = useAutoAnimate({ duration: 350 });
 
   return (
     <ExpandingGridGallery
@@ -34,15 +29,15 @@ export default function RenderedExpandingGalleryNextStatic({
       orderedUniqueSlugsArray={orderedUniqueSlugsArray}
     >
       <ExpandingGridGallery.WithScrollTo />
-      {withUrlParamSlug ? <WithUrlParamSlug /> : null}
+      <WithUrlParamSlug />
       <ExpandingGridGallery.WithKeyboardShortcuts
         close={{ afterHandleClick: btnCloseAfterHandleClick }}
         next={{ afterHandleClick: btnNextPrevAfterHandleClick }}
         prev={{ afterHandleClick: btnNextPrevAfterHandleClick }}
       />
-      <ExpandingGridGallery.Grid>
+      <ExpandingGridGallery.Grid ref={animateRef}>
         <ExpandingGridGallery.GridExpander>
-          <RenderedGalleryExpanderNextStatic />
+          <RenderedGalleryExpanderHome />
         </ExpandingGridGallery.GridExpander>
         {thumbnails.map(item => (
           <ExpandingGridGallery.GridItem
