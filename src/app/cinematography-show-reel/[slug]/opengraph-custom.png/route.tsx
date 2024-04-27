@@ -11,8 +11,8 @@ export async function GET(
   const { slug } = params;
   // const origin = process.env.METADATA_BASE_URL;
 
-  if (!origin)
-    throw new Error('No METADATA_BASE_URL environment variable found');
+  // if (!origin)
+  //   throw new Error('No METADATA_BASE_URL environment variable found');
 
   const item = portfolioActions.getPortfolioItemBySlug(slug);
 
