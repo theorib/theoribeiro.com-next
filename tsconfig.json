@@ -33,7 +33,7 @@
     ".next/types/**/*.ts",
     "next.config.mjs",
     "export-images.config.js",
-    "export-images.config.js"
+    "next-sitemap.config.js"
   ],
   "exclude": ["node_modules"]
 }

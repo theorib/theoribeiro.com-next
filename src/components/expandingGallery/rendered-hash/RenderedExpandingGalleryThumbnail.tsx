@@ -1,6 +1,7 @@
 import Image from 'next-export-optimize-images/image';
 import { AspectRatio } from '../../ui/aspect-ratio';
 import { type PortfolioThumbnail } from '@/actions/portfolioActions';
+import { cn } from '@/lib/utils';
 
 type RenderedExpandingGalleryThumbnail = {
   item: PortfolioThumbnail;
@@ -11,20 +12,32 @@ function RenderedExpandingGalleryThumbnail({
 }: RenderedExpandingGalleryThumbnail) {
   const priority = item.id <= 3 ? true : false;
 
+  const className = cn([
+    'group-[.expanding-grid-gallery-item--active]/grid-item:text-neutral-0 absolute inset-0 flex items-center justify-center bg-neutral-950/50 opacity-0 transition-all duration-200 group-focus-within/grid-item:opacity-90 group-hover/grid-item:opacity-90 group-[.expanding-grid-gallery-item--active]/grid-item:bg-neutral-950/85',
+    //  "absolute inset-0 flex items-center justify-center bg-neutral-950/50 opacity-0 transition-all duration-200 group-focus-within/grid-item:opacity-90 group-hover/grid-item:opacity-90 group-[.expanding-grid-gallery-item--active]/grid-item:bg-neutral-950/85 group-[.expanding-grid-gallery-item--active]/grid-item:text-neutral-600 group-[.expanding-grid-gallery-item--active]/grid-item:opacity-90",
+  ]);
+
   return (
-    <AspectRatio ratio={2.4 / 1} asChild={true}>
+    <AspectRatio
+      ratio={2.4 / 1}
+      asChild={true}
+      className={
+        'group-[.expanding-grid-gallery-item--active]/grid-item:opacity-30'
+      }
+    >
       {/* <Link href={item.imageUrl}> */}
-      <div>
-        <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex justify-center items-center bg-neutral-950/50 opacity-0 hover:opacity-90 focus:opacity-90 transition-all duration-200">
-          <p className="text-4xl font-extralight">{item.title}</p>
-        </div>
+      <div className="">
         <Image
           src={item.imageUrl}
-          alt={item.title}
+          alt={item.thumbAlt}
+          title={item.thumbTitle}
           fill
           className="object-cover"
           priority={priority}
         />
+        <div className={className}>
+          <p className="text-4xl font-extralight">{item.title}</p>
+        </div>
       </div>
       {/* </Link> */}
     </AspectRatio>

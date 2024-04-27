@@ -19,6 +19,7 @@ const iconClassName = 'w-14 h-14 sm:h-20 sm:w-20 p-1 sm:p-2 sm:-mx-5';
 
 function StillPortfolioGallery() {
   const [index, setIndex] = useState(-1);
+  const targetRowHeight = 180;
 
   return (
     <>
@@ -27,7 +28,7 @@ function StillPortfolioGallery() {
         photos={stillsPortfolio}
         renderPhoto={NextJsGalleryImage}
         spacing={0}
-        targetRowHeight={180}
+        targetRowHeight={targetRowHeight}
         onClick={({ index }) => setIndex(index)}
       />
 
@@ -41,13 +42,13 @@ function StillPortfolioGallery() {
           iconPrev: () => <PiCaretLeftThin className={iconClassName} />,
           iconNext: () => <PiCaretRightThin className={iconClassName} />,
           iconClose: () => (
-            <PiXThin className="w-14 h-14 sm:h-14 sm:w-14 p-1 sm:p-2 sm:-mx-2" />
+            <PiXThin className="h-14 w-14 p-1 sm:-mx-2 sm:h-14 sm:w-14 sm:p-2" />
           ),
           iconCaptionsVisible: () => (
-            <PiClosedCaptioningThin className="w-14 h-14 sm:h-14 sm:w-14 p-1 sm:p-2" />
+            <PiClosedCaptioningThin className="h-14 w-14 p-1 sm:h-14 sm:w-14 sm:p-2" />
           ),
           iconCaptionsHidden: () => (
-            <PiClosedCaptioningThin className="w-14 h-14 sm:h-14 sm:w-14 p-1 sm:p-2" />
+            <PiClosedCaptioningThin className="h-14 w-14 p-1 sm:h-14 sm:w-14 sm:p-2" />
           ),
         }}
         plugins={[Captions]}

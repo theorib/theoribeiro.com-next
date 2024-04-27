@@ -1,5 +1,31 @@
+import seo from '@/lib/seo';
+import { Metadata } from 'next';
 import Image from 'next-export-optimize-images/image';
 import aboutImg from 'public/img/TR_2019_008_000504_LeicaQ_Web.jpg';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    // alternates: {
+    //   canonical: '/',
+    // },
+    ...seo,
+    title: 'About',
+    // openGraph: {
+    //   title: `About Theo Ribeiro | Cinematograher`,
+    //   description: `${seo.description}`,
+
+    //   images: [
+    //     {
+    //       url: `/opengraph-custom-about.png`,
+    //       alt: `${seo.description}`,
+    //       width: 1200,
+    //       height: 630,
+    //     },
+    //   ],
+    // },
+  };
+}
+
 function AboutPage() {
   return (
     <article className="mx-auto max-w-layout">
@@ -10,10 +36,11 @@ function AboutPage() {
         <Image
           src={aboutImg}
           alt="Portrait of Theo Ribeiro"
+          title="Read Theo Ribeiro Bio information"
           className="sm:py-4"
         />
       </header>
-      <section className="sm:py-21 prose max-w-none py-8 sm:prose-xl prose-p:leading-tight sm:prose-p:leading-normal text-foreground">
+      <section className="sm:py-21 prose max-w-none py-8 text-foreground sm:prose-xl prose-p:leading-tight sm:prose-p:leading-normal">
         <p>
           Theo Ribeiro (Theo Toledo Ribeiro Pereira) is an award winning
           Director of Photography based in London, UK.

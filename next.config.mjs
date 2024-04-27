@@ -4,6 +4,7 @@ import withExportImages from 'next-export-optimize-images';
 
 const nextConfig = {
   output: 'export',
+  // assetPrefix: '/',
 };
 
 export default withExportImages(nextConfig);

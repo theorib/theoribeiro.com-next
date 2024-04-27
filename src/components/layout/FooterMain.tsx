@@ -6,11 +6,18 @@ function FooterMain() {
       </p>
       <div className="mb-12 flex flex-col sm:text-lg">
         {/* html field for phone  */}
-        <a href="mailto:theo@theoribeiro.com" className="link link-accent">
+        <a
+          href="mailto:theo@theoribeiro.com"
+          className="link link-accent"
+          title="Email"
+        >
           theo@theoribeiro.com
         </a>
         <span>
-          Mobile (UK): <a href="tel:+44 7415 303-847">+44 7415 303847</a>
+          Mobile (UK):{' '}
+          <a href="tel:+44 7415 303-847" title="Phone (UK)">
+            +44 7415 303847
+          </a>
         </span>
       </div>
       <p

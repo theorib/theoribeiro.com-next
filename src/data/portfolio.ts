@@ -13,6 +13,8 @@ export type PortfolioItem = {
   productionCompany: string;
   imageUrl: string;
   originalImageUrl: string;
+  thumbAlt: string;
+  thumbTitle: string;
 };
 
 export const portfolio = [
@@ -33,6 +35,10 @@ export const portfolio = [
     imageUrl: '/img/showreel/talk-radio.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-18-at-10.53.17.jpg',
+    thumbAlt:
+      'Talk Radio Drama Short Cinematography: Pauline, a seemingly happily married middle-aged woman is cooking in her kitchen.',
+    thumbTitle:
+      'Watch ‘Talk Radio’: A Drama Short | Cinematography by Theo Ribeiro',
   },
   {
     id: 1,
@@ -51,6 +57,10 @@ export const portfolio = [
     imageUrl: '/img/showreel/land-of-the-wind.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/05/tdv-stills-16x9_1.7.1-edit-1-scaled.jpg',
+    thumbAlt:
+      'Land of The Wind Documentary Short Cinematography: Vast Patagonian landscape with a distant road and a vehicle driving in the distance.',
+    thumbTitle:
+      'Watch ‘Land of The Wind’: A Documentary Short | Cinematography by Theo Ribeiro',
   },
   {
     id: 2,
@@ -69,6 +79,9 @@ export const portfolio = [
     imageUrl: '/img/showreel/i-am.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.33.13.jpg',
+    thumbAlt:
+      'I Am Music Video Cinematography: Dynamic collaboration between Sick Individuals, Axwell, Dimitri Vegas, Like Mike, Wolfpack, and Boostedkids.',
+    thumbTitle: 'Watch ‘I Am’: A Music Video | Cinematography by Theo Ribeiro',
   },
   {
     id: 3,
@@ -87,6 +100,10 @@ export const portfolio = [
     imageUrl: '/img/showreel/safe-space.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.40.42.jpg',
+    thumbAlt:
+      'Safe Space Drama Short Cinematography: Sarah, a social worker in an intimate indoor setting during the christmas season.',
+    thumbTitle:
+      'Watch ‘Safe Space’: A Drama Short | Cinematography by Theo Ribeiro',
   },
   {
     id: 4,
@@ -105,6 +122,9 @@ export const portfolio = [
     imageUrl: '/img/showreel/kto.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.45.04.jpg',
+    thumbAlt:
+      'KTO Mini Doc Cinematography: Filming the entire production process from seed to garment creation in India.',
+    thumbTitle: 'Watch ‘KTO’: A Mini Doc | Cinematography by Theo Ribeiro',
   },
   {
     id: 5,
@@ -123,6 +143,9 @@ export const portfolio = [
     imageUrl: '/img/showreel/the-package.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.57.17.jpg',
+    thumbAlt:
+      'The Package Book Promo Cinematography: Tense and mysterious scene of a girl opening a misterious package from the official trailer of Sebastian Fitzek’s heart-stopping new book thriller.',
+    thumbTitle: 'Watch ‘The Package’: A Promo | Cinematography by Theo Ribeiro',
   },
   {
     id: 6,
@@ -141,6 +164,10 @@ export const portfolio = [
     imageUrl: '/img/showreel/we-play-war.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/05/551607826_1280-e1543862703589.jpg',
+    thumbAlt:
+      'We Play War Drama Short Cinematography: A boy sits dejected in a field. Scene from the official trailer of ‘We Play War’.',
+    thumbTitle:
+      'Watch ‘We Play War’: A Drama Short | Cinematography by Theo Ribeiro',
   },
   {
     id: 7,
@@ -159,5 +186,9 @@ export const portfolio = [
     imageUrl: '/img/showreel/el-tiempo.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.50.36.jpg',
+    thumbAlt:
+      'El Tiempo Documentary Short Cinematography: Remote life in the Patagonian sheep outposts of Southern Argentina.',
+    thumbTitle:
+      'Watch ‘El Tiempo’: A Documentary Short | Cinematography by Theo Ribeiro',
   },
 ];

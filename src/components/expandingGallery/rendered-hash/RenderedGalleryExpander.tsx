@@ -24,8 +24,7 @@ export default function RenderedGalleryExpander() {
   useEffect(() => {
     async function getExpanderData() {
       if (currentUniqueSlug === null) return;
-      const data =
-        await portfolioActions.getPortfolioItemBySlug(currentUniqueSlug);
+      const data = portfolioActions.getPortfolioItemBySlug(currentUniqueSlug);
       if (data) {
         setExpanderData(data);
       }
@@ -50,9 +49,19 @@ export default function RenderedGalleryExpander() {
     imageUrl,
     slug,
     videoUrl,
+    thumbAlt,
+    thumbTitle,
   } = expanderData;
 
   const iconClassName = 'w-14 h-14 sm:h-20 sm:w-20 p-1 sm:p-2 sm:-mx-5';
+
+  const image = {
+    imageUrl,
+    thumbAlt,
+    thumbTitle,
+  };
+
+  console.log(image);
 
   return (
     <div
@@ -76,7 +85,7 @@ export default function RenderedGalleryExpander() {
       <article className="col-span-full flex flex-auto flex-col sm:px-[4.5rem] md:px-16 sm:py-6 md:flex-row md:gap-6 lg:gap-16 md:py-10 items-center transition-all">
         <div className="basis-7/12 lg:basis-6/12 w-full transition-all">
           <AspectRatio ratio={16 / 9} className="flex">
-            <RenderedVideoPlayer imageUrl={imageUrl} videoUrl={videoUrl} />
+            <RenderedVideoPlayer image={image} videoUrl={videoUrl} />
           </AspectRatio>
         </div>
         <section className="flex w-auto flex-1 flex-col gap-6 font-light sm:gap-10 sm:text-xl md:p-0 px-4 sm:px-0 pt-8 pb-6">

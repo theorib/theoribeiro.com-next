@@ -21,7 +21,7 @@ function Grid(
       role="list"
       aria-label={gridAriaLabel}
       className={cn(
-        'grid gap-0 sm:grid-cols-2 sm:gap-0 expanding-gallery-container expanding-gallery-container--expanded',
+        'expanding-gallery-container expanding-gallery-container--expanded grid sm:grid-cols-2',
         className,
       )}
       ref={ref}

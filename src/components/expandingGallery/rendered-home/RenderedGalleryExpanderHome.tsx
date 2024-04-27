@@ -48,10 +48,18 @@ export default function RenderedGalleryExpanderHome() {
     director,
     producer,
     productionCompany,
-    imageUrl,
     slug,
     videoUrl,
+    imageUrl,
+    thumbAlt,
+    thumbTitle,
   } = expanderData;
+
+  const image = {
+    imageUrl,
+    thumbAlt,
+    thumbTitle,
+  };
 
   const iconClassName = 'w-14 h-14 sm:h-20 sm:w-20 p-1 sm:p-2 sm:-mx-5';
 
@@ -59,9 +67,9 @@ export default function RenderedGalleryExpanderHome() {
     <div
       key={`${id}-expanded`}
       id={`${slug}-expanded`}
-      className="flex flex-col relative"
+      className="relative flex flex-col"
     >
-      <Nav className="sm:absolute top-0 left-0 right-0 bottom-0 flex justify-between items-center p-4 pb-10 sm:p-3  md:py-2 sm:px-0 order-last ">
+      <Nav className="bottom-0 left-0 right-0 top-0 order-last flex items-center justify-between p-4 pb-10 sm:absolute  sm:p-3 sm:px-0 md:py-2 ">
         <ExpandingGridGallery.NavButtonPrev
           className="overflow-clip sm:rounded-s-none"
           afterHandleClick={btnNextPrevAfterHandleClick}
@@ -69,13 +77,13 @@ export default function RenderedGalleryExpanderHome() {
           <PiCaretLeftThin className={iconClassName} />
         </ExpandingGridGallery.NavButtonPrev>
         <ExpandingGridGallery.NavButtonNext
-          className="overflow-clip order-last sm:rounded-e-none"
+          className="order-last overflow-clip sm:rounded-e-none"
           afterHandleClick={btnNextPrevAfterHandleClick}
         >
           <PiCaretRightThin className={iconClassName} />
         </ExpandingGridGallery.NavButtonNext>
         <ExpandingGridGallery.NavButtonClose
-          className="sm:absolute sm:right-3 md:right-2 sm:top-6 sm:w-12 sm:h-12 sm:mx-0"
+          className="sm:absolute sm:right-3 sm:top-6 sm:mx-0 sm:h-12 sm:w-12 md:right-2"
           afterHandleClick={btnCloseAfterHandleClick}
         >
           <PiXThin
@@ -83,20 +91,20 @@ export default function RenderedGalleryExpanderHome() {
           />
         </ExpandingGridGallery.NavButtonClose>
       </Nav>
-      <article className="col-span-full flex flex-auto flex-col sm:px-[4.5rem] md:px-16 sm:py-6 md:flex-row md:gap-6 lg:gap-16 md:py-10 items-center transition-all animate-fade-in">
-        <div className="basis-7/12 lg:basis-6/12 w-full transition-all">
+      <article className="col-span-full flex flex-auto animate-fade-in flex-col items-center transition-all sm:px-[4.5rem] sm:py-6 md:flex-row md:gap-6 md:px-16 md:py-10 lg:gap-16">
+        <div className="w-full basis-7/12 transition-all lg:basis-6/12">
           <AspectRatio ratio={16 / 9} className="flex">
-            <RenderedVideoPlayer imageUrl={imageUrl} videoUrl={videoUrl} />
+            <RenderedVideoPlayer image={image} videoUrl={videoUrl} />
           </AspectRatio>
         </div>
-        <section className="flex w-auto flex-1 flex-col gap-6 font-light sm:gap-10 sm:text-xl md:p-0 px-4 sm:px-0 pt-8 pb-6">
+        <section className="flex w-auto flex-1 flex-col gap-6 px-4 pb-6 pt-8 font-light sm:gap-10 sm:px-0 sm:text-xl md:p-0">
           <div>
-            <h1 className="font-raleway text-3xl sm:text-4xl">{title}</h1>
-            <div className="italic text-neutral-300 flex items-center gap-2">
+            <h2 className="font-raleway text-3xl sm:text-4xl">{title}</h2>
+            <div className="flex items-center gap-2 italic text-neutral-300">
               <p aria-label="Project type">{projectType}</p>
               <Separator
                 orientation="vertical"
-                className="h-5 w-[1px] bg-white inline-block ml-1"
+                className="ml-1 inline-block h-5 w-[1px] bg-white"
               />
               <p aria-label="Role on this project">{role}</p>
             </div>
@@ -107,16 +115,16 @@ export default function RenderedGalleryExpanderHome() {
           </p>
           <dl>
             <div>
-              <dt className="text-neutral-400 inline">Director: </dt>
-              <dd className="font-semibold inline">{director}</dd>
+              <dt className="inline text-neutral-400">Director: </dt>
+              <dd className="inline font-semibold">{director}</dd>
             </div>
             <div>
-              <dt className="text-neutral-400 inline">Producer: </dt>
-              <dd className="font-semibold inline">{producer}</dd>
+              <dt className="inline text-neutral-400">Producer: </dt>
+              <dd className="inline font-semibold">{producer}</dd>
             </div>
             <div>
-              <dt className="text-neutral-400 inline">Production Company: </dt>
-              <dd className="font-semibold inline">{productionCompany}</dd>
+              <dt className="inline text-neutral-400">Production Company: </dt>
+              <dd className="inline font-semibold">{productionCompany}</dd>
             </div>
           </dl>
         </section>

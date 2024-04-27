@@ -35,7 +35,7 @@ export default function RenderedExpandingGalleryHome() {
         next={{ afterHandleClick: btnNextPrevAfterHandleClick }}
         prev={{ afterHandleClick: btnNextPrevAfterHandleClick }}
       />
-      <ExpandingGridGallery.Grid ref={animateRef}>
+      <ExpandingGridGallery.Grid ref={animateRef} className="">
         <ExpandingGridGallery.GridExpander>
           <RenderedGalleryExpanderHome />
         </ExpandingGridGallery.GridExpander>

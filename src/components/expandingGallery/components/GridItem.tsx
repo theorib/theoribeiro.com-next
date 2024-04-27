@@ -62,9 +62,23 @@ function GridItem(
   const isActive = currentUniqueSlug === uniqueSlug;
 
   const definedClassNames = [
-    `w-full block transition-opacity ${isActive ? 'opacity-35' : ''}`,
-    `cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 focus:opacity-35`,
+    `w-full block transition-opacity group/grid-item`,
+    'cursor-pointer',
+
+    // 'focus:outline-none',
+    // 'focus-within:outline-none',
+    'focus-visible:outline-none',
+
+    // 'focus:ring-inset',
+    // 'focus-within:ring-inset',
+    // 'focus-visible:ring-inset',
+
+    // 'focus:ring-inset focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50',
+    // 'focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-opacity-50 focus-within:ring-inset',
+    'focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-opacity-50',
+
     `expanding-grid-gallery-item ${isActive ? 'expanding-grid-gallery-item--active' : ''}`,
+    // '[&.expanding-grid-gallery-item--active]:opacity-60',
   ];
 
   function handleClick(e: React.MouseEvent) {

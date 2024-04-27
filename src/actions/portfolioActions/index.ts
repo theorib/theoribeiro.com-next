@@ -7,6 +7,8 @@ export interface PortfolioThumbnail {
   slug: string;
   imageUrl: string;
   title: string;
+  thumbAlt: string;
+  thumbTitle: string;
 }
 
 export interface PortfolioItem extends PortfolioThumbnail {
@@ -20,6 +22,8 @@ export interface PortfolioItem extends PortfolioThumbnail {
   producer: string;
   productionCompany: string;
   originalImageUrl: string;
+  thumbAlt: string;
+  thumbTitle: string;
 }
 
 const getPortfolioSlugs = (): PortfolioSlug[] => {
@@ -34,6 +38,8 @@ const getPortfolioThumbnails = (): PortfolioThumbnail[] => {
       slug: item.slug,
       imageUrl: item.imageUrl,
       title: item.title,
+      thumbAlt: item.thumbAlt,
+      thumbTitle: item.thumbTitle,
     };
   });
   return portfolioThumbnails;
