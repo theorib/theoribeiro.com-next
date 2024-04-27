@@ -10,7 +10,7 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image() {
-  const origin = process.env.METADATA_BASE_URL;
+  // const origin = process.env.METADATA_BASE_URL;
 
   return new ImageResponse(
     (
@@ -33,7 +33,10 @@ export default async function Image() {
           }}
           width={2500}
           height={1667}
-          src={`${origin}/img/TR_2019_008_000504_LeicaQ_Web.jpg`}
+          // src={`${origin}/img/TR_2019_008_000504_LeicaQ_Web.jpg`}
+          src={
+            'https://theoribeiro.com/wp-content/uploads/2021/05/TR_2019_008_000504_LeicaQ_Web.jpg'
+          }
           alt="Portrait of Theo Ribeiro"
         />
       </div>

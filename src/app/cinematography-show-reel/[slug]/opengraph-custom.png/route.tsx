@@ -9,7 +9,7 @@ export async function GET(
   { params }: { params: { slug: string } },
 ) {
   const { slug } = params;
-  const origin = process.env.METADATA_BASE_URL;
+  // const origin = process.env.METADATA_BASE_URL;
 
   if (!origin)
     throw new Error('No METADATA_BASE_URL environment variable found');
@@ -35,7 +35,8 @@ export async function GET(
             objectFit: 'cover',
             objectPosition: 'center',
           }}
-          src={origin + item?.imageUrl}
+          // src={origin + item?.imageUrl}
+          src={item?.originalImageUrl}
           alt={item?.thumbAlt}
         />
       </div>
