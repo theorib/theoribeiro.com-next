@@ -1,7 +1,7 @@
 'use client';
 import NextJsGalleryImage from '@/components/photoGallery/NextJsGalleryImage';
 import { stillsPortfolio } from '@/data/stillsPortfolio';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import PhotoAlbum from 'react-photo-album';
 import Lightbox from 'yet-another-react-lightbox';
 import Captions from 'yet-another-react-lightbox/plugins/captions';
@@ -14,6 +14,7 @@ import {
   PiClosedCaptioningThin,
   PiXThin,
 } from 'react-icons/pi';
+import GallerySkeleton from './GallerySkeleton';
 
 const iconClassName = 'w-14 h-14 sm:h-20 sm:w-20 p-1 sm:p-2 sm:-mx-5';
 
@@ -23,14 +24,16 @@ function StillPortfolioGallery() {
 
   return (
     <>
-      <PhotoAlbum
-        layout="rows"
-        photos={stillsPortfolio}
-        renderPhoto={NextJsGalleryImage}
-        spacing={0}
-        targetRowHeight={targetRowHeight}
-        onClick={({ index }) => setIndex(index)}
-      />
+      <Suspense fallback={<GallerySkeleton />}>
+        <PhotoAlbum
+          layout="rows"
+          photos={stillsPortfolio}
+          renderPhoto={NextJsGalleryImage}
+          spacing={0}
+          targetRowHeight={targetRowHeight}
+          onClick={({ index }) => setIndex(index)}
+        />
+      </Suspense>
 
       <Lightbox
         slides={stillsPortfolio}
