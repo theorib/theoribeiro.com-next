@@ -19,16 +19,18 @@ type RenderedVideoPlayerProps = {
 
 function VideoImagePreview({ image }: { image: PlayerImage }) {
   return (
-    <div className="absolute inset-0 flex justify-center items-center animate-fade-in">
+    <div className="absolute inset-0 flex animate-fade-in items-center justify-center">
       <Image
         fill
         src={image.imageUrl}
         alt={image.thumbAlt}
         title={image.thumbTitle}
         className="object-cover"
+        sizes="(min-width: 768px) 65vw, (min-width: 1024px) 50vw, 100vw"
+        quality="65"
       />
-      <div className="absolute inset-0 hover:bg-neutral-950/50 group-focus-within:bg-neutral-950/50 flex justify-center items-center transition-all duration-300 group-hover:bg-neutral-950/50">
-        <PiPlayFill className="h-11 w-10 text-neutral-100/60 sm:h-20 sm:w-20 group-hover: group-focus-within:text-neutral-100/80 transition-colors duration-300" />
+      <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 hover:bg-neutral-950/50 group-focus-within:bg-neutral-950/50 group-hover:bg-neutral-950/50">
+        <PiPlayFill className="group-hover: h-11 w-10 text-neutral-100/60 transition-colors duration-300 group-focus-within:text-neutral-100/80 sm:h-20 sm:w-20" />
       </div>
     </div>
   );

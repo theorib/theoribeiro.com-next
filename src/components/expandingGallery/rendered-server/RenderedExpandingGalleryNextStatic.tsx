@@ -1,6 +1,6 @@
 'use client';
 import ExpandingGridGallery from '../ExpandingGridGallery';
-import RenderedExpandingGalleryThumbnail from '../rendered-hash/RenderedExpandingGalleryThumbnail';
+import RenderedExpandingGalleryThumbnail from '../rendered-common/RenderedExpandingGalleryThumbnail';
 import useRenderedGalleryActions from './useRenderedGalleryActions';
 import RenderedGalleryExpanderNextStatic from './RenderedGalleryExpanderNextStatic';
 import WithUrlParamSlug from './WithUrlParamSlug';

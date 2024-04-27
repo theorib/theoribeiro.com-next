@@ -14,7 +14,6 @@ function RenderedExpandingGalleryThumbnail({
 
   const className = cn([
     'group-[.expanding-grid-gallery-item--active]/grid-item:text-neutral-0 absolute inset-0 flex items-center justify-center bg-neutral-950/50 opacity-0 transition-all duration-200 group-focus-within/grid-item:opacity-90 group-hover/grid-item:opacity-90 group-[.expanding-grid-gallery-item--active]/grid-item:bg-neutral-950/85',
-    //  "absolute inset-0 flex items-center justify-center bg-neutral-950/50 opacity-0 transition-all duration-200 group-focus-within/grid-item:opacity-90 group-hover/grid-item:opacity-90 group-[.expanding-grid-gallery-item--active]/grid-item:bg-neutral-950/85 group-[.expanding-grid-gallery-item--active]/grid-item:text-neutral-600 group-[.expanding-grid-gallery-item--active]/grid-item:opacity-90",
   ]);
 
   return (
@@ -34,6 +33,7 @@ function RenderedExpandingGalleryThumbnail({
           fill
           className="object-cover"
           priority={priority}
+          sizes="(min-width: 640px)50vw, 100vw"
         />
         <div className={className}>
           <p className="text-4xl font-extralight">{item.title}</p>

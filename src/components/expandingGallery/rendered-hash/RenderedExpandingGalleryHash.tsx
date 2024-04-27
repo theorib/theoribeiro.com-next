@@ -1,7 +1,7 @@
 import portfolioActions from '@/actions/portfolioActions';
 import ExpandingGridGallery from '../ExpandingGridGallery';
 import RenderedGalleryExpander from './RenderedGalleryExpander';
-import RenderedExpandingGalleryThumbnail from './RenderedExpandingGalleryThumbnail';
+import RenderedExpandingGalleryThumbnail from '../rendered-common/RenderedExpandingGalleryThumbnail';
 
 export default async function RenderedExpandingGalleryHash() {
   const thumbnails = await portfolioActions.getPortfolioThumbnails();

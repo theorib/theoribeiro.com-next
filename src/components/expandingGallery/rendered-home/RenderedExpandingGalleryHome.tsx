@@ -1,6 +1,6 @@
 'use client';
 import ExpandingGridGallery from '../ExpandingGridGallery';
-import RenderedExpandingGalleryThumbnail from '../rendered-hash/RenderedExpandingGalleryThumbnail';
+import RenderedExpandingGalleryThumbnail from '../rendered-common/RenderedExpandingGalleryThumbnail';
 
 import WithUrlParamSlug from './WithUrlParamSlug';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
