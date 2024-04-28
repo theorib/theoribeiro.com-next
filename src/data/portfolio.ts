@@ -175,7 +175,7 @@ export const portfolio = [
     slug: 'el-tiempo',
     title: 'El Tiempo',
     videoSource: 'vimeo',
-    videoUrl: 'https://vimeo.com/376683409',
+    videoUrl: 'https://vimeo.com/414486325',
     projectType: 'Documentary Short',
     role: 'Cinematographer',
     description:
