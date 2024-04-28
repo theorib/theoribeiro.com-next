@@ -14,7 +14,7 @@ function MainNavItem({ children, href }: MainNavItemProps) {
       <SheetClose asChild={true}>
         <Link
           href={href}
-          className=" px-8 py-5 grow dark:hover:bg-neutral-700 transition-colors"
+          className=" grow px-8 py-5 transition-colors dark:hover:bg-neutral-700"
         >
           {children}
         </Link>
@@ -26,12 +26,10 @@ function MainNavItem({ children, href }: MainNavItemProps) {
 export default function MainNav() {
   return (
     <nav aria-label="Main Menu">
-      <ul className="flex flex-col divide-y border-t border-b">
+      <ul className="flex flex-col divide-y border-b border-t">
         <MainNavItem href={paths.homePage()}>Home</MainNavItem>
         <MainNavItem href={'/still-photography'}>Still Photography</MainNavItem>
         <MainNavItem href={paths.aboutPage()}>About</MainNavItem>
-        <MainNavItem href={'/test-gallery-hash'}>test-gallery-hash</MainNavItem>
-        <MainNavItem href={'/test-page'}>test-page</MainNavItem>
       </ul>
     </nav>
   );
