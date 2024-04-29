@@ -1,6 +1,11 @@
+import { PiInstagramLogoThin } from 'react-icons/pi';
+
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 function FooterMain() {
   return (
-    <footer className="px-5 mx-auto w-full max-w-layout pb-4 font-light">
+    <footer className="mx-auto w-full max-w-layout px-5 pb-4 font-light">
       <p className="my-12 sm:text-lg">
         Theo Ribeiro is an award winning cinematographer based in London, UK.
       </p>
@@ -20,12 +25,26 @@ function FooterMain() {
           </a>
         </span>
       </div>
-      <p
-        aria-label="Copyright Notice"
-        className="text-md text-horizon-blue-200"
-      >
-        ©{new Date().getFullYear()} Theo Ribeiro, all rights reserved.{' '}
-      </p>
+      <div className="flex items-end justify-between">
+        <p
+          aria-label="Copyright Notice"
+          className="text-md text-horizon-blue-200"
+        >
+          ©{new Date().getFullYear()} Theo Ribeiro, all rights reserved.{' '}
+        </p>
+
+        <Link
+          href="https://www.instagram.com/theorib/"
+          title="Instagram"
+          className={cn(
+            buttonVariants({ variant: 'ghost' }),
+            'm-0 border-slate-200 bg-neutral-700 p-0',
+          )}
+          target="_blank"
+        >
+          <PiInstagramLogoThin className="h-7 w-7  p-2 text-neutral-300 sm:h-10 sm:w-10" />
+        </Link>
+      </div>
     </footer>
   );
 }
