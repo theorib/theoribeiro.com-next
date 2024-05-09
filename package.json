@@ -26,7 +26,6 @@
     "next-sitemap": "^4.2.3",
     "react": "^18.3.0-canary",
     "react-dom": "^18.3.0-canary",
-    "react-hash-control": "^1.0.3",
     "react-hotkeys-hook": "^4.5.0",
     "react-icons": "^5.1.0",
     "react-photo-album": "^2.3.1",
