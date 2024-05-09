@@ -2,7 +2,7 @@
 'use client';
 import { notFound } from 'next/navigation';
 import { ItemClickHandler } from '../components/GridItem';
-import { ButtonClickHandler } from '../components/ButtonComp';
+import { ButtonClickHandler } from '../components/NavBtnComp';
 import paths from '@/lib/paths';
 import { setUrlPathName } from './useUrlPathName';
 

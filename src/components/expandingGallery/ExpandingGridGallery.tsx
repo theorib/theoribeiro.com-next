@@ -8,7 +8,7 @@ import WithKeyboardShortcuts from './components/WithKeyboardShortcuts';
 import { StoreState } from './ExpandingGridGallery.types';
 import type { ReactNode } from 'react';
 import Nav from './components/Nav';
-import buttonCompWithButtonType from './components/buttonCompWithButtonType';
+import navBtnCompWithBtnType from './components/navBtnCompWithBtnType';
 
 interface ExpandingGalleryProps {
   children: ReactNode;
@@ -37,13 +37,13 @@ ExpandingGridGallery.GridExpander = GridExpander;
 ExpandingGridGallery.GridItem = GridItem;
 ExpandingGridGallery.WithScrollTo = WithScrollTo;
 ExpandingGridGallery.Nav = Nav;
-ExpandingGridGallery.NavButtonNext = buttonCompWithButtonType({
+ExpandingGridGallery.NavButtonNext = navBtnCompWithBtnType({
   buttonType: 'next',
 });
-ExpandingGridGallery.NavButtonPrev = buttonCompWithButtonType({
+ExpandingGridGallery.NavButtonPrev = navBtnCompWithBtnType({
   buttonType: 'prev',
 });
-ExpandingGridGallery.NavButtonClose = buttonCompWithButtonType({
+ExpandingGridGallery.NavButtonClose = navBtnCompWithBtnType({
   buttonType: 'close',
   variant: 'close',
 });

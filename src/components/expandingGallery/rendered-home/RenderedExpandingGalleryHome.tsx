@@ -9,6 +9,7 @@ import { notFound, useParams } from 'next/navigation';
 import { UniqueSlug } from '../ExpandingGridGallery.types';
 import RenderedGalleryExpanderHome from './RenderedGalleryExpanderHome';
 import useRenderedGalleryActionsHome from './useRenderedGalleryActionsHome';
+// import paths from '@/lib/paths';
 
 export default function RenderedExpandingGalleryHome() {
   const orderedUniqueSlugsArray = portfolioActions.getPortfolioSlugs();
@@ -45,6 +46,8 @@ export default function RenderedExpandingGalleryHome() {
             uniqueSlug={item.slug}
             acceptServerActions={true}
             afterHandleClick={galleryItemAfterHandleClick}
+            // title={`Toggle ${item?.title} (${item?.projectType}) detailed view`}
+            // href={paths.showReelItemPage(item.slug)}
           >
             <RenderedExpandingGalleryThumbnail item={item} />
           </ExpandingGridGallery.GridItem>

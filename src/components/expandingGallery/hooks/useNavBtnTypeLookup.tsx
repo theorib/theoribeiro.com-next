@@ -1,7 +1,7 @@
 import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 import { UniqueIndex, UniqueSlug } from '../ExpandingGridGallery.types';
 
-export type ButtonTypeLookup = ReturnType<typeof useButtonTypeLookup>;
+export type ButtonTypeLookup = ReturnType<typeof useNavBtnTypeLookup>;
 export interface OnHandleClickReturnValue {
   uniqueIndex: UniqueIndex;
   uniqueSlug: UniqueSlug | null;
@@ -9,7 +9,7 @@ export interface OnHandleClickReturnValue {
 
 const onHandleClickNullReturn = { uniqueIndex: null, uniqueSlug: null };
 
-export default function useButtonTypeLookup() {
+export default function useNavBtnTypeLookup() {
   const {
     numberOfUniqueSlugs,
     currentUniqueIndex,

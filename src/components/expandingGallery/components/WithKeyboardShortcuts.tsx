@@ -1,6 +1,6 @@
 'use client';
 import { useHotkeys } from 'react-hotkeys-hook';
-import useButtonTypeLookup from '../hooks/useButtonTypeLookup';
+import useButtonTypeLookup from '../hooks/useNavBtnTypeLookup';
 import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 import { UniqueSlug } from '../ExpandingGridGallery.types';
 

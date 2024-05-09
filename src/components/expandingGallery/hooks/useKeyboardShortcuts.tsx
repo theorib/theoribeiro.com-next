@@ -1,5 +1,5 @@
 import { useHotkeys } from 'react-hotkeys-hook';
-import { ButtonTypeLookup } from './useButtonTypeLookup';
+import { ButtonTypeLookup } from './useNavBtnTypeLookup';
 
 export default function useKeyboardShortcuts(
   buttonTypeLookUp: ButtonTypeLookup,

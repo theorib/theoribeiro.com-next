@@ -9,13 +9,14 @@ export interface PortfolioThumbnail {
   title: string;
   thumbAlt: string;
   thumbTitle: string;
+  projectType: string;
 }
 
 export interface PortfolioItem extends PortfolioThumbnail {
   uniqueId: string;
   videoSource: string;
   videoUrl: string;
-  projectType: string;
+
   role: string;
   description: string;
   director: string;
@@ -38,6 +39,7 @@ const getPortfolioThumbnails = (): PortfolioThumbnail[] => {
       slug: item.slug,
       imageUrl: item.imageUrl,
       title: item.title,
+      projectType: item.projectType,
       thumbAlt: item.thumbAlt,
       thumbTitle: item.thumbTitle,
     };

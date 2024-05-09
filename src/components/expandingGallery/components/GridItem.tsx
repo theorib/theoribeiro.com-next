@@ -8,13 +8,13 @@ import type { UniqueSlug } from '../ExpandingGridGallery.types';
 import utils from '../utils/utils';
 
 export interface ItemClickHandler {
-  e?: React.MouseEvent;
+  e?: React.UIEvent;
   uniqueSlug?: UniqueSlug | null;
   currentUniqueSlug?: UniqueSlug | null;
 }
 export interface GridItemProps {
   uniqueSlug: string;
-  acceptServerActions: boolean;
+  acceptServerActions?: boolean;
   beforeHandleClick?: ({
     e,
     uniqueSlug,
@@ -81,7 +81,13 @@ function GridItem(
     // '[&.expanding-grid-gallery-item--active]:opacity-60',
   ];
 
-  function handleClick(e: React.MouseEvent) {
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      handleClick(e);
+    }
+  }
+
+  function handleClick(e: React.UIEvent) {
     e.preventDefault();
     e.stopPropagation();
 
@@ -116,18 +122,21 @@ function GridItem(
       ...props,
       'aria-label': `Open ${uniqueSlug}`,
       'aria-expanded': isActive,
+      role: 'button',
+      tabIndex: 1,
       onClick: handleClick,
+      onKeyDown: handleKeyDown,
       className: cn(...definedClassNames, className),
     };
   }
 
   const compProps = asChild ? getUpdatedProps(props) : props;
-  const buttonProps = getUpdatedProps(props);
-  const ButtonComponent = <button {...buttonProps}>{children}</button>;
+  const linkProps = getUpdatedProps(props);
+  const LinkComponent = <a {...linkProps}>{children}</a>;
 
   return (
     <Comp id={uniqueSlug} ref={ref} {...compProps}>
-      {asChild ? children : ButtonComponent}
+      {asChild ? children : LinkComponent}
     </Comp>
   );
 }

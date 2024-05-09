@@ -9,25 +9,16 @@ import { forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import utils, { cn } from '../utils/utils';
-import useButtonTypeLookup from '../hooks/useButtonTypeLookup';
+import useNavBtnTypeLookup from '../hooks/useNavBtnTypeLookup';
 import { UniqueIndex, UniqueSlug } from '../ExpandingGridGallery.types';
 
-export const buttonCompVariants = cva('', {
+export const navButtonCompVariants = cva('', {
   variants: {
     variant: {
       prevNext:
         'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-700 dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
       close:
         'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-700  sm:dark:bg-transparent dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
-      galleryItem: [
-        'w-full block transition-opacity',
-        'cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 focus:opacity-35',
-        'expanding-grid-gallery-item',
-      ],
-    },
-    galleryItemActive: {
-      true: ['opacity-35', 'expanding-grid-gallery-item--active'],
-      false: '',
     },
     size: {
       default: '',
@@ -48,24 +39,24 @@ export const buttonCompVariants = cva('', {
   },
 });
 
-export type ButtonType = 'next' | 'prev' | 'close';
+export type NavButtonType = 'next' | 'prev' | 'close';
 
 export interface ButtonClickHandler {
   e?: ReactMouseEvent<HTMLButtonElement, MouseEvent>;
   uniqueIndex?: UniqueIndex;
   uniqueSlug?: UniqueSlug | null;
 }
-export interface ButtonCompProps
+export interface NavButtonCompProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonCompVariants> {
-  buttonType: ButtonType;
+    VariantProps<typeof navButtonCompVariants> {
+  buttonType: NavButtonType;
   acceptServerActions?: boolean;
   beforeHandleClick?: ({ e }: ButtonClickHandler) => void;
   afterHandleClick?: ({ e, uniqueIndex }: ButtonClickHandler) => void;
   asChild?: boolean;
 }
 
-function ButtonComp(
+function NavBtnComp(
   {
     buttonType,
     acceptServerActions = false,
@@ -76,11 +67,11 @@ function ButtonComp(
     size,
     asChild = false,
     ...props
-  }: ButtonCompProps,
+  }: NavButtonCompProps,
   ref: ForwardedRef<HTMLButtonElement>,
 ) {
   const Comp = asChild ? Slot : 'button';
-  const buttonTypeLookUp = useButtonTypeLookup();
+  const buttonTypeLookUp = useNavBtnTypeLookup();
   const isEnabled = buttonTypeLookUp[buttonType]['isEnabled'];
 
   function handleClick(e: ReactMouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -104,13 +95,13 @@ function ButtonComp(
       onClick={handleClick}
       disabled={Boolean(!isEnabled)}
       aria-label={buttonTypeLookUp[buttonType]['ariaLabel']}
-      className={cn(buttonCompVariants({ variant, size, className }))}
+      className={cn(navButtonCompVariants({ variant, size, className }))}
       ref={ref}
       {...props}
     />
   );
 }
 
-ButtonComp.displayName = 'ButtonComp';
+NavBtnComp.displayName = 'NavBtnComp';
 
-export default forwardRef(ButtonComp);
+export default forwardRef(NavBtnComp);
