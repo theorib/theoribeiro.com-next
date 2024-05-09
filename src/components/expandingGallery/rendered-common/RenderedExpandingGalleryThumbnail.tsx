@@ -2,7 +2,6 @@ import Image from 'next-export-optimize-images/image';
 import { AspectRatio } from '../../ui/aspect-ratio';
 import { type PortfolioThumbnail } from '@/actions/portfolioActions';
 import { cn } from '@/lib/utils';
-
 type RenderedExpandingGalleryThumbnail = {
   item: PortfolioThumbnail;
 };
@@ -20,9 +19,9 @@ function RenderedExpandingGalleryThumbnail({
     <AspectRatio
       ratio={2.4 / 1}
       asChild={true}
-      className={
-        'group-[.expanding-grid-gallery-item--active]/grid-item:opacity-30'
-      }
+      className={cn(
+        'group-[.expanding-grid-gallery-item--active]/grid-item:opacity-30',
+      )}
     >
       {/* <Link href={item.imageUrl}> */}
       <div className="">

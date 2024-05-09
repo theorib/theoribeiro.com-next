@@ -9,7 +9,7 @@ import { notFound, useParams } from 'next/navigation';
 import { UniqueSlug } from '../ExpandingGridGallery.types';
 import RenderedGalleryExpanderHome from './RenderedGalleryExpanderHome';
 import useRenderedGalleryActionsHome from './useRenderedGalleryActionsHome';
-// import paths from '@/lib/paths';
+import paths from '@/lib/paths';
 
 export default function RenderedExpandingGalleryHome() {
   const orderedUniqueSlugsArray = portfolioActions.getPortfolioSlugs();
@@ -22,7 +22,7 @@ export default function RenderedExpandingGalleryHome() {
   const { slug } = useParams<{ slug: UniqueSlug }>();
   if (slug && !orderedUniqueSlugsArray.includes(slug)) notFound();
 
-  const [animateRef] = useAutoAnimate({ duration: 350 });
+  const [animateRef] = useAutoAnimate({ duration: 300 });
 
   return (
     <ExpandingGridGallery
@@ -41,16 +41,22 @@ export default function RenderedExpandingGalleryHome() {
           <RenderedGalleryExpanderHome />
         </ExpandingGridGallery.GridExpander>
         {thumbnails.map(item => (
-          <ExpandingGridGallery.GridItem
-            key={`${item.slug}-key`}
-            uniqueSlug={item.slug}
-            acceptServerActions={true}
-            afterHandleClick={galleryItemAfterHandleClick}
-            // title={`Toggle ${item?.title} (${item?.projectType}) detailed view`}
-            // href={paths.showReelItemPage(item.slug)}
-          >
-            <RenderedExpandingGalleryThumbnail item={item} />
-          </ExpandingGridGallery.GridItem>
+          <li key={`${item.slug}-key`}>
+            <ExpandingGridGallery.GridItem
+              uniqueSlug={item.slug}
+              acceptServerActions={true}
+              afterHandleClick={galleryItemAfterHandleClick}
+              asChild
+            >
+              <a
+                href={paths.showReelItemPage(item.slug)}
+                title={`Toggle ${item?.title} (${item?.projectType}) detailed view`}
+                aria-label={`Toggle ${item?.title} (${item?.projectType}) detailed view`}
+              >
+                <RenderedExpandingGalleryThumbnail item={item} />
+              </a>
+            </ExpandingGridGallery.GridItem>
+          </li>
         ))}
       </ExpandingGridGallery.Grid>
     </ExpandingGridGallery>
