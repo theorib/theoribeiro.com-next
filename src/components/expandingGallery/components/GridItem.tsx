@@ -132,7 +132,7 @@ function GridItem(
 
   const compProps = asChild ? getUpdatedProps(props) : props;
   const linkProps = getUpdatedProps(props);
-  const LinkComponent = <a {...linkProps}>{children}</a>;
+  const LinkComponent = <button {...linkProps}>{children}</button>;
 
   return (
     <Comp id={uniqueSlug} ref={ref} {...compProps}>

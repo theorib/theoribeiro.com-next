@@ -8,5 +8,5 @@ export const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
   variable: '--font-nunito-sans',
   // display: 'swap',
-  // adjustFontFallback: false,
+  adjustFontFallback: false, // removes the Failed to find font override values for font `Nunito Sans` error
 });
