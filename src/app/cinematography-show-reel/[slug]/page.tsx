@@ -1,5 +1,5 @@
 import portfolioActions from '@/actions/portfolioActions';
-import RenderedExpandingGalleryHome from '@/components/expandingGallery/rendered-home/RenderedExpandingGalleryHome';
+import RenderedExpandingGalleryHome from '@/components/expandingGallery/rendered/RenderedExpandingGallery';
 import paths from '@/lib/paths';
 import { Metadata } from 'next';
 

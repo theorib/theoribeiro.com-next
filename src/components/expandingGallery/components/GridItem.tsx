@@ -67,7 +67,7 @@ function GridItem(
 
     // 'focus:outline-none',
     // 'focus-within:outline-none',
-    'focus-visible:outline-none',
+    // 'focus-visible:outline-none',
 
     // 'focus:ring-inset',
     // 'focus-within:ring-inset',
@@ -75,10 +75,9 @@ function GridItem(
 
     // 'focus:ring-inset focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50',
     // 'focus-within:ring-2 focus-within:ring-primary-500 focus-within:ring-opacity-50 focus-within:ring-inset',
-    'focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-opacity-50',
+    // 'focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-opacity-50',
 
     `expanding-grid-gallery-item ${isActive ? 'expanding-grid-gallery-item--active' : ''}`,
-    // '[&.expanding-grid-gallery-item--active]:opacity-60',
   ];
 
   function handleKeyDown(e: React.KeyboardEvent) {

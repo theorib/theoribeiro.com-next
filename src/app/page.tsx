@@ -1,4 +1,4 @@
-import RenderedExpandingGalleryHome from '@/components/expandingGallery/rendered-home/RenderedExpandingGalleryHome';
+import RenderedExpandingGalleryHome from '@/components/expandingGallery/rendered/RenderedExpandingGallery';
 import paths from '@/lib/paths';
 import seo from '@/lib/seo';
 import { Metadata } from 'next';

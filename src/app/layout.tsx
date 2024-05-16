@@ -49,7 +49,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       // data-theme="theo"
     >
       <body
-        className={`overlay-fix grid min-h-screen min-w-72 grid-cols-1 grid-rows-[auto_1fr_auto] font-sans antialiased transition-all dark:bg-background dark:text-foreground`}
+        className={`overlay-fix grid min-h-screen min-w-72 grid-cols-1 grid-rows-[auto_1fr_auto] font-sans subpixel-antialiased transition-all dark:bg-background dark:text-foreground`}
       >
         <Providers>
           <HeaderMain />

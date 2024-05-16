@@ -13,10 +13,10 @@ import ExpandingGridGallery from '../ExpandingGridGallery';
 import { PiCaretLeftThin, PiCaretRightThin, PiXThin } from 'react-icons/pi';
 import Nav from '../components/Nav';
 
-import RenderedVideoPlayer from '../rendered-common/RenderedVideoPlayer';
+import RenderedVideoPlayer from './RenderedVideoPlayer';
 import useRenderedGalleryActions from './useRenderedGalleryActionsHome';
 
-export default function RenderedGalleryExpanderHome() {
+export default function RenderedGalleryExpander() {
   const [expanderData, setExpanderData] = useState<PortfolioItem | null>(null);
   const { currentUniqueSlug } = useExpandingGridGallery();
   const { btnCloseAfterHandleClick, btnNextPrevAfterHandleClick } =

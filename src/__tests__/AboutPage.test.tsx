@@ -14,6 +14,4 @@ test('About Page', async () => {
     name: /about theo ribeiro - director of photography/i,
   });
   expect(heading).toBeInTheDocument();
-
-  // screen.logTestingPlaygroundURL();
 });

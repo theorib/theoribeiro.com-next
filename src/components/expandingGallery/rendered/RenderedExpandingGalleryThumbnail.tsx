@@ -23,7 +23,6 @@ function RenderedExpandingGalleryThumbnail({
         'group-[.expanding-grid-gallery-item--active]/grid-item:opacity-30',
       )}
     >
-      {/* <Link href={item.imageUrl}> */}
       <div className="">
         <Image
           src={item.imageUrl}
@@ -38,7 +37,6 @@ function RenderedExpandingGalleryThumbnail({
           <p className="text-4xl font-extralight">{item.title}</p>
         </div>
       </div>
-      {/* </Link> */}
     </AspectRatio>
   );
 }
