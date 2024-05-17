@@ -1,3 +1,4 @@
+import paths from '@/lib/paths';
 import seo from '@/lib/seo';
 import { Metadata } from 'next';
 import Image from 'next-export-optimize-images/image';
@@ -9,19 +10,19 @@ export async function generateMetadata(): Promise<Metadata> {
     // },
     ...seo,
     title: 'About',
-    // openGraph: {
-    //   title: `About Theo Ribeiro | Cinematograher`,
-    //   description: `${seo.description}`,
+    openGraph: {
+      title: `About Theo Ribeiro | Cinematograher`,
+      description: `${seo.description}`,
 
-    //   images: [
-    //     {
-    //       url: `/opengraph-custom-about.png`,
-    //       alt: `${seo.description}`,
-    //       width: 1200,
-    //       height: 630,
-    //     },
-    //   ],
-    // },
+      images: [
+        {
+          url: `/${paths.aboutPage()}/opengraph-custom.png`,
+          alt: `${seo.description}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
   };
 }
 

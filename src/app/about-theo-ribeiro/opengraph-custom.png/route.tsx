@@ -1,16 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { ImageResponse } from 'next/og';
-import envPublic from '@/lib/env';
+import env from '@/lib/env';
+// https://github.com/vercel/next.js/issues/51147
 
-export const alt = 'Portrait of Theo Ribeiro';
-export const size = {
-  width: 1200,
-  height: 630,
-};
-export const contentType = 'image/png';
-
-export default async function Image() {
+export async function GET() {
   return new ImageResponse(
     (
       <div
@@ -30,13 +24,12 @@ export default async function Image() {
             objectFit: 'cover',
             objectPosition: 'center',
           }}
-          width={2500}
-          height={1667}
+          // src={origin + item?.imageUrl}
           src={
-            envPublic.NEXT_PUBLIC_REMOTE_ASSETS_PATH +
+            env.NEXT_PUBLIC_REMOTE_ASSETS_PATH +
             'img/TR_2019_008_000504_LeicaQ_Web.jpg'
           }
-          alt="Portrait of Theo Ribeiro"
+          alt={'Portrait of Theo Ribeiro'}
         />
       </div>
     ),
