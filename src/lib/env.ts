@@ -5,7 +5,6 @@ import { createEnv } from '@t3-oss/env-nextjs';
 export const env = createEnv({
   server: {
     METADATA_BASE_URL: z.string().url(),
-    BUILD_BASE_PATH: z.string().min(1),
   },
 
   client: {
@@ -16,7 +15,6 @@ export const env = createEnv({
 
   runtimeEnv: {
     METADATA_BASE_URL: process.env.METADATA_BASE_URL,
-    BUILD_BASE_PATH: process.env.BUILD_BASE_PATH,
     NEXT_PUBLIC_ASSETS_PATH: process.env.NEXT_PUBLIC_ASSETS_PATH,
     NEXT_PUBLIC_LOCAL_ASSETS_PATH: process.env.NEXT_PUBLIC_LOCAL_ASSETS_PATH,
     NEXT_PUBLIC_REMOTE_ASSETS_PATH: process.env.NEXT_PUBLIC_REMOTE_ASSETS_PATH,
