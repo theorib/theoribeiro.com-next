@@ -1,4 +1,4 @@
-import envPublic from '@/lib/env';
+import env from '@/lib/env';
 
 const paths = {
   homePage(id?: string) {
@@ -11,10 +11,10 @@ const paths = {
     return `/cinematography-show-reel/${slug}`;
   },
   localAssetsPath() {
-    return envPublic.NEXT_PUBLIC_LOCAL_ASSETS_PATH;
+    return env.NEXT_PUBLIC_LOCAL_ASSETS_PATH;
   },
   remoteAssetsPath() {
-    return envPublic.NEXT_PUBLIC_REMOTE_ASSETS_PATH;
+    return env.NEXT_PUBLIC_REMOTE_ASSETS_PATH;
   },
 };
 export default paths;

@@ -21,7 +21,7 @@ const iconClassName = 'w-14 h-14 sm:h-20 sm:w-20 p-1 sm:p-2 sm:-mx-5';
 
 const stills = stillsPortfolio.map(item => ({
   ...item,
-  src: paths.localAssetsPath + item.src,
+  src: paths.localAssetsPath() + item.src,
 }));
 
 function StillPortfolioGallery() {
