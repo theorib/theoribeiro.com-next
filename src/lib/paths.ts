@@ -10,6 +10,9 @@ const paths = {
   showReelItemPage(slug: string) {
     return `/cinematography-show-reel/${slug}`;
   },
+  stillsPhotographyPage() {
+    return `/still-photography`;
+  },
   localAssetsPath() {
     return env.NEXT_PUBLIC_LOCAL_ASSETS_PATH;
   },

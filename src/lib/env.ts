@@ -8,6 +8,7 @@ export const env = createEnv({
   },
 
   client: {
+    NEXT_PUBLIC_SITE_URL: z.string().url(),
     NEXT_PUBLIC_ASSETS_PATH: z.union([z.string().url(), z.literal('/')]),
     NEXT_PUBLIC_LOCAL_ASSETS_PATH: z.union([z.string().url(), z.literal('/')]),
     NEXT_PUBLIC_REMOTE_ASSETS_PATH: z.string().url(),
@@ -15,6 +16,7 @@ export const env = createEnv({
 
   runtimeEnv: {
     METADATA_BASE_URL: process.env.METADATA_BASE_URL,
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
     NEXT_PUBLIC_ASSETS_PATH: process.env.NEXT_PUBLIC_ASSETS_PATH,
     NEXT_PUBLIC_LOCAL_ASSETS_PATH: process.env.NEXT_PUBLIC_LOCAL_ASSETS_PATH,
     NEXT_PUBLIC_REMOTE_ASSETS_PATH: process.env.NEXT_PUBLIC_REMOTE_ASSETS_PATH,

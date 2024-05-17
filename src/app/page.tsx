@@ -6,14 +6,9 @@ import { Metadata } from 'next';
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `${seo.title} show reel`,
-    // description: `${portfolioItem.description}`,
     alternates: {
       canonical: paths.homePage(),
     },
-
-    // openGraph: {
-    //   images: ['/some-specific-page-image.jpg', ...previousImages],
-    // },
   };
 }
 
