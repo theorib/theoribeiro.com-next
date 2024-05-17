@@ -11,6 +11,7 @@ import RenderedGalleryExpander from './RenderedGalleryExpander';
 import useRenderedGalleryActionsHome from './useRenderedGalleryActionsHome';
 import paths from '@/lib/paths';
 import { cn } from '@/lib/utils';
+import JsonLdScript from '@/components/expandingGallery/rendered/JsonLdScript';
 
 export default function RenderedExpandingGallery() {
   const orderedUniqueSlugsArray = portfolioActions.getPortfolioSlugs();
@@ -43,6 +44,7 @@ export default function RenderedExpandingGallery() {
       storeState="local"
       orderedUniqueSlugsArray={orderedUniqueSlugsArray}
     >
+      <JsonLdScript />
       <ExpandingGridGallery.WithScrollTo />
       <WithUrlParamSlug />
       <ExpandingGridGallery.WithKeyboardShortcuts

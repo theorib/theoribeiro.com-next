@@ -1,12 +1,7 @@
 'use client';
 
-import portfolioActions, {
-  type PortfolioItem,
-} from '@/actions/portfolioActions';
 import { AspectRatio } from '../../ui/aspect-ratio';
 import { cn } from '../utils/utils';
-import { useEffect, useState } from 'react';
-import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
 
 import { Separator } from '@radix-ui/react-separator';
 import ExpandingGridGallery from '../ExpandingGridGallery';
@@ -15,27 +10,13 @@ import Nav from '../components/Nav';
 
 import RenderedVideoPlayer from './RenderedVideoPlayer';
 import useRenderedGalleryActions from './useRenderedGalleryActionsHome';
+import usePortfolioItemData from '@/components/expandingGallery/rendered/usePortfolioItemData';
+import paths from '@/lib/paths';
 
 export default function RenderedGalleryExpander() {
-  const [expanderData, setExpanderData] = useState<PortfolioItem | null>(null);
-  const { currentUniqueSlug } = useExpandingGridGallery();
+  const expanderData = usePortfolioItemData();
   const { btnCloseAfterHandleClick, btnNextPrevAfterHandleClick } =
     useRenderedGalleryActions();
-
-  useEffect(() => {
-    async function getExpanderData() {
-      if (currentUniqueSlug === null) return;
-      const data =
-        await portfolioActions.getPortfolioItemBySlug(currentUniqueSlug);
-      if (data) {
-        setExpanderData(data);
-      }
-    }
-    getExpanderData().catch(err => {
-      console.error(err);
-      throw new Error(err);
-    });
-  }, [currentUniqueSlug]);
 
   if (!expanderData) return null;
 
@@ -56,7 +37,7 @@ export default function RenderedGalleryExpander() {
   } = expanderData;
 
   const image = {
-    imageUrl,
+    imageUrl: paths.localAssetsPath() + imageUrl,
     thumbAlt,
     thumbTitle,
   };

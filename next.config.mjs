@@ -6,6 +6,13 @@ const nextConfig = {
   output: 'export',
   images: {
     deviceSizes: [390, 430, 640, 768, 1080, 1280, 1920, 2560, 3840],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.theoribeiro.com',
+        port: '',
+      },
+    ],
   },
   // we will handle errors with git action hooks
   typescript: {

@@ -1,7 +1,6 @@
 import seo from '@/lib/seo';
 import { Metadata } from 'next';
 import Image from 'next-export-optimize-images/image';
-import aboutImg from 'public/img/TR_2019_008_000504_LeicaQ_Web.jpg';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -34,7 +33,9 @@ function AboutPage() {
           About Theo Ribeiro - Director of Photography
         </h1>
         <Image
-          src={aboutImg}
+          src="https://assets.theoribeiro.com/img/TR_2019_008_000504_LeicaQ_Web.jpg"
+          width={2500}
+          height={1667}
           alt="Portrait of Theo Ribeiro"
           title="Read Theo Ribeiro Bio information"
           className="sm:py-4"

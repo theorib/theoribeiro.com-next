@@ -1,10 +1,12 @@
 import Image from 'next-export-optimize-images/image';
 import { AspectRatio } from '../../ui/aspect-ratio';
-import { type PortfolioThumbnail } from '@/actions/portfolioActions';
 import { cn } from '@/lib/utils';
-type RenderedExpandingGalleryThumbnail = {
+import paths from '@/lib/paths';
+import { type PortfolioThumbnail } from '@/data/portfolio';
+
+interface RenderedExpandingGalleryThumbnail {
   item: PortfolioThumbnail;
-};
+}
 
 function RenderedExpandingGalleryThumbnail({
   item,
@@ -25,7 +27,7 @@ function RenderedExpandingGalleryThumbnail({
     >
       <div className="">
         <Image
-          src={item.imageUrl}
+          src={paths.localAssetsPath() + item.imageUrl}
           alt={item.thumbAlt}
           title={item.thumbTitle}
           fill

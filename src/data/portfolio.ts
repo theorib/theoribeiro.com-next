@@ -1,11 +1,20 @@
+export type PortfolioSlug = string;
+
+export type PortfolioProjectType =
+  | 'Drama Short'
+  | 'Promo'
+  | 'Documentary Short'
+  | 'Music Video'
+  | 'Mini Doc';
+
 export type PortfolioItem = {
   id: number;
   uniqueId: string;
-  slug: string;
+  slug: PortfolioSlug;
   title: string;
   videoSource: string;
   videoUrl: string;
-  projectType: string;
+  projectType: PortfolioProjectType;
   role: string;
   description: string;
   director: string;
@@ -16,8 +25,29 @@ export type PortfolioItem = {
   thumbAlt: string;
   thumbTitle: string;
 };
+export type PortfolioThumbnail = Pick<
+  PortfolioItem,
+  | 'id'
+  | 'slug'
+  | 'title'
+  | 'projectType'
+  | 'imageUrl'
+  | 'thumbAlt'
+  | 'thumbTitle'
+>;
 
-export const portfolio = [
+// export type PortfolioItemSchema = {
+//   sameAs?: string[];
+//   actor?: string[];
+//   author?: string[];
+//   countryOfOrigin?: string[];
+//   subtitleLanguage?: string[];
+//   musicBy?: string[];
+//   dateCreated?: string;
+//   duration?: string;
+// };
+
+export const portfolio: PortfolioItem[] = [
   {
     id: 0,
     uniqueId: 'a8e61a0a-f268-4b30-9ebc-640c614ad074',
@@ -27,18 +57,16 @@ export const portfolio = [
     videoUrl: 'https://vimeo.com/418058845',
     projectType: 'Drama Short',
     role: 'Cinematographer',
-    description:
-      'Pauline and Barry are a seemingly happily married middled aged couple. That is until Pauline tunes into relationship hour on Talk Radio. She thinks she recognises the nameless voice that’s relaying a lifetime of regrets one live radio.',
+    description: `Pauline and Barry are a seemingly happily married middled aged couple. That is until Pauline tunes into relationship hour on Talk Radio. She thinks she recognises the nameless voice that's relaying a lifetime of regrets one live radio.`,
     director: 'Ben S. Hyland',
     producer: 'Adam Smith',
     productionCompany: 'Hidden Art Films',
-    imageUrl: '/img/showreel/talk-radio.jpg',
+    imageUrl: 'img/showreel/talk-radio.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-18-at-10.53.17.jpg',
     thumbAlt:
       'Talk Radio Drama Short Cinematography: Pauline, a seemingly happily married middle-aged woman is cooking in her kitchen.',
-    thumbTitle:
-      'Watch ‘Talk Radio’: A Drama Short | Cinematography by Theo Ribeiro',
+    thumbTitle: `Watch 'Talk Radio': A Drama Short | Cinematography by Theo Ribeiro`,
   },
   {
     id: 1,
@@ -54,13 +82,12 @@ export const portfolio = [
     director: 'Laura Belinky',
     producer: 'Theo Ribeiro and Laura Belinky',
     productionCompany: 'Wild River Films',
-    imageUrl: '/img/showreel/land-of-the-wind.jpg',
+    imageUrl: 'img/showreel/land-of-the-wind.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/05/tdv-stills-16x9_1.7.1-edit-1-scaled.jpg',
     thumbAlt:
       'Land of The Wind Documentary Short Cinematography: Vast Patagonian landscape with a distant road and a vehicle driving in the distance.',
-    thumbTitle:
-      'Watch ‘Land of The Wind’: A Documentary Short | Cinematography by Theo Ribeiro',
+    thumbTitle: `Watch 'Land of The Wind': A Documentary Short | Cinematography by Theo Ribeiro`,
   },
   {
     id: 2,
@@ -76,12 +103,12 @@ export const portfolio = [
     director: 'Charles Joslain',
     producer: 'Rubin Moyo',
     productionCompany: 'Groundwork Pictures',
-    imageUrl: '/img/showreel/i-am.jpg',
+    imageUrl: 'img/showreel/i-am.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.33.13.jpg',
     thumbAlt:
       'I Am Music Video Cinematography: Dynamic collaboration between Sick Individuals, Axwell, Dimitri Vegas, Like Mike, Wolfpack, and Boostedkids.',
-    thumbTitle: 'Watch ‘I Am’: A Music Video | Cinematography by Theo Ribeiro',
+    thumbTitle: `Watch 'I Am': A Music Video | Cinematography by Theo Ribeiro`,
   },
   {
     id: 3,
@@ -97,13 +124,12 @@ export const portfolio = [
     director: 'Ben S. Hyland',
     producer: 'Adam Gregory Smith and Rebecca Grant',
     productionCompany: 'Hidden Art Films',
-    imageUrl: '/img/showreel/safe-space.jpg',
+    imageUrl: 'img/showreel/safe-space.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.40.42.jpg',
     thumbAlt:
       'Safe Space Drama Short Cinematography: Sarah, a social worker in an intimate indoor setting during the christmas season.',
-    thumbTitle:
-      'Watch ‘Safe Space’: A Drama Short | Cinematography by Theo Ribeiro',
+    thumbTitle: `Watch 'Safe Space': A Drama Short | Cinematography by Theo Ribeiro`,
   },
   {
     id: 4,
@@ -119,12 +145,12 @@ export const portfolio = [
     director: 'Andrew Carver',
     producer: 'Andrew Carver',
     productionCompany: 'Raindown',
-    imageUrl: '/img/showreel/kto.jpg',
+    imageUrl: 'img/showreel/kto.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.45.04.jpg',
     thumbAlt:
       'KTO Mini Doc Cinematography: Filming the entire production process from seed to garment creation in India.',
-    thumbTitle: 'Watch ‘KTO’: A Mini Doc | Cinematography by Theo Ribeiro',
+    thumbTitle: `Watch 'KTO': A Mini Doc | Cinematography by Theo Ribeiro`,
   },
   {
     id: 5,
@@ -140,12 +166,11 @@ export const portfolio = [
     director: 'Simon Harris',
     producer: 'Simon Harris',
     productionCompany: 'On Tour Films',
-    imageUrl: '/img/showreel/the-package.jpg',
+    imageUrl: 'img/showreel/the-package.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.57.17.jpg',
-    thumbAlt:
-      'The Package Book Promo Cinematography: Tense and mysterious scene of a girl opening a misterious package from the official trailer of Sebastian Fitzek’s heart-stopping new book thriller.',
-    thumbTitle: 'Watch ‘The Package’: A Promo | Cinematography by Theo Ribeiro',
+    thumbAlt: `The Package Book Promo Cinematography: Tense and mysterious scene of a girl opening a misterious package from the official trailer of Sebastian Fitzek's heart-stopping new book thriller.`,
+    thumbTitle: `Watch 'The Package': A Promo | Cinematography by Theo Ribeiro`,
   },
   {
     id: 6,
@@ -161,13 +186,11 @@ export const portfolio = [
     director: 'George Murphy',
     producer: 'Joshua Poulsen',
     productionCompany: '',
-    imageUrl: '/img/showreel/we-play-war.jpg',
+    imageUrl: 'img/showreel/we-play-war.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/05/551607826_1280-e1543862703589.jpg',
-    thumbAlt:
-      'We Play War Drama Short Cinematography: A boy sits dejected in a field. Scene from the official trailer of ‘We Play War’.',
-    thumbTitle:
-      'Watch ‘We Play War’: A Drama Short | Cinematography by Theo Ribeiro',
+    thumbAlt: `We Play War Drama Short Cinematography: A boy sits dejected in a field. Scene from the official trailer of 'We Play War'.`,
+    thumbTitle: `Watch 'We Play War': A Drama Short | Cinematography by Theo Ribeiro`,
   },
   {
     id: 7,
@@ -183,12 +206,11 @@ export const portfolio = [
     director: 'Laura Belinky',
     producer: 'Laura Belinky and Theo Ribeiro',
     productionCompany: 'Wild River Films',
-    imageUrl: '/img/showreel/el-tiempo.jpg',
+    imageUrl: 'img/showreel/el-tiempo.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/06/Screenshot-2021-06-20-at-20.50.36.jpg',
     thumbAlt:
       'El Tiempo Documentary Short Cinematography: Remote life in the Patagonian sheep outposts of Southern Argentina.',
-    thumbTitle:
-      'Watch ‘El Tiempo’: A Documentary Short | Cinematography by Theo Ribeiro',
+    thumbTitle: `Watch 'El Tiempo': A Documentary Short | Cinematography by Theo Ribeiro`,
   },
 ];

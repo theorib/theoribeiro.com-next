@@ -2,6 +2,7 @@
 import React from 'react';
 import { ImageResponse } from 'next/og';
 import portfolioActions from '@/actions/portfolioActions';
+import envPublic from '@/lib/env';
 // https://github.com/vercel/next.js/issues/51147
 
 export async function GET(
@@ -9,12 +10,10 @@ export async function GET(
   { params }: { params: { slug: string } },
 ) {
   const { slug } = params;
-  // const origin = process.env.METADATA_BASE_URL;
-
-  // if (!origin)
-  //   throw new Error('No METADATA_BASE_URL environment variable found');
 
   const item = portfolioActions.getPortfolioItemBySlug(slug);
+
+  if (!item) return new Response(null, { status: 404 });
 
   return new ImageResponse(
     (
@@ -36,7 +35,7 @@ export async function GET(
             objectPosition: 'center',
           }}
           // src={origin + item?.imageUrl}
-          src={item?.originalImageUrl}
+          src={envPublic.NEXT_PUBLIC_REMOTE_ASSETS_PATH + item?.imageUrl}
           alt={item?.thumbAlt}
         />
       </div>
