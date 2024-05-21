@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('./src/data/stillsPortfolio').StillsPortfolioItem} StillsPortfolioItem
+ */
+
 module.exports = {
   convertFormat: [
     ['png', 'webp'],
@@ -109,10 +113,27 @@ module.exports = {
   //     '@/actions/portfolioActions'
   //   );
   //   const { default: paths } = await import('@/lib/paths');
-  //   const portfolioItems = portfolioActions.getPortfolioItems();
-  //   const imageUrls = portfolioItems.map(
-  //     item => paths.remoteAssetsPath() + item.imageUrl,
+
+  //   /** @type {StillsPortfolioItem} */
+  //   const stillsPortfolio = await import('@data/stillsPortfolio');
+
+  //   const portfolioImageUrls = portfolioActions
+  //     .getPortfolioItems()
+  //     .map(item => paths.remoteAssetsPath() + item.imageUrl);
+
+  //   /** @type {string} */
+  //   const stillsPortfolioUrls = stillsPortfolio.map(
+  //     item => paths.remoteAssetsPath() + item.src,
   //   );
-  //   return imageUrls;
+
+  //   const aboutImage =
+  //     paths.remoteAssetsPath() + 'img/TR_2019_008_000504_LeicaQ_Web.jpg';
+
+  //   const imageArr = [
+  //     ...portfolioImageUrls,
+  //     ...stillsPortfolioUrls,
+  //     aboutImage,
+  //   ];
+  //   return imageArr;
   // },
 };

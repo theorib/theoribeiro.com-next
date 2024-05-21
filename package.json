@@ -76,7 +76,7 @@
     "inquirer": "^9.2.21",
     "jsdom": "^24.0.0",
     "lint-staged": "^15.2.2",
-    "next-export-optimize-images": "^4.3.1",
+    "next-export-optimize-images": "^4.4.0",
     "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
