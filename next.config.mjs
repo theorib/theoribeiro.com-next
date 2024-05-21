@@ -3,6 +3,9 @@ import withExportImages from 'next-export-optimize-images';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    reactCompiler: true,
+  },
   output: 'export',
   images: {
     deviceSizes: [390, 430, 640, 768, 1080, 1280, 1920, 2560, 3840],

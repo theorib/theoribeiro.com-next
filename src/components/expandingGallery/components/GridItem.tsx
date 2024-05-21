@@ -122,7 +122,7 @@ function GridItem(
       'aria-label': `Open ${uniqueSlug}`,
       'aria-expanded': isActive,
       role: 'button',
-      tabIndex: 1,
+      tabIndex: 0,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
       className: cn(...definedClassNames, className),
