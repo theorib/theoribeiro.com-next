@@ -1,5 +1,4 @@
 import withExportImages from 'next-export-optimize-images';
-// import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const cspHeader = `
     default-src 'self';
