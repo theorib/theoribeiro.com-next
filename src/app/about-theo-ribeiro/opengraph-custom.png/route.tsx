@@ -4,6 +4,8 @@ import { ImageResponse } from 'next/og';
 import env from '@/lib/env';
 // https://github.com/vercel/next.js/issues/51147
 
+export const dynamic = 'force-static';
+
 export async function GET() {
   return new ImageResponse(
     (

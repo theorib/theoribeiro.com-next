@@ -4,6 +4,8 @@ import envPublic from '@/lib/env';
 import { ImageResponse } from 'next/og';
 // https://github.com/vercel/next.js/issues/51147
 
+export const dynamic = 'force-static';
+
 export async function GET() {
   const item = portfolioActions.getPortfolioItemBySlug('land-of-the-wind');
 
