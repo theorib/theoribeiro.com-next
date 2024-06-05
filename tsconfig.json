@@ -30,6 +30,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mjs",
+    "**/*.cjs",
     ".next/types/**/*.ts",
     "next.config.mjs",
     "export-images.config.js",
