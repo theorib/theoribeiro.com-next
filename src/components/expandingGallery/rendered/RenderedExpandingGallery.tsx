@@ -52,7 +52,13 @@ export default function RenderedExpandingGallery() {
         next={{ afterHandleClick: btnNextPrevAfterHandleClick }}
         prev={{ afterHandleClick: btnNextPrevAfterHandleClick }}
       />
-      <ExpandingGridGallery.Grid ref={animateRef} className="gap-4 p-4">
+
+      <ExpandingGridGallery.Grid
+        // !Fix
+        // @ts-expect-error Type 'RefCallback<Element>' is not assignable to type 'RefObject<HTMLUListElement>' this is due to how the useAutoAnimate library created their ref.
+        ref={animateRef}
+        className="gap-4 p-4"
+      >
         <ExpandingGridGallery.GridExpander>
           <RenderedGalleryExpander />
         </ExpandingGridGallery.GridExpander>

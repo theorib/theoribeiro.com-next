@@ -1,9 +1,8 @@
 'use client';
-import { forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
 import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
-import type { ReactNode, ForwardedRef } from 'react';
+import type { ReactNode, RefObject } from 'react';
 import type { UniqueSlug } from '../ExpandingGridGallery.types';
 import utils from '../utils/utils';
 
@@ -12,7 +11,7 @@ export interface ItemClickHandler {
   uniqueSlug?: UniqueSlug | null;
   currentUniqueSlug?: UniqueSlug | null;
 }
-export interface GridItemProps {
+export interface GridItemProps<T> {
   uniqueSlug: string;
   acceptServerActions?: boolean;
   beforeHandleClick?: ({
@@ -28,10 +27,12 @@ export interface GridItemProps {
   className?: string;
   asChild?: boolean;
   children: ReactNode;
+  ref?: RefObject<T>;
 }
 
 type UpdatedProps = Omit<
-  GridItemProps,
+  GridItemProps<HTMLLIElement>,
+  | 'ref'
   | 'children'
   | 'uniqueSlug'
   | 'afterHandleClick'
@@ -41,19 +42,17 @@ type UpdatedProps = Omit<
 >;
 
 // A generic component that can become any HTML element or another ReactComponent
-function GridItem(
-  {
-    uniqueSlug,
-    afterHandleClick = utils.voidFn,
-    beforeHandleClick = utils.voidFn,
-    acceptServerActions = false,
-    asChild,
-    children,
-    className,
-    ...props
-  }: GridItemProps,
-  ref: ForwardedRef<HTMLLIElement>,
-) {
+function GridItem({
+  uniqueSlug,
+  afterHandleClick = utils.voidFn,
+  beforeHandleClick = utils.voidFn,
+  acceptServerActions = false,
+  asChild,
+  children,
+  className,
+  ref,
+  ...props
+}: GridItemProps<HTMLLIElement>) {
   const Comp = asChild ? Slot : 'li';
 
   const { currentUniqueSlug, setCurrentUniqueSlug, setPreviousScrollPosition } =
@@ -141,4 +140,4 @@ function GridItem(
 }
 GridItem.displayName = 'GridItem';
 
-export default forwardRef(GridItem);
+export default GridItem;

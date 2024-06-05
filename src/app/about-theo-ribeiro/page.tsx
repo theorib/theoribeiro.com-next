@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 function AboutPage() {
   return (
-    <article className="mx-auto max-w-layout">
+    <article className="mx-auto max-w-layout px-5">
       <header>
         <h1 className="sr-only">
           About Theo Ribeiro - Director of Photography

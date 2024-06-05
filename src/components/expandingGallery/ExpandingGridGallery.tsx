@@ -10,11 +10,11 @@ import type { ReactNode } from 'react';
 import Nav from './components/Nav';
 import navBtnCompWithBtnType from './components/navBtnCompWithBtnType';
 
-interface ExpandingGalleryProps {
+type ExpandingGalleryProps = {
   children: ReactNode;
   storeState?: StoreState;
   orderedUniqueSlugsArray: string[];
-}
+};
 
 // Define a generic component
 function ExpandingGridGallery({
@@ -40,13 +40,16 @@ ExpandingGridGallery.Nav = Nav;
 ExpandingGridGallery.NavButtonNext = navBtnCompWithBtnType({
   buttonType: 'next',
 });
+ExpandingGridGallery.NavButtonNext.displayName = 'NavButtonNext';
 ExpandingGridGallery.NavButtonPrev = navBtnCompWithBtnType({
   buttonType: 'prev',
 });
+ExpandingGridGallery.NavButtonPrev.displayName = 'NavButtonPrev';
 ExpandingGridGallery.NavButtonClose = navBtnCompWithBtnType({
   buttonType: 'close',
   variant: 'close',
 });
+ExpandingGridGallery.NavButtonClose.displayName = 'NavButtonClose';
 ExpandingGridGallery.WithKeyboardShortcuts = WithKeyboardShortcuts;
 
 export default ExpandingGridGallery;

@@ -1,20 +1,17 @@
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
-import { forwardRef } from 'react';
-import type { ForwardedRef, HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode, RefObject } from 'react';
 
 interface NavProps extends HTMLAttributes<HTMLDivElement> {
   asChild?: boolean;
   className?: string;
   children: ReactNode;
+  ref?: RefObject<HTMLDivElement>;
 }
 
 export const navAriaLabel = 'Expanding Grid Gallery Navigation';
 
-function Nav(
-  { children, asChild, className }: NavProps,
-  ref: ForwardedRef<HTMLDivElement>,
-) {
+function Nav({ children, asChild, className, ref }: NavProps) {
   const Comp = asChild ? Slot : 'nav';
   return (
     <Comp
@@ -27,4 +24,4 @@ function Nav(
   );
 }
 Nav.displayName = 'Nav';
-export default forwardRef(Nav);
+export default Nav;

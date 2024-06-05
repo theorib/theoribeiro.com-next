@@ -1,20 +1,17 @@
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
-import { forwardRef } from 'react';
-import type { ForwardedRef, HTMLAttributes } from 'react';
+import type { HTMLAttributes, RefObject } from 'react';
 
 export interface GridProps extends HTMLAttributes<HTMLUListElement> {
   asChild?: boolean;
   className?: string;
+  ref?: RefObject<HTMLUListElement>;
 }
 
 export const gridAriaLabel = 'Expanding Grid Gallery Items';
 
 // A generic component that can become any HTML element or another ReactComponent
-function Grid(
-  { className, asChild, ...props }: GridProps,
-  ref: ForwardedRef<HTMLUListElement>,
-) {
+function Grid({ className, asChild, ref, ...props }: GridProps) {
   const Comp = asChild ? Slot : 'ul';
   return (
     <Comp
@@ -29,6 +26,5 @@ function Grid(
     />
   );
 }
-
 Grid.displayName = 'Grid';
-export default forwardRef(Grid);
+export default Grid;

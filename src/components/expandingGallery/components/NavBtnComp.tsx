@@ -2,10 +2,9 @@
 // import * as React from 'react';
 import type {
   ButtonHTMLAttributes,
-  ForwardedRef,
   MouseEvent as ReactMouseEvent,
+  RefObject,
 } from 'react';
-import { forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import utils, { cn } from '../utils/utils';
@@ -41,35 +40,33 @@ export const navButtonCompVariants = cva('', {
 
 export type NavButtonType = 'next' | 'prev' | 'close';
 
-export interface ButtonClickHandler {
+export type ButtonClickHandler = {
   e?: ReactMouseEvent<HTMLButtonElement, MouseEvent>;
   uniqueIndex?: UniqueIndex;
   uniqueSlug?: UniqueSlug | null;
-}
-export interface NavButtonCompProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof navButtonCompVariants> {
-  buttonType: NavButtonType;
-  acceptServerActions?: boolean;
-  beforeHandleClick?: ({ e }: ButtonClickHandler) => void;
-  afterHandleClick?: ({ e, uniqueIndex }: ButtonClickHandler) => void;
-  asChild?: boolean;
-}
+};
+export type NavButtonCompProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof navButtonCompVariants> & {
+    buttonType: NavButtonType;
+    acceptServerActions?: boolean;
+    beforeHandleClick?: ({ e }: ButtonClickHandler) => void;
+    afterHandleClick?: ({ e, uniqueIndex }: ButtonClickHandler) => void;
+    asChild?: boolean;
+    ref?: RefObject<HTMLButtonElement>;
+  };
 
-function NavBtnComp(
-  {
-    buttonType,
-    acceptServerActions = false,
-    beforeHandleClick = utils.voidFn,
-    afterHandleClick = utils.voidFn,
-    className,
-    variant,
-    size,
-    asChild = false,
-    ...props
-  }: NavButtonCompProps,
-  ref: ForwardedRef<HTMLButtonElement>,
-) {
+function NavBtnComp({
+  buttonType,
+  acceptServerActions = false,
+  beforeHandleClick = utils.voidFn,
+  afterHandleClick = utils.voidFn,
+  className,
+  variant,
+  size,
+  asChild = false,
+  ref,
+  ...props
+}: NavButtonCompProps) {
   const Comp = asChild ? Slot : 'button';
   const buttonTypeLookUp = useNavBtnTypeLookup();
   const isEnabled = buttonTypeLookUp[buttonType]['isEnabled'];
@@ -104,4 +101,4 @@ function NavBtnComp(
 
 NavBtnComp.displayName = 'NavBtnComp';
 
-export default forwardRef(NavBtnComp);
+export default NavBtnComp;
