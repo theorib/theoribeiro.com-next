@@ -2,9 +2,12 @@ import withExportImages from 'next-export-optimize-images';
 
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    script-src 'self' 'unsafe-inline' https://player.vimeo.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    frame-src 'self' https://player.vimeo.com;
+    img-src 'self' blob: data: https://assets.theoribeiro.com https://*.vimeocdn.com;
+    connect-src 'self' https://vimeo.com;
+    media-src 'self';
     font-src 'self';
     object-src 'none';
     base-uri 'self';
