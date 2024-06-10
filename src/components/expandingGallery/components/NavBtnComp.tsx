@@ -15,9 +15,9 @@ export const navButtonCompVariants = cva('', {
   variants: {
     variant: {
       prevNext:
-        'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-700 dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
+        'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-transparent border-neutral-50 dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
       close:
-        'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-700  sm:dark:bg-transparent dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
+        'bg-white hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-transparent border-neutral-50  sm:dark:bg-transparent dark:hover:bg-neutral-500 dark:hover:text-neutral-50',
     },
     size: {
       default: '',

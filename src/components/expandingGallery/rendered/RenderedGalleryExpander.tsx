@@ -50,25 +50,28 @@ export default function RenderedGalleryExpander() {
       id={`${slug}-expanded`}
       className="relative flex flex-col"
     >
-      <Nav className="bottom-0 left-0 right-0 top-0 order-last flex items-center justify-between p-4 pb-10 sm:absolute  sm:p-3 sm:px-0 md:py-2 ">
+      <Nav className="bottom-0 left-0 right-0 top-0 order-last flex items-center justify-between p-4 pb-10 sm:absolute sm:p-3 sm:px-0 md:py-2">
         <ExpandingGridGallery.NavButtonPrev
           className="overflow-clip sm:rounded-s-none"
           afterHandleClick={btnNextPrevAfterHandleClick}
         >
-          <PiCaretLeftThin className={iconClassName} />
+          <PiCaretLeftThin className={cn([iconClassName], 'h-10 w-10')} />
         </ExpandingGridGallery.NavButtonPrev>
         <ExpandingGridGallery.NavButtonNext
           className="order-last overflow-clip sm:rounded-e-none"
           afterHandleClick={btnNextPrevAfterHandleClick}
         >
-          <PiCaretRightThin className={iconClassName} />
+          <PiCaretRightThin className={cn([iconClassName], 'h-10 w-10')} />
         </ExpandingGridGallery.NavButtonNext>
         <ExpandingGridGallery.NavButtonClose
           className="sm:absolute sm:right-3 sm:top-6 sm:mx-0 sm:h-12 sm:w-12 md:right-2"
           afterHandleClick={btnCloseAfterHandleClick}
         >
           <PiXThin
-            className={cn([iconClassName, 'sm:w-18 sm:h-18 sm:mx-0 sm:p-0'])}
+            className={cn([
+              iconClassName,
+              'sm:w-18 sm:h-18 h-10 w-10 sm:mx-0 sm:p-0',
+            ])}
           />
         </ExpandingGridGallery.NavButtonClose>
       </Nav>
