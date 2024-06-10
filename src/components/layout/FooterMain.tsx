@@ -38,11 +38,11 @@ function FooterMain() {
           title="Instagram"
           className={cn(
             buttonVariants({ variant: 'ghost' }),
-            'm-0 border-slate-200 bg-neutral-700 p-0',
+            'flex border-slate-200 bg-neutral-700 p-2 py-5 sm:py-7',
           )}
           target="_blank"
         >
-          <PiInstagramLogoThin className="h-7 w-7  p-2 text-neutral-300 sm:h-10 sm:w-10" />
+          <PiInstagramLogoThin className="h-7 w-7 text-neutral-300 sm:h-10 sm:w-10" />
         </Link>
       </div>
     </footer>
