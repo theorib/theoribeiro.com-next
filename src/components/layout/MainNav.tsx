@@ -14,7 +14,7 @@ function MainNavItem({ children, href }: MainNavItemProps) {
       <SheetClose asChild={true}>
         <Link
           href={href}
-          className=" grow px-8 py-5 transition-colors dark:hover:bg-neutral-700"
+          className="grow px-8 py-5 transition-colors dark:hover:bg-neutral-700"
         >
           {children}
         </Link>
