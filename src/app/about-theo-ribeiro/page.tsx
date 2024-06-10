@@ -10,6 +10,9 @@ export async function generateMetadata(): Promise<Metadata> {
     // },
     ...seo,
     title: 'About',
+    alternates: {
+      canonical: paths.aboutPage(),
+    },
     openGraph: {
       title: `About Theo Ribeiro | Cinematograher`,
       description: `${seo.description}`,
