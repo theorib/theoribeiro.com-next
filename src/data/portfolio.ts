@@ -185,7 +185,7 @@ export const portfolio: PortfolioItem[] = [
       "1945 Germany. Following a mischievous prank, young Peter recovers a dangerous item from the cemetery caretaker's workshop. Neither Peter nor his friends are aware of the grave repercussions that follow.",
     director: 'George Murphy',
     producer: 'Joshua Poulsen',
-    productionCompany: '',
+    productionCompany: 'Central Film School',
     imageUrl: 'img/showreel/we-play-war.jpg',
     originalImageUrl:
       'https://theoribeiro.com/wp-content/uploads/2021/05/551607826_1280-e1543862703589.jpg',
