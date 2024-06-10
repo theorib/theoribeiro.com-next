@@ -1,6 +1,6 @@
 # Cinematography Portfolio Website statically generated using Next.js
 
-A Next.js statically generated portfolio website displaying cinematography and photography work using a custom made expanding video gallery and a justified image gallery for stills.
+A statically generated portfolio website built with Next.js, showcasing cinematography and photography through a custom expanding video gallery and a dynamic justified image gallery.
 
 ## Live Demo
 
