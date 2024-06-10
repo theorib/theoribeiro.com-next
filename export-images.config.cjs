@@ -110,25 +110,20 @@ module.exports = {
   ],
   // remoteImages: async () => {
   //   const { default: portfolioActions } = await import(
-  //     '@/actions/portfolioActions'
+  //     './src/actions/portfolioActions'
   //   );
   //   const { default: paths } = await import('@/lib/paths');
-
   //   /** @type {StillsPortfolioItem} */
   //   const stillsPortfolio = await import('@data/stillsPortfolio');
-
   //   const portfolioImageUrls = portfolioActions
   //     .getPortfolioItems()
   //     .map(item => paths.remoteAssetsPath() + item.imageUrl);
-
   //   /** @type {string} */
   //   const stillsPortfolioUrls = stillsPortfolio.map(
   //     item => paths.remoteAssetsPath() + item.src,
   //   );
-
   //   const aboutImage =
   //     paths.remoteAssetsPath() + 'img/TR_2019_008_000504_LeicaQ_Web.jpg';
-
   //   const imageArr = [
   //     ...portfolioImageUrls,
   //     ...stillsPortfolioUrls,
