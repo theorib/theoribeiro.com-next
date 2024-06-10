@@ -59,7 +59,11 @@ Here are a few basic features and considerations that this app:
 
 ## Context
 
-This is a React port from my own website that was initially created using Wordpress and had a similar look, feel and functionality. I used it as an exercise to learn React and get familiar with Next.js as well as to create a more performant website.
+This is a React port of my own cinematography website that was initially created using Wordpress and had a similar look, feel and functionality.
+
+Some features such as environment variable type checking, pragramatic url patterns as well as custom server actions for content (which is static) are over-engineered and not necessary for such a simple website.
+
+The reason for that is that I have used this project as a playground to test different development patterns, tooling and workflows and to learn more about React and Next.js.
 
 ## Installation
 
