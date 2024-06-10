@@ -81,7 +81,7 @@ export default function RenderedGalleryExpander() {
             <RenderedVideoPlayer image={image} videoUrl={videoUrl} />
           </AspectRatio>
         </div>
-        <section className="flex w-auto flex-1 flex-col gap-6 px-4 pb-6 pt-8 font-light sm:gap-10 sm:px-0 sm:text-xl md:p-0">
+        <section className="flex w-auto flex-1 flex-col gap-6 pb-6 pt-8 font-light sm:gap-10 sm:px-0 sm:text-xl md:p-0">
           <div>
             <h2 className="font-raleway text-3xl sm:text-4xl">{title}</h2>
             <div className="flex items-center gap-2 italic text-neutral-300">
