@@ -1,4 +1,5 @@
 import withExportImages from 'next-export-optimize-images';
+import redirects from './src/lib/redirects.mjs';
 
 const cspHeader = `
     default-src 'self';
@@ -52,6 +53,9 @@ const nextConfig = {
         ],
       },
     ];
+  },
+  redirects() {
+    return redirects;
   },
 };
 
