@@ -36,7 +36,9 @@ function RenderedExpandingGalleryThumbnail({
           sizes="(min-width: 640px)50vw, 100vw"
         />
         <div className={className}>
-          <p className="text-4xl font-extralight">{item.title}</p>
+          <p className="font-primary text-2xl font-extralight uppercase tracking-[0.035em] sm:text-2xl">
+            {item.title}
+          </p>
         </div>
       </div>
     </AspectRatio>

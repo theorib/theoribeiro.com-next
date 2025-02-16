@@ -1,9 +1,7 @@
 'use client';
 
-import { AspectRatio } from '../../ui/aspect-ratio';
 import { cn } from '../utils/utils';
 
-import { Separator } from '@radix-ui/react-separator';
 import ExpandingGridGallery from '../ExpandingGridGallery';
 import { PiCaretLeftThin, PiCaretRightThin, PiXThin } from 'react-icons/pi';
 import Nav from '../components/Nav';
@@ -12,6 +10,23 @@ import RenderedVideoPlayer from './RenderedVideoPlayer';
 import useRenderedGalleryActions from './useRenderedGalleryActionsHome';
 import usePortfolioItemData from '@/components/expandingGallery/rendered/usePortfolioItemData';
 import paths from '@/lib/paths';
+import {
+  Project,
+  ProjectCreditList,
+  ProjectCreditListItem,
+  ProjectCreditName,
+  ProjectCreditTitle,
+  ProjectDescription,
+  ProjectMetaContainer,
+  ProjectRole,
+  ProjectSubTitle,
+  ProjectSubTitleSeparator,
+  ProjectTitle,
+  ProjectTitleContainer,
+  ProjectType,
+  ProjectVideoAspectRatio,
+  ProjectVideoContainer,
+} from '@/components/expandingGallery/rendered/project';
 
 export default function RenderedGalleryExpander() {
   const expanderData = usePortfolioItemData();
@@ -75,44 +90,39 @@ export default function RenderedGalleryExpander() {
           />
         </ExpandingGridGallery.NavButtonClose>
       </Nav>
-      <article className="col-span-full flex flex-auto animate-fade-in flex-col items-center transition-all sm:px-[4.5rem] sm:py-6 md:flex-row md:gap-6 md:px-16 md:py-10 lg:gap-16">
-        <div className="w-full basis-7/12 transition-all lg:basis-6/12">
-          <AspectRatio ratio={16 / 9} className="flex">
+      <Project>
+        <ProjectVideoContainer>
+          <ProjectVideoAspectRatio>
             <RenderedVideoPlayer image={image} videoUrl={videoUrl} />
-          </AspectRatio>
-        </div>
-        <section className="flex w-auto flex-1 flex-col gap-6 pb-6 pt-8 font-light sm:gap-10 sm:px-0 sm:text-xl md:p-0">
-          <div>
-            <h2 className="font-raleway text-3xl sm:text-4xl">{title}</h2>
-            <div className="flex items-center gap-2 italic text-neutral-300">
-              <p aria-label="Project type">{projectType}</p>
-              <Separator
-                orientation="vertical"
-                className="ml-1 inline-block h-5 w-[1px] bg-white"
-              />
-              <p aria-label="Role on this project">{role}</p>
-            </div>
-          </div>
+          </ProjectVideoAspectRatio>
+        </ProjectVideoContainer>
+        <ProjectMetaContainer>
+          <ProjectTitleContainer>
+            <ProjectTitle>{title}</ProjectTitle>
+            <ProjectSubTitle>
+              <ProjectType>{projectType}</ProjectType>
+              <ProjectSubTitleSeparator />
+              <ProjectRole>{role}</ProjectRole>
+            </ProjectSubTitle>
+          </ProjectTitleContainer>
 
-          <p aria-label="Video description" className="text-neutral-400">
-            {description}
-          </p>
-          <dl>
-            <div>
-              <dt className="inline text-neutral-400">Director: </dt>
-              <dd className="inline font-semibold">{director}</dd>
-            </div>
-            <div>
-              <dt className="inline text-neutral-400">Producer: </dt>
-              <dd className="inline font-semibold">{producer}</dd>
-            </div>
-            <div>
-              <dt className="inline text-neutral-400">Production Company: </dt>
-              <dd className="inline font-semibold">{productionCompany}</dd>
-            </div>
-          </dl>
-        </section>
-      </article>
+          <ProjectDescription>{description}</ProjectDescription>
+          <ProjectCreditList>
+            <ProjectCreditListItem>
+              <ProjectCreditTitle>Director: </ProjectCreditTitle>
+              <ProjectCreditName>{director}</ProjectCreditName>
+            </ProjectCreditListItem>
+            <ProjectCreditListItem>
+              <ProjectCreditTitle>Producer: </ProjectCreditTitle>
+              <ProjectCreditName>{producer}</ProjectCreditName>
+            </ProjectCreditListItem>
+            <ProjectCreditListItem>
+              <ProjectCreditTitle>Production Company: </ProjectCreditTitle>
+              <ProjectCreditName>{productionCompany}</ProjectCreditName>
+            </ProjectCreditListItem>
+          </ProjectCreditList>
+        </ProjectMetaContainer>
+      </Project>
     </div>
   );
 }

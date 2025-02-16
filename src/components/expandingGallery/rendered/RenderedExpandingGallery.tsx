@@ -26,19 +26,7 @@ export default function RenderedExpandingGallery() {
 
   const [animateRef] = useAutoAnimate({ duration: 300 });
 
-  const itemClasses = [
-    // 'focus-visible:outline-2',
-    // 'relative',
-    // 'focus:outline-2 focus:outline',
-    // 'focus-within:outline-2 focus-within:outline',
-    // 'focus-within:ring-3 focus-within:ring-inset focus-within:ring-white',
-    // 'focus:ring-3 focus:ring-inset focus:ring-white',
-    // 'focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-white',
-    // 'color-red-500',
-    // 'focus-visible:outline-none',
-    // '',
-    '',
-  ];
+  const itemClasses = [''];
   return (
     <ExpandingGridGallery
       storeState="local"

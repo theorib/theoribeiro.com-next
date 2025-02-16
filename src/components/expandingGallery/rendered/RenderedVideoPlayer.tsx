@@ -50,7 +50,7 @@ function RenderedVideoPlayer({
           playing={true}
           url={videoUrl}
           controls={controls}
-          light={<VideoImagePreview image={image} /> || true}
+          light={<VideoImagePreview image={image} />}
           playIcon={
             <PiPlayFill className="h-11 w-10 text-neutral-100/60 sm:h-20 sm:w-20" />
           }
