@@ -14,10 +14,9 @@ test('FooterMain', async () => {
   });
   expect(phoneLink).toBeInTheDocument();
 
+  const currentYear = new Date().getFullYear();
   const copyRight = screen.getByText(
-    /©2024 theo ribeiro, all rights reserved\./i,
+    new RegExp(`©${currentYear} theo ribeiro, all rights reserved\\.`, 'i'),
   );
   expect(copyRight).toBeInTheDocument();
-
-  // screen.logTestingPlaygroundURL();
 });
