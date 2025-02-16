@@ -1,5 +1,6 @@
 import { ExpandingGridGalleryProvider } from './contexts/ExpandingGridGalleryContext';
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { safelist } from './safelist';
 import Grid from './components/Grid';
 import GridExpander from './components/GridExpander';
 import GridItem from './components/GridItem';

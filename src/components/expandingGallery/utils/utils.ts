@@ -88,13 +88,13 @@ const rowStartClass = {
   11: 'row-start-11',
   12: 'row-start-12',
   13: 'row-start-13',
-  14: 'row-start-[14]',
-  15: 'row-start-[15]',
-  16: 'row-start-[16]',
-  17: 'row-start-[17]',
-  18: 'row-start-[18]',
-  19: 'row-start-[19]',
-  20: 'row-start-[20]',
+  14: 'row-start-14',
+  15: 'row-start-15',
+  16: 'row-start-16',
+  17: 'row-start-17',
+  18: 'row-start-18',
+  19: 'row-start-19',
+  20: 'row-start-20',
 };
 
 function scrollToElement(element: HTMLElement): void {

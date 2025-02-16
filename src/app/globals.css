@@ -1,126 +1,220 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin 'tailwindcss-animate';
+/* @config '../../tailwind.config.ts'; */
 
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
 @layer base {
-  :root {
-    --appBlue-50: 210 53.85% 94.9%;
-    --appBlue-100: 205.71 51.22% 91.96%;
-    --appBlue-200: 204 48.78% 83.92%;
-    --appBlue-300: 204 49.3% 72.16%;
-    --appBlue-400: 202.2 46.73% 58.04%;
-    --appBlue-500: 202.86 44.68% 46.08%;
-    --appBlue-600: 204 56.07% 41.96%;
-    --appBlue-700: 204.83 53.37% 31.96%;
-    --appBlue-800: 205.59 49.28% 27.06%;
-    --appBlue-900: 206.67 44.26% 23.92%;
-    --appBlue-950: 208.33 43.9% 16.08%;
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
-    --horizon-blue-50: 193 26% 93%;
-    --horizon-blue-100: 201 21% 87%;
-    --horizon-blue-200: 201 21% 79%;
-    --horizon-blue-300: 202 22% 66%;
-    --horizon-blue-400: 202 21% 50%;
-    --horizon-blue-500: 203 24% 43%;
-    --horizon-blue-600: 206 23% 36%;
-    --horizon-blue-700: 208 20% 31%;
-    --horizon-blue-800: 210 17% 27%;
-    --horizon-blue-900: 210 16% 24%;
-    --horizon-blue-950: 210 18% 15%;
+@custom-variant dark (&:is(.dark *));
 
-    --regentGray-50: 180 16.67% 97.65%;
-    --regentGray-100: 180 13.04% 95.49%;
-    --regentGray-200: 190 14.29% 91.76%;
-    --regentGray-300: 195 15.79% 85.1%;
-    --regentGray-400: 190.59 14.05% 76.27%;
-    --regentGray-500: 195 13.95% 66.27%;
-    --regentGray-600: 200 12.93% 54.51%;
-    --regentGray-700: 200 10.67% 50.39%;
-    --regentGray-800: 200.87 10.7% 42.16%;
-    --regentGray-900: 200 10.11% 34.9%;
-    --regentGray-950: 203.08 11.11% 22.94%;
+:root {
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 3.9%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 3.9%);
+  --primary: hsl(0 0% 9%);
+  --primary-foreground: hsl(0 0% 98%);
+  --secondary: hsl(0 0% 96.1%);
+  --secondary-foreground: hsl(0 0% 9%);
+  --muted: hsl(0 0% 96.1%);
+  --muted-foreground: hsl(0 0% 45.1%);
+  --accent: hsl(0 0% 96.1%);
+  --accent-foreground: hsl(0 0% 9%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 89.8%);
+  --input: hsl(0 0% 89.8%);
+  --ring: hsl(0 0% 3.9%);
+  --chart-1: hsl(12 76% 61%);
+  --chart-2: hsl(173 58% 39%);
+  --chart-3: hsl(197 37% 24%);
+  --chart-4: hsl(43 74% 66%);
+  --chart-5: hsl(27 87% 67%);
+  --radius: 0.6rem;
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 3.9%);
+}
 
-    /* shadcn variables */
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+.dark {
+  --background: hsl(0 0% 3.9%);
+  --foreground: hsl(0 0% 98%);
+  --card: hsl(0 0% 3.9%);
+  --card-foreground: hsl(0 0% 98%);
+  --stats: hsl(0 0% 3.9%);
+  --stats-foreground: hsl(0 0% 98%);
+  --popover: hsl(0 0% 3.9%);
+  --popover-foreground: hsl(0 0% 98%);
+  --primary: hsl(0 0% 98%);
+  --primary-foreground: hsl(0 0% 9%);
+  --secondary: hsl(0 0% 14.9%);
+  --secondary-foreground: hsl(0 0% 98%);
+  --muted: hsl(0 0% 14.9%);
+  --muted-foreground: hsl(0 0% 63.9%);
+  --accent: hsl(0 0% 14.9%);
+  --accent-foreground: hsl(0 0% 98%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 14.9%);
+  --input: hsl(0 0% 14.9%);
+  --ring: hsl(0 0% 83.1%);
+  --chart-1: hsl(220 70% 50%);
+  --chart-2: hsl(160 60% 45%);
+  --chart-3: hsl(30 80% 55%);
+  --chart-4: hsl(280 65% 60%);
+  --chart-5: hsl(340 75% 55%);
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+@theme {
+  --font-primary: var(--font-jost), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-secondary: var(--font-lato), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+  --max-width-layout: 64rem;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+  --breakpoint-xs: 30rem;
+  --breakpoint-md-lg: 55rem;
+  --color-app-blue-50: hsl(210 53.85% 94.9%);
+  --color-app-blue-100: hsl(205.71 51.22% 91.96%);
+  --color-app-blue-200: hsl(204 48.78% 83.92%);
+  --color-app-blue-300: hsl(204 49.3% 72.16%);
+  --color-app-blue-400: hsl(202.2 46.73% 58.04%);
+  --color-app-blue-500: hsl(202.86 44.68% 46.08%);
+  --color-app-blue-600: hsl(204 56.07% 41.96%);
+  --color-app-blue-700: hsl(204.83 53.37% 31.96%);
+  --color-app-blue-800: hsl(205.59 49.28% 27.06%);
+  --color-app-blue-900: hsl(206.67 44.26% 23.92%);
+  --color-app-blue-950: hsl(208.33 43.9% 16.08%);
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
+  --color-horizon-blue-50: hsl(193 26% 93%);
+  --color-horizon-blue-100: hsl(201 21% 87%);
+  --color-horizon-blue-200: hsl(201 21% 79%);
+  --color-horizon-blue-300: hsl(202 22% 66%);
+  --color-horizon-blue-400: hsl(202 21% 50%);
+  --color-horizon-blue-500: hsl(203 24% 43%);
+  --color-horizon-blue-600: hsl(206 23% 36%);
+  --color-horizon-blue-700: hsl(208 20% 31%);
+  --color-horizon-blue-800: hsl(210 17% 27%);
+  --color-horizon-blue-900: hsl(210 16% 24%);
+  --color-horizon-blue-950: hsl(210 18% 15%);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+  --color-regent-ray-50: hsl(180 16.67% 97.65%);
+  --color-regent-ray-100: hsl(180 13.04% 95.49%);
+  --color-regent-ray-200: hsl(190 14.29% 91.76%);
+  --color-regent-ray-300: hsl(195 15.79% 85.1%);
+  --color-regent-ray-400: hsl(190.59 14.05% 76.27%);
+  --color-regent-ray-500: hsl(195 13.95% 66.27%);
+  --color-regent-ray-600: hsl(200 12.93% 54.51%);
+  --color-regent-ray-700: hsl(200 10.67% 50.39%);
+  --color-regent-ray-800: hsl(200.87 10.7% 42.16%);
+  --color-regent-ray-900: hsl(200 10.11% 34.9%);
+  --color-regent-ray-950: hsl(203.08 11.11% 22.94%);
+}
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-stats: var(--stats);
+  --color-stats-foreground: var(--stats-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 215 20.2% 65.1%;
-
-    --radius: 0.5rem;
-    /* end shadcn variables */
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
   }
 
-  .dark {
-    /* shadcn variables */
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
-
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
-
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 216 34% 17%;
-
-    --radius: 0.5rem;
-    /* end shadcn variables */
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
   body {
-    /* @apply bg-background text-foreground; */
+    @apply bg-background text-foreground;
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
   }
 }
+
 body[data-scroll-locked].overlay-fix {
   /* padding-left: 1.25rem;
   padding-right: 1.25rem; */

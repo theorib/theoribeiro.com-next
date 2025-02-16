@@ -64,9 +64,9 @@ function GridItem({
     `w-full block transition-opacity group/grid-item`,
     'cursor-pointer',
 
-    // 'focus:outline-none',
-    // 'focus-within:outline-none',
-    // 'focus-visible:outline-none',
+    // 'focus:outline-hidden',
+    // 'focus-within:outline-hidden',
+    // 'focus-visible:outline-hidden',
 
     // 'focus:ring-inset',
     // 'focus-within:ring-inset',

@@ -26,7 +26,7 @@ function NextJsGalleryImage({
           width={roundUp(layout.width)}
           // height={!useFill ? photo.height : undefined}
           src={photo}
-          placeholder={'blurDataURL' in photo ? 'blur' : undefined}
+          placeholder={'blurDataURL' in photo ? 'blur-sm' : undefined}
           {...{ alt, title, sizes, className, onClick }}
         />
       </Suspense>

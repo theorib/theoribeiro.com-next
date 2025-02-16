@@ -12,14 +12,14 @@ import { PiListThin, PiXThin } from 'react-icons/pi';
 
 function HeaderMain() {
   return (
-    <header className="mx-auto flex w-full max-w-layout items-start justify-between px-5 py-4 sm:pb-5 sm:pt-6">
+    <header className="max-w-layout mx-auto flex w-full items-start justify-between px-5 py-4 sm:pt-6 sm:pb-5">
       <div className="">
-        <p className="mb-1 font-primary text-4xl font-extralight uppercase leading-[0.765] tracking-[0.035em] transition-all sm:mb-2 sm:text-4xl sm:leading-[0.765]">
+        <p className="font-primary mb-1 text-4xl leading-[0.765] font-extralight tracking-[0.035em] uppercase transition-all sm:mb-2 sm:text-4xl sm:leading-[0.765]">
           <Link href={paths.homePage()} title="Go to homepage">
             Theo Ribeiro
           </Link>
         </p>
-        <p className="text-lg font-extralight leading-[1.2] transition-all sm:text-base sm:leading-[1.2]">
+        <p className="text-lg leading-[1.2] font-extralight transition-all sm:text-base sm:leading-[1.2]">
           director of photography
         </p>
       </div>
@@ -37,7 +37,7 @@ function HeaderMain() {
           className="flex w-full flex-col items-stretch gap-0 p-0 dark:bg-neutral-600"
           aria-label="Main menu dialogue box"
         >
-          <SheetClose className="mx-5 my-4 self-end rounded-sm p-2 opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-0 focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-neutral-100 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 dark:data-[state=open]:bg-neutral-800">
+          <SheetClose className="mx-5 my-4 self-end rounded-sm p-2 opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:ring-0 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-neutral-100 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 dark:data-[state=open]:bg-neutral-800">
             <PiXThin className="h-7 w-7 sm:h-10 sm:w-10" />
             <span className="sr-only">Close Menu</span>
           </SheetClose>
