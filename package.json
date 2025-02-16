@@ -65,6 +65,7 @@
     "@vitest/ui": "^1.6.0",
     "autoprefixer": "^10.4.19",
     "commitizen": "^4.3.0",
+    "conventional-changelog-atom": "^5.0.0",
     "daisyui": "^4.12.2",
     "eslint": "^8.57.0",
     "eslint-config-next": "15.0.0-rc.0",
