@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import '@/app/globals.css';
-import { nunitoSans, raleway } from '@/lib/fonts';
+import { lato, jost } from '@/lib/fonts';
 import HeaderMain from '@/components/layout/HeaderMain';
 import FooterMain from '@/components/layout/FooterMain';
 import Providers from '@/Providers';
@@ -42,11 +42,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en-GB"
-      className={`${raleway.variable} ${nunitoSans.variable} dark`}
+      className={`${lato.variable} ${jost.variable} dark`}
       // data-theme="theo"
     >
       <body
-        className={`overlay-fix grid min-h-screen min-w-72 grid-cols-1 grid-rows-[auto_1fr_auto] font-sans subpixel-antialiased transition-all dark:bg-background dark:text-foreground`}
+        className={`overlay-fix grid min-h-screen min-w-72 grid-cols-1 grid-rows-[auto_1fr_auto] font-secondary font-extralight subpixel-antialiased transition-all dark:bg-background dark:text-foreground`}
       >
         <Providers>
           <HeaderMain />

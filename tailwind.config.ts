@@ -69,8 +69,8 @@ const config: Config = {
         layout: '64rem',
       },
       fontFamily: {
-        raleway: [
-          'var(--font-raleway)',
+        primary: [
+          'var(--font-jost)',
           'ui-sans-serif',
           'system-ui',
           'sans-serif',
@@ -79,8 +79,8 @@ const config: Config = {
           '"Segoe UI Symbol"',
           '"Noto Color Emoji"',
         ],
-        sans: [
-          'var(--font-nunito-sans)',
+        secondary: [
+          'var(--font-lato)',
           'ui-sans-serif',
           'system-ui',
           'sans-serif',
@@ -100,7 +100,7 @@ const config: Config = {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         // background: 'hsl(var(--background))',
-        background: colors.neutral[900],
+        background: colors.black,
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
