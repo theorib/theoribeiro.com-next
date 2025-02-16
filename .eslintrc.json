@@ -4,6 +4,7 @@
   "parserOptions": {
     "project": ["tsconfig.json"]
   },
+  "ignorePatterns": ["node_modules", "dist", "build", "coverage", "out"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -23,6 +24,7 @@
         "**/*.spec.{j,t}s?(x)",
         "**/*.test(s).{j,t}s?(x)"
       ],
+
       "settings": {
         "vitest": {
           "typecheck": true
