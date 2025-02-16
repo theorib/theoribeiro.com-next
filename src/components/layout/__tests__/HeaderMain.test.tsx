@@ -28,7 +28,7 @@ test('HeaderMain', async () => {
   expect(menuOpenButton).toBeInTheDocument();
   await user.click(menuOpenButton);
   const dialog = await screen.findByRole('dialog', {
-    name: /main menu dialogue box/i,
+    name: /main menu/i,
   });
   expect(dialog).toBeInTheDocument();
   const menuCloseButton = screen.getByRole('button', {

@@ -5,10 +5,11 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
 import MainNav from './MainNav';
-import { PiListThin, PiXThin } from 'react-icons/pi';
+import { Menu, X } from 'lucide-react';
 
 function HeaderMain() {
   return (
@@ -24,23 +25,25 @@ function HeaderMain() {
         </p>
       </div>
       <Sheet>
-        <SheetTrigger asChild>
-          <Button
-            variant="ghost"
-            className="flex h-[auto] w-[auto] bg-neutral-700 p-2"
-          >
-            <PiListThin className="h-7 w-7 sm:h-10 sm:w-10" />
-            <span className="sr-only">Open Menu</span>
-          </Button>
+        <SheetTrigger className="cursor-pointer hover:text-neutral-400">
+          <Menu size={48} strokeWidth={0.5} className="size-10" />
+          <span className="sr-only">Open Menu</span>
         </SheetTrigger>
         <SheetContent
           className="flex w-full flex-col items-stretch gap-0 p-0 dark:bg-neutral-600"
-          aria-label="Main menu dialogue box"
+          aria-label="main menu dialog box"
         >
-          <SheetClose className="mx-5 my-4 self-end rounded-sm p-2 opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:ring-0 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-neutral-100 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 dark:data-[state=open]:bg-neutral-800">
-            <PiXThin className="h-7 w-7 sm:h-10 sm:w-10" />
-            <span className="sr-only">Close Menu</span>
+          <SheetClose asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-14 cursor-pointer self-end hover:bg-transparent hover:text-neutral-400"
+            >
+              <X size={48} strokeWidth={0.5} className="size-10" />
+              <span className="sr-only">Close Menu</span>
+            </Button>
           </SheetClose>
+          <SheetTitle className="sr-only">Main Menu</SheetTitle>
           <MainNav />
         </SheetContent>
       </Sheet>
