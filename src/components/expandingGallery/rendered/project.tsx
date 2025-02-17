@@ -9,7 +9,7 @@ export function Project({
   return (
     <article
       className={cn(
-        'col-span-full flex flex-auto animate-fade-in flex-col items-center transition-all sm:px-[4.5rem] sm:py-6 md:flex-row md:gap-6 md:px-16 md:py-10 lg:gap-16',
+        'animate-fade-in col-span-full flex flex-auto flex-col items-center transition-all sm:px-[4.5rem] sm:py-6 md:flex-row md:gap-6 md:px-16 md:py-10 lg:gap-16',
         className,
       )}
       {...props}
@@ -48,7 +48,7 @@ export function ProjectMetaContainer({
   return (
     <section
       className={cn(
-        'flex w-auto flex-1 flex-col gap-6 pb-6 pt-8 font-extralight tracking-[0.020em] sm:gap-10 sm:px-0 sm:text-xl md:p-0',
+        'flex w-auto flex-1 flex-col gap-6 pt-8 pb-6 font-extralight tracking-[0.020em] sm:gap-10 sm:px-0 sm:text-xl md:p-0',
         className,
       )}
       {...props}
@@ -70,7 +70,7 @@ export function ProjectTitle({
   return (
     <h2
       className={cn(
-        'font-primary text-3xl font-extralight uppercase tracking-[0.065em] sm:text-3xl',
+        'font-primary text-3xl font-extralight tracking-[0.065em] uppercase sm:text-3xl',
         className,
       )}
       {...props}
@@ -100,7 +100,7 @@ export function ProjectSubTitleSeparator({
   return (
     <Separator
       orientation="vertical"
-      className={cn('inline-block h-4 w-[2px] bg-white', className)}
+      className={cn('h-4 w-[0.5px] bg-neutral-200', className)}
       {...props}
     />
   );
