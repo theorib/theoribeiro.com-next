@@ -1,16 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
-  render,
   screen,
   waitFor,
   within,
 } from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/customRenderGallery';
-import TestGalleryTree from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/TestGalleryTree';
-import { gridAriaLabel } from '../components/Grid';
-import userEvent from '@testing-library/user-event';
-import { navAriaLabel } from '../components/Nav';
-import { expandingGalleryTestContent } from './expandingGridGalleryTestUtils/testData';
-import { renderExpandingGalleryTest } from './expandingGridGalleryTestUtils/testFunctions';
+
+import { renderExpandingGalleryTest } from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testFunctions';
+import { expandingGalleryTestContent } from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testData';
+import { navAriaLabel } from '@/components/expandingGallery/components/Nav';
 
 export const testContent = expandingGalleryTestContent;
 export const galleryGridItemRole = 'button';

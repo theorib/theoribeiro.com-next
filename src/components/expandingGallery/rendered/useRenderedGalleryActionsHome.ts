@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 'use client';
 import { notFound } from 'next/navigation';
-import { ItemClickHandler } from '../components/GridItem';
-import { ButtonClickHandler } from '../components/NavBtnComp';
 import paths from '@/lib/paths';
-import { setUrlPathName } from './useUrlPathName';
+import { setUrlPathName } from '@/components/expandingGallery/rendered/useUrlPathName';
+import { ButtonClickHandler } from '@/components/expandingGallery/components/NavBtnComp';
+import { ItemClickHandler } from '@/components/expandingGallery/components/GridItem';
 
 function useRenderedGalleryActionsHome() {
   function galleryItemAfterHandleClick({

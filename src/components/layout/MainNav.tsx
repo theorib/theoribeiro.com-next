@@ -1,8 +1,8 @@
+import { SheetClose } from '@/components/ui/sheet';
 import paths from '@/lib/paths';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import type { UrlObject } from 'url';
-import { SheetClose } from '../ui/sheet';
 
 interface MainNavItemProps {
   children: ReactNode;
@@ -26,7 +26,7 @@ function MainNavItem({ children, href }: MainNavItemProps) {
 export default function MainNav() {
   return (
     <nav aria-label="Main Menu">
-      <ul className="flex flex-col divide-y divide-neutral-500 border-b border-t border-neutral-500">
+      <ul className="flex flex-col divide-y divide-neutral-500 border-t border-b border-neutral-500">
         <MainNavItem href={paths.homePage()}>Home</MainNavItem>
         <MainNavItem href={'/still-photography'}>Still Photography</MainNavItem>
         <MainNavItem href={paths.aboutPage()}>About</MainNavItem>

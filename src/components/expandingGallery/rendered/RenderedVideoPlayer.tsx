@@ -1,9 +1,10 @@
 'use client';
 import ReactPlayer from 'react-player/vimeo';
 import { Suspense } from 'react';
-import VideoPlayerSkeleton from './VideoPlayerSkeleton';
+
 import Image from 'next-export-optimize-images/image';
 import { PlayIcon } from '@/components/expandingGallery/rendered/navIcons';
+import VideoPlayerSkeleton from '@/components/expandingGallery/rendered/VideoPlayerSkeleton';
 
 interface PlayerImage {
   imageUrl: string;

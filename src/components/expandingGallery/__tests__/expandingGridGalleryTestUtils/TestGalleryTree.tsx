@@ -3,10 +3,10 @@ import Image from 'next-export-optimize-images/image';
 
 import { useExpandingGridGallery } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
 import {
-  expandingGalleryTestContent,
-  ExpandingGalleryTestContentItem,
   getExpandingGalleryTestContentFromSlug,
-} from './testData';
+  ExpandingGalleryTestContentItem,
+  expandingGalleryTestContent,
+} from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testData';
 
 function TestGalleryExpander() {
   const { currentUniqueSlug } = useExpandingGridGallery();

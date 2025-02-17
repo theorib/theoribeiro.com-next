@@ -1,11 +1,5 @@
-import { clsx, type ClassValue } from 'clsx';
+import { UniqueSlug } from '@/components/expandingGallery/ExpandingGridGallery.types';
 import { type SetStateAction, type Dispatch } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { UniqueSlug } from '../ExpandingGridGallery.types';
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 interface getItemRowPositionProps {
   currentUniqueIndex: number;

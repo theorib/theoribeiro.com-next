@@ -1,17 +1,18 @@
 'use client';
-import ExpandingGridGallery from '../ExpandingGridGallery';
-import RenderedExpandingGalleryThumbnail from './RenderedExpandingGalleryThumbnail';
 
-import WithUrlParamSlug from './WithUrlParamSlug';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import portfolioActions from '@/actions/portfolioActions';
 import { notFound, useParams } from 'next/navigation';
-import { UniqueSlug } from '../ExpandingGridGallery.types';
-import RenderedGalleryExpander from './RenderedGalleryExpander';
-import useRenderedGalleryActionsHome from './useRenderedGalleryActionsHome';
+
 import paths from '@/lib/paths';
 import { cn } from '@/lib/utils';
 import JsonLdScript from '@/components/expandingGallery/rendered/JsonLdScript';
+import { UniqueSlug } from '@/components/expandingGallery/ExpandingGridGallery.types';
+import RenderedGalleryExpander from '@/components/expandingGallery/rendered/RenderedGalleryExpander';
+import useRenderedGalleryActionsHome from '@/components/expandingGallery/rendered/useRenderedGalleryActionsHome';
+import ExpandingGridGallery from '@/components/expandingGallery/ExpandingGridGallery';
+import RenderedExpandingGalleryThumbnail from '@/components/expandingGallery/rendered/RenderedExpandingGalleryThumbnail';
+import WithUrlParamSlug from '@/components/expandingGallery/rendered/WithUrlParamSlug';
 
 export default function RenderedExpandingGallery() {
   const orderedUniqueSlugsArray = portfolioActions.getPortfolioSlugs();

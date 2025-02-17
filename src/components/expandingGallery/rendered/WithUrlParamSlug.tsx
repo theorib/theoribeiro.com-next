@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
+
 import { useParams } from 'next/navigation';
+import { useExpandingGridGallery } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
 
 export default function WithUrlParamSlug() {
   const { slug } = useParams<{ slug: string }>();

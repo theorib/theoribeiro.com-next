@@ -1,8 +1,9 @@
 import Image from 'next-export-optimize-images/image';
-import { AspectRatio } from '../../ui/aspect-ratio';
+
 import { cn } from '@/lib/utils';
 import paths from '@/lib/paths';
 import { type PortfolioThumbnail } from '@/data/portfolio';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 interface RenderedExpandingGalleryThumbnail {
   item: PortfolioThumbnail;
@@ -36,7 +37,7 @@ function RenderedExpandingGalleryThumbnail({
           sizes="(min-width: 640px)50vw, 100vw"
         />
         <div className={className}>
-          <p className="font-primary text-2xl font-extralight uppercase tracking-[0.035em] sm:text-2xl">
+          <p className="font-primary text-2xl font-extralight tracking-[0.035em] uppercase sm:text-2xl">
             {item.title}
           </p>
         </div>

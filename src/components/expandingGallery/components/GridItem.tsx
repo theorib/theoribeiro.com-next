@@ -1,10 +1,10 @@
 'use client';
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
-import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
+import utils from '@/components/expandingGallery/utils/utils';
+import { UniqueSlug } from '@/components/expandingGallery/ExpandingGridGallery.types';
+import { useExpandingGridGallery } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
 import type { ReactNode, RefObject } from 'react';
-import type { UniqueSlug } from '../ExpandingGridGallery.types';
-import utils from '../utils/utils';
 
 export interface ItemClickHandler {
   e?: React.UIEvent;

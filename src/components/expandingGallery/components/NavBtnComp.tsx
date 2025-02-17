@@ -1,15 +1,19 @@
 'use client';
-// import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { cva, type VariantProps } from 'class-variance-authority';
+
 import type {
   ButtonHTMLAttributes,
   MouseEvent as ReactMouseEvent,
   RefObject,
 } from 'react';
-import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
-import utils, { cn } from '../utils/utils';
-import useNavBtnTypeLookup from '../hooks/useNavBtnTypeLookup';
-import { UniqueIndex, UniqueSlug } from '../ExpandingGridGallery.types';
+import {
+  UniqueIndex,
+  UniqueSlug,
+} from '@/components/expandingGallery/ExpandingGridGallery.types';
+import utils from '@/components/expandingGallery/utils/utils';
+import { cn } from '@/lib/utils';
+import useNavBtnTypeLookup from '@/components/expandingGallery/hooks/useNavBtnTypeLookup';
 
 export const navButtonCompVariants = cva('', {
   variants: {

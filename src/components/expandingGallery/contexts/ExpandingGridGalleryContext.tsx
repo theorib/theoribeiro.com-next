@@ -1,17 +1,18 @@
 'use client';
 
 import { createContext, useContext, useState } from 'react';
-import useUrlSlug from '../hooks/useHash';
-import useInitExpandingGallery from '../hooks/useInitExpandingGallery';
-import utils from '../utils/utils';
-import type {
+
+import utils from '@/components/expandingGallery/utils/utils';
+import useInitExpandingGallery from '@/components/expandingGallery/hooks/useInitExpandingGallery';
+import {
   ExpandingGridGalleryContextValue,
   ExpandingGridGalleryProviderProps,
   ScrollPosition,
+  UniqueSlug,
   StoreState,
   StoreStateMapping,
-  UniqueSlug,
-} from '../ExpandingGridGallery.types';
+} from '@/components/expandingGallery/ExpandingGridGallery.types';
+import useHash from '@/components/expandingGallery/hooks/useHash';
 
 export const ExpandingGridGalleryContext =
   createContext<ExpandingGridGalleryContextValue | null>(null);
@@ -24,7 +25,7 @@ function ExpandingGridGalleryProvider({
   // Init the context States
   const [previousScrollPosition, setPreviousScrollPosition] =
     useState<ScrollPosition>({ scrollX: 0, scrollY: 0 });
-  const [hash, setHash] = useUrlSlug();
+  const [hash, setHash] = useHash();
   const [localUniqueSlug, setLocalUniqueSlug] = useState<UniqueSlug | null>(
     null,
   );

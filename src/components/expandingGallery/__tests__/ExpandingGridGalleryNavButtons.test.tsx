@@ -1,21 +1,20 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   screen,
   waitFor,
   within,
 } from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/customRenderGallery';
 
-import { navAriaLabel } from '../components/Nav';
-import {
-  navButtonNextAriaLabel,
-  testContent,
-  navButtonPrevAriaLabel,
-  navButtonCloseAriaLabel,
-} from './ExpandingGridGalleryGeneral.test';
+import { navAriaLabel } from '@/components/expandingGallery/components/Nav';
 import {
   checkContentOfGalleryExpanderElement,
   renderExpandingGalleryTest,
-} from './expandingGridGalleryTestUtils/testFunctions';
+} from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testFunctions';
+import {
+  navButtonCloseAriaLabel,
+  navButtonNextAriaLabel,
+  navButtonPrevAriaLabel,
+  testContent,
+} from '@/components/expandingGallery/__tests__/ExpandingGridGalleryGeneral.test';
 
 describe('ExpandingGridGallery Nav Button Interactions', () => {
   test.each(testContent)(

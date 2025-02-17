@@ -1,5 +1,5 @@
+import FooterMain from '@/components/layout/FooterMain';
 import { render, screen } from '@testing-library/react';
-import FooterMain from '../FooterMain';
 
 test('FooterMain', async () => {
   render(<FooterMain />);

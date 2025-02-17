@@ -1,9 +1,15 @@
 import userEvent from '@testing-library/user-event';
-import TestGalleryTree from './TestGalleryTree';
-import { galleryGridItemRole } from '../ExpandingGridGalleryGeneral.test';
-import { render, screen, within } from './customRenderGallery';
-import { gridAriaLabel } from '../../components/Grid';
-import { expandingGalleryTestContent } from './testData';
+
+import {
+  render,
+  screen,
+  within,
+} from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/customRenderGallery';
+
+import { expandingGalleryTestContent } from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testData';
+import { gridAriaLabel } from '@/components/expandingGallery/components/Grid';
+import { galleryGridItemRole } from '@/components/expandingGallery/__tests__/ExpandingGridGalleryGeneral.test';
+import TestGalleryTree from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/TestGalleryTree';
 
 export const renderExpandingGalleryTest = async function (
   itemsExpanded = false,

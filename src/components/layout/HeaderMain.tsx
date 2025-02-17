@@ -8,8 +8,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import MainNav from './MainNav';
+
 import { Menu, X } from 'lucide-react';
+import MainNav from '@/components/layout/MainNav';
 
 function HeaderMain() {
   return (

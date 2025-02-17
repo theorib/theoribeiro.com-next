@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import type {
-  SetUniqueSlugArr,
+import {
   UniqueSlug,
-} from '../ExpandingGridGallery.types';
-import utils from '../utils/utils';
+  SetUniqueSlugArr,
+} from '@/components/expandingGallery/ExpandingGridGallery.types';
+import utils from '@/components/expandingGallery/utils/utils';
+import { useEffect } from 'react';
 
 /**
  * Custom hook to initialize the expanding gallery component.

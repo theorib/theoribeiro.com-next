@@ -2,7 +2,7 @@ import { Suspense, type ReactNode } from 'react';
 import { render, type RenderOptions } from '@testing-library/react';
 import { ExpandingGridGalleryContextValue } from '@/components/expandingGallery/ExpandingGridGallery.types';
 import ExpandingGridGallery from '@/components/expandingGallery/ExpandingGridGallery';
-import { expandingGalleryTestContent } from './testData';
+import { expandingGalleryTestContent } from '@/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testData';
 
 interface ExpandingGalleryRenderOptions extends RenderOptions {
   ExpandingGridGalleryContextValue?: ExpandingGridGalleryContextValue;

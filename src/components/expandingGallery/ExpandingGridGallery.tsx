@@ -1,15 +1,13 @@
-import { ExpandingGridGalleryProvider } from './contexts/ExpandingGridGalleryContext';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { safelist } from './safelist';
-import Grid from './components/Grid';
-import GridExpander from './components/GridExpander';
-import GridItem from './components/GridItem';
-import WithScrollTo from './components/WithScrollTo';
-import WithKeyboardShortcuts from './components/WithKeyboardShortcuts';
-import { StoreState } from './ExpandingGridGallery.types';
-import type { ReactNode } from 'react';
-import Nav from './components/Nav';
-import navBtnCompWithBtnType from './components/navBtnCompWithBtnType';
+import Grid from '@/components/expandingGallery/components/Grid';
+import GridExpander from '@/components/expandingGallery/components/GridExpander';
+import GridItem from '@/components/expandingGallery/components/GridItem';
+import Nav from '@/components/expandingGallery/components/Nav';
+import navBtnCompWithBtnType from '@/components/expandingGallery/components/navBtnCompWithBtnType';
+import WithKeyboardShortcuts from '@/components/expandingGallery/components/WithKeyboardShortcuts';
+import WithScrollTo from '@/components/expandingGallery/components/WithScrollTo';
+import { ExpandingGridGalleryProvider } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
+import { StoreState } from '@/components/expandingGallery/ExpandingGridGallery.types';
+import { ReactNode } from 'react';
 
 type ExpandingGalleryProps = {
   children: ReactNode;

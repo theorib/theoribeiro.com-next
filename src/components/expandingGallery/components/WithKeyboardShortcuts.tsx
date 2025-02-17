@@ -1,8 +1,9 @@
 'use client';
 import { useHotkeys } from 'react-hotkeys-hook';
-import useButtonTypeLookup from '../hooks/useNavBtnTypeLookup';
-import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
-import { UniqueSlug } from '../ExpandingGridGallery.types';
+
+import { UniqueSlug } from '@/components/expandingGallery/ExpandingGridGallery.types';
+import { useExpandingGridGallery } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
+import useNavBtnTypeLookup from '@/components/expandingGallery/hooks/useNavBtnTypeLookup';
 
 interface ClickHandlerProps {
   uniqueSlug?: UniqueSlug | null;
@@ -25,7 +26,7 @@ function WithKeyboardShortcuts({
   prev,
   close,
 }: WithKeyboardShortcutsProps) {
-  const buttonTypeLookUp = useButtonTypeLookup();
+  const buttonTypeLookUp = useNavBtnTypeLookup();
 
   const { currentUniqueSlug } = useExpandingGridGallery();
 

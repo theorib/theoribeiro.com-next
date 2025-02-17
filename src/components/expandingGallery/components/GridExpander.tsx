@@ -1,9 +1,10 @@
 'use client';
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
-import expandingGalleryUtils from '../utils/utils';
-import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
+
 import type { LiHTMLAttributes, RefObject } from 'react';
+import utils from '@/components/expandingGallery/utils/utils';
+import { useExpandingGridGallery } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
 
 export interface GridExpanderProps extends LiHTMLAttributes<HTMLLIElement> {
   numColsMobile?: number;
@@ -30,16 +31,15 @@ function GridExpander({
 
   if (currentUniqueSlug === null) return null;
 
-  const { rowMobile, rowTablet, rowDesktop } =
-    expandingGalleryUtils.getRowPositions({
-      currentUniqueIndex,
-      numberOfUniqueSlugs,
-      numColsMobile,
-      numColsTablet,
-      numColsDesktop,
-    });
+  const { rowMobile, rowTablet, rowDesktop } = utils.getRowPositions({
+    currentUniqueIndex,
+    numberOfUniqueSlugs,
+    numColsMobile,
+    numColsTablet,
+    numColsDesktop,
+  });
 
-  const expanderGridClassNames = `expanding-grid-gallery-expander expanding-grid-gallery-expander--expanded col-span-full ${expandingGalleryUtils.rowStartClass[rowMobile as keyof typeof expandingGalleryUtils.rowStartClass]} sm:${expandingGalleryUtils.rowStartClass[rowTablet as keyof typeof expandingGalleryUtils.rowStartClass]} md:${expandingGalleryUtils.rowStartClass[rowDesktop as keyof typeof expandingGalleryUtils.rowStartClass]}`;
+  const expanderGridClassNames = `expanding-grid-gallery-expander expanding-grid-gallery-expander--expanded col-span-full ${utils.rowStartClass[rowMobile as keyof typeof utils.rowStartClass]} sm:${utils.rowStartClass[rowTablet as keyof typeof utils.rowStartClass]} md:${utils.rowStartClass[rowDesktop as keyof typeof utils.rowStartClass]}`;
 
   return (
     <Comp

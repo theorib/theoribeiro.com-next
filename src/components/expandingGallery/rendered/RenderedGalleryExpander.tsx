@@ -1,10 +1,5 @@
 'use client';
 
-import ExpandingGridGallery from '../ExpandingGridGallery';
-import Nav from '../components/Nav';
-
-import RenderedVideoPlayer from './RenderedVideoPlayer';
-import useRenderedGalleryActions from './useRenderedGalleryActionsHome';
 import usePortfolioItemData from '@/components/expandingGallery/rendered/usePortfolioItemData';
 import paths from '@/lib/paths';
 import {
@@ -30,11 +25,15 @@ import {
   NextIcon,
   PrevIcon,
 } from '@/components/expandingGallery/rendered/navIcons';
+import useRenderedGalleryActionsHome from '@/components/expandingGallery/rendered/useRenderedGalleryActionsHome';
+import RenderedVideoPlayer from '@/components/expandingGallery/rendered/RenderedVideoPlayer';
+import Nav from '@/components/expandingGallery/components/Nav';
+import ExpandingGridGallery from '@/components/expandingGallery/ExpandingGridGallery';
 
 export default function RenderedGalleryExpander() {
   const expanderData = usePortfolioItemData();
   const { btnCloseAfterHandleClick, btnNextPrevAfterHandleClick } =
-    useRenderedGalleryActions();
+    useRenderedGalleryActionsHome();
 
   if (!expanderData) return null;
 

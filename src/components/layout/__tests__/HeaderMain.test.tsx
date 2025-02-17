@@ -1,6 +1,7 @@
+import HeaderMain from '@/components/layout/HeaderMain';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import HeaderMain from '../HeaderMain';
+
 import { Suspense } from 'react';
 import { vi } from 'vitest';
 

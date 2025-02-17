@@ -5,11 +5,10 @@ import { Suspense, useState } from 'react';
 import PhotoAlbum from 'react-photo-album';
 import Lightbox from 'yet-another-react-lightbox';
 import Captions from 'yet-another-react-lightbox/plugins/captions';
-import NextJsImageLightboxImage from './NextJsImageLightboxImage';
+
 import 'yet-another-react-lightbox/styles.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
 
-import GallerySkeleton from './GallerySkeleton';
 import paths from '@/lib/paths';
 import {
   CaptionsHiddenIcon,
@@ -18,6 +17,8 @@ import {
   NextIcon,
   PrevIcon,
 } from '@/components/expandingGallery/rendered/navIcons';
+import NextJsImageLightboxImage from '@/components/photoGallery/NextJsImageLightboxImage';
+import GallerySkeleton from '@/components/photoGallery/GallerySkeleton';
 
 const stills: Array<StillsPortfolioItem> = stillsPortfolio.map(item => ({
   ...item,

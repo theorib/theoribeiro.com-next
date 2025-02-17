@@ -1,5 +1,8 @@
-import { useExpandingGridGallery } from '../contexts/ExpandingGridGalleryContext';
-import { UniqueIndex, UniqueSlug } from '../ExpandingGridGallery.types';
+import { useExpandingGridGallery } from '@/components/expandingGallery/contexts/ExpandingGridGalleryContext';
+import {
+  UniqueIndex,
+  UniqueSlug,
+} from '@/components/expandingGallery/ExpandingGridGallery.types';
 
 export type ButtonTypeLookup = ReturnType<typeof useNavBtnTypeLookup>;
 export interface OnHandleClickReturnValue {

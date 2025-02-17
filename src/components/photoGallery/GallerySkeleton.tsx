@@ -1,4 +1,4 @@
-import ThumbnailSkeleton from './ThumbnailSkeleton';
+import ThumbnailSkeleton from '@/components/photoGallery/ThumbnailSkeleton';
 
 function GallerySkeleton() {
   const length = 12;

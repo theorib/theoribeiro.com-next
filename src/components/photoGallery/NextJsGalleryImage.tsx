@@ -3,7 +3,7 @@
 import Image from 'next-export-optimize-images/image';
 import { Suspense } from 'react';
 import { RenderPhotoProps } from 'react-photo-album';
-import ThumbnailSkeleton from './ThumbnailSkeleton';
+import ThumbnailSkeleton from '@/components/photoGallery/ThumbnailSkeleton';
 import { StillsPortfolioItem } from '@/data/stillsPortfolio';
 
 function roundUp(num: number, margin?: number) {
