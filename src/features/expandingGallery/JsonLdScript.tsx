@@ -62,12 +62,10 @@ function generateJsonLd(portfolioData: PortfolioItem) {
         '@type': 'VideoObject',
         name: portfolioData.title,
         description: portfolioData.description,
-
         director: portfolioData?.director?.split(' and ').map(director => ({
           '@type': 'Person',
           name: director,
         })),
-
         producer: portfolioData?.producer?.split(' and ').map(producer => ({
           '@type': 'Person',
           name: producer,
