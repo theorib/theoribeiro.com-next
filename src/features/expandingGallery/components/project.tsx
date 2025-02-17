@@ -48,7 +48,7 @@ export function ProjectMetaContainer({
   return (
     <section
       className={cn(
-        'flex w-auto flex-1 flex-col gap-6 pt-8 pb-6 font-extralight tracking-[0.020em] sm:gap-10 sm:px-0 sm:text-xl md:p-0',
+        'flex w-auto flex-1 flex-col gap-6 pt-8 pb-6 tracking-[0.020em] sm:gap-10 sm:px-0 sm:text-xl md:p-0',
         className,
       )}
       {...props}
@@ -71,7 +71,7 @@ export function ProjectTitle({
     // eslint-disable-next-line jsx-a11y/heading-has-content
     <h2
       className={cn(
-        'font-primary text-3xl font-extralight tracking-[0.065em] uppercase sm:text-3xl',
+        'font-primary text-3xl tracking-[0.065em] uppercase sm:text-3xl',
         className,
       )}
       {...props}
@@ -153,14 +153,19 @@ export function ProjectCreditListItem({
   className,
   ...props
 }: React.ComponentProps<'div'>) {
-  return <div className={cn('', className)} {...props} />;
+  return <div className={cn('flex gap-2', className)} {...props} />;
 }
 
 export function ProjectCreditTitle({
   className,
   ...props
 }: React.ComponentProps<'dt'>) {
-  return <dt className={cn('inline font-light', className)} {...props} />;
+  return (
+    <dt
+      className={cn('inline justify-self-end font-normal', className)}
+      {...props}
+    />
+  );
 }
 
 export function ProjectCreditName({

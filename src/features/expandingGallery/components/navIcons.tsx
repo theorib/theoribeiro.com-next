@@ -15,7 +15,7 @@ export function CloseIcon({
   return (
     <X
       strokeWidth={0.5}
-      className={cn('size-10 sm:size-12', className)}
+      className={cn('size-8 sm:size-12', className)}
       {...props}
     />
   );
@@ -27,7 +27,7 @@ export function NextIcon({
   return (
     <ChevronRight
       strokeWidth={0.5}
-      className={cn('size-12 sm:-mx-4 sm:size-18', className)}
+      className={cn('size-10 sm:-mx-4 sm:size-18', className)}
       {...props}
     />
   );
@@ -39,7 +39,7 @@ export function PrevIcon({
   return (
     <ChevronLeft
       strokeWidth={0.5}
-      className={cn('size-12 sm:-mx-4 sm:size-18', className)}
+      className={cn('size-10 sm:-mx-4 sm:size-18', className)}
       {...props}
     />
   );
@@ -51,7 +51,7 @@ export function CaptionsVisibleIcon({
   return (
     <Captions
       strokeWidth={0.5}
-      className={cn('size-10 sm:-mx-4 sm:size-12', className)}
+      className={cn('size-8 sm:-mx-4 sm:size-12', className)}
       {...props}
     />
   );

@@ -21,7 +21,7 @@ function HeaderMain() {
             Theo Ribeiro
           </Link>
         </p>
-        <p className="text-lg leading-[1.2] font-extralight transition-all sm:text-base sm:leading-[1.2]">
+        <p className="text-lg leading-[1.2] transition-all sm:text-base sm:leading-[1.2]">
           director of photography
         </p>
       </div>
