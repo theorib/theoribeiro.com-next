@@ -1,5 +1,5 @@
-import StillPortfolioGallery from '@/components/photoGallery/StillPortfolioGallery';
-import paths from '@/lib/paths';
+import StillPortfolioGallery from '@/features/photoGallery/components/StillPortfolioGallery';
+import paths from '@/shared/lib/paths';
 import { type Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {

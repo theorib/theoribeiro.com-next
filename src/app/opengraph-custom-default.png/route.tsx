@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import portfolioActions from '@/actions/portfolioActions';
-import envPublic from '@/lib/env';
+import portfolioActions from '@/services/portfolio/actions';
+import envPublic from '@/shared/lib/env';
 import { ImageResponse } from 'next/og';
 // https://github.com/vercel/next.js/issues/51147
 

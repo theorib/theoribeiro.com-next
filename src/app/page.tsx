@@ -1,6 +1,6 @@
-import RenderedExpandingGalleryHome from '@/components/expandingGallery/rendered/RenderedExpandingGallery';
-import paths from '@/lib/paths';
-import seo from '@/lib/seo';
+import RenderedExpandingGalleryHome from '@/features/expandingGallery/components/RenderedExpandingGallery';
+import paths from '@/shared/lib/paths';
+import seo from '@/shared/lib/seo';
 import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {

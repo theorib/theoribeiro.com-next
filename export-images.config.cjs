@@ -1,5 +1,5 @@
 /**
- * @typedef {import('./src/data/stillsPortfolio').StillsPortfolioItem} StillsPortfolioItem
+ * @typedef {import('./src/services/portfolio/data/stillsPortfolio').StillsPortfolioItem} StillsPortfolioItem
  */
 
 module.exports = {

@@ -1,6 +1,6 @@
-import portfolioActions from '@/actions/portfolioActions';
-import RenderedExpandingGalleryHome from '@/components/expandingGallery/rendered/RenderedExpandingGallery';
-import paths from '@/lib/paths';
+import portfolioActions from '@/services/portfolio/actions';
+import RenderedExpandingGalleryHome from '@/features/expandingGallery/components/RenderedExpandingGallery';
+import paths from '@/shared/lib/paths';
 import { Metadata } from 'next';
 
 type GenerateMetadataProps = {

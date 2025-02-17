@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next';
 import withExportImages from 'next-export-optimize-images';
-import redirects from './src/lib/redirects.mjs';
+import redirects from './src/shared/lib/redirects.mjs';
 
 const cspHeader = `
     default-src 'self';

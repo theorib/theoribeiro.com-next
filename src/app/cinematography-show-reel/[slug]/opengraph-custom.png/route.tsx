@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { ImageResponse } from 'next/og';
-import portfolioActions from '@/actions/portfolioActions';
-import envPublic from '@/lib/env';
+import portfolioActions from '@/services/portfolio/actions';
+import envPublic from '@/shared/lib/env';
 // https://github.com/vercel/next.js/issues/51147
 
 export async function GET(

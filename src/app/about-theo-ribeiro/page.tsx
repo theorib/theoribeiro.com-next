@@ -1,5 +1,5 @@
-import paths from '@/lib/paths';
-import seo from '@/lib/seo';
+import paths from '@/shared/lib/paths';
+import seo from '@/shared/lib/seo';
 import { Metadata } from 'next';
 import Image from 'next-export-optimize-images/image';
 
@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 function AboutPage() {
   return (
-    <article className="mx-auto max-w-layout px-5">
+    <article className="max-w-layout mx-auto px-5">
       <header>
         <h1 className="sr-only">
           About Theo Ribeiro - Director of Photography
@@ -45,7 +45,7 @@ function AboutPage() {
           className="sm:py-4"
         />
       </header>
-      <section className="sm:py-21 prose max-w-none py-8 text-foreground sm:prose-xl prose-p:leading-tight sm:prose-p:leading-normal">
+      <section className="prose text-foreground sm:prose-xl prose-p:leading-tight sm:prose-p:leading-normal max-w-none py-8 sm:py-21">
         <p>
           Theo Ribeiro (Theo Toledo Ribeiro Pereira) is an award winning
           Director of Photography based in London, UK.

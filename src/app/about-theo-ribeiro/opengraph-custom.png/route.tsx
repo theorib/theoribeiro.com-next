@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { ImageResponse } from 'next/og';
-import env from '@/lib/env';
+import env from '@/shared/lib/env';
 // https://github.com/vercel/next.js/issues/51147
 
 export const dynamic = 'force-static';
