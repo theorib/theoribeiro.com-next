@@ -1,6 +1,12 @@
-export type StillsPortfolioItem = (typeof stillsPortfolio)[number];
+export interface StillsPortfolioItem {
+  src: string;
+  alt: string;
+  description: string;
+  width: number;
+  height: number;
+}
 
-export const stillsPortfolio = [
+export const stillsPortfolio: Array<StillsPortfolioItem> = [
   {
     src: 'img/stills/TR_2008_032_002387_D300_M16_v2_Web-scaled-min.jpg',
     alt: 'A young girl on the forgotten country side of Bom Princípio do Piauí. Piauí - Brazil, 2008.',

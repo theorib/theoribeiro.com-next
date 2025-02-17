@@ -1,6 +1,6 @@
 'use client';
 import NextJsGalleryImage from '@/components/photoGallery/NextJsGalleryImage';
-import { stillsPortfolio } from '@/data/stillsPortfolio';
+import { stillsPortfolio, StillsPortfolioItem } from '@/data/stillsPortfolio';
 import { Suspense, useState } from 'react';
 import PhotoAlbum from 'react-photo-album';
 import Lightbox from 'yet-another-react-lightbox';
@@ -19,9 +19,7 @@ import {
   PrevIcon,
 } from '@/components/expandingGallery/rendered/navIcons';
 
-const iconClassName = 'w-14 h-14 sm:h-20 sm:w-20 p-1 sm:p-2 sm:-mx-5';
-
-const stills = stillsPortfolio.map(item => ({
+const stills: Array<StillsPortfolioItem> = stillsPortfolio.map(item => ({
   ...item,
   src: paths.localAssetsPath() + item.src,
 }));
@@ -36,7 +34,8 @@ function StillPortfolioGallery() {
         <PhotoAlbum
           layout="rows"
           photos={stills}
-          renderPhoto={NextJsGalleryImage}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          renderPhoto={NextJsGalleryImage as any}
           spacing={0}
           targetRowHeight={targetRowHeight}
           onClick={({ index }) => setIndex(index)}
