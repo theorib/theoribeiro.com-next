@@ -51,11 +51,11 @@ export default function NextJsImageLightboxImage({
       <Image
         fill
         alt=""
-        src={slide}
+        src={slide.src}
         loading="eager"
         draggable={false}
-        placeholder={'blurDataURL' in slide ? 'blur-sm' : undefined}
-        // placeholder={slide.blurDataURL ? 'blur-sm' : undefined}
+        placeholder={'blurDataURL' in slide ? 'blur' : undefined}
+        // placeholder={slide.blurDataURL ? 'blur' : undefined}
         style={{
           objectFit: cover ? 'cover' : 'contain',
           cursor: click ? 'pointer' : undefined,
