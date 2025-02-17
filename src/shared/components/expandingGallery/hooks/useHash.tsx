@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
+import { z } from 'zod';
 
 type Hash = string | null;
 
@@ -20,7 +21,7 @@ function getUrlHash(): Hash {
  * If the hash is null, the URL hash is removed.
  * This function keeps the current URL state and only updates the hash.
  * This function also prevents the default behavior of the hashchange event (scrolling to the element with the same id as the hash).
- * @param hash A string representing the new hash or null to remove the hash.
+ * @param hash - A string representing the new hash or null to remove the hash.
  */
 function setUrlHash(hash: Hash): void {
   if (typeof window === 'undefined') return;
@@ -35,11 +36,16 @@ function setUrlHash(hash: Hash): void {
 /**
  * Updates the URL hash parameter without causing a page reload.
  * This function keeps the current URL state and only updates the hash.
- * @param hash A string representing the new hash.
+ * @param hash - A string representing the new hash.
  */
 function updateUrl(hash: string): void {
   if (typeof window === 'undefined') return;
-  const currentState = window.history.state || {};
+
+  const currentState = z
+    .object({ hash: z.string().optional() })
+    .default({})
+    .parse(window.history.state ?? {});
+
   currentState.hash = hash;
   const url = new URL(window.location.toString());
   url.hash = hash;
@@ -49,7 +55,7 @@ function updateUrl(hash: string): void {
 /**
  * Prevents the default behavior of the hashchange event
  * This is necessary to prevent the URL hash change from triggering a scroll event on the browser towards the element with the same id as the hash
- * @param event The hashchange event
+ * @param event - The hashchange event
  */
 function handleHashChange(event: HashChangeEvent) {
   event.preventDefault();

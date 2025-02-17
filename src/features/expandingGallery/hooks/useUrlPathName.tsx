@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
+import { z } from 'zod';
 
 type PathName = string;
 
@@ -21,7 +22,12 @@ export function setUrlPathName(path: PathName): void {
 
 export function updateUrlPathName(path: PathName): void {
   if (typeof window === 'undefined') return;
-  const currentState = window.history.state || {};
+
+  const currentState = z
+    .object({ pathname: z.string().optional() })
+    .default({})
+    .parse(window.history.state ?? {});
+
   currentState.pathname = path;
   const url = new URL(window.location.toString());
   url.pathname = path;
