@@ -42,7 +42,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-hotkeys-hook": "^4.6.1",
-    "react-photo-album": "^2.4.0",
+    "react-photo-album": "^3.0.2",
     "react-player": "^2.16.0",
     "react-schemaorg": "^2.0.0",
     "schema-dts": "^1.1.2",

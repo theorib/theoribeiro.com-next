@@ -1,4 +1,4 @@
-import StillPortfolioGallery from '@/features/photoGallery/components/StillPortfolioGallery';
+import PhotoGallery from '@/features/photoGallery/components/PhotoGallery';
 import paths from '@/shared/lib/paths';
 import { type Metadata } from 'next';
 
@@ -17,7 +17,7 @@ function StillPhotographyPage() {
       <h1 className="sr-only">
         A still photography portfolio gallery by Theo Ribeiro
       </h1>
-      <StillPortfolioGallery />
+      <PhotoGallery />
     </>
   );
 }

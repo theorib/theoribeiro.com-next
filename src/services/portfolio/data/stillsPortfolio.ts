@@ -1,10 +1,14 @@
-export interface StillsPortfolioItem {
-  src: string;
-  alt: string;
-  description: string;
-  width: number;
-  height: number;
-}
+import { z } from 'zod';
+
+export const StillsPortfolioItemSchema = z.object({
+  src: z.string().url(),
+  alt: z.string(),
+  description: z.optional(z.string()),
+  width: z.number(),
+  height: z.number(),
+});
+
+export type StillsPortfolioItem = z.infer<typeof StillsPortfolioItemSchema>;
 
 export const stillsPortfolio: Array<StillsPortfolioItem> = [
   {
@@ -347,4 +351,4 @@ export const stillsPortfolio: Array<StillsPortfolioItem> = [
     width: 2560,
     height: 1700,
   },
-];
+] as const;
