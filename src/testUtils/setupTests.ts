@@ -5,7 +5,10 @@ import mockNextImage from './mockNextImage';
 import mockNextFontGoogle from './mockNextFontGoogle';
 
 vi.mock(`next-export-optimize-images/image`, () => mockNextImage);
-vi.mock(`next/font/google`, () => mockNextFontGoogle(['Lato', 'Jost']));
+vi.mock(`next/font/google`, () => ({
+  __esModule: true,
+  default: () => mockNextFontGoogle(['Lato', 'Jost']),
+}));
 
 beforeAll(() => {
   //  All your beforeAll code here
