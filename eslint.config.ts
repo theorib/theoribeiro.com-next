@@ -99,6 +99,8 @@ const IGNORE_PATTERNS = [
   '.next/',
   '**/node_modules/',
   '.git/',
+  'out',
+  'coverage',
   '**/dist/',
   '**/coverage/',
   'playwright-report/',
