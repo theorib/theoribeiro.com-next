@@ -35,7 +35,8 @@
     ".next/types/**/*.ts",
     "next.config.ts",
     "export-images.config.cjs",
-    "next-sitemap.config.js"
+    "next-sitemap.config.js",
+    "eslint.config.ts"
   ],
   "exclude": ["node_modules", ".next", "out"]
 }
