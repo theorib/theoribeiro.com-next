@@ -1,15 +1,14 @@
-import { PiInstagramLogoThin } from 'react-icons/pi';
-
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Instagram } from 'lucide-react';
 import Link from 'next/link';
 function FooterMain() {
   return (
-    <footer className="mx-auto w-full max-w-layout px-5 pb-4 font-light">
-      <p className="my-12 sm:text-lg">
+    <footer className="max-w-layout mx-auto w-full px-5 pb-4 text-base font-light">
+      <p className="my-12">
         Theo Ribeiro is an award winning cinematographer based in London, UK.
       </p>
-      <div className="mb-12 flex flex-col sm:text-lg">
+      <div className="mb-12 flex flex-col">
         {/* html field for phone  */}
         <a
           href="mailto:theo@theoribeiro.com"
@@ -38,11 +37,11 @@ function FooterMain() {
           title="Instagram"
           className={cn(
             buttonVariants({ variant: 'ghost' }),
-            'flex border-slate-200 bg-neutral-700 p-2 py-5 sm:py-7',
+            'flex cursor-pointer hover:bg-transparent hover:text-neutral-400',
           )}
           target="_blank"
         >
-          <PiInstagramLogoThin className="h-7 w-7 text-neutral-300 sm:h-10 sm:w-10" />
+          <Instagram size={32} strokeWidth={0.75} className="size-10" />
         </Link>
       </div>
     </footer>

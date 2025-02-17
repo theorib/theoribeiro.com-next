@@ -8,14 +8,16 @@ import Captions from 'yet-another-react-lightbox/plugins/captions';
 import NextJsImageLightboxImage from './NextJsImageLightboxImage';
 import 'yet-another-react-lightbox/styles.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
-import {
-  PiCaretLeftThin,
-  PiCaretRightThin,
-  PiClosedCaptioningThin,
-  PiXThin,
-} from 'react-icons/pi';
+
 import GallerySkeleton from './GallerySkeleton';
 import paths from '@/lib/paths';
+import {
+  CaptionsHiddenIcon,
+  CaptionsVisibleIcon,
+  CloseIcon,
+  NextIcon,
+  PrevIcon,
+} from '@/components/expandingGallery/rendered/navIcons';
 
 const iconClassName = 'w-14 h-14 sm:h-20 sm:w-20 p-1 sm:p-2 sm:-mx-5';
 
@@ -48,17 +50,11 @@ function StillPortfolioGallery() {
         close={() => setIndex(-1)}
         render={{
           slide: NextJsImageLightboxImage,
-          iconPrev: () => <PiCaretLeftThin className={iconClassName} />,
-          iconNext: () => <PiCaretRightThin className={iconClassName} />,
-          iconClose: () => (
-            <PiXThin className="h-14 w-14 p-1 sm:-mx-2 sm:h-14 sm:w-14 sm:p-2" />
-          ),
-          iconCaptionsVisible: () => (
-            <PiClosedCaptioningThin className="h-14 w-14 p-1 sm:h-14 sm:w-14 sm:p-2" />
-          ),
-          iconCaptionsHidden: () => (
-            <PiClosedCaptioningThin className="h-14 w-14 p-1 sm:h-14 sm:w-14 sm:p-2" />
-          ),
+          iconPrev: () => <PrevIcon />,
+          iconNext: () => <NextIcon />,
+          iconClose: () => <CloseIcon />,
+          iconCaptionsVisible: () => <CaptionsVisibleIcon />,
+          iconCaptionsHidden: () => <CaptionsHiddenIcon />,
         }}
         plugins={[Captions]}
         captions={{

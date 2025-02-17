@@ -32,7 +32,7 @@ This app uses the following libraries and features:
 - Static Image optimization using [Next Export Optimize Images](https://next-export-optimize-images.vercel.app/) and [Sharp](https://sharp.pixelplumbing.com/)
 - SEO sitemaps automatically generated with [next-sitemap](https://github.com/iamvishnusankar/next-sitemap#readme)
 - Schema.org JSON-LD automatically generated with [react-schemaorg](https://github.com/google/react-schemaorg#readme) and [schema-dts](https://github.com/google/schema-dts)
-- Icons using [react-icons](https://github.com/react-icons/react-icons#readme)
+- Icons using [lucide-react](https://lucide.dev/guide/packages/lucide-react)
 - Testing using [React Testing Library](https://testing-library.com/) and [Vitest](https://vitest.dev/)
 - Custom Keyboard shortcuts using [React Hotkeys Hook](https://react-hotkeys-hook.vercel.app/)
 - Menu and buttons created with [shadcn/ui](https://ui.shadcn.com/)
