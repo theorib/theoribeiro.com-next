@@ -334,6 +334,10 @@ const configNext = {
   files: [...NEXT_JS_JSX_TS_TSX_FILE_PATTERNS],
 } satisfies Config;
 
+/**
+ * Some Next.js files have default async exports with function such as GET, POST, generateMetadata, generateStaticParams, etc.
+ * When these functions are used, depending on the implementation they don't necessarily need to await for values thus we ewnt to turn some rules into warnings only in some specific files.
+ */
 const configNextCustomRoutes = {
   name: 'next/custom-routes',
   files: ['src/**/?(route|page|layout).?(c|m)?(t|j)s?(x)'],
