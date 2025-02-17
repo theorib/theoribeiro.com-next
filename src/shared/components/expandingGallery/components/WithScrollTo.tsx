@@ -1,6 +1,6 @@
 'use client';
 import { useExpandingGridGallery } from '@/shared/components/expandingGallery/contexts/ExpandingGridGalleryContext';
-import { ScrollPosition } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
+import { type ScrollPosition } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
 import { useLayoutEffect, useRef } from 'react';
 
 /**

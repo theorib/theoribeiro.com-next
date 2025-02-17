@@ -1,7 +1,7 @@
 import { useExpandingGridGallery } from '@/shared/components/expandingGallery/contexts/ExpandingGridGalleryContext';
 import {
-  UniqueIndex,
-  UniqueSlug,
+  type UniqueIndex,
+  type UniqueSlug,
 } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
 
 export type ButtonTypeLookup = ReturnType<typeof useNavBtnTypeLookup>;

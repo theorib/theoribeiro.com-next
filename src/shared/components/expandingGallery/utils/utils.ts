@@ -1,4 +1,4 @@
-import { UniqueSlug } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
+import { type UniqueSlug } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
 import { type SetStateAction, type Dispatch } from 'react';
 
 interface getItemRowPositionProps {
@@ -103,7 +103,7 @@ function scrollToElement(element: HTMLElement): void {
 }
 
 function findIndexFromSlug(
-  array: string[],
+  array: Array<string>,
   slug: string | null,
 ): number | null {
   if (slug === null) return null;
@@ -116,7 +116,7 @@ function findIndexFromSlug(
  * @param input - The string to be slugified.
  * @param errorMessage - The error message to be thrown if the input is not a string.
  * @returns The slugified string.
- * @throws {Error} If the input is not a string.
+ * @throws error If the input is not a string.
  */
 export function slugifyString(
   input: string,
@@ -139,12 +139,12 @@ export function slugifyString(
  * @param input - The array of strings to be slugified.
  * @param errorMessage - The error message to be thrown if the input is not an array of strings.
  * @returns The slugified array of strings.
- * @throws {Error} An error if the input is an array of strings.
+ * @throws An error if the input is an array of strings.
  */
 export function slugifyArray(
-  input: string[],
+  input: Array<string>,
   errorMessage = 'slugifyArray input must be an array of strings',
-): string[] {
+): Array<string> {
   if (!Array.isArray(input)) throw new Error(errorMessage);
   return input.map(string => slugifyString(string, errorMessage));
 }
@@ -154,7 +154,7 @@ export function slugifyArray(
  *
  * @param slug - The unique slug value.
  * @param setStateFn - The state setter function.
- * @throws {Error} If the slug is not a string or null.
+ * @throws An Error if the slug is not a string or null.
  */
 export function setCurrentUniqueSlugState(
   slug: UniqueSlug | null,
@@ -173,11 +173,11 @@ export function setCurrentUniqueSlugState(
  *
  * @param slugArr - The array of unique slugs.
  * @param setStateFn - The state setter function.
- * @throws {Error} - Throws an error if the orderedUniqueSlugsArrayProp is not an array of strings.
+ * @throws Throws an Error if the orderedUniqueSlugsArrayProp is not an array of strings.
  */
 export function setOrderedUniqueSlugsArrayState(
-  slugArr: UniqueSlug[],
-  setStateFn: Dispatch<SetStateAction<UniqueSlug[]>>,
+  slugArr: Array<UniqueSlug>,
+  setStateFn: Dispatch<SetStateAction<Array<UniqueSlug>>>,
 ) {
   const slugifiedValue = slugArr ? slugifyArray(slugArr) : [];
   if (!slugifiedValue.length)

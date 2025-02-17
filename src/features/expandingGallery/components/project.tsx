@@ -68,6 +68,7 @@ export function ProjectTitle({
   ...props
 }: React.ComponentProps<'h2'>) {
   return (
+    // eslint-disable-next-line jsx-a11y/heading-has-content
     <h2
       className={cn(
         'font-primary text-3xl font-extralight tracking-[0.065em] uppercase sm:text-3xl',

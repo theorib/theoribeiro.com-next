@@ -1,6 +1,6 @@
 import {
-  UniqueSlug,
-  SetUniqueSlugArr,
+  type UniqueSlug,
+  type SetUniqueSlugArr,
 } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
 import utils from '@/shared/components/expandingGallery/utils/utils';
 import { useEffect } from 'react';
@@ -11,7 +11,7 @@ import { useEffect } from 'react';
  * @param orderedUniqueSlugsArray - An array of unique slugs in it's intended display order.
  */
 export default function useInitExpandingGallery(
-  orderedUniqueSlugsArray: UniqueSlug[],
+  orderedUniqueSlugsArray: Array<UniqueSlug>,
   setUniqueSlugArr: SetUniqueSlugArr,
 ) {
   useEffect(() => {

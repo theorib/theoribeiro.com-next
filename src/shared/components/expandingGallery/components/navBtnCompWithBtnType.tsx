@@ -1,10 +1,10 @@
-import { RefObject } from 'react';
+import { type RefObject } from 'react';
 
 import type { VariantProps } from 'class-variance-authority';
 import NavBtnComp, {
-  NavButtonCompProps,
-  navButtonCompVariants,
-  NavButtonType,
+  type NavButtonCompProps,
+  type navButtonCompVariants,
+  type NavButtonType,
 } from '@/shared/components/expandingGallery/components/NavBtnComp';
 
 type VariantKeys = VariantProps<typeof navButtonCompVariants>['variant'];

@@ -2,7 +2,7 @@
 import NextJsGalleryImage from '@/features/photoGallery/components/NextJsGalleryImage';
 import {
   stillsPortfolio,
-  StillsPortfolioItem,
+  type StillsPortfolioItem,
 } from '@/services/portfolio/data/stillsPortfolio';
 import { Suspense, useState } from 'react';
 import PhotoAlbum from 'react-photo-album';
@@ -38,8 +38,7 @@ function StillPortfolioGallery() {
         <PhotoAlbum
           layout="rows"
           photos={stills}
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          renderPhoto={NextJsGalleryImage as any}
+          renderPhoto={NextJsGalleryImage}
           spacing={0}
           targetRowHeight={targetRowHeight}
           onClick={({ index }) => setIndex(index)}

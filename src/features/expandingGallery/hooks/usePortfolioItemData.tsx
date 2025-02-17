@@ -1,6 +1,6 @@
 import portfolioActions from '@/services/portfolio/actions';
 import { useExpandingGridGallery } from '@/shared/components/expandingGallery/contexts/ExpandingGridGalleryContext';
-import { PortfolioItem } from '@/services/portfolio/data/portfolio';
+import { type PortfolioItem } from '@/services/portfolio/data/portfolio';
 import { useEffect, useState } from 'react';
 
 function usePortfolioItemData() {
@@ -10,7 +10,7 @@ function usePortfolioItemData() {
   );
 
   useEffect(() => {
-    void (async function () {
+    void (function () {
       if (currentUniqueSlug === null) return;
       try {
         const data = portfolioActions.getPortfolioItemBySlug(currentUniqueSlug);

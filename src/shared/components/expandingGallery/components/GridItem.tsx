@@ -2,7 +2,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/shared/lib/utils';
 import utils from '@/shared/components/expandingGallery/utils/utils';
-import { UniqueSlug } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
+import { type UniqueSlug } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
 import { useExpandingGridGallery } from '@/shared/components/expandingGallery/contexts/ExpandingGridGalleryContext';
 import type { ReactNode, RefObject } from 'react';
 

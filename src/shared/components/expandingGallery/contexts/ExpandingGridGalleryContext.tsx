@@ -5,12 +5,12 @@ import { createContext, useContext, useState } from 'react';
 import utils from '@/shared/components/expandingGallery/utils/utils';
 import useInitExpandingGallery from '@/shared/components/expandingGallery/hooks/useInitExpandingGallery';
 import {
-  ExpandingGridGalleryContextValue,
-  ExpandingGridGalleryProviderProps,
-  ScrollPosition,
-  UniqueSlug,
-  StoreState,
-  StoreStateMapping,
+  type ExpandingGridGalleryContextValue,
+  type ExpandingGridGalleryProviderProps,
+  type ScrollPosition,
+  type UniqueSlug,
+  type StoreState,
+  type StoreStateMapping,
 } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
 import useHash from '@/shared/components/expandingGallery/hooks/useHash';
 
@@ -29,7 +29,7 @@ function ExpandingGridGalleryProvider({
   const [localUniqueSlug, setLocalUniqueSlug] = useState<UniqueSlug | null>(
     null,
   );
-  const [uniqueSlugArr, setUniqueSlugArr] = useState<UniqueSlug[]>([]);
+  const [uniqueSlugArr, setUniqueSlugArr] = useState<Array<UniqueSlug>>([]);
 
   // Initialize the expanding gallery component
   useInitExpandingGallery(orderedUniqueSlugsArrayProp, setUniqueSlugArr);
@@ -54,7 +54,7 @@ function ExpandingGridGalleryProvider({
   const setCurrentUniqueSlug =
     storeStateLookup[storeState].setCurrentUniqueSlug;
   const orderedUniqueSlugsArray = uniqueSlugArr;
-  function setOrderedUniqueSlugsArray(input: UniqueSlug[]): void {
+  function setOrderedUniqueSlugsArray(input: Array<UniqueSlug>): void {
     utils.setOrderedUniqueSlugsArrayState(input, setUniqueSlugArr);
   }
 

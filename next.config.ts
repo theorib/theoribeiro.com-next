@@ -41,6 +41,8 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   // Set strict content security policies
+  // Next.js 15 expexts redirects to be async functions even if current values don't need to be awaited
+  // eslint-disable-next-line @typescript-eslint/require-await
   async headers() {
     return [
       {
@@ -54,6 +56,8 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Next.js 15 expexts redirects to be async functions even if current values don't need to be awaited
+  // eslint-disable-next-line @typescript-eslint/require-await
   async redirects() {
     return redirects;
   },

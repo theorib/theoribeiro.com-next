@@ -6,7 +6,7 @@ import {
   within,
 } from '@/shared/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/customRenderGallery';
 
-import { expandingGalleryTestContent } from '@/shared/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testData';
+import { type expandingGalleryTestContent } from '@/shared/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testData';
 import { gridAriaLabel } from '@/shared/components/expandingGallery/components/Grid';
 import { galleryGridItemRole } from '@/shared/components/expandingGallery/__tests__/ExpandingGridGalleryGeneral.test';
 import TestGalleryTree from '@/shared/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/TestGalleryTree';

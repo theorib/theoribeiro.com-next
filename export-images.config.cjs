@@ -1,7 +1,9 @@
+/* eslint-disable tsdoc/syntax */
 /**
  * @typedef {import('./src/services/portfolio/data/stillsPortfolio').StillsPortfolioItem} StillsPortfolioItem
  */
 
+// eslint-disable-next-line no-undef
 module.exports = {
   convertFormat: [
     ['png', 'webp'],

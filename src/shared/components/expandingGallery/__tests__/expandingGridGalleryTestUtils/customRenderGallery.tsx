@@ -1,6 +1,6 @@
 import { Suspense, type ReactNode } from 'react';
 import { render, type RenderOptions } from '@testing-library/react';
-import { ExpandingGridGalleryContextValue } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
+import { type ExpandingGridGalleryContextValue } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
 import ExpandingGridGallery from '@/shared/components/expandingGallery/ExpandingGridGallery';
 import { expandingGalleryTestContent } from '@/shared/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testData';
 

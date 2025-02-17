@@ -1,7 +1,12 @@
 'use client';
-import { Movie, VideoObject, MusicVideoObject, WithContext } from 'schema-dts';
+import {
+  type Movie,
+  type VideoObject,
+  type MusicVideoObject,
+  type WithContext,
+} from 'schema-dts';
 import usePortfolioItemData from '@/features/expandingGallery/hooks/usePortfolioItemData';
-import { PortfolioItem } from '@/services/portfolio/data/portfolio';
+import { type PortfolioItem } from '@/services/portfolio/data/portfolio';
 import paths from '@/shared/lib/paths';
 
 function generateJsonLd(portfolioData: PortfolioItem) {
@@ -20,8 +25,8 @@ function generateJsonLd(portfolioData: PortfolioItem) {
           '@type': 'Person',
           name: producer,
         })),
-        thumbnailUrl: paths.remoteAssetsPath + portfolioData.imageUrl,
-        image: paths.remoteAssetsPath + portfolioData.imageUrl,
+        thumbnailUrl: paths.remoteAssetsPath() + portfolioData.imageUrl,
+        image: paths.remoteAssetsPath() + portfolioData.imageUrl,
         url: portfolioData.videoUrl,
       };
       return jsonLdObject;
@@ -57,11 +62,13 @@ function generateJsonLd(portfolioData: PortfolioItem) {
         '@type': 'VideoObject',
         name: portfolioData.title,
         description: portfolioData.description,
-        director: portfolioData?.director.split(' and ').map(director => ({
+
+        director: portfolioData?.director?.split(' and ').map(director => ({
           '@type': 'Person',
           name: director,
         })),
-        producer: portfolioData?.producer.split(' and ').map(producer => ({
+
+        producer: portfolioData?.producer?.split(' and ').map(producer => ({
           '@type': 'Person',
           name: producer,
         })),
@@ -73,7 +80,6 @@ function generateJsonLd(portfolioData: PortfolioItem) {
     }
   }
 }
-
 function JsonLdScript() {
   const portfolioData = usePortfolioItemData();
   if (!portfolioData) return null;

@@ -7,7 +7,7 @@ import { notFound, useParams } from 'next/navigation';
 import paths from '@/shared/lib/paths';
 import { cn } from '@/shared/lib/utils';
 import JsonLdScript from '@/features/expandingGallery/JsonLdScript';
-import { UniqueSlug } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
+import { type UniqueSlug } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
 import RenderedGalleryExpander from '@/features/expandingGallery/components/RenderedGalleryExpander';
 import useRenderedGalleryActionsHome from '@/features/expandingGallery/hooks/useRenderedGalleryActionsHome';
 import ExpandingGridGallery from '@/shared/components/expandingGallery/ExpandingGridGallery';

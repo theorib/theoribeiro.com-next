@@ -1,7 +1,7 @@
 import { SheetClose } from '@/shared/components/ui/sheet';
 import paths from '@/shared/lib/paths';
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import type { UrlObject } from 'url';
 
 interface MainNavItemProps {

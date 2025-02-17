@@ -44,7 +44,7 @@ function createFontModuleSingle(fontName: string): FontModule {
  * @param fontNames - An array of font names to be mocked.
  * @returns A `FontModule` object containing the mocked font information.
  */
-function createFontModuleMultiple(fontNames: string[]): FontModule {
+function createFontModuleMultiple(fontNames: Array<string>): FontModule {
   const fontModules = fontNames.reduce((modules, name) => {
     return { ...modules, ...createFontModuleSingle(name) };
   }, {});
@@ -63,7 +63,7 @@ function createFontModuleMultiple(fontNames: string[]): FontModule {
  * @returns An object with a method for each font passed as an argument. Each method returns an object with mocked font styles, class names, and CSS variables.
  */
 const mockNextFontGoogle = vi.hoisted(() => {
-  const createMockedFontModules = function (fontNames: string | string[]) {
+  const createMockedFontModules = function (fontNames: string | Array<string>) {
     if (typeof fontNames === 'string') return createFontModuleSingle(fontNames);
     if (Array.isArray(fontNames)) return createFontModuleMultiple(fontNames);
   };

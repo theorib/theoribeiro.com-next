@@ -47,7 +47,7 @@ export type PortfolioThumbnail = Pick<
 //   duration?: string;
 // };
 
-export const portfolio: PortfolioItem[] = [
+export const portfolio: Array<PortfolioItem> = [
   {
     id: 0,
     uniqueId: 'a8e61a0a-f268-4b30-9ebc-640c614ad074',

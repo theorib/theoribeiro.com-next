@@ -5,12 +5,12 @@ import {
   portfolio,
 } from '@/services/portfolio/data/portfolio';
 
-const getPortfolioSlugs = (): PortfolioSlug[] => {
+const getPortfolioSlugs = (): Array<PortfolioSlug> => {
   const slugs = portfolio.map(item => item.slug);
   return slugs;
 };
 
-const getPortfolioThumbnails = (): PortfolioThumbnail[] => {
+const getPortfolioThumbnails = (): Array<PortfolioThumbnail> => {
   const portfolioThumbnails = portfolio.map(item => {
     return {
       id: item.id,
@@ -31,7 +31,7 @@ const getPortfolioItemBySlug = (slug: string): PortfolioItem | null => {
   return portfolioItem;
 };
 
-const getPortfolioItems = (): PortfolioItem[] => {
+const getPortfolioItems = (): Array<PortfolioItem> => {
   return portfolio;
 };
 

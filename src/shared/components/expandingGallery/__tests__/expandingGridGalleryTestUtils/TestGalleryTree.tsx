@@ -4,7 +4,7 @@ import Image from 'next-export-optimize-images/image';
 import { useExpandingGridGallery } from '@/shared/components/expandingGallery/contexts/ExpandingGridGalleryContext';
 import {
   getExpandingGalleryTestContentFromSlug,
-  ExpandingGalleryTestContentItem,
+  type ExpandingGalleryTestContentItem,
   expandingGalleryTestContent,
 } from '@/shared/components/expandingGallery/__tests__/expandingGridGalleryTestUtils/testData';
 
@@ -39,7 +39,7 @@ function TestGalleryThumbnail({
 }
 
 export default function TestGalleryTree() {
-  const content: ExpandingGalleryTestContentItem[] =
+  const content: Array<ExpandingGalleryTestContentItem> =
     expandingGalleryTestContent;
 
   return (

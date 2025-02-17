@@ -8,8 +8,8 @@ import type {
   RefObject,
 } from 'react';
 import {
-  UniqueIndex,
-  UniqueSlug,
+  type UniqueIndex,
+  type UniqueSlug,
 } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
 import utils from '@/shared/components/expandingGallery/utils/utils';
 import { cn } from '@/shared/lib/utils';

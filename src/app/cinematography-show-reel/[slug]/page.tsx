@@ -1,7 +1,7 @@
 import portfolioActions from '@/services/portfolio/actions';
 import RenderedExpandingGalleryHome from '@/features/expandingGallery/components/RenderedExpandingGallery';
 import paths from '@/shared/lib/paths';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 type GenerateMetadataProps = {
   params: { slug: string };
@@ -43,7 +43,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ShowReelItemPage() {
+export default function ShowReelItemPage() {
   return (
     <>
       <h1 className="sr-only">Theo Ribeiro Cinematography Show Reel</h1>

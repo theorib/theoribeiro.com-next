@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 'use client';
 import { notFound } from 'next/navigation';
 import paths from '@/shared/lib/paths';
 import { setUrlPathName } from '@/features/expandingGallery/hooks/useUrlPathName';
-import { ButtonClickHandler } from '@/shared/components/expandingGallery/components/NavBtnComp';
-import { ItemClickHandler } from '@/shared/components/expandingGallery/components/GridItem';
+import { type ButtonClickHandler } from '@/shared/components/expandingGallery/components/NavBtnComp';
+import { type ItemClickHandler } from '@/shared/components/expandingGallery/components/GridItem';
 
 function useRenderedGalleryActionsHome() {
   function galleryItemAfterHandleClick({

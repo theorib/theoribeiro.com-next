@@ -1,7 +1,7 @@
 import RenderedExpandingGalleryHome from '@/features/expandingGallery/components/RenderedExpandingGallery';
 import paths from '@/shared/lib/paths';
 import seo from '@/shared/lib/seo';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
     <>
       <h1 className="sr-only">

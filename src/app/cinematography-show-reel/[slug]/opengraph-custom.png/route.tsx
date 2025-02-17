@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { ImageResponse } from 'next/og';
 import portfolioActions from '@/services/portfolio/actions';

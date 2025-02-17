@@ -19,5 +19,7 @@ const paths = {
   remoteAssetsPath() {
     return env.NEXT_PUBLIC_REMOTE_ASSETS_PATH;
   },
-};
+} as const;
 export default paths;
+
+export type Paths = typeof paths;

@@ -6,13 +6,13 @@ import navBtnCompWithBtnType from '@/shared/components/expandingGallery/componen
 import WithKeyboardShortcuts from '@/shared/components/expandingGallery/components/WithKeyboardShortcuts';
 import WithScrollTo from '@/shared/components/expandingGallery/components/WithScrollTo';
 import { ExpandingGridGalleryProvider } from '@/shared/components/expandingGallery/contexts/ExpandingGridGalleryContext';
-import { StoreState } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
-import { ReactNode } from 'react';
+import { type StoreState } from '@/shared/components/expandingGallery/ExpandingGridGallery.types';
+import { type ReactNode } from 'react';
 
 type ExpandingGalleryProps = {
   children: ReactNode;
   storeState?: StoreState;
-  orderedUniqueSlugsArray: string[];
+  orderedUniqueSlugsArray: Array<string>;
 };
 
 // Define a generic component
