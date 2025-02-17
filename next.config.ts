@@ -1,3 +1,4 @@
+import type { NextConfig } from 'next';
 import withExportImages from 'next-export-optimize-images';
 import redirects from './src/lib/redirects.mjs';
 
@@ -17,8 +18,7 @@ const cspHeader = `
     upgrade-insecure-requests;
 `;
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
   },
@@ -41,7 +41,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   // Set strict content security policies
-  headers() {
+  async headers() {
     return [
       {
         source: '/(.*)',
@@ -54,7 +54,7 @@ const nextConfig = {
       },
     ];
   },
-  redirects() {
+  async redirects() {
     return redirects;
   },
 };

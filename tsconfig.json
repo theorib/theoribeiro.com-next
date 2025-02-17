@@ -33,7 +33,7 @@
     "**/*.mjs",
     "**/*.cjs",
     ".next/types/**/*.ts",
-    "next.config.mjs",
+    "next.config.ts",
     "export-images.config.cjs",
     "next-sitemap.config.js"
   ],
