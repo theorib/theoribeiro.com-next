@@ -33,9 +33,9 @@
       "env": {
         "jest": true
       },
-      "plugins": ["vitest", "jest-dom", "testing-library"],
+      "plugins": ["@vitest", "jest-dom", "testing-library"],
       "extends": [
-        "plugin:vitest/recommended",
+        "plugin:@vitest/legacy-recommended",
         "plugin:jest-dom/recommended",
         "plugin:testing-library/react"
       ],
