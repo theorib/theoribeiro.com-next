@@ -25,7 +25,8 @@ const nextConfig: NextConfig = {
   },
   output: 'export',
   images: {
-    deviceSizes: [390, 430, 640, 768, 1080, 1280, 1920, 2560, 3840],
+    deviceSizes: [390, 640, 960, 1280, 1600, 1920, 3840],
+    // deviceSizes: [390, 430, 640, 768, 1080, 1280, 1920, 2560, 3840],
     remotePatterns: [
       {
         protocol: 'https',

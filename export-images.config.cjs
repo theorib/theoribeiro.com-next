@@ -110,6 +110,17 @@ module.exports = {
     'https://assets.theoribeiro.com/img/stills/TR_2007_004_000211_D2xs_Web-scaled-min.jpg',
     'https://assets.theoribeiro.com/img/TR_2019_008_000504_LeicaQ_Web.jpg',
   ],
+  sharpOptions: {
+    png: {
+      effort: 1,
+    },
+    webp: {
+      effort: 0,
+    },
+    avif: {
+      effort: 0,
+    },
+  },
   // remoteImages: async () => {
   //   const { default: portfolioActions } = await import(
   //     './src/actions/portfolioActions'
