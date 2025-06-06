@@ -3,7 +3,8 @@ import { StillsPortfolioItemSchema } from '@/services/portfolio/data/stillsPortf
 import { AspectRatio } from '@/shared/components/ui/aspect-ratio';
 import { cn } from '@/shared/lib/utils';
 import { type StillsPortfolioItem } from 'export-images.config.cjs';
-import Image from 'next-export-optimize-images/image';
+// import Image from 'next-export-optimize-images/image';
+import Image from 'next/image';
 import { Suspense, type JSX } from 'react';
 import type { RenderImageContext, RenderImageProps } from 'react-photo-album';
 // import { Suspense } from 'react';

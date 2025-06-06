@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "preinstall": "npx only-allow pnpm",
-    "build": "next build && next-export-optimize-images",
+    "build": "next build",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "start": "npx serve@latest out",
     "start:next": "next start",

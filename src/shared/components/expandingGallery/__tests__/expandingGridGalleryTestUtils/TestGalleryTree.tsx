@@ -1,5 +1,6 @@
 import ExpandingGridGallery from '@/shared/components/expandingGallery/ExpandingGridGallery';
-import Image from 'next-export-optimize-images/image';
+// import Image from 'next-export-optimize-images/image';
+import Image from 'next/image';
 
 import { useExpandingGridGallery } from '@/shared/components/expandingGallery/contexts/ExpandingGridGalleryContext';
 import {
