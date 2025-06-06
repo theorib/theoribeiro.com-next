@@ -1,7 +1,6 @@
 'use client';
-import ReactPlayer from 'react-player/vimeo';
 import { Suspense } from 'react';
-
+import MuxPlayer from '@mux/mux-player-react/lazy';
 import Image from 'next-export-optimize-images/image';
 import { PlayIcon } from '@/features/expandingGallery/components/navIcons';
 import VideoPlayerSkeleton from '@/features/expandingGallery/components/VideoPlayerSkeleton';
@@ -13,7 +12,8 @@ interface PlayerImage {
 }
 
 type RenderedVideoPlayerProps = {
-  videoUrl: string;
+  muxPlaybackId: string;
+  title: string;
   image: PlayerImage;
   controls?: boolean;
 };
@@ -38,21 +38,26 @@ function VideoImagePreview({ image }: { image: PlayerImage }) {
 }
 
 function RenderedVideoPlayer({
-  videoUrl,
+  muxPlaybackId: muxPlaybackId,
+  title,
   image,
   controls = true,
 }: RenderedVideoPlayerProps) {
   return (
     <Suspense fallback={VideoPlayerSkeleton()}>
-      <div className="group animate-fade-in absolute inset-0">
-        <ReactPlayer
-          width="100%"
-          height="100%"
-          playing={true}
-          url={videoUrl}
-          controls={controls}
-          light={<VideoImagePreview image={image} />}
-          playIcon={<PlayIcon />}
+      <div className="group animate-fade-in aspect-video">
+        <MuxPlayer
+          playbackId={muxPlaybackId}
+          // theme="minimal"
+          metadata={{
+            // video_id: '',
+            video_title: { title },
+            // viewer_user_id: 'user-id-007',
+          }}
+          poster={image.imageUrl}
+          thumbnailTime={147}
+          style={{ aspectRatio: 16 / 9, width: '100%' }}
+          accentColor="#606060"
         />
       </div>
     </Suspense>

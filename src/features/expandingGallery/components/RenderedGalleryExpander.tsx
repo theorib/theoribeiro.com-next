@@ -40,6 +40,7 @@ export default function RenderedGalleryExpander() {
   const {
     id,
     title,
+    muxPlaybackId,
     projectType,
     role,
     description,
@@ -88,7 +89,11 @@ export default function RenderedGalleryExpander() {
       <Project>
         <ProjectVideoContainer>
           <ProjectVideoAspectRatio>
-            <RenderedVideoPlayer image={image} videoUrl={videoUrl} />
+            <RenderedVideoPlayer
+              image={image}
+              muxPlaybackId={muxPlaybackId}
+              title={title}
+            />
           </ProjectVideoAspectRatio>
         </ProjectVideoContainer>
         <ProjectMetaContainer>

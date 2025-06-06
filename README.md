@@ -28,7 +28,7 @@ This app uses the following libraries and features:
 - Static site generation using [Next.js 15](https://reactrouter.com/en/main) and [React 19](https://react.dev)
 - Styled with [Tailwind CSS](https://tailwindcss.com)
 - Justified Image gallery using [React Photo Album](https://react-photo-album.com) and [Yet Another React Lightbox](https://yet-another-react-lightbox.com)
-- Video player using [ReactPlayer](https://github.com/cookpete/react-player)
+- Video player using [Mux Player](https://www.mux.com/docs/guides/mux-player-web#react)
 - Static Image optimization using [Next Export Optimize Images](https://next-export-optimize-images.vercel.app/) and [Sharp](https://sharp.pixelplumbing.com/)
 - SEO sitemaps automatically generated with [next-sitemap](https://github.com/iamvishnusankar/next-sitemap#readme)
 - Schema.org JSON-LD automatically generated with [react-schemaorg](https://github.com/google/react-schemaorg#readme) and [schema-dts](https://github.com/google/schema-dts)

@@ -4,16 +4,17 @@ import redirects from './src/shared/lib/redirects.mjs';
 
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://player.vimeo.com;
+    connect-src 'self' https://*.mux.com https://*.litix.io https://storage.googleapis.com https://image.mux.com;
+    media-src 'self' blob: https://*.mux.com;
+    img-src 'self' blob: data: https://assets.theoribeiro.com https://image.mux.com https://*.litix.io;
+    script-src 'self' 'unsafe-inline' https://src.litix.io https://www.gstatic.com;
+    worker-src 'self' blob:;
+    form-action 'self' https://*.mux.com https://storage.googleapis.com;
     style-src 'self' 'unsafe-inline';
-    frame-src 'self' https://player.vimeo.com;
-    img-src 'self' blob: data: https://assets.theoribeiro.com https://*.vimeocdn.com;
-    connect-src 'self' https://vimeo.com;
-    media-src 'self';
+    frame-src 'self';
     font-src 'self';
     object-src 'none';
     base-uri 'self';
-    form-action 'self';
     frame-ancestors 'none';
     upgrade-insecure-requests;
 `;
