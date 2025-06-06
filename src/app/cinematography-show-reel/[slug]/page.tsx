@@ -11,7 +11,8 @@ export async function generateMetadata({
   params,
 }: GenerateMetadataProps): Promise<Metadata> {
   // read route params
-  const { slug } = params;
+  // eslint-disable-next-line @typescript-eslint/await-thenable
+  const { slug } = await params;
   const portfolioItem = portfolioActions.getPortfolioItemBySlug(slug);
   if (!portfolioItem) {
     throw new Error('No portfolio item found');
