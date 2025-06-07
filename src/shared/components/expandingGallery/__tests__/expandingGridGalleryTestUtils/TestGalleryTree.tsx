@@ -21,7 +21,12 @@ function TestGalleryExpander() {
     <div id={`${currentUniqueSlug}-expanded`}>
       <h1>{item.title}</h1>
       <p>{item.content}</p>
-      <Image src={item.image} alt={`${item.expandedAlt}`} />
+      <Image
+        src={item.image}
+        alt={`${item.expandedAlt}`}
+        width={720}
+        height={405}
+      />
     </div>
   );
 }
@@ -34,7 +39,7 @@ function TestGalleryThumbnail({
   return (
     <>
       <p>{item.title}</p>
-      <Image src={item.image} alt={`${item.thumbAlt}`} />
+      <Image src={item.image} alt={`${item.thumbAlt}`} fill />
     </>
   );
 }
