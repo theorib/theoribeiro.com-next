@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbo",
+    "run-https-proxy": "pnpm dlx local-ssl-proxy --key localhost-key.pem --cert localhost.pem --source 3001 --target 3000",
     "preinstall": "npx only-allow pnpm",
     "build": "next build",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",

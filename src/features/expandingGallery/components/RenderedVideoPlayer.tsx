@@ -1,7 +1,6 @@
 'use client';
 import { Suspense } from 'react';
 import MuxPlayer from '@mux/mux-player-react/lazy';
-// import Image from 'next-export-optimize-images/image';
 import Image from 'next/image';
 import { PlayIcon } from '@/features/expandingGallery/components/navIcons';
 import VideoPlayerSkeleton from '@/features/expandingGallery/components/VideoPlayerSkeleton';
@@ -46,7 +45,7 @@ function RenderedVideoPlayer({
 }: RenderedVideoPlayerProps) {
   return (
     <Suspense fallback={VideoPlayerSkeleton()}>
-      <div className="group animate-fade-in aspect-video">
+      <div className="group animate-fade-in aspect-video w-full">
         <MuxPlayer
           playbackId={muxPlaybackId}
           // theme="minimal"
