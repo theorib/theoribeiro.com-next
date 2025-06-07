@@ -4,6 +4,7 @@ import MuxPlayer from '@mux/mux-player-react/lazy';
 import Image from 'next/image';
 import { PlayIcon } from '@/features/expandingGallery/components/navIcons';
 import VideoPlayerSkeleton from '@/features/expandingGallery/components/VideoPlayerSkeleton';
+import { type PortfolioItem } from '@/services/portfolio/data/portfolio';
 
 interface PlayerImage {
   imageUrl: string;
@@ -12,9 +13,7 @@ interface PlayerImage {
 }
 
 type RenderedVideoPlayerProps = {
-  muxPlaybackId: string;
-  title: string;
-  image: PlayerImage;
+  portfolioItem: PortfolioItem;
   controls?: boolean;
 };
 
@@ -38,24 +37,22 @@ function VideoImagePreview({ image }: { image: PlayerImage }) {
 }
 
 function RenderedVideoPlayer({
-  muxPlaybackId: muxPlaybackId,
-  title,
-  image,
+  portfolioItem,
   controls = true,
 }: RenderedVideoPlayerProps) {
   return (
     <Suspense fallback={VideoPlayerSkeleton()}>
       <div className="group animate-fade-in aspect-video w-full">
         <MuxPlayer
-          playbackId={muxPlaybackId}
+          playbackId={portfolioItem.muxPlaybackId}
           // theme="minimal"
           metadata={{
             // video_id: '',
-            video_title: { title },
+            video_title: portfolioItem.title,
             // viewer_user_id: 'user-id-007',
           }}
-          poster={image.imageUrl}
-          thumbnailTime={147}
+          // poster={portfolioItem.imageUrl}
+          thumbnailTime={portfolioItem.thumbnailTime}
           style={{ aspectRatio: 16 / 9, width: '100%' }}
           accentColor="#606060"
         />

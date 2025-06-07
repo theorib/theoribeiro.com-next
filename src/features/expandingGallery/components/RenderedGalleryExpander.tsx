@@ -31,11 +31,11 @@ import Nav from '@/shared/components/expandingGallery/components/Nav';
 import ExpandingGridGallery from '@/shared/components/expandingGallery/ExpandingGridGallery';
 
 export default function RenderedGalleryExpander() {
-  const expanderData = usePortfolioItemData();
+  const portfolioItem = usePortfolioItemData();
   const { btnCloseAfterHandleClick, btnNextPrevAfterHandleClick } =
     useRenderedGalleryActionsHome();
 
-  if (!expanderData) return null;
+  if (!portfolioItem) return null;
 
   const {
     id,
@@ -52,7 +52,7 @@ export default function RenderedGalleryExpander() {
     imageUrl,
     thumbAlt,
     thumbTitle,
-  } = expanderData;
+  } = portfolioItem;
 
   const image = {
     imageUrl: paths.localAssetsPath() + imageUrl,
@@ -89,11 +89,7 @@ export default function RenderedGalleryExpander() {
       <Project>
         <ProjectVideoContainer>
           <ProjectVideoAspectRatio>
-            <RenderedVideoPlayer
-              image={image}
-              muxPlaybackId={muxPlaybackId}
-              title={title}
-            />
+            <RenderedVideoPlayer portfolioItem={portfolioItem} />
           </ProjectVideoAspectRatio>
         </ProjectVideoContainer>
         <ProjectMetaContainer>

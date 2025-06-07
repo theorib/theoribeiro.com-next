@@ -10,6 +10,7 @@ export type PortfolioProjectType =
 export type PortfolioItem = {
   id: number;
   muxPlaybackId: string;
+  thumbnailTime?: number;
   uniqueId: string;
   slug: PortfolioSlug;
   title: string;
@@ -52,6 +53,7 @@ export const portfolio: Array<PortfolioItem> = [
   {
     id: 0,
     muxPlaybackId: 'hPpJF5LTT8k12XIpBli6xTIXoQKpj0200Os1v02ON91Ieo',
+    thumbnailTime: 147,
     uniqueId: 'a8e61a0a-f268-4b30-9ebc-640c614ad074',
     slug: 'talk-radio',
     title: 'Talk Radio',
@@ -73,6 +75,7 @@ export const portfolio: Array<PortfolioItem> = [
   {
     id: 1,
     muxPlaybackId: 'CZ01uEqCCDwuITIUwS9OWwqhjKqpIWzfDyKoG1f02Xjs00',
+    thumbnailTime: 46.0427,
     uniqueId: '718815ce-5b41-4d17-963c-bd598b503bf9',
     slug: 'land-of-the-wind',
     title: 'Land of The Wind',
@@ -95,6 +98,7 @@ export const portfolio: Array<PortfolioItem> = [
   {
     id: 2,
     muxPlaybackId: 'ZuUKlIRpogTZ3VZF6Q3tTwch8daiaISUZXajhLTcDEA',
+    thumbnailTime: 8,
     uniqueId: 'e6da8ddb-1eca-4b23-974e-44f8e2dca3a4',
     slug: 'i-am',
     title: 'I Am',
@@ -118,6 +122,7 @@ export const portfolio: Array<PortfolioItem> = [
     id: 3,
     muxPlaybackId: '700ajO68P02uyqO680001oWXrhaKqXVNFH2dMNz2TMDKX4Q',
     uniqueId: '621a6449-0990-462e-a350-ebcaf978a0be',
+    thumbnailTime: 275,
     slug: 'safe-space',
     title: 'Safe Space',
     videoSource: 'vimeo',
@@ -140,6 +145,7 @@ export const portfolio: Array<PortfolioItem> = [
     id: 4,
     muxPlaybackId: 'f2yLzPS729G01y6rKy6i5JxOcRhOSvKrZKq2P4BmCnAw',
     uniqueId: '1105a3d0-f188-4a39-a6ca-43787e780ee0',
+    thumbnailTime: 42.5,
     slug: 'kto',
     title: 'KTO',
     videoSource: 'vimeo',
@@ -182,6 +188,7 @@ export const portfolio: Array<PortfolioItem> = [
   {
     id: 6,
     muxPlaybackId: 'tZq01BRdhXtx4SaFZOtsselMRaN00DOM5UMlIVueOcdmg',
+    thumbnailTime: 836,
     uniqueId: '33d98625-87fd-4ad4-bc08-d2a9c15e6bf6',
     slug: 'we-play-war',
     title: 'We Play War',
@@ -203,6 +210,7 @@ export const portfolio: Array<PortfolioItem> = [
   {
     id: 7,
     muxPlaybackId: 'RVH5Ef6ittaN3tTnRIcG00VmMvQc2j5Ky4ZyrbBv2exU',
+    thumbnailTime: 167,
     uniqueId: '82f8314c-8d7e-41f9-b1f7-06d119e5b003',
     slug: 'el-tiempo',
     title: 'El Tiempo',
