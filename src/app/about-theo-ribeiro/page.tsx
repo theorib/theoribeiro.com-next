@@ -2,7 +2,7 @@ import paths from '@/shared/lib/paths';
 import seo from '@/shared/lib/seo';
 import { type Metadata } from 'next';
 // import Image from 'next-export-optimize-images/image';
-import Image from 'next/image';
+import Image from 'next-export-optimize-images/image';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

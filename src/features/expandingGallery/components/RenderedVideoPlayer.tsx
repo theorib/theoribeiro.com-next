@@ -1,7 +1,7 @@
 'use client';
 import { Suspense } from 'react';
 import MuxPlayer from '@mux/mux-player-react/lazy';
-import Image from 'next/image';
+import Image from 'next-export-optimize-images/image';
 import { PlayIcon } from '@/features/expandingGallery/components/navIcons';
 import VideoPlayerSkeleton from '@/features/expandingGallery/components/VideoPlayerSkeleton';
 import { type PortfolioItem } from '@/services/portfolio/data/portfolio';

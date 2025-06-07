@@ -1,5 +1,5 @@
 import type { NextConfig } from 'next';
-// import withExportImages from 'next-export-optimize-images';
+import withExportImages from 'next-export-optimize-images';
 import redirects from './src/shared/lib/redirects.mjs';
 
 const cspHeader = `
@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
   },
-  // output: 'export',
+  output: 'export',
   images: {
     // deviceSizes: [390, 640, 960, 1280, 1600, 1920, 3840],
     deviceSizes: [390, 430, 640, 768, 1080, 1280, 1920, 2560, 3840],
@@ -65,5 +65,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-// export default withExportImages(nextConfig);
-export default nextConfig;
+export default withExportImages(nextConfig);

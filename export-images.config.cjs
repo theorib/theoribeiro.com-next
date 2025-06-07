@@ -115,15 +115,15 @@ module.exports = {
       effort: 1,
     },
     webp: {
-      effort: 0,
+      effort: 1,
     },
     avif: {
-      effort: 0,
+      effort: 1,
     },
   },
   // remoteImages: async () => {
   //   const { default: portfolioActions } = await import(
-  //     './src/actions/portfolioActions'
+  //     './src/services/portfolio/actions/portfolioActions'
   //   );
   //   const { default: paths } = await import('@/lib/paths');
   //   /** @type {StillsPortfolioItem} */
