@@ -1,11 +1,13 @@
 'use client';
 import { Suspense } from 'react';
-import MuxPlayer from '@mux/mux-player-react/lazy';
+import MuxPlayer from '@mux/mux-player-react';
+// import MuxVideo from '@mux/mux-video-react';
+import 'player.style/vimeonova';
+// import '@mux/mux-player-react/themes/minimal';
 import Image from 'next-export-optimize-images/image';
 import { PlayIcon } from '@/features/expandingGallery/components/navIcons';
 import VideoPlayerSkeleton from '@/features/expandingGallery/components/VideoPlayerSkeleton';
 import { type PortfolioItem } from '@/services/portfolio/data/portfolio';
-
 interface PlayerImage {
   imageUrl: string;
   thumbAlt: string;
@@ -41,23 +43,32 @@ function RenderedVideoPlayer({
   controls = true,
 }: RenderedVideoPlayerProps) {
   return (
-    <Suspense fallback={VideoPlayerSkeleton()}>
-      <div className="group animate-fade-in aspect-video w-full">
-        <MuxPlayer
-          playbackId={portfolioItem.muxPlaybackId}
-          // theme="minimal"
-          metadata={{
-            // video_id: '',
-            video_title: portfolioItem.title,
-            // viewer_user_id: 'user-id-007',
-          }}
-          // poster={portfolioItem.imageUrl}
-          thumbnailTime={portfolioItem.thumbnailTime}
-          style={{ aspectRatio: 16 / 9, width: '100%' }}
-          accentColor="#606060"
-        />
-      </div>
-    </Suspense>
+    //<Suspense fallback={VideoPlayerSkeleton()}>
+    // <div className="group animate-fade-in aspect-video w-full">
+    // {/* <div className="group animate-fade-in aspect-video w-full"> */}
+    <>
+      {/* <MediaThemeVimeonova
+        style={{ '--media-accent-color': '#ebebeb', width: '100%' }}
+      > */}
+      <MuxPlayer
+        playbackId={portfolioItem.muxPlaybackId}
+        theme="vimeonova"
+        metadata={{
+          // video_id: '',
+          video_title: portfolioItem.title,
+          // viewer_user_id: 'user-id-007',
+        }}
+        // poster={portfolioItem.imageUrl}
+        // thumbnailTime={portfolioItem.thumbnailTime}
+
+        // slot="media"
+        // playsInline
+        // crossOrigin="anonymous"
+        style={{ aspectRatio: 16 / 9, width: '100%' }}
+      />
+    </>
+    // </div>
+    //</Suspense>
   );
 }
 export default RenderedVideoPlayer;

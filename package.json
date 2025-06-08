@@ -30,6 +30,7 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
     "@mux/mux-player-react": "^3.4.0",
+    "@mux/mux-video-react": "^0.25.2",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-separator": "^1.1.7",
@@ -41,6 +42,7 @@
     "lucide-react": "^0.513.0",
     "next": "15.3.3",
     "next-sitemap": "^4.2.3",
+    "player.style": "^0.1.8",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hotkeys-hook": "^5.1.0",
