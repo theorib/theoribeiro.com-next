@@ -12,14 +12,18 @@ function FooterMain() {
         {/* html field for phone  */}
         <a
           href="mailto:theo@theoribeiro.com"
-          className="link link-accent"
+          className="link link-accent underline"
           title="Email"
         >
           theo@theoribeiro.com
         </a>
         <span>
           Mobile (UK):{' '}
-          <a href="tel:+44 7415 303-847" title="Phone (UK)">
+          <a
+            href="tel:+44 7415 303-847"
+            title="Phone (UK)"
+            className="underline"
+          >
             +44 7415 303847
           </a>
         </span>
