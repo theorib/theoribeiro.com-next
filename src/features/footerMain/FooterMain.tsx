@@ -29,10 +29,7 @@ function FooterMain() {
         </span>
       </div>
       <div className="flex items-end justify-between">
-        <p
-          aria-label="Copyright Notice"
-          className="text-md text-horizon-blue-200"
-        >
+        <p className="text-md text-horizon-blue-200">
           ©{new Date().getFullYear()} Theo Ribeiro, all rights reserved.{' '}
         </p>
 
