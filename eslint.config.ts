@@ -4,15 +4,15 @@ import eslintJs from '@eslint/js';
 import tsdoc from 'eslint-plugin-tsdoc';
 import react from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import * as reactHooks from 'eslint-plugin-react-hooks';
-import prettier from 'eslint-config-prettier';
+import reactHooks from 'eslint-plugin-react-hooks';
+import prettier from 'eslint-config-prettier/flat';
 import vitest from '@vitest/eslint-plugin';
 import jestDom from 'eslint-plugin-jest-dom';
-// @ts-expect-error there are no type definitions for this
+
 import next from '@next/eslint-plugin-next';
 import globals from 'globals';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-// @ts-expect-error there are no type definitions for this
+
 import importPlugin from 'eslint-plugin-import';
 import { FlatCompat } from '@eslint/eslintrc';
 import { fixupPluginRules } from '@eslint/compat';
@@ -138,7 +138,6 @@ const reactRecommended = {
         modules: true,
         jsx: true,
       },
-      project: true, // change this to your project's tsconfig.json
       jsxPragma: null, // useful for typescript x react@17 https://github.com/jsx-eslint/eslint-plu
     },
     globals: {
@@ -165,21 +164,36 @@ const reactJsxRuntime = {
  * This configuration follows the plugin's latest recommended rules with the addition of adding the files property for narrowing down the files that should be linted.
  */
 const reactHooksRecommended = {
-  ...reactHooks.configs['recommended-latest'],
+  ...reactHooks.configs.flat.recommended,
+  name: 'react/hooks',
   files: [...JS_JSX_TS_TSX_FILE_PATTERNS],
 } satisfies Config;
 
 /**
- * Since eslint-plugin-react-hooks@6.0.0-rc.1,  eslint-plugin-react-compiler was merged into eslint-plugin-react-hooks.
+ * Since eslint-plugin-react-hooks\@6.0.0-rc.1,  eslint-plugin-react-compiler was merged into eslint-plugin-react-hooks.
  * @see {@link https://react.dev/blog/2025/04/21/react-compiler-rc}
  */
 
 const reactCompilerRecommended = {
-  ...reactHooks.configs['recommended-latest'],
+  ...reactHooks.configs.flat['recommended-latest'],
   name: 'react/compiler',
   files: [...JS_JSX_TS_TSX_FILE_PATTERNS],
   rules: {
-    'react-hooks/react-compiler': 'warn',
+    'react-hooks/config': 'error',
+    'react-hooks/error-boundaries': 'error',
+    'react-hooks/component-hook-factories': 'error',
+    'react-hooks/gating': 'error',
+    'react-hooks/globals': 'error',
+    'react-hooks/immutability': 'error',
+    'react-hooks/preserve-manual-memoization': 'error',
+    'react-hooks/purity': 'error',
+    'react-hooks/refs': 'error',
+    'react-hooks/set-state-in-effect': 'error',
+    'react-hooks/set-state-in-render': 'error',
+    'react-hooks/static-components': 'error',
+    'react-hooks/unsupported-syntax': 'warn',
+    'react-hooks/use-memo': 'error',
+    'react-hooks/incompatible-library': 'warn',
   },
 } satisfies Config;
 
@@ -189,9 +203,9 @@ const reactCompilerRecommended = {
  * @see {@link https://github.com/ArnaudBarre/eslint-plugin-react-refresh?tab=readme-ov-file#recommended-config}
  */
 const reactRefreshRecommended = {
-  name: 'react-refresh/recommended',
   files: [...JS_JSX_TS_TSX_FILE_PATTERNS],
   ...reactRefresh.configs.recommended,
+  name: 'react-refresh/recommended',
 } satisfies Config;
 
 /**
@@ -230,7 +244,6 @@ const nextNextRecommended = {
   },
 
   rules: {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- This is a bug in eslint-plugin-next
     ...(next.configs.recommended.rules as ConfigRules),
   },
   files: [...NEXT_JS_JSX_TS_TSX_FILE_PATTERNS],
@@ -265,7 +278,6 @@ const configNext = {
       ...globals.node,
     },
     parserOptions: {
-      project: true,
       tsconfigRootDir: import.meta.dirname,
       sourceType: 'module',
       ecmaFeatures: {
@@ -351,6 +363,7 @@ const vitestRecommended = {
   plugins: { vitest },
   rules: {
     ...vitest.configs.recommended.rules,
+    'vitest/no-conditional-expect': 'warn',
   },
   settings: {
     vitest: {
@@ -358,11 +371,6 @@ const vitestRecommended = {
     },
   },
   languageOptions: {
-    // parser: tseslint.parser,
-    // parserOptions: {
-    //   project: true,
-    //   tsconfigRootDir: import.meta.dirname,
-    // },
     globals: {
       ...vitest.environments.env.globals,
     },
