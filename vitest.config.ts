@@ -1,9 +1,9 @@
-import { type UserConfig, defineConfig } from 'vitest/config';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()] as UserConfig['plugins'],
+  plugins: [react(), tsconfigPaths()],
   test: {
     globals: true,
     environment: 'jsdom',
@@ -11,8 +11,5 @@ export default defineConfig({
     coverage: {
       reporter: ['html'],
     },
-    // alias: {
-    //   '@/': new URL('./src/', import.meta.url).pathname,
-    // },
   },
 });

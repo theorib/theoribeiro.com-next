@@ -11,7 +11,7 @@ vi.mock(`next/font/google`, () => ({
 }));
 
 beforeAll(() => {
-  //  All your beforeAll code here
+  window.HTMLElement.prototype.scrollIntoView = vi.fn();
 });
 
 beforeEach(() => {

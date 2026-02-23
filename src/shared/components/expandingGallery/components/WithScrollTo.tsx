@@ -39,7 +39,7 @@ function scrollToPosition(
  * Scrolls the given element into view with optional timeout and scroll options.
  * @param element - The element to scroll into view.
  * @param timeout - The timeout before scrolling the element into view (default: 50ms).
- * @param options - The scroll options (default: { behavior: 'smooth', block: 'center', inline: 'center' }).
+ * @param options - The scroll options with behavior, block, and inline properties (default: smooth center center).
  * @returns A timeout identifier that can be used to cancel the scroll operation.
  */
 function scrollElementIntoView(
