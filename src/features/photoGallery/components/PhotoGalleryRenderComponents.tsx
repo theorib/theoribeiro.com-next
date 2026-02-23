@@ -1,8 +1,11 @@
 import ThumbnailSkeleton from '@/features/photoGallery/components/ThumbnailSkeleton';
-import { StillsPortfolioItemSchema } from '@/services/portfolio/data/stillsPortfolio';
+import {
+  type StillsPortfolioItem,
+  StillsPortfolioItemSchema,
+} from '@/services/portfolio/data/stillsPortfolio';
 import { AspectRatio } from '@/shared/components/ui/aspect-ratio';
 import { cn } from '@/shared/lib/utils';
-import { type StillsPortfolioItem } from 'export-images.config.cjs';
+
 // import Image from 'next-export-optimize-images/image';
 import Image from 'next-export-optimize-images/image';
 import { Suspense, type JSX } from 'react';
