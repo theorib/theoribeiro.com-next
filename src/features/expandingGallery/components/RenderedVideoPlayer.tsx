@@ -8,6 +8,8 @@ import Image from 'next-export-optimize-images/image';
 import { PlayIcon } from '@/features/expandingGallery/components/navIcons';
 import VideoPlayerSkeleton from '@/features/expandingGallery/components/VideoPlayerSkeleton';
 import { type PortfolioItem } from '@/services/portfolio/data/portfolio';
+import env from '@/shared/lib/env';
+
 interface PlayerImage {
   imageUrl: string;
   thumbAlt: string;
@@ -58,7 +60,7 @@ function RenderedVideoPlayer({
           video_title: portfolioItem.title,
           // viewer_user_id: 'user-id-007',
         }}
-        // poster={portfolioItem.imageUrl}
+        poster={`${env.NEXT_PUBLIC_REMOTE_ASSETS_PATH}${portfolioItem.imageUrl}`}
         // thumbnailTime={portfolioItem.thumbnailTime}
 
         // slot="media"
