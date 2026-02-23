@@ -20,9 +20,7 @@ const cspHeader = `
 `;
 
 const nextConfig: NextConfig = {
-  experimental: {
-    reactCompiler: true,
-  },
+  reactCompiler: true,
   output: 'export',
   images: {
     // deviceSizes: [390, 640, 960, 1280, 1600, 1920, 3840],
@@ -39,9 +37,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+
   // Set strict content security policies
   // Next.js 15 expexts redirects to be async functions even if current values don't need to be awaited
   // eslint-disable-next-line @typescript-eslint/require-await
