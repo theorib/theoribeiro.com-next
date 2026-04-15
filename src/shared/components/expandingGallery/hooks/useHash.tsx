@@ -66,7 +66,7 @@ function handleHashChange(event: HashChangeEvent) {
  * @returns A tuple with the current hash and a function to update it.
  */
 export default function useHash(): [Hash, Dispatch<SetStateAction<Hash>>] {
-  const [hash, setHash] = useState<Hash>(null);
+  const [hash, setHash] = useState<Hash>(() => getUrlHash());
   const hasPageLoaded = useRef<boolean>(false);
   const isHandlingPopState = useRef<boolean>(false);
   /**
@@ -81,12 +81,10 @@ export default function useHash(): [Hash, Dispatch<SetStateAction<Hash>>] {
     window.addEventListener('popstate', handlePopState);
 
     /**
-     * Set the hash state to the current URL hash when the page first loads
-     * This is necessary because the hash is not available during SSR
-     * We then set the hasPageLoaded ref to true to prevent further updates
+     * Mark the page as loaded on the first effect run.
+     * Initial hash is already set via the useState lazy initializer.
      */
     if (!hasPageLoaded.current && !isHandlingPopState.current) {
-      setHash(getUrlHash());
       hasPageLoaded.current = true;
     }
 

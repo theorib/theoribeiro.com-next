@@ -44,13 +44,12 @@ interface UseUrlPathNameReturn {
 }
 
 export default function useUrlPathName(): UseUrlPathNameReturn {
-  const [pathName, setPathName] = useState<PathName>('/');
+  const [pathName, setPathName] = useState<PathName>(() => getUrlPathName());
   const hasPageLoaded = useRef<boolean>(false);
 
   useEffect(() => {
     console.log('useUrlPathName', pathName);
     if (!hasPageLoaded.current) {
-      setPathName(getUrlPathName());
       hasPageLoaded.current = true;
       return;
     }
