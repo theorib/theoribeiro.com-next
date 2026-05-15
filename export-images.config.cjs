@@ -4,7 +4,21 @@
  */
 
 // eslint-disable-next-line no-undef
+const fs = require('fs');
+
+// Vercel's onBuildComplete hook (introduced with Turbopack in Next.js 16.2) copies
+// `out/` to the deployment output dir before next-export-optimize-images runs, so
+// images written to `out/` afterward are never deployed. Writing directly to the
+// Vercel output dir fixes the timing issue.
+function getOutDir() {
+  if (fs.existsSync('/vercel/output/static')) return '/vercel/output/static';
+  if (fs.existsSync('.vercel/output/static')) return '.vercel/output/static';
+  return 'out';
+}
+
+// eslint-disable-next-line no-undef
 module.exports = {
+  outDir: getOutDir(),
   convertFormat: [
     ['png', 'webp'],
     ['jpg', 'avif'],
