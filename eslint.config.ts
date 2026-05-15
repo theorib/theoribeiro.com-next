@@ -244,7 +244,7 @@ const nextNextRecommended = {
   },
 
   rules: {
-    ...(next.configs.recommended.rules as ConfigRules),
+    ...next.configs.recommended.rules,
   },
   files: [...NEXT_JS_JSX_TS_TSX_FILE_PATTERNS],
 } satisfies Config;
@@ -269,7 +269,7 @@ const nextNextRecommended = {
 const configNext = {
   name: 'config-next',
 
-  plugins: { import: importPlugin as ConfigPlugin },
+  plugins: { import: importPlugin },
   languageOptions: {
     parser: tseslint.parser,
     // parser: babelParser,
