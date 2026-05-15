@@ -44,7 +44,7 @@ export function RenderThumbnailImage(
           src={data.src}
           alt={data.alt}
           title={data.description ?? ''}
-          sizes={sizes as string}
+          sizes={sizes}
           className={cn('object-cover')}
           placeholder={'blurDataURL' in photo ? 'blur' : undefined}
         />
